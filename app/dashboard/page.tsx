@@ -6,6 +6,7 @@ import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary, fmt } from "@/lib/i18n";
 import { getCountryData, ISCO_OCCUPATIONS } from "@/lib/data";
 import { calibrateRisk } from "@/lib/calibration";
+import { fetchIndicators } from "@/lib/worldBankApi";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -17,6 +18,14 @@ export default async function DashboardPage({ searchParams }: PageProps) {
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
   const data = getCountryData(country.code);
+
+  // Live World Bank pull (with snapshot fallback baked into the client).
+  const liveWb = await fetchIndicators(country.code, [
+    "YOUTH_UNEMPLOYMENT",
+    "GDP_PCAP",
+    "INTERNET_USERS",
+  ]);
+  const youthUnemploymentLive = liveWb.YOUTH_UNEMPLOYMENT;
 
   const occupationLookup = Object.fromEntries(
     ISCO_OCCUPATIONS.map((o) => [o.code, { title: o.title, sectorId: o.sectorId }])
@@ -46,7 +55,12 @@ export default async function DashboardPage({ searchParams }: PageProps) {
     currency: country.currency,
     currencySymbol: country.currencySymbol,
     context: country.context,
-    youthUnemploymentRate: data.growth.youthUnemploymentRate,
+    youthUnemploymentRate: youthUnemploymentLive?.value ?? data.growth.youthUnemploymentRate,
+    youthUnemploymentSource: youthUnemploymentLive?.source ?? "snapshot",
+    youthUnemploymentYear: youthUnemploymentLive?.year ?? 2023,
+    gdpPerCapita: liveWb.GDP_PCAP?.value ?? null,
+    gdpPerCapitaSource: liveWb.GDP_PCAP?.source ?? "snapshot",
+    internetUsersPct: liveWb.INTERNET_USERS?.value ?? null,
     informalEmploymentShare: data.growth.informalEmploymentShare,
     minimumWage: data.wages.minimumWage,
     growthBySector: data.growth.growthBySector,

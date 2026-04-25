@@ -37,6 +37,11 @@ type Snapshot = {
   currencySymbol: string;
   context: string;
   youthUnemploymentRate: number;
+  youthUnemploymentSource: "live-worldbank" | "snapshot";
+  youthUnemploymentYear: number;
+  gdpPerCapita: number | null;
+  gdpPerCapitaSource: "live-worldbank" | "snapshot";
+  internetUsersPct: number | null;
   informalEmploymentShare: number;
   minimumWage: number;
   growthBySector: Record<string, number>;
@@ -153,8 +158,13 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
           icon={<Users className="h-4 w-4" />}
           label={t.dashboard.kpiYouth}
           value={`${snapshot.youthUnemploymentRate.toFixed(1)}%`}
-          sub={t.dashboard.kpiYouthSub}
+          sub={
+            snapshot.youthUnemploymentSource === "live-worldbank"
+              ? `World Bank WDI · ${snapshot.youthUnemploymentYear}`
+              : t.dashboard.kpiYouthSub
+          }
           tone="warning"
+          live={snapshot.youthUnemploymentSource === "live-worldbank"}
         />
         <Kpi
           icon={<Briefcase className="h-4 w-4" />}
@@ -171,6 +181,35 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
           tone="positive"
         />
       </div>
+
+      {(snapshot.gdpPerCapita || snapshot.internetUsersPct) && (
+        <div className="grid gap-4 md:grid-cols-2">
+          {snapshot.gdpPerCapita !== null && (
+            <Kpi
+              icon={<TrendingUp className="h-4 w-4" />}
+              label="GDP per capita (USD)"
+              value={`$${Math.round(snapshot.gdpPerCapita).toLocaleString()}`}
+              sub={
+                snapshot.gdpPerCapitaSource === "live-worldbank"
+                  ? "World Bank WDI · live"
+                  : "Snapshot"
+              }
+              tone="accent"
+              live={snapshot.gdpPerCapitaSource === "live-worldbank"}
+            />
+          )}
+          {snapshot.internetUsersPct !== null && (
+            <Kpi
+              icon={<Users className="h-4 w-4" />}
+              label="Internet users"
+              value={`${snapshot.internetUsersPct.toFixed(1)}%`}
+              sub="World Bank WDI · live"
+              tone="positive"
+              live
+            />
+          )}
+        </div>
+      )}
 
       <Card title={t.dashboard.sectorGrowthTitle} subtitle={t.dashboard.sectorGrowthSub}>
         <ResponsiveContainer width="100%" height={320}>
@@ -275,12 +314,14 @@ function Kpi({
   value,
   sub,
   tone,
+  live,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
   sub: string;
   tone: "accent" | "positive" | "warning";
+  live?: boolean;
 }) {
   const accent: Record<string, string> = {
     accent: "text-accent",
@@ -289,9 +330,17 @@ function Kpi({
   };
   return (
     <div className="rounded-2xl border border-border-default bg-bg-raised p-5 shadow-sm">
-      <div className="flex items-center gap-2 text-fg-muted">
-        <span>{icon}</span>
-        <span className="text-[10px] uppercase tracking-widest">{label}</span>
+      <div className="flex items-center justify-between gap-2 text-fg-muted">
+        <div className="flex items-center gap-2">
+          <span>{icon}</span>
+          <span className="text-[10px] uppercase tracking-widest">{label}</span>
+        </div>
+        {live && (
+          <span className="inline-flex items-center gap-1 rounded-full border border-positive/30 bg-positive/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-positive">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-positive" />
+            Live
+          </span>
+        )}
       </div>
       <p className={`mt-2 text-3xl font-semibold ${accent[tone]}`}>{value}</p>
       <p className="mt-1 text-[11px] text-fg-muted">{sub}</p>

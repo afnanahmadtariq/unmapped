@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { jsPDF } from "jspdf";
 import {
   ArrowLeft,
   ArrowRight,
@@ -19,7 +18,9 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import SkillChipInput from "@/components/SkillChipInput";
+import ClarificationCard from "@/components/ClarificationCard";
 import { useToast } from "@/components/Toast";
+import { buildSkillsProfilePdf } from "@/lib/pdf";
 import type {
   AgeRange,
   CountryCode,
@@ -28,6 +29,7 @@ import type {
   SkillEvidence,
   WorkMode,
 } from "@/types";
+import type { ClarifyingQuestion } from "@/lib/llm";
 import type { Dictionary } from "@/lib/i18n";
 import { fmt } from "@/lib/i18n";
 
@@ -107,6 +109,17 @@ export default function ProfileWizard({
   const [error, setError] = useState<string | null>(null);
   const [profile, setProfile] = useState<SkillsProfile | null>(null);
 
+  // Clarification round state.
+  const [clarify, setClarify] = useState<{
+    reason: string;
+    questions: ClarifyingQuestion[];
+  } | null>(null);
+  const [conversation, setConversation] = useState<{
+    history: unknown[];
+    lastAssistant: unknown[];
+    baseInput: unknown;
+  } | null>(null);
+
   const langSuggestions = useMemo(
     () => LANGUAGE_SUGGESTIONS_BY_COUNTRY[countryCode] ?? [],
     [countryCode]
@@ -144,10 +157,28 @@ export default function ProfileWizard({
     });
   };
 
+  const handleProfile = (data: SkillsProfile) => {
+    setProfile(data);
+    setClarify(null);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        `unmapped:profile:${countryCode}`,
+        JSON.stringify(data)
+      );
+    }
+    toast.push({
+      tone: "success",
+      title: t.profile.successTitle,
+      body: fmt(t.profile.successBody, { n: data.skills.length }),
+    });
+  };
+
   const submit = async () => {
     setLoading(true);
     setError(null);
     setProfile(null);
+    setClarify(null);
+    setConversation(null);
     try {
       const res = await fetch("/api/extract-skills", {
         method: "POST",
@@ -171,19 +202,54 @@ export default function ProfileWizard({
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error ?? `HTTP ${res.status}`);
       }
-      const data = (await res.json()) as SkillsProfile;
-      setProfile(data);
-      if (typeof window !== "undefined") {
-        sessionStorage.setItem(
-          `unmapped:profile:${countryCode}`,
-          JSON.stringify(data)
-        );
+      const data = await res.json();
+      const baseInput = data.baseInput;
+      const history = data.history;
+      if (data.result?.kind === "clarify") {
+        setClarify({ reason: data.result.reason, questions: data.result.questions });
+        // Stash the assistant tool_use block (= last item in history) for the follow-up call.
+        const lastAssistant = (history as Array<{ role: string; content: unknown[] }>).at(-1)?.content ?? [];
+        setConversation({ history, lastAssistant, baseInput });
+      } else if (data.result?.kind === "profile") {
+        handleProfile(data.result.profile as SkillsProfile);
+      } else {
+        throw new Error("Unexpected response shape");
       }
-      toast.push({
-        tone: "success",
-        title: t.profile.successTitle,
-        body: fmt(t.profile.successBody, { n: data.skills.length }),
+    } catch (err) {
+      const m = err instanceof Error ? err.message : "Unknown error";
+      setError(m);
+      toast.push({ tone: "error", title: t.profile.errorTitle, body: m });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const submitAnswers = async (answers: Record<string, string>) => {
+    if (!conversation) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/extract-skills", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phase: "follow-up",
+          history: conversation.history,
+          lastAssistant: conversation.lastAssistant,
+          answers,
+          baseInput: conversation.baseInput,
+        }),
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? `HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      if (data.result?.kind === "clarify") {
+        setClarify({ reason: data.result.reason, questions: data.result.questions });
+      } else if (data.result?.kind === "profile") {
+        handleProfile(data.result.profile as SkillsProfile);
+      }
     } catch (err) {
       const m = err instanceof Error ? err.message : "Unknown error";
       setError(m);
@@ -205,46 +271,7 @@ export default function ProfileWizard({
 
   const exportPDF = () => {
     if (!profile) return;
-    const doc = new jsPDF({ unit: "pt", format: "a4" });
-    const W = doc.internal.pageSize.getWidth();
-    let y = 56;
-    doc.setFontSize(20);
-    doc.text("UNMAPPED Skills Profile", 56, y);
-    y += 24;
-    doc.setFontSize(10);
-    doc.setTextColor(110);
-    doc.text(
-      `Country: ${countryName} · Locale: ${locale} · Generated: ${new Date(profile.generatedAt).toLocaleString()}`,
-      56,
-      y
-    );
-    y += 24;
-    doc.setTextColor(0);
-    doc.setFontSize(11);
-    doc.text(`Education: ${profile.educationLevel}`, 56, y); y += 16;
-    doc.text(`Languages: ${profile.languages.join(", ") || "-"}`, 56, y); y += 16;
-    doc.text(`Years of experience: ${profile.yearsExperience}`, 56, y); y += 24;
-    doc.setFontSize(13);
-    doc.text("Mapped Skills (ESCO)", 56, y);
-    y += 18;
-    doc.setFontSize(10);
-    profile.skills.forEach((s) => {
-      if (y > 760) { doc.addPage(); y = 56; }
-      doc.setTextColor(0);
-      doc.text(`- ${s.name} [${s.escoCode}], ${s.level}`, 56, y);
-      y += 14;
-      doc.setTextColor(90);
-      const lines = doc.splitTextToSize(`Evidence: ${s.evidence}`, W - 112);
-      doc.text(lines, 72, y);
-      y += lines.length * 12 + 8;
-    });
-    doc.setFontSize(8);
-    doc.setTextColor(140);
-    doc.text(
-      "UNMAPPED, open skills infrastructure. Built on ESCO (EU) and ISCO-08 (ILO).",
-      56,
-      810
-    );
+    const doc = buildSkillsProfilePdf({ profile, countryName, locale });
     doc.save(`unmapped-profile-${profile.countryCode}.pdf`);
     toast.push({ tone: "success", title: t.profile.pdfDownloaded });
   };
@@ -258,11 +285,37 @@ export default function ProfileWizard({
         t={t}
         onReset={() => {
           setProfile(null);
+          setClarify(null);
+          setConversation(null);
           setStep(0);
         }}
         onExportJSON={exportJSON}
         onExportPDF={exportPDF}
       />
+    );
+  }
+
+  if (clarify) {
+    return (
+      <div className="space-y-6">
+        <ClarificationCard
+          reason={clarify.reason}
+          questions={clarify.questions}
+          loading={loading}
+          t={t}
+          onSubmit={submitAnswers}
+        />
+        <button
+          type="button"
+          onClick={() => {
+            setClarify(null);
+            setConversation(null);
+          }}
+          className="text-xs text-fg-muted underline-offset-2 hover:text-fg-primary hover:underline"
+        >
+          {t.profile.editAgain}
+        </button>
+      </div>
     );
   }
 
