@@ -48,6 +48,12 @@ export default async function ProfilePage({ searchParams }: PageProps) {
           >
             Dashboard
           </Link>
+          <Link
+            href={`/admin/config${qs}`}
+            className="rounded-md px-3 py-1.5 text-neutral-400 hover:bg-neutral-900 hover:text-neutral-100"
+          >
+            Config
+          </Link>
         </nav>
         <ContextSelector
           country={country.code}

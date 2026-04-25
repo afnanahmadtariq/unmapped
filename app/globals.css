@@ -23,7 +23,7 @@ html, body {
   color: var(--foreground);
 }
 
-/* Subtle grain on the page background */
+/* Animated background orbs */
 body::before {
   content: "";
   position: fixed;
@@ -42,11 +42,34 @@ body::before {
   border-radius: 6px;
 }
 
-/* Clean scrollbars in dark mode */
+/* Scrollbars */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: #1f1f1f;
-  border-radius: 999px;
-}
+::-webkit-scrollbar-thumb { background: #1f1f1f; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
+
+/* Reusable keyframes — referenced via arbitrary animate-[…] in components */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Skeleton shimmer utility */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}

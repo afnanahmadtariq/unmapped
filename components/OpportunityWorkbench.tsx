@@ -189,7 +189,7 @@ export default function OpportunityWorkbench({
   const active = matches.find((m) => m.iscoCode === activeIsco) ?? matches[0];
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] animate-[fadeIn_240ms_ease-out]">
       {/* LEFT — match list */}
       <aside className="space-y-3">
         <div className="rounded-xl border border-neutral-800/80 bg-linear-to-b from-neutral-900/60 to-neutral-950 p-4">
@@ -472,7 +472,7 @@ function PathwaySkeleton() {
       {[0, 1, 2, 3].map((i) => (
         <div
           key={i}
-          className="h-32 animate-pulse rounded-xl border border-neutral-800/60 bg-neutral-900/30"
+          className="skeleton h-32 rounded-xl border border-neutral-800/60"
         />
       ))}
     </>
