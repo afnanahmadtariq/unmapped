@@ -1,5 +1,5 @@
 {
-  "_source": "ILOSTAT — Bangladesh mean monthly nominal earnings by economic activity (2023, BDT). Sector aggregates approximated where ISIC granularity not available.",
+  "_source": "ILOSTAT - Bangladesh mean monthly nominal earnings by economic activity (2023, BDT). Sector aggregates approximated where ISIC granularity not available.",
   "currency": "BDT",
   "vintage": "2023",
   "wagesByISCO": {

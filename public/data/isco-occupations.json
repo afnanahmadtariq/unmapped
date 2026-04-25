@@ -1,5 +1,5 @@
 {
-  "_source": "ILO ISCO-08 (International Standard Classification of Occupations) — subset of 30 occupations relevant to LMIC youth pathways",
+  "_source": "ILO ISCO-08 (International Standard Classification of Occupations) - subset of 30 occupations relevant to LMIC youth pathways",
   "occupations": [
     { "code": "2512", "title": "Software developers", "skillLevel": 4, "sectorId": "ICT" },
     { "code": "2513", "title": "Web and multimedia developers", "skillLevel": 4, "sectorId": "ICT" },

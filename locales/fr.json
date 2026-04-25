@@ -5,11 +5,11 @@
   },
   "landing": {
     "hero": "600 millions de jeunes. Compétences non reconnues. Invisibles pour l'économie formelle.",
-    "subhero": "UNMAPPED relie les vraies compétences aux vraies opportunités — avec de vraies données, pays par pays.",
+    "subhero": "UNMAPPED relie les vraies compétences aux vraies opportunités - avec de vraies données, pays par pays.",
     "ctaPrimary": "Cartographier mes compétences",
     "ctaSecondary": "Ouvrir le tableau de bord des décideurs",
     "amaraTitle": "Voici Amara",
-    "amaraStory": "Amara a 22 ans, vit près d'Accra, et possède un certificat de fin d'études secondaires. Elle parle trois langues, dirige une entreprise de réparation de téléphones depuis ses 17 ans, et a appris seule à coder grâce à YouTube. Selon toute mesure raisonnable, elle a des compétences. Pour l'économie formelle, elle est invisible. Elle n'est pas l'exception — elle est la règle."
+    "amaraStory": "Amara a 22 ans, vit près d'Accra, et possède un certificat de fin d'études secondaires. Elle parle trois langues, dirige une entreprise de réparation de téléphones depuis ses 17 ans, et a appris seule à coder grâce à YouTube. Selon toute mesure raisonnable, elle a des compétences. Pour l'économie formelle, elle est invisible. Elle n'est pas l'exception - elle est la règle."
   },
   "selectors": {
     "country": "Pays",

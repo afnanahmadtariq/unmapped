@@ -1,4 +1,4 @@
-// UNMAPPED — match an ESCO skills profile to ISCO occupations.
+// UNMAPPED - match an ESCO skills profile to ISCO occupations.
 // Strategy: weighted set similarity over the iscoLinks lists each ESCO skill carries.
 // Each skill votes for its linked occupations; advanced > intermediate > beginner.
 

@@ -1,5 +1,5 @@
 {
-  "_source": "Frey & Osborne (2013/2017) 'The Future of Employment' — automation probability per occupation. Mapped from O*NET-SOC to ISCO-08. NOTE: raw scores are calibrated for OECD economies; per-country multiplier applied at runtime via lib/calibration.ts.",
+  "_source": "Frey & Osborne (2013/2017) 'The Future of Employment' - automation probability per occupation. Mapped from O*NET-SOC to ISCO-08. NOTE: raw scores are calibrated for OECD economies; per-country multiplier applied at runtime via lib/calibration.ts.",
   "scores": {
     "2512": 0.04,
     "2513": 0.21,

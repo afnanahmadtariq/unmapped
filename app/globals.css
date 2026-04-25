@@ -1,54 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #050505;
-  --foreground: #fafafa;
+/* Tailwind 4: dark variant follows our explicit data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* DARK (default before JS hydrates) */
+:root,
+[data-theme="dark"] {
+  --bg-base: #050505;
+  --bg-raised: #0d0d0d;
+  --bg-hover: #141414;
+  --fg-primary: #fafafa;
+  --fg-secondary: #a3a3a3;
+  --fg-muted: #737373;
+  --border-default: #1f1f1f;
+  --border-strong: #2a2a2a;
   --accent: #38bdf8;
-  --muted: #0f0f0f;
-  --border: #1f1f1f;
+  --accent-strong: #0ea5e9;
+  --accent-soft: rgba(56, 189, 248, 0.10);
+  --positive: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+/* LIGHT */
+[data-theme="light"] {
+  --bg-base: #fafafa;
+  --bg-raised: #ffffff;
+  --bg-hover: #f4f4f5;
+  --fg-primary: #0a0a0a;
+  --fg-secondary: #525252;
+  --fg-muted: #737373;
+  --border-default: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --accent: #0284c7;
+  --accent-strong: #0369a1;
+  --accent-soft: rgba(2, 132, 199, 0.08);
+  --positive: #059669;
+  --warning: #b45309;
+  --danger: #dc2626;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg-base: var(--bg-base);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-hover: var(--bg-hover);
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 html, body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-base);
+  color: var(--fg-primary);
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
-/* Animated background orbs */
+/* Subtle backdrop tint, no second orb */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.08), transparent 40%),
-    radial-gradient(circle at 80% 100%, rgba(52, 211, 153, 0.06), transparent 50%);
   z-index: -1;
+  background-image: radial-gradient(circle at 15% 0%, var(--accent-soft), transparent 45%);
 }
 
-/* Modern focus ring */
 :focus-visible {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
-/* Scrollbars */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #1f1f1f; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
 
-/* Reusable keyframes — referenced via arbitrary animate-[…] in components */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(2px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -62,13 +99,12 @@ body::before {
   100% { background-position: 200% 0; }
 }
 
-/* Skeleton shimmer utility */
 .skeleton {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.02) 0%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.02) 100%
+    color-mix(in oklab, var(--bg-raised) 60%, transparent) 0%,
+    color-mix(in oklab, var(--bg-hover) 80%, transparent) 50%,
+    color-mix(in oklab, var(--bg-raised) 60%, transparent) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.4s ease-in-out infinite;

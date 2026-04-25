@@ -1,4 +1,4 @@
-// UNMAPPED — country-agnostic configuration registry.
+// UNMAPPED - country-agnostic configuration registry.
 // Adding a new country = adding one entry here + dropping its data folder. No code changes.
 
 import type { CountryConfig, CountryCode } from "@/types";

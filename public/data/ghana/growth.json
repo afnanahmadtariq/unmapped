@@ -1,5 +1,5 @@
 {
-  "_source": "World Bank WDI + ILOSTAT — Ghana sector employment growth YoY (2022-2024 averages, %). Approximated for ISIC-to-sector mapping.",
+  "_source": "World Bank WDI + ILOSTAT - Ghana sector employment growth YoY (2022-2024 averages, %). Approximated for ISIC-to-sector mapping.",
   "vintage": "2022-2024 avg",
   "growthBySector": {
     "ICT": 12.4,

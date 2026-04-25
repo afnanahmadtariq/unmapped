@@ -1,4 +1,4 @@
-// UNMAPPED — Anthropic client wrapper with structured output for skills extraction.
+// UNMAPPED - Anthropic client wrapper with structured output for skills extraction.
 // Uses tool-use to force well-formed JSON instead of free-text parsing.
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -12,7 +12,7 @@ function client(): Anthropic {
   if (_client) return _client;
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey)
-    throw new Error("ANTHROPIC_API_KEY missing — set it in .env.local");
+    throw new Error("ANTHROPIC_API_KEY missing - set it in .env.local");
   _client = new Anthropic({ apiKey });
   return _client;
 }
@@ -47,7 +47,7 @@ const TOOL = {
             evidence: {
               type: "string" as const,
               description:
-                "One short plain-English sentence quoting or paraphrasing the user's input that justifies this skill — Amara should be able to read this and recognise herself.",
+                "One short plain-English sentence quoting or paraphrasing the user's input that justifies this skill - Amara should be able to read this and recognise herself.",
             },
             durabilityNote: {
               type: "string" as const,
@@ -83,7 +83,7 @@ export async function extractSkillsProfile(
     `User's own description: """${input.story}"""`,
     `Declared specific skills: ${input.declaredSkills.join(", ") || "(none)"}`,
     "",
-    "Available ESCO skill codes (you MUST pick from this list — do not invent codes):",
+    "Available ESCO skill codes (you MUST pick from this list - do not invent codes):",
     ESCO_LIST,
     "",
     "Extract 4-8 skills that are clearly evidenced by the user's input. Skip skills you cannot justify from the input. Always quote or paraphrase the input in the evidence field.",

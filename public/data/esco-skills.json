@@ -1,5 +1,5 @@
 {
-  "_source": "ESCO Skills Taxonomy v1.1.1 (European Commission, esco.ec.europa.eu) — subset of ~60 skills relevant to LMIC youth pathways",
+  "_source": "ESCO Skills Taxonomy v1.1.1 (European Commission, esco.ec.europa.eu) - subset of ~60 skills relevant to LMIC youth pathways",
   "skills": [
     { "code": "S1.0.1", "label": "Repair mobile devices", "category": "technical", "iscoLinks": ["7421", "7422"] },
     { "code": "S1.0.2", "label": "Diagnose electronic faults", "category": "technical", "iscoLinks": ["7421"] },

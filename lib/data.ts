@@ -1,4 +1,4 @@
-// UNMAPPED — server-side data loader. Reads country-scoped JSON snapshots.
+// UNMAPPED - server-side data loader. Reads country-scoped JSON snapshots.
 // Drop-in design: a new country = a new folder under /public/data + an entry in lib/config.ts.
 
 import escoData from "@/public/data/esco-skills.json";

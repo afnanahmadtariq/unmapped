@@ -3,11 +3,11 @@ import clsx from "clsx";
 type Tone = "neutral" | "positive" | "warning" | "danger" | "accent";
 
 const TONE: Record<Tone, string> = {
-  neutral: "border-neutral-700 bg-neutral-900/60 text-neutral-300",
-  positive: "border-emerald-700/40 bg-emerald-500/10 text-emerald-300",
-  warning: "border-amber-700/40 bg-amber-500/10 text-amber-300",
-  danger: "border-rose-700/40 bg-rose-500/10 text-rose-300",
-  accent: "border-sky-700/40 bg-sky-500/10 text-sky-300",
+  neutral: "border-border-default bg-bg-raised text-fg-secondary",
+  positive: "border-positive/30 bg-positive/10 text-positive",
+  warning: "border-warning/30 bg-warning/10 text-warning",
+  danger: "border-danger/30 bg-danger/10 text-danger",
+  accent: "border-accent/30 bg-accent/10 text-accent",
 };
 
 export default function Pill({

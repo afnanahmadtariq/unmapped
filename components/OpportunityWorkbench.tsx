@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -58,7 +58,6 @@ export default function OpportunityWorkbench({
   countryName,
   currency,
   currencySymbol,
-  locale,
   profileHref,
 }: Props) {
   const [profile, setProfile] = useState<SkillsProfile | null>(null);
@@ -69,7 +68,6 @@ export default function OpportunityWorkbench({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Pull profile from sessionStorage (set on /profile after extraction)
   useEffect(() => {
     if (typeof window === "undefined") return;
     const raw = sessionStorage.getItem(`unmapped:profile:${countryCode}`);
@@ -82,7 +80,6 @@ export default function OpportunityWorkbench({
     }
   }, [countryCode]);
 
-  // When profile is available, request matches
   useEffect(() => {
     if (!profile) return;
     let cancelled = false;
@@ -111,7 +108,6 @@ export default function OpportunityWorkbench({
     };
   }, [profile, countryCode]);
 
-  // When activeIsco changes, fetch its pathways + jobs (cached per code)
   useEffect(() => {
     if (!activeIsco || !matches) return;
     const occupation = matches.find((m) => m.iscoCode === activeIsco);
@@ -150,7 +146,7 @@ export default function OpportunityWorkbench({
     return (
       <EmptyState
         title="No skills profile yet"
-        body="Map your skills first — your opportunities are generated against your profile."
+        body="Map your skills first. Your opportunities are generated against your profile."
         cta={{ href: profileHref, label: "Map My Skills" }}
       />
     );
@@ -190,13 +186,12 @@ export default function OpportunityWorkbench({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] animate-[fadeIn_240ms_ease-out]">
-      {/* LEFT — match list */}
       <aside className="space-y-3">
-        <div className="rounded-xl border border-neutral-800/80 bg-linear-to-b from-neutral-900/60 to-neutral-950 p-4">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">
+        <div className="rounded-xl border border-border-default bg-bg-raised p-4">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-fg-muted">
             Top matches · {countryName}
           </p>
-          <p className="mt-1 text-sm text-neutral-300">
+          <p className="mt-1 text-sm text-fg-secondary">
             {matches.length} occupations ranked by skills fit
           </p>
         </div>
@@ -208,20 +203,18 @@ export default function OpportunityWorkbench({
                 className={clsx(
                   "group w-full rounded-xl border p-4 text-left transition",
                   m.iscoCode === active.iscoCode
-                    ? "border-sky-500/60 bg-sky-500/5"
-                    : "border-neutral-800/80 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60"
+                    ? "border-accent bg-accent/5"
+                    : "border-border-default bg-bg-raised hover:border-border-strong hover:bg-bg-hover"
                 )}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-medium text-neutral-100">
-                    {m.title}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-500">
+                  <span className="font-medium text-fg-primary">{m.title}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-fg-muted">
                     {m.iscoCode}
                   </span>
                 </div>
                 <FitBar value={m.fitScore} />
-                <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-fg-secondary">
                   <Pill tone="accent">
                     <Wallet className="h-3 w-3" />
                     {currencySymbol} {m.medianWageMonthly.toLocaleString()}/mo
@@ -239,18 +232,17 @@ export default function OpportunityWorkbench({
         </ul>
       </aside>
 
-      {/* RIGHT — detail */}
       <section className="space-y-6">
-        <div className="rounded-2xl border border-neutral-800/80 bg-linear-to-br from-neutral-900/60 via-neutral-950 to-neutral-950 p-6 shadow-[0_0_60px_-30px_rgba(56,189,248,0.4)]">
+        <div className="rounded-2xl border border-border-default bg-bg-raised p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-sky-400">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-accent">
                 ISCO {active.iscoCode} · Fit {(active.fitScore * 100).toFixed(0)}%
               </p>
-              <h2 className="mt-1 text-2xl font-semibold text-neutral-50">
+              <h2 className="mt-1 text-2xl font-semibold text-fg-primary">
                 {active.title}
               </h2>
-              <p className="mt-2 max-w-2xl text-sm text-neutral-400">
+              <p className="mt-2 max-w-2xl text-sm text-fg-secondary">
                 {active.honestExplanation}
               </p>
             </div>
@@ -261,7 +253,7 @@ export default function OpportunityWorkbench({
               icon={<Wallet className="h-4 w-4" />}
               label="Median monthly wage"
               value={`${currencySymbol} ${active.medianWageMonthly.toLocaleString()}`}
-              sub={`Source: ILOSTAT · ${currency}`}
+              sub={`Source: ILOSTAT, ${currency}`}
             />
             <SignalCard
               icon={<TrendingUp className="h-4 w-4" />}
@@ -274,7 +266,7 @@ export default function OpportunityWorkbench({
               icon={<ShieldAlert className="h-4 w-4" />}
               label="AI displacement risk"
               value={`${(active.automationRiskCalibrated * 100).toFixed(0)}%`}
-              sub={`Frey-Osborne raw ${(active.automationRiskRaw * 100).toFixed(0)}% · LMIC-calibrated`}
+              sub={`Frey-Osborne raw ${(active.automationRiskRaw * 100).toFixed(0)}%, LMIC-calibrated`}
               tone={
                 active.automationRiskCalibrated < 0.35
                   ? "positive"
@@ -287,31 +279,27 @@ export default function OpportunityWorkbench({
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500">
+              <p className="text-[10px] uppercase tracking-widest text-fg-muted">
                 Skills you have that match
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {active.matchedSkills.map((s) => (
-                  <Pill key={s} tone="accent">
-                    {s}
-                  </Pill>
+                  <Pill key={s} tone="accent">{s}</Pill>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500">
+              <p className="text-[10px] uppercase tracking-widest text-fg-muted">
                 Adjacent skills that would strengthen fit
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {active.missingSkills.length === 0 ? (
-                  <span className="text-xs text-neutral-500">
+                  <span className="text-xs text-fg-muted">
                     Profile already covers core skills.
                   </span>
                 ) : (
                   active.missingSkills.map((s) => (
-                    <Pill key={s} tone="neutral">
-                      + {s}
-                    </Pill>
+                    <Pill key={s} tone="neutral">+ {s}</Pill>
                   ))
                 )}
               </div>
@@ -319,15 +307,14 @@ export default function OpportunityWorkbench({
           </div>
         </div>
 
-        {/* Pathways */}
         <div>
           <header className="mb-3 flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-medium text-neutral-200">
+              <h3 className="text-sm font-medium text-fg-primary">
                 Reachable pathways
               </h3>
-              <p className="text-xs text-neutral-500">
-                Formal · Self-employment · Gig · Training — generated for {countryName}
+              <p className="text-xs text-fg-muted">
+                Formal, self-employment, gig, training. Generated for {countryName}.
               </p>
             </div>
           </header>
@@ -342,17 +329,16 @@ export default function OpportunityWorkbench({
           </div>
         </div>
 
-        {/* Live jobs */}
         <div>
           <header className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-medium text-neutral-200">
+            <h3 className="text-sm font-medium text-fg-primary">
               Live job listings
             </h3>
-            <span className="text-xs text-neutral-500">via Tavily Search</span>
+            <span className="text-xs text-fg-muted">via Tavily Search</span>
           </header>
           <div className="space-y-2">
             {(jobs[active.iscoCode] ?? []).length === 0 ? (
-              <p className="rounded-lg border border-dashed border-neutral-800 p-4 text-xs text-neutral-500">
+              <p className="rounded-lg border border-dashed border-border-default p-4 text-xs text-fg-muted">
                 No live listings surfaced (or Tavily key not configured).
               </p>
             ) : (
@@ -362,17 +348,17 @@ export default function OpportunityWorkbench({
                   href={j.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-start justify-between gap-4 rounded-lg border border-neutral-800/80 bg-neutral-900/30 p-4 transition hover:border-sky-500/50 hover:bg-neutral-900/60"
+                  className="group flex items-start justify-between gap-4 rounded-lg border border-border-default bg-bg-raised p-4 transition hover:border-accent/50 hover:bg-bg-hover"
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-neutral-100">
+                    <p className="truncate text-sm font-medium text-fg-primary">
                       {j.title}
                     </p>
-                    <p className="mt-1 line-clamp-2 text-xs text-neutral-500">
+                    <p className="mt-1 line-clamp-2 text-xs text-fg-muted">
                       {j.snippet}
                     </p>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-neutral-500 transition group-hover:text-sky-400" />
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-fg-muted transition group-hover:text-accent" />
                 </a>
               ))
             )}
@@ -386,11 +372,8 @@ export default function OpportunityWorkbench({
 function FitBar({ value }: { value: number }) {
   const pct = Math.round(value * 100);
   return (
-    <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-neutral-800">
-      <div
-        className="h-full rounded-full bg-linear-to-r from-sky-500 to-emerald-400"
-        style={{ width: `${pct}%` }}
-      />
+    <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-bg-hover">
+      <div className="h-full rounded-full bg-accent" style={{ width: `${pct}%` }} />
     </div>
   );
 }
@@ -416,19 +399,19 @@ function SignalCard({
   tone?: "accent" | "positive" | "warning" | "danger";
 }) {
   const accent: Record<string, string> = {
-    accent: "text-sky-300",
-    positive: "text-emerald-300",
-    warning: "text-amber-300",
-    danger: "text-rose-300",
+    accent: "text-accent",
+    positive: "text-positive",
+    warning: "text-warning",
+    danger: "text-danger",
   };
   return (
-    <div className="rounded-xl border border-neutral-800/80 bg-neutral-900/40 p-4">
-      <div className="flex items-center gap-2 text-neutral-500">
+    <div className="rounded-xl border border-border-default bg-bg-base p-4">
+      <div className="flex items-center gap-2 text-fg-muted">
         <span>{icon}</span>
         <span className="text-[10px] uppercase tracking-widest">{label}</span>
       </div>
       <p className={clsx("mt-2 text-xl font-semibold", accent[tone])}>{value}</p>
-      <p className="mt-1 text-[11px] text-neutral-500">{sub}</p>
+      <p className="mt-1 text-[11px] text-fg-muted">{sub}</p>
     </div>
   );
 }
@@ -441,24 +424,24 @@ function PathwayCard({ opportunity }: { opportunity: Opportunity }) {
     training: "neutral",
   };
   return (
-    <article className="rounded-xl border border-neutral-800/80 bg-linear-to-br from-neutral-900/40 to-neutral-950 p-4 transition hover:border-neutral-700">
+    <article className="rounded-xl border border-border-default bg-bg-raised p-4 transition hover:border-border-strong">
       <div className="flex items-center justify-between gap-3">
         <Pill tone={TONE[opportunity.type]}>
           {TYPE_ICON[opportunity.type]} {TYPE_LABEL[opportunity.type]}
         </Pill>
         {opportunity.estimatedEarning && (
-          <span className="text-[11px] text-neutral-400">
+          <span className="text-[11px] text-fg-secondary">
             {opportunity.estimatedEarning}
           </span>
         )}
       </div>
-      <h4 className="mt-3 text-sm font-medium text-neutral-100">
+      <h4 className="mt-3 text-sm font-medium text-fg-primary">
         {opportunity.title}
       </h4>
-      <p className="mt-1 text-xs leading-relaxed text-neutral-400">
+      <p className="mt-1 text-xs leading-relaxed text-fg-secondary">
         {opportunity.description}
       </p>
-      <footer className="mt-3 flex items-center justify-between text-[11px] text-neutral-500">
+      <footer className="mt-3 flex items-center justify-between text-[11px] text-fg-muted">
         <span>{opportunity.source}</span>
         {opportunity.timeToReadiness && <span>{opportunity.timeToReadiness}</span>}
       </footer>
@@ -470,10 +453,7 @@ function PathwaySkeleton() {
   return (
     <>
       {[0, 1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="skeleton h-32 rounded-xl border border-neutral-800/60"
-        />
+        <div key={i} className="skeleton h-32 rounded-xl border border-border-default" />
       ))}
     </>
   );
@@ -491,18 +471,19 @@ function EmptyState({
   loading?: boolean;
 }) {
   return (
-    <div className="grid place-items-center rounded-2xl border border-dashed border-neutral-800 bg-neutral-900/20 px-6 py-20 text-center">
+    <div className="grid place-items-center rounded-2xl border border-dashed border-border-default bg-bg-raised px-6 py-20 text-center">
       <div className="max-w-md space-y-3">
-        {loading && (
-          <Loader2 className="mx-auto h-6 w-6 animate-spin text-sky-400" />
+        {loading ? (
+          <Loader2 className="mx-auto h-6 w-6 animate-spin text-accent" />
+        ) : (
+          <Info className="mx-auto h-6 w-6 text-fg-muted" />
         )}
-        {!loading && <Info className="mx-auto h-6 w-6 text-neutral-500" />}
-        <h3 className="text-lg font-medium text-neutral-200">{title}</h3>
-        <p className="text-sm text-neutral-400">{body}</p>
+        <h3 className="text-lg font-medium text-fg-primary">{title}</h3>
+        <p className="text-sm text-fg-secondary">{body}</p>
         {cta && (
           <Link
             href={cta.href}
-            className="inline-flex rounded-md bg-sky-500 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-sky-400"
+            className="inline-flex rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-strong"
           >
             {cta.label}
           </Link>

@@ -21,14 +21,14 @@ export default function ContextSelector({ country, locale, labels }: Props) {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3 text-sm">
-      <label className="flex items-center gap-2">
-        <span className="text-neutral-400">{labels.country}</span>
+    <div className="flex flex-wrap items-center gap-2 text-xs">
+      <label className="flex items-center gap-1.5">
+        <span className="text-fg-muted">{labels.country}</span>
         <select
           aria-label={labels.country}
           value={country}
           onChange={(e) => update("country", e.target.value)}
-          className="rounded-md border border-neutral-700 bg-neutral-900 px-2 py-1 text-neutral-100"
+          className="rounded-md border border-border-default bg-bg-raised px-2 py-1 text-fg-primary"
         >
           {listCountries().map((c) => (
             <option key={c.code} value={c.code}>
@@ -37,13 +37,13 @@ export default function ContextSelector({ country, locale, labels }: Props) {
           ))}
         </select>
       </label>
-      <label className="flex items-center gap-2">
-        <span className="text-neutral-400">{labels.language}</span>
+      <label className="flex items-center gap-1.5">
+        <span className="text-fg-muted">{labels.language}</span>
         <select
           aria-label={labels.language}
           value={locale}
           onChange={(e) => update("locale", e.target.value)}
-          className="rounded-md border border-neutral-700 bg-neutral-900 px-2 py-1 text-neutral-100"
+          className="rounded-md border border-border-default bg-bg-raised px-2 py-1 text-fg-primary"
         >
           {SUPPORTED_LOCALES.map((l) => (
             <option key={l.code} value={l.code}>

@@ -1,5 +1,5 @@
 {
-  "_source": "ILOSTAT — Ghana mean monthly nominal earnings of employees by economic activity (2023, GHS). Sector aggregates approximated where ISIC granularity not available.",
+  "_source": "ILOSTAT - Ghana mean monthly nominal earnings of employees by economic activity (2023, GHS). Sector aggregates approximated where ISIC granularity not available.",
   "currency": "GHS",
   "vintage": "2023",
   "wagesByISCO": {

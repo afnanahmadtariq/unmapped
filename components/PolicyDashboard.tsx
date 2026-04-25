@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -38,7 +38,40 @@ interface Props {
   snapshot: Snapshot;
 }
 
+function readVar(name: string, fallback: string) {
+  if (typeof document === "undefined") return fallback;
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+}
+
 export default function PolicyDashboard({ snapshot }: Props) {
+  // Re-read CSS theme tokens on mount + theme attribute change so charts repaint.
+  const [tokens, setTokens] = useState({
+    fgMuted: "#737373",
+    fgSecondary: "#a3a3a3",
+    border: "#1f1f1f",
+    bg: "#0d0d0d",
+    accent: "#38bdf8",
+    positive: "#34d399",
+    danger: "#f87171",
+  });
+
+  useEffect(() => {
+    const refresh = () =>
+      setTokens({
+        fgMuted: readVar("--fg-muted", "#737373"),
+        fgSecondary: readVar("--fg-secondary", "#a3a3a3"),
+        border: readVar("--border-default", "#1f1f1f"),
+        bg: readVar("--bg-raised", "#0d0d0d"),
+        accent: readVar("--accent", "#38bdf8"),
+        positive: readVar("--positive", "#34d399"),
+        danger: readVar("--danger", "#f87171"),
+      });
+    refresh();
+    const obs = new MutationObserver(refresh);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => obs.disconnect();
+  }, []);
+
   const sectorData = useMemo(
     () =>
       Object.entries(snapshot.growthBySector)
@@ -63,7 +96,7 @@ export default function PolicyDashboard({ snapshot }: Props) {
   const radarData = useMemo(() => {
     return sectorData.slice(0, 8).map((d) => ({
       sector: d.sector,
-      growth: Math.max(0, d.growth + 5), // shift so radar isn't dominated by negatives
+      growth: Math.max(0, d.growth + 5),
     }));
   }, [sectorData]);
 
@@ -87,15 +120,21 @@ export default function PolicyDashboard({ snapshot }: Props) {
     URL.revokeObjectURL(url);
   };
 
+  const tooltipStyle = {
+    background: tokens.bg,
+    border: `1px solid ${tokens.border}`,
+    borderRadius: 8,
+    color: readVar("--fg-primary", "#fafafa"),
+  };
+
   return (
     <div className="space-y-6">
-      {/* KPIs */}
       <div className="grid gap-4 md:grid-cols-3">
         <Kpi
           icon={<Users className="h-4 w-4" />}
           label="Youth unemployment"
           value={`${snapshot.youthUnemploymentRate.toFixed(1)}%`}
-          sub="ILOSTAT · 2023"
+          sub="ILOSTAT, 2023"
           tone="warning"
         />
         <Kpi
@@ -109,36 +148,32 @@ export default function PolicyDashboard({ snapshot }: Props) {
           icon={<TrendingUp className="h-4 w-4" />}
           label="Minimum wage"
           value={`${snapshot.currencySymbol} ${snapshot.minimumWage.toLocaleString()}`}
-          sub={`Per month · ${snapshot.currency}`}
+          sub={`Per month, ${snapshot.currency}`}
           tone="positive"
         />
       </div>
 
-      {/* Sector growth */}
       <Card title="Sector employment growth (YoY)" subtitle="Source: World Bank WDI + ILO">
         <ResponsiveContainer width="100%" height={320}>
           <BarChart data={sectorData} margin={{ top: 10, right: 16, bottom: 30, left: 0 }}>
-            <CartesianGrid stroke="#262626" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke={tokens.border} strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="sector"
-              tick={{ fill: "#737373", fontSize: 11 }}
+              tick={{ fill: tokens.fgMuted, fontSize: 11 }}
               angle={-30}
               textAnchor="end"
               interval={0}
               height={60}
             />
-            <YAxis tick={{ fill: "#737373", fontSize: 11 }} unit="%" />
+            <YAxis tick={{ fill: tokens.fgMuted, fontSize: 11 }} unit="%" />
             <Tooltip
-              cursor={{ fill: "rgba(56,189,248,0.06)" }}
-              contentStyle={{ background: "#0a0a0a", border: "1px solid #262626", borderRadius: 8, color: "#f5f5f5" }}
+              cursor={{ fill: tokens.accent + "10" }}
+              contentStyle={tooltipStyle}
               formatter={(value) => [`${Number(value).toFixed(1)}%`, "Growth"]}
             />
             <Bar dataKey="growth" radius={[4, 4, 0, 0]}>
               {sectorData.map((d, i) => (
-                <Cell
-                  key={i}
-                  fill={d.growth >= 0 ? "#38bdf8" : "#f43f5e"}
-                />
+                <Cell key={i} fill={d.growth >= 0 ? tokens.accent : tokens.danger} />
               ))}
             </Bar>
           </BarChart>
@@ -146,18 +181,18 @@ export default function PolicyDashboard({ snapshot }: Props) {
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card title="Top occupations by median wage" subtitle="ILOSTAT · monthly nominal earnings">
+        <Card title="Top occupations by median wage" subtitle="ILOSTAT monthly nominal earnings">
           <ResponsiveContainer width="100%" height={320}>
             <BarChart layout="vertical" data={wageData} margin={{ top: 10, right: 16, bottom: 10, left: 110 }}>
-              <CartesianGrid stroke="#262626" strokeDasharray="3 3" horizontal={false} />
-              <XAxis type="number" tick={{ fill: "#737373", fontSize: 11 }} />
-              <YAxis dataKey="title" type="category" tick={{ fill: "#a3a3a3", fontSize: 11 }} width={100} />
+              <CartesianGrid stroke={tokens.border} strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tick={{ fill: tokens.fgMuted, fontSize: 11 }} />
+              <YAxis dataKey="title" type="category" tick={{ fill: tokens.fgSecondary, fontSize: 11 }} width={100} />
               <Tooltip
-                cursor={{ fill: "rgba(56,189,248,0.06)" }}
-                contentStyle={{ background: "#0a0a0a", border: "1px solid #262626", borderRadius: 8, color: "#f5f5f5" }}
+                cursor={{ fill: tokens.accent + "10" }}
+                contentStyle={tooltipStyle}
                 formatter={(value) => [`${snapshot.currencySymbol} ${Number(value).toLocaleString()}`, "Median wage"]}
               />
-              <Bar dataKey="wage" fill="#34d399" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="wage" fill={tokens.positive} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </Card>
@@ -165,11 +200,11 @@ export default function PolicyDashboard({ snapshot }: Props) {
         <Card title="Sector demand profile" subtitle="Normalised radar of YoY growth">
           <ResponsiveContainer width="100%" height={320}>
             <RadarChart data={radarData}>
-              <PolarGrid stroke="#262626" />
-              <PolarAngleAxis dataKey="sector" tick={{ fill: "#a3a3a3", fontSize: 10 }} />
-              <PolarRadiusAxis tick={{ fill: "#525252", fontSize: 10 }} />
-              <Radar dataKey="growth" stroke="#38bdf8" fill="#38bdf8" fillOpacity={0.25} />
-              <Legend wrapperStyle={{ color: "#a3a3a3", fontSize: 11 }} />
+              <PolarGrid stroke={tokens.border} />
+              <PolarAngleAxis dataKey="sector" tick={{ fill: tokens.fgSecondary, fontSize: 10 }} />
+              <PolarRadiusAxis tick={{ fill: tokens.fgMuted, fontSize: 10 }} />
+              <Radar dataKey="growth" stroke={tokens.accent} fill={tokens.accent} fillOpacity={0.25} />
+              <Legend wrapperStyle={{ color: tokens.fgSecondary, fontSize: 11 }} />
             </RadarChart>
           </ResponsiveContainer>
         </Card>
@@ -181,14 +216,14 @@ export default function PolicyDashboard({ snapshot }: Props) {
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm text-neutral-300">
+            <p className="text-sm text-fg-secondary">
               Active multiplier:{" "}
-              <span className="font-mono text-sky-300">
+              <span className="font-mono text-accent">
                 ×{snapshot.automationCalibration.multiplier.toFixed(2)}
               </span>{" "}
               vs OECD baseline
             </p>
-            <p className="mt-1 max-w-3xl text-xs text-neutral-500">
+            <p className="mt-1 max-w-3xl text-xs text-fg-muted">
               {snapshot.automationCalibration.rationale}
             </p>
           </div>
@@ -199,7 +234,7 @@ export default function PolicyDashboard({ snapshot }: Props) {
       <div className="flex justify-end">
         <button
           onClick={exportCsv}
-          className="inline-flex items-center gap-2 rounded-md border border-neutral-700 px-4 py-2 text-xs text-neutral-300 hover:bg-neutral-900"
+          className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-raised px-4 py-2 text-xs text-fg-secondary hover:bg-bg-hover"
         >
           <Download className="h-4 w-4" /> Export snapshot (CSV)
         </button>
@@ -222,18 +257,18 @@ function Kpi({
   tone: "accent" | "positive" | "warning";
 }) {
   const accent: Record<string, string> = {
-    accent: "text-sky-300",
-    positive: "text-emerald-300",
-    warning: "text-amber-300",
+    accent: "text-accent",
+    positive: "text-positive",
+    warning: "text-warning",
   };
   return (
-    <div className="rounded-2xl border border-neutral-800/80 bg-linear-to-br from-neutral-900/60 to-neutral-950 p-5">
-      <div className="flex items-center gap-2 text-neutral-500">
+    <div className="rounded-2xl border border-border-default bg-bg-raised p-5">
+      <div className="flex items-center gap-2 text-fg-muted">
         <span>{icon}</span>
         <span className="text-[10px] uppercase tracking-widest">{label}</span>
       </div>
       <p className={`mt-2 text-3xl font-semibold ${accent[tone]}`}>{value}</p>
-      <p className="mt-1 text-[11px] text-neutral-500">{sub}</p>
+      <p className="mt-1 text-[11px] text-fg-muted">{sub}</p>
     </div>
   );
 }
@@ -248,15 +283,15 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-neutral-800/80 bg-neutral-900/30 p-5">
+    <section className="rounded-2xl border border-border-default bg-bg-raised p-5">
       <header className="mb-4 flex items-baseline justify-between gap-3">
         <div>
-          <h3 className="text-sm font-medium text-neutral-200">{title}</h3>
+          <h3 className="text-sm font-medium text-fg-primary">{title}</h3>
           {subtitle && (
-            <p className="text-[11px] text-neutral-500">{subtitle}</p>
+            <p className="text-[11px] text-fg-muted">{subtitle}</p>
           )}
         </div>
-        <ChevronDown className="h-4 w-4 text-neutral-700" />
+        <ChevronDown className="h-4 w-4 text-border-strong" />
       </header>
       {children}
     </section>

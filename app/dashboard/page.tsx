@@ -1,5 +1,4 @@
-import Link from "next/link";
-import ContextSelector from "@/components/ContextSelector";
+import SiteHeader from "@/components/SiteHeader";
 import PolicyDashboard from "@/components/PolicyDashboard";
 import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary } from "@/lib/i18n";
@@ -39,38 +38,23 @@ export default async function DashboardPage({ searchParams }: PageProps) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <header className="flex items-center justify-between gap-4 border-b border-neutral-800 px-6 py-4">
-        <div className="flex items-center gap-4">
-          <Link
-            href={`/?country=${country.code}&locale=${locale}`}
-            className="text-lg font-semibold tracking-wide text-sky-400 hover:text-sky-300"
-          >
-            UNMAPPED
-          </Link>
-          <span className="hidden text-xs text-neutral-500 md:inline">
-            Module 03 · Policymaker view
-          </span>
-        </div>
-        <ContextSelector
-          country={country.code}
-          locale={locale}
-          labels={{
-            country: t.selectors.country,
-            language: t.selectors.language,
-          }}
-        />
-      </header>
+      <SiteHeader
+        countryCode={country.code}
+        locale={locale}
+        active="dashboard"
+        labels={{ country: t.selectors.country, language: t.selectors.language }}
+      />
 
-      <section className="mx-auto w-full max-w-7xl flex-1 px-6 py-10">
+      <section className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-6 md:py-10">
         <div className="mb-8">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-sky-400">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
             {t.dashboard.title}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold text-neutral-100">
+          <h1 className="mt-2 text-3xl font-semibold text-fg-primary">
             {country.name} labour market snapshot
           </h1>
-          <p className="mt-2 max-w-3xl text-sm text-neutral-400">
-            Aggregate signals from ILOSTAT, World Bank WDI, ILO Future of Work
+          <p className="mt-2 max-w-3xl text-sm text-fg-secondary">
+            Aggregate signals from ILOSTAT, World Bank WDI, ILO Future of Work,
             and Frey-Osborne, calibrated for {country.context.replace("-", " ")} context.
           </p>
         </div>

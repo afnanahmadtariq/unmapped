@@ -1,4 +1,4 @@
-// UNMAPPED — thin Tavily client for live job listings.
+// UNMAPPED - thin Tavily client for live job listings.
 // Fails soft: if no API key or upstream error, returns [] so the UI degrades gracefully.
 
 export interface TavilyHit {

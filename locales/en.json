@@ -5,11 +5,11 @@
   },
   "landing": {
     "hero": "600 million young people. Unrecognised skills. Invisible to the formal economy.",
-    "subhero": "UNMAPPED maps real skills to real opportunity — with real data, country by country.",
+    "subhero": "UNMAPPED maps real skills to real opportunity - with real data, country by country.",
     "ctaPrimary": "Map My Skills",
     "ctaSecondary": "Open Policymaker Dashboard",
     "amaraTitle": "Meet Amara",
-    "amaraStory": "Amara is 22, lives outside Accra, and holds a secondary school certificate. She speaks three languages, has run a phone repair business since she was 17, and taught herself basic coding from YouTube. By any reasonable measure, she has skills. To the formal economy, she is unmapped. She is not the exception — she is the rule."
+    "amaraStory": "Amara is 22, lives outside Accra, and holds a secondary school certificate. She speaks three languages, has run a phone repair business since she was 17, and taught herself basic coding from YouTube. By any reasonable measure, she has skills. To the formal economy, she is unmapped. She is not the exception - she is the rule."
   },
   "selectors": {
     "country": "Country",

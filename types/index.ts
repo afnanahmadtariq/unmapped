@@ -1,4 +1,4 @@
-// UNMAPPED — shared type definitions
+// UNMAPPED - shared type definitions
 // All shapes that cross the API boundary live here.
 
 export type CountryCode = "GH" | "BD";

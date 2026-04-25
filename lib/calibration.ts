@@ -1,4 +1,4 @@
-// UNMAPPED — LMIC automation calibration.
+// UNMAPPED - LMIC automation calibration.
 // The brief explicitly demands per-country calibration ("automation risk looks different in
 // Kampala than in Kuala Lumpur"). Raw Frey-Osborne is OECD-baseline and overstates LMIC risk.
 
