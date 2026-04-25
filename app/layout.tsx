@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UNMAPPED - Open Skills Infrastructure",
+  title: "UNMAPPED, Open Skills Infrastructure",
   description:
     "Mapping the real skills of 600 million unmapped young people to real economic opportunity. Built for the World Bank Youth Summit × Hack-Nation Global AI Hackathon 2026.",
 };
@@ -26,10 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // suppressHydrationWarning: the no-flash script intentionally rewrites
+    // data-theme + style.colorScheme before React hydrates, which would
+    // otherwise trip a server/client attribute mismatch.
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
+      style={{ colorScheme: "light" }}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <ThemeNoFlashScript />

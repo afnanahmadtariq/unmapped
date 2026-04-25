@@ -3,12 +3,30 @@
 /* Tailwind 4: dark variant follows our explicit data-theme attribute */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* DARK (default before JS hydrates) */
+/* LIGHT (default before JS hydrates) */
 :root,
+[data-theme="light"] {
+  --bg-base: #fafafa;
+  --bg-raised: #ffffff;
+  --bg-hover: #f4f4f5;
+  --fg-primary: #0a0a0a;
+  --fg-secondary: #404040;
+  --fg-muted: #737373;
+  --border-default: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --accent: #0369a1;
+  --accent-strong: #0c4a6e;
+  --accent-soft: rgba(3, 105, 161, 0.08);
+  --positive: #059669;
+  --warning: #b45309;
+  --danger: #dc2626;
+}
+
+/* DARK */
 [data-theme="dark"] {
   --bg-base: #050505;
   --bg-raised: #0d0d0d;
-  --bg-hover: #141414;
+  --bg-hover: #161616;
   --fg-primary: #fafafa;
   --fg-secondary: #a3a3a3;
   --fg-muted: #737373;
@@ -20,24 +38,6 @@
   --positive: #34d399;
   --warning: #fbbf24;
   --danger: #f87171;
-}
-
-/* LIGHT */
-[data-theme="light"] {
-  --bg-base: #fafafa;
-  --bg-raised: #ffffff;
-  --bg-hover: #f4f4f5;
-  --fg-primary: #0a0a0a;
-  --fg-secondary: #525252;
-  --fg-muted: #737373;
-  --border-default: #e5e5e5;
-  --border-strong: #d4d4d4;
-  --accent: #0284c7;
-  --accent-strong: #0369a1;
-  --accent-soft: rgba(2, 132, 199, 0.08);
-  --positive: #059669;
-  --warning: #b45309;
-  --danger: #dc2626;
 }
 
 @theme inline {

@@ -13,41 +13,46 @@ import {
   GraduationCap,
   Languages,
   Loader2,
+  PencilLine,
   Sparkles,
   Wand2,
-  PencilLine,
 } from "lucide-react";
 import clsx from "clsx";
 import SkillChipInput from "@/components/SkillChipInput";
 import { useToast } from "@/components/Toast";
-import type { CountryCode, SkillsProfile, SkillEvidence } from "@/types";
+import type {
+  AgeRange,
+  CountryCode,
+  Gender,
+  SkillsProfile,
+  SkillEvidence,
+  WorkMode,
+} from "@/types";
+import type { Dictionary } from "@/lib/i18n";
+import { fmt } from "@/lib/i18n";
 
 interface Props {
   countryCode: CountryCode;
   countryName: string;
   locale: string;
-  labels: {
-    title: string;
-    education: string;
-    languages: string;
-    years: string;
-    story: string;
-    skills: string;
-    submit: string;
-  };
+  t: Dictionary;
   opportunitiesHref: string;
 }
 
-const EDUCATION_LEVELS = [
-  "No formal schooling",
-  "Primary",
-  "Lower secondary (BECE / JSC)",
-  "Upper secondary (WASSCE / SSC / HSC)",
-  "Vocational / TVET certificate",
-  "Diploma",
-  "Bachelor's degree",
-  "Postgraduate",
-];
+const EDUCATION_KEYS = [
+  "none",
+  "primary",
+  "lowerSecondary",
+  "upperSecondary",
+  "vocational",
+  "diploma",
+  "bachelor",
+  "postgrad",
+] as const;
+
+const AGE_KEYS: AgeRange[] = ["u18", "18_24", "25_29", "30_34", "35plus"];
+const GENDER_KEYS: Gender[] = ["prefer", "woman", "man", "nonbinary", "self"];
+const WORKMODE_KEYS: WorkMode[] = ["informal", "formal", "gig", "study", "looking"];
 
 const LANGUAGE_SUGGESTIONS_BY_COUNTRY: Record<CountryCode, string[]> = {
   GH: ["English", "Twi", "Ga", "Ewe", "Hausa", "Dagbani"],
@@ -79,24 +84,23 @@ const SAMPLE_STORIES_BY_COUNTRY: Record<CountryCode, string> = {
 
 type Step = 0 | 1 | 2;
 
-const STEPS: Array<{ key: Step; label: string; icon: React.ComponentType<{ className?: string }> }> = [
-  { key: 0, label: "About you", icon: GraduationCap },
-  { key: 1, label: "Languages and skills", icon: Languages },
-  { key: 2, label: "Your story", icon: PencilLine },
-];
-
 export default function ProfileWizard({
   countryCode,
   countryName,
   locale,
-  labels,
+  t,
   opportunitiesHref,
 }: Props) {
   const toast = useToast();
   const [step, setStep] = useState<Step>(0);
-  const [education, setEducation] = useState(EDUCATION_LEVELS[3]);
-  const [languages, setLanguages] = useState<string[]>([]);
+
+  const [educationKey, setEducationKey] = useState<typeof EDUCATION_KEYS[number]>("upperSecondary");
   const [years, setYears] = useState(3);
+  const [ageRange, setAgeRange] = useState<AgeRange | undefined>(undefined);
+  const [gender, setGender] = useState<Gender | undefined>(undefined);
+  const [workMode, setWorkMode] = useState<WorkMode | undefined>(undefined);
+  const [location, setLocation] = useState("");
+  const [languages, setLanguages] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
   const [story, setStory] = useState("");
   const [loading, setLoading] = useState(false);
@@ -108,10 +112,16 @@ export default function ProfileWizard({
     [countryCode]
   );
 
+  const STEPS = [
+    { key: 0 as Step, label: t.profile.step1Title, icon: GraduationCap },
+    { key: 1 as Step, label: t.profile.step2Title, icon: Languages },
+    { key: 2 as Step, label: t.profile.step3Title, icon: PencilLine },
+  ];
+
   const charCount = story.length;
   const storyValid = story.trim().length >= 20 && story.trim().length <= 1200;
   const stepValid: Record<Step, boolean> = {
-    0: !!education,
+    0: !!educationKey,
     1: true,
     2: storyValid,
   };
@@ -124,7 +134,14 @@ export default function ProfileWizard({
     if (skills.length === 0) {
       setSkills(["phone repair", "JavaScript", "customer service"]);
     }
-    toast.push({ tone: "info", title: "Sample loaded", body: "You can edit any field before submitting." });
+    if (!ageRange) setAgeRange("18_24");
+    if (!workMode) setWorkMode("informal");
+    if (!location) setLocation(countryCode === "GH" ? "Accra" : "Dhaka");
+    toast.push({
+      tone: "info",
+      title: t.profile.sampleLoadedTitle,
+      body: t.profile.sampleLoadedBody,
+    });
   };
 
   const submit = async () => {
@@ -137,11 +154,17 @@ export default function ProfileWizard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           countryCode,
-          educationLevel: education,
+          educationLevel: t.profile.education[educationKey],
           languages,
           yearsExperience: years,
           story,
           declaredSkills: skills,
+          demographics: {
+            ageRange,
+            gender,
+            location: location.trim() || undefined,
+            workMode,
+          },
         }),
       });
       if (!res.ok) {
@@ -158,13 +181,13 @@ export default function ProfileWizard({
       }
       toast.push({
         tone: "success",
-        title: "Profile mapped",
-        body: `${data.skills.length} ESCO-grounded skills extracted.`,
+        title: t.profile.successTitle,
+        body: fmt(t.profile.successBody, { n: data.skills.length }),
       });
     } catch (err) {
       const m = err instanceof Error ? err.message : "Unknown error";
       setError(m);
-      toast.push({ tone: "error", title: "Extraction failed", body: m });
+      toast.push({ tone: "error", title: t.profile.errorTitle, body: m });
     } finally {
       setLoading(false);
     }
@@ -177,7 +200,7 @@ export default function ProfileWizard({
     if (!profile) return;
     const blob = new Blob([JSON.stringify(profile, null, 2)], { type: "application/json" });
     triggerDownload(blob, `unmapped-profile-${profile.countryCode}.json`);
-    toast.push({ tone: "success", title: "JSON downloaded" });
+    toast.push({ tone: "success", title: t.profile.jsonDownloaded });
   };
 
   const exportPDF = () => {
@@ -223,16 +246,16 @@ export default function ProfileWizard({
       810
     );
     doc.save(`unmapped-profile-${profile.countryCode}.pdf`);
-    toast.push({ tone: "success", title: "PDF downloaded" });
+    toast.push({ tone: "success", title: t.profile.pdfDownloaded });
   };
 
-  // After successful extraction, show the result view replacing the wizard.
   if (profile) {
     return (
       <ProfileResult
         profile={profile}
         countryName={countryName}
         opportunitiesHref={opportunitiesHref}
+        t={t}
         onReset={() => {
           setProfile(null);
           setStep(0);
@@ -245,37 +268,38 @@ export default function ProfileWizard({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-      {/* WIZARD */}
-      <section className="rounded-2xl border border-border-default bg-bg-raised p-6">
-        <Stepper step={step} />
+      <section className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
+        <Stepper step={step} steps={STEPS} />
 
-        <div className="mt-6">
+        <div className="mt-7">
           {step === 0 && (
             <StepBody
-              title="Tell us about your education and experience"
-              hint="This helps us calibrate skill levels and credential mapping for your country."
+              title={t.profile.step1Heading}
+              hint={t.profile.step1Hint}
             >
-              <Field label="Highest completed education">
+              <Field label={t.profile.fieldEducation}>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  {EDUCATION_LEVELS.map((opt) => (
+                  {EDUCATION_KEYS.map((key) => (
                     <button
-                      key={opt}
+                      key={key}
                       type="button"
-                      onClick={() => setEducation(opt)}
+                      onClick={() => setEducationKey(key)}
                       className={clsx(
                         "rounded-lg border px-3 py-2.5 text-left text-sm transition",
-                        opt === education
+                        key === educationKey
                           ? "border-accent bg-accent/10 text-fg-primary"
                           : "border-border-default bg-bg-base text-fg-secondary hover:border-border-strong hover:text-fg-primary"
                       )}
                     >
-                      <span className="block font-medium">{opt}</span>
+                      <span className="block font-medium">
+                        {t.profile.education[key]}
+                      </span>
                     </button>
                   ))}
                 </div>
               </Field>
 
-              <Field label="Years of work experience (formal or informal)">
+              <Field label={t.profile.fieldYears}>
                 <div className="flex items-center gap-3">
                   <input
                     type="range"
@@ -286,34 +310,69 @@ export default function ProfileWizard({
                     className="flex-1 accent-accent"
                   />
                   <span className="w-16 rounded-md border border-border-default bg-bg-base px-2 py-1 text-center font-mono text-sm text-accent">
-                    {years}y
+                    {fmt(t.profile.draftYearsValue, { n: years })}
                   </span>
                 </div>
               </Field>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label={t.profile.fieldAge}>
+                  <ChipGroup
+                    options={AGE_KEYS.map((k) => ({ key: k, label: t.profile.ageRanges[k] }))}
+                    value={ageRange}
+                    onChange={(v) => setAgeRange(v as AgeRange)}
+                  />
+                </Field>
+                <Field label={t.profile.fieldGender}>
+                  <ChipGroup
+                    options={GENDER_KEYS.map((k) => ({ key: k, label: t.profile.gender[k] }))}
+                    value={gender}
+                    onChange={(v) => setGender(v as Gender)}
+                  />
+                </Field>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label={t.profile.fieldLocation}>
+                  <input
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder={t.profile.locationPlaceholder}
+                    className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-fg-primary transition focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
+                  />
+                </Field>
+                <Field label={t.profile.fieldWorkMode}>
+                  <ChipGroup
+                    options={WORKMODE_KEYS.map((k) => ({ key: k, label: t.profile.workMode[k] }))}
+                    value={workMode}
+                    onChange={(v) => setWorkMode(v as WorkMode)}
+                  />
+                </Field>
+              </div>
             </StepBody>
           )}
 
           {step === 1 && (
             <StepBody
-              title="What languages and concrete skills do you have?"
-              hint="Type freely. Press Enter or comma to add a chip. Click suggestions to add quickly."
+              title={t.profile.step2Heading}
+              hint={t.profile.step2Hint}
             >
-              <Field label={labels.languages}>
+              <Field label={t.profile.fieldLanguages}>
                 <SkillChipInput
                   value={languages}
                   onChange={setLanguages}
                   suggestions={langSuggestions}
-                  placeholder="Type a language and press Enter..."
-                  ariaLabel={labels.languages}
+                  placeholder={t.profile.languagesPlaceholder}
+                  ariaLabel={t.profile.fieldLanguages}
                 />
               </Field>
-              <Field label={`${labels.skills} (optional)`}>
+              <Field label={t.profile.fieldSkills}>
                 <SkillChipInput
                   value={skills}
                   onChange={setSkills}
                   suggestions={SKILL_SUGGESTIONS}
-                  placeholder="Add a specific skill..."
-                  ariaLabel={labels.skills}
+                  placeholder={t.profile.skillsPlaceholder}
+                  ariaLabel={t.profile.fieldSkills}
                 />
               </Field>
             </StepBody>
@@ -321,20 +380,20 @@ export default function ProfileWizard({
 
           {step === 2 && (
             <StepBody
-              title="In your own words: what do you do?"
-              hint="Tell us what you do, what you have taught yourself, and what people pay you for. The more specific, the better the match."
+              title={t.profile.step3Heading}
+              hint={t.profile.step3Hint}
               actions={
                 <button
                   type="button"
                   onClick={fillSample}
                   className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-[11px] text-fg-secondary hover:border-accent/40 hover:text-accent"
                 >
-                  <Wand2 className="h-3 w-3" /> Try sample
+                  <Wand2 className="h-3 w-3" /> {t.profile.trySample}
                 </button>
               }
             >
               <Field
-                label={labels.story}
+                label={t.profile.fieldStory}
                 hint={`${charCount}/1200`}
                 hintTone={charCount > 1200 ? "danger" : storyValid ? "ok" : "muted"}
               >
@@ -348,24 +407,24 @@ export default function ProfileWizard({
               </Field>
               {error && (
                 <p className="rounded-md border border-danger/30 bg-danger/10 px-3 py-2 text-xs text-danger">
-                  Error: {error}
+                  {t.profile.errorTitle}: {error}
                 </p>
               )}
             </StepBody>
           )}
         </div>
 
-        <footer className="mt-7 flex items-center justify-between gap-3 border-t border-border-default pt-5">
+        <footer className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-border-default pt-5">
           <button
             type="button"
             onClick={prev}
             disabled={step === 0 || loading}
             className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-sm text-fg-secondary hover:bg-bg-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <ArrowLeft className="h-3.5 w-3.5" /> Back
+            <ArrowLeft className="h-3.5 w-3.5" /> {t.profile.back}
           </button>
           <p className="text-[11px] text-fg-muted">
-            Step {step + 1} of {STEPS.length}
+            {fmt(t.profile.stepProgress, { current: step + 1, total: STEPS.length })}
           </p>
           {step < 2 ? (
             <button
@@ -374,22 +433,22 @@ export default function ProfileWizard({
               disabled={!stepValid[step]}
               className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-1.5 text-sm font-medium text-white hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Continue <ArrowRight className="h-3.5 w-3.5" />
+              {t.profile.continue} <ArrowRight className="h-3.5 w-3.5" />
             </button>
           ) : (
             <button
               type="button"
               onClick={submit}
               disabled={loading || !storyValid}
-              className="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-40"
             >
               {loading ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" /> Mapping to ESCO...
+                  <Loader2 className="h-4 w-4 animate-spin" /> {t.profile.submitLoading}
                 </>
               ) : (
                 <>
-                  <Sparkles className="h-4 w-4" /> {labels.submit}
+                  <Sparkles className="h-4 w-4" /> {t.profile.submit}
                 </>
               )}
             </button>
@@ -397,19 +456,36 @@ export default function ProfileWizard({
         </footer>
       </section>
 
-      {/* SUMMARY / PREVIEW */}
-      <aside className="rounded-2xl border border-border-default bg-bg-raised p-6">
-        <p className="text-[10px] uppercase tracking-widest text-fg-muted">Profile draft</p>
+      <aside className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
+        <p className="text-[10px] uppercase tracking-widest text-fg-muted">
+          {t.profile.draftEyebrow}
+        </p>
         <h3 className="mt-1 text-base font-medium text-fg-primary">
-          What will be sent to the matcher
+          {t.profile.draftTitle}
         </h3>
 
         <dl className="mt-5 space-y-3 text-sm">
-          <Row label="Country" value={countryName} />
-          <Row label="Education" value={education} />
-          <Row label="Years experience" value={`${years}y`} />
+          <Row label={t.profile.draftCountry} value={countryName} />
+          <Row label={t.profile.draftEducation} value={t.profile.education[educationKey]} />
           <Row
-            label="Languages"
+            label={t.profile.draftYears}
+            value={fmt(t.profile.draftYearsValue, { n: years })}
+          />
+          <Row
+            label={t.profile.draftAge}
+            value={ageRange ? t.profile.ageRanges[ageRange] : "-"}
+          />
+          <Row
+            label={t.profile.draftGender}
+            value={gender ? t.profile.gender[gender] : "-"}
+          />
+          <Row label={t.profile.draftLocation} value={location || "-"} />
+          <Row
+            label={t.profile.draftWorkMode}
+            value={workMode ? t.profile.workMode[workMode] : "-"}
+          />
+          <Row
+            label={t.profile.draftLanguages}
             value={
               languages.length > 0 ? (
                 <span className="flex flex-wrap gap-1">
@@ -420,12 +496,12 @@ export default function ProfileWizard({
                   ))}
                 </span>
               ) : (
-                "Not added yet"
+                t.profile.draftLanguagesEmpty
               )
             }
           />
           <Row
-            label="Skills"
+            label={t.profile.draftSkills}
             value={
               skills.length > 0 ? (
                 <span className="flex flex-wrap gap-1">
@@ -436,16 +512,16 @@ export default function ProfileWizard({
                   ))}
                 </span>
               ) : (
-                "Optional"
+                t.profile.draftSkillsEmpty
               )
             }
           />
           <Row
-            label="Story"
+            label={t.profile.draftStory}
             value={
               story.trim().length === 0
-                ? "Not written yet"
-                : `${story.trim().length} characters`
+                ? t.profile.draftStoryEmpty
+                : fmt(t.profile.draftStoryChars, { n: story.trim().length })
             }
           />
         </dl>
@@ -462,10 +538,46 @@ export default function ProfileWizard({
   );
 }
 
-function Stepper({ step }: { step: Step }) {
+function ChipGroup({
+  options,
+  value,
+  onChange,
+}: {
+  options: Array<{ key: string; label: string }>;
+  value: string | undefined;
+  onChange: (k: string) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => (
+        <button
+          key={o.key}
+          type="button"
+          onClick={() => onChange(o.key)}
+          className={clsx(
+            "rounded-full border px-3 py-1 text-xs transition",
+            value === o.key
+              ? "border-accent bg-accent/10 text-accent"
+              : "border-border-default bg-bg-base text-fg-secondary hover:border-border-strong hover:text-fg-primary"
+          )}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Stepper({
+  step,
+  steps,
+}: {
+  step: Step;
+  steps: Array<{ key: Step; label: string; icon: React.ComponentType<{ className?: string }> }>;
+}) {
   return (
     <ol className="flex items-center gap-2">
-      {STEPS.map((s, i) => {
+      {steps.map((s, i) => {
         const Icon = s.icon;
         const status: "done" | "active" | "pending" =
           i < step ? "done" : i === step ? "active" : "pending";
@@ -473,7 +585,7 @@ function Stepper({ step }: { step: Step }) {
           <li key={s.key} className="flex flex-1 items-center gap-2">
             <span
               className={clsx(
-                "grid h-8 w-8 shrink-0 place-items-center rounded-full border text-xs font-medium",
+                "grid h-9 w-9 shrink-0 place-items-center rounded-full border text-xs font-medium transition",
                 status === "done" && "border-positive/40 bg-positive/10 text-positive",
                 status === "active" && "border-accent bg-accent/10 text-accent",
                 status === "pending" && "border-border-default bg-bg-base text-fg-muted"
@@ -484,16 +596,16 @@ function Stepper({ step }: { step: Step }) {
             <span
               className={clsx(
                 "hidden text-xs sm:inline",
-                status === "active" ? "text-fg-primary" : "text-fg-muted"
+                status === "active" ? "font-medium text-fg-primary" : "text-fg-muted"
               )}
             >
               {s.label}
             </span>
-            {i < STEPS.length - 1 && (
+            {i < steps.length - 1 && (
               <span
                 className={clsx(
-                  "h-px flex-1",
-                  i < step ? "bg-positive/40" : "bg-border-default"
+                  "h-px flex-1 transition",
+                  i < step ? "bg-positive/50" : "bg-border-default"
                 )}
               />
             )}
@@ -568,6 +680,7 @@ function ProfileResult({
   profile,
   countryName,
   opportunitiesHref,
+  t,
   onReset,
   onExportJSON,
   onExportPDF,
@@ -575,19 +688,20 @@ function ProfileResult({
   profile: SkillsProfile;
   countryName: string;
   opportunitiesHref: string;
+  t: Dictionary;
   onReset: () => void;
   onExportJSON: () => void;
   onExportPDF: () => void;
 }) {
   return (
     <div className="space-y-4 animate-[slideUp_220ms_ease-out]">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-default bg-bg-raised p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-default bg-bg-raised p-4 shadow-sm">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-fg-muted">
-            Portable profile · {countryName}
+            {fmt(t.profile.resultEyebrow, { country: countryName })}
           </p>
           <p className="mt-1 text-fg-primary">
-            {profile.skills.length} ESCO-mapped skills
+            {fmt(t.profile.resultSummary, { n: profile.skills.length })}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -595,41 +709,41 @@ function ProfileResult({
             onClick={onReset}
             className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
           >
-            Edit again
+            {t.profile.editAgain}
           </button>
           <button
             onClick={onExportJSON}
             className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
           >
-            <FileJson className="h-3.5 w-3.5" /> JSON
+            <FileJson className="h-3.5 w-3.5" /> {t.profile.exportJson}
           </button>
           <button
             onClick={onExportPDF}
             className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
           >
-            <Download className="h-3.5 w-3.5" /> PDF
+            <Download className="h-3.5 w-3.5" /> {t.profile.exportPdf}
           </button>
           <Link
             href={opportunitiesHref}
             className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white hover:bg-accent-strong"
           >
-            Opportunities <ArrowUpRight className="h-3 w-3" />
+            {t.profile.openOpportunities} <ArrowUpRight className="h-3 w-3" />
           </Link>
         </div>
       </div>
       <div className="grid gap-3 md:grid-cols-2">
         {profile.skills.map((s, i) => (
-          <SkillCard key={s.escoCode + s.name} skill={s} index={i} />
+          <SkillCard key={s.escoCode + s.name} skill={s} index={i} t={t} />
         ))}
       </div>
     </div>
   );
 }
 
-function SkillCard({ skill, index }: { skill: SkillEvidence; index: number }) {
+function SkillCard({ skill, index, t }: { skill: SkillEvidence; index: number; t: Dictionary }) {
   return (
     <article
-      className="rounded-xl border border-border-default bg-bg-raised p-4 transition hover:border-border-strong"
+      className="rounded-xl border border-border-default bg-bg-raised p-4 transition hover:border-border-strong hover:shadow-sm"
       style={{
         animation: `slideUp 320ms ease-out`,
         animationDelay: `${index * 40}ms`,
@@ -647,7 +761,7 @@ function SkillCard({ skill, index }: { skill: SkillEvidence; index: number }) {
       </p>
       <details className="mt-3 cursor-pointer text-sm text-fg-secondary">
         <summary className="list-none text-accent hover:text-accent-strong [&::-webkit-details-marker]:hidden">
-          Why this skill?
+          {t.profile.whyThisSkill}
         </summary>
         <p className="mt-2 text-fg-secondary">{skill.evidence}</p>
         {skill.durabilityNote && (

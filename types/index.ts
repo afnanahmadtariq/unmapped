@@ -24,12 +24,24 @@ export interface SkillEvidence {
   durabilityNote?: string; // adjacent durable skill hint (Module 02 light)
 }
 
+export type AgeRange = "u18" | "18_24" | "25_29" | "30_34" | "35plus";
+export type Gender = "prefer" | "woman" | "man" | "nonbinary" | "self";
+export type WorkMode = "informal" | "formal" | "gig" | "study" | "looking";
+
+export interface Demographics {
+  ageRange?: AgeRange;
+  gender?: Gender;
+  location?: string;
+  workMode?: WorkMode;
+}
+
 export interface SkillsProfile {
   userInputSummary: string;
   countryCode: CountryCode;
   educationLevel: string;
   languages: string[];
   yearsExperience: number;
+  demographics?: Demographics;
   skills: SkillEvidence[];
   generatedAt: string;
 }

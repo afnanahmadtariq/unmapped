@@ -23,6 +23,7 @@ export async function POST(req: Request) {
       yearsExperience: body.yearsExperience ?? 0,
       story: body.story,
       declaredSkills: body.declaredSkills ?? [],
+      demographics: body.demographics,
     });
 
     return NextResponse.json(profile);

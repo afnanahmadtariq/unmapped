@@ -21,3 +21,13 @@ export const SUPPORTED_LOCALES: Array<{ code: LocaleCode; label: string }> = [
   { code: "fr", label: "Français" },
   { code: "bn", label: "বাংলা" },
 ];
+
+/** Replace {placeholder} segments in a translated string. */
+export function fmt(
+  template: string,
+  vars: Record<string, string | number>
+): string {
+  return template.replace(/\{(\w+)\}/g, (_, k) =>
+    k in vars ? String(vars[k]) : `{${k}}`
+  );
+}

@@ -1,8 +1,11 @@
 import SiteHeader from "@/components/SiteHeader";
 import PolicyDashboard from "@/components/PolicyDashboard";
+import Pill from "@/components/Pill";
+import { Sparkles } from "lucide-react";
 import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, fmt } from "@/lib/i18n";
 import { getCountryData, ISCO_OCCUPATIONS } from "@/lib/data";
+import { calibrateRisk } from "@/lib/calibration";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -19,11 +22,30 @@ export default async function DashboardPage({ searchParams }: PageProps) {
     ISCO_OCCUPATIONS.map((o) => [o.code, { title: o.title, sectorId: o.sectorId }])
   );
 
+  // Aggregate Frey-Osborne risk by sector, then apply per-country calibration.
+  const bySector = new Map<string, { rawSum: number; calSum: number; n: number; titles: string[] }>();
+  for (const occ of ISCO_OCCUPATIONS) {
+    const r = calibrateRisk(occ.code, country.code);
+    const cur = bySector.get(occ.sectorId) ?? { rawSum: 0, calSum: 0, n: 0, titles: [] };
+    cur.rawSum += r.raw;
+    cur.calSum += r.calibrated;
+    cur.n += 1;
+    cur.titles.push(occ.title);
+    bySector.set(occ.sectorId, cur);
+  }
+  const sectorRisks = Array.from(bySector.entries()).map(([sectorId, v]) => ({
+    sectorId,
+    occupations: v.titles,
+    rawAvg: v.rawSum / v.n,
+    calibrated: v.calSum / v.n,
+  }));
+
   const snapshot = {
     countryCode: country.code,
     countryName: country.name,
     currency: country.currency,
     currencySymbol: country.currencySymbol,
+    context: country.context,
     youthUnemploymentRate: data.growth.youthUnemploymentRate,
     informalEmploymentShare: data.growth.informalEmploymentShare,
     minimumWage: data.wages.minimumWage,
@@ -34,6 +56,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       multiplier: data.calibration.globalMultiplier,
       rationale: data.calibration.rationale,
     },
+    sectorRisks,
   };
 
   return (
@@ -42,23 +65,23 @@ export default async function DashboardPage({ searchParams }: PageProps) {
         countryCode={country.code}
         locale={locale}
         active="dashboard"
-        labels={{ country: t.selectors.country, language: t.selectors.language }}
+        t={t}
       />
 
       <section className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-6 md:py-10">
         <div className="mb-8">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-            {t.dashboard.title}
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold text-fg-primary">
-            {country.name} labour market snapshot
+          <Pill tone="accent">
+            <Sparkles className="h-3 w-3" />
+            {t.dashboard.moduleEyebrow}
+          </Pill>
+          <h1 className="mt-3 text-3xl font-semibold text-fg-primary">
+            {fmt(t.dashboard.titleFor, { country: country.name })}
           </h1>
           <p className="mt-2 max-w-3xl text-sm text-fg-secondary">
-            Aggregate signals from ILOSTAT, World Bank WDI, ILO Future of Work,
-            and Frey-Osborne, calibrated for {country.context.replace("-", " ")} context.
+            {fmt(t.dashboard.subtitle, { context: country.context.replace("-", " ") })}
           </p>
         </div>
-        <PolicyDashboard snapshot={snapshot} />
+        <PolicyDashboard snapshot={snapshot} t={t} />
       </section>
     </main>
   );

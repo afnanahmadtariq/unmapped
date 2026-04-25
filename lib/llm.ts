@@ -2,7 +2,7 @@
 // Uses tool-use to force well-formed JSON instead of free-text parsing.
 
 import Anthropic from "@anthropic-ai/sdk";
-import type { CountryCode, SkillsProfile } from "@/types";
+import type { CountryCode, Demographics, SkillsProfile } from "@/types";
 import escoData from "@/public/data/esco-skills.json";
 
 const MODEL = "claude-sonnet-4-5";
@@ -70,23 +70,34 @@ export interface ExtractInput {
   yearsExperience: number;
   story: string;
   declaredSkills: string[];
+  demographics?: Demographics;
 }
 
 export async function extractSkillsProfile(
   input: ExtractInput
 ): Promise<SkillsProfile> {
+  const demoLines = input.demographics
+    ? [
+        input.demographics.ageRange ? `Age range: ${input.demographics.ageRange}` : null,
+        input.demographics.gender ? `Gender: ${input.demographics.gender}` : null,
+        input.demographics.location ? `Location: ${input.demographics.location}` : null,
+        input.demographics.workMode ? `Current work mode: ${input.demographics.workMode}` : null,
+      ].filter(Boolean) as string[]
+    : [];
+
   const userMessage = [
     `Country context: ${input.countryCode}`,
     `Education level: ${input.educationLevel}`,
     `Languages: ${input.languages.join(", ") || "(none stated)"}`,
     `Years of experience (formal or informal): ${input.yearsExperience}`,
+    ...demoLines,
     `User's own description: """${input.story}"""`,
     `Declared specific skills: ${input.declaredSkills.join(", ") || "(none)"}`,
     "",
     "Available ESCO skill codes (you MUST pick from this list - do not invent codes):",
     ESCO_LIST,
     "",
-    "Extract 4-8 skills that are clearly evidenced by the user's input. Skip skills you cannot justify from the input. Always quote or paraphrase the input in the evidence field.",
+    "Extract 4-8 skills that are clearly evidenced by the user's input. Use the demographic + work-mode context to calibrate skill levels (e.g. self-employed informal traders may have stronger sales/management skills than formally classified). Skip skills you cannot justify from the input. Always quote or paraphrase the input in the evidence field.",
   ].join("\n");
 
   const response = await client().messages.create({
@@ -113,6 +124,7 @@ export async function extractSkillsProfile(
     educationLevel: input.educationLevel,
     languages: input.languages,
     yearsExperience: input.yearsExperience,
+    demographics: input.demographics,
     skills: cleanSkills,
     generatedAt: new Date().toISOString(),
   };

@@ -25,19 +25,14 @@ export default async function LandingPage({ searchParams }: PageProps) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <SiteHeader
-        countryCode={country.code}
-        locale={locale}
-        active="home"
-        labels={{ country: t.selectors.country, language: t.selectors.language }}
-      />
+      <SiteHeader countryCode={country.code} locale={locale} active="home" t={t} />
 
-      <section className="relative mx-auto w-full max-w-6xl px-6 pb-10 pt-16 md:pt-20">
+      <section className="relative mx-auto w-full max-w-6xl px-6 pb-12 pt-12 md:pt-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div className="space-y-7">
+          <div className="space-y-6">
             <Pill tone="accent">
               <Sparkles className="h-3 w-3" />
-              World Bank Youth Summit · Hack-Nation 2026
+              {t.landing.eyebrow}
             </Pill>
             <h1 className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
               {t.landing.hero}
@@ -48,14 +43,14 @@ export default async function LandingPage({ searchParams }: PageProps) {
             <div className="flex flex-wrap gap-3">
               <Link
                 href={`/profile${qs}`}
-                className="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 font-medium text-white transition hover:bg-accent-strong"
+                className="group inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-medium text-white transition hover:bg-accent-strong"
               >
                 {t.landing.ctaPrimary}
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
                 href={`/dashboard${qs}`}
-                className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-raised px-5 py-2.5 font-medium text-fg-primary transition hover:border-border-strong hover:bg-bg-hover"
+                className="inline-flex items-center gap-2 rounded-lg border border-border-default bg-bg-raised px-5 py-2.5 font-medium text-fg-primary transition hover:border-border-strong hover:bg-bg-hover"
               >
                 <BarChart3 className="h-4 w-4" />
                 {t.landing.ctaSecondary}
@@ -63,18 +58,18 @@ export default async function LandingPage({ searchParams }: PageProps) {
             </div>
             <div className="flex flex-wrap gap-2 pt-2">
               <Pill tone="neutral">
-                <ShieldCheck className="h-3 w-3" /> Real ILOSTAT data
+                <ShieldCheck className="h-3 w-3" /> {t.landing.trustReal}
               </Pill>
               <Pill tone="neutral">
-                <Globe2 className="h-3 w-3" /> Country-agnostic
+                <Globe2 className="h-3 w-3" /> {t.landing.trustAgnostic}
               </Pill>
               <Pill tone="neutral">
-                <Compass className="h-3 w-3" /> ESCO + ISCO grounded
+                <Compass className="h-3 w-3" /> {t.landing.trustGrounded}
               </Pill>
             </div>
           </div>
 
-          <article className="relative rounded-2xl border border-border-default bg-bg-raised p-6">
+          <article className="relative rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
                 {t.landing.amaraTitle}
@@ -85,13 +80,13 @@ export default async function LandingPage({ searchParams }: PageProps) {
               {t.landing.amaraStory}
             </p>
             <div className="mt-6 grid grid-cols-3 gap-3 text-[11px]">
-              <Stat label="Active" value={country.name} />
+              <Stat label={t.landing.statActive} value={country.name} />
               <Stat
-                label="Economy"
+                label={t.landing.statEconomy}
                 value={country.context.replace("-", " ")}
               />
               <Stat
-                label="Calibration"
+                label={t.landing.statCalibration}
                 value={`×${country.automationCalibration.toFixed(2)}`}
               />
             </div>
@@ -101,38 +96,35 @@ export default async function LandingPage({ searchParams }: PageProps) {
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <p className="text-[10px] uppercase tracking-[0.25em] text-fg-muted">
-          The system
+          {t.landing.sectionEyebrow}
         </p>
         <h2 className="mt-2 text-2xl font-semibold">
-          Three failures. One open infrastructure layer.
+          {t.landing.sectionTitle}
         </h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <Feature
             icon={<Compass className="h-5 w-5 text-accent" />}
-            title="Skills Signal Engine"
-            body="Map informal experience to ESCO + ISCO codes that travel across borders. Portable JSON + PDF export."
-            cta={{ href: `/profile${qs}`, label: "Open Module 01" }}
+            title={t.landing.feature1Title}
+            body={t.landing.feature1Body}
+            cta={{ href: `/profile${qs}`, label: t.landing.feature1Cta }}
           />
           <Feature
             icon={<Sparkles className="h-5 w-5 text-positive" />}
-            title="Opportunity Matching"
-            body="Real wage and growth signals on every match. Formal, self-employment, gig, training. AI risk calibrated for LMIC context."
-            cta={{ href: `/opportunities${qs}`, label: "Open Module 03" }}
+            title={t.landing.feature2Title}
+            body={t.landing.feature2Body}
+            cta={{ href: `/opportunities${qs}`, label: t.landing.feature2Cta }}
           />
           <Feature
             icon={<BarChart3 className="h-5 w-5 text-warning" />}
-            title="Policymaker dashboard"
-            body="Sector growth, wage distribution, automation calibration. Snapshot CSV export for program officers."
-            cta={{ href: `/dashboard${qs}`, label: "Open dashboard" }}
+            title={t.landing.feature3Title}
+            body={t.landing.feature3Body}
+            cta={{ href: `/dashboard${qs}`, label: t.landing.feature3Cta }}
           />
         </div>
       </section>
 
       <footer className="border-t border-border-default px-6 py-6 text-xs text-fg-muted">
-        <p>
-          Data sources: ESCO · ISCO-08 · ILOSTAT · World Bank WDI · Frey-Osborne · ILO Future of Work · Wittgenstein Centre.
-          Built as open infrastructure: no country hardcoded.
-        </p>
+        <p>{t.landing.footer}</p>
       </footer>
     </main>
   );
@@ -161,7 +153,7 @@ function Feature({
   cta: { href: string; label: string };
 }) {
   return (
-    <article className="group rounded-2xl border border-border-default bg-bg-raised p-5 transition hover:border-border-strong">
+    <article className="group rounded-2xl border border-border-default bg-bg-raised p-5 transition hover:border-border-strong hover:shadow-sm">
       <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-default bg-bg-base">
         {icon}
       </div>

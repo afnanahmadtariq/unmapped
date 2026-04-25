@@ -23,6 +23,8 @@ import type {
   OpportunityType,
   SkillsProfile,
 } from "@/types";
+import type { Dictionary } from "@/lib/i18n";
+import { fmt } from "@/lib/i18n";
 
 interface Props {
   countryCode: CountryCode;
@@ -30,6 +32,7 @@ interface Props {
   currency: string;
   currencySymbol: string;
   locale: string;
+  t: Dictionary;
   profileHref: string;
 }
 
@@ -46,18 +49,12 @@ const TYPE_ICON: Record<OpportunityType, React.ReactNode> = {
   training: <GraduationCap className="h-3.5 w-3.5" />,
 };
 
-const TYPE_LABEL: Record<OpportunityType, string> = {
-  formal: "Formal employment",
-  "self-employment": "Self-employment",
-  gig: "Gig work",
-  training: "Training pathway",
-};
-
 export default function OpportunityWorkbench({
   countryCode,
   countryName,
   currency,
   currencySymbol,
+  t,
   profileHref,
 }: Props) {
   const [profile, setProfile] = useState<SkillsProfile | null>(null);
@@ -67,6 +64,13 @@ export default function OpportunityWorkbench({
   const [jobs, setJobs] = useState<Record<string, JobHit[]>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const TYPE_LABEL: Record<OpportunityType, string> = {
+    formal: t.opportunities.typeFormal,
+    "self-employment": t.opportunities.typeSelf,
+    gig: t.opportunities.typeGig,
+    training: t.opportunities.typeTraining,
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -145,9 +149,9 @@ export default function OpportunityWorkbench({
   if (!profile) {
     return (
       <EmptyState
-        title="No skills profile yet"
-        body="Map your skills first. Your opportunities are generated against your profile."
-        cta={{ href: profileHref, label: "Map My Skills" }}
+        title={t.opportunities.noProfileTitle}
+        body={t.opportunities.noProfileBody}
+        cta={{ href: profileHref, label: t.opportunities.noProfileCta }}
       />
     );
   }
@@ -155,8 +159,8 @@ export default function OpportunityWorkbench({
   if (loading) {
     return (
       <EmptyState
-        title="Matching opportunities"
-        body="Computing fit scores against ISCO-08 occupations and your local labour market."
+        title={t.opportunities.matchingTitle}
+        body={t.opportunities.matchingBody}
         loading
       />
     );
@@ -165,9 +169,9 @@ export default function OpportunityWorkbench({
   if (error) {
     return (
       <EmptyState
-        title="Something went wrong"
+        title={t.opportunities.errorTitle}
         body={error}
-        cta={{ href: profileHref, label: "Back to profile" }}
+        cta={{ href: profileHref, label: t.opportunities.errorCta }}
       />
     );
   }
@@ -175,9 +179,9 @@ export default function OpportunityWorkbench({
   if (!matches || matches.length === 0) {
     return (
       <EmptyState
-        title="No matches found"
-        body="Add more specifics to your profile and try again."
-        cta={{ href: profileHref, label: "Edit profile" }}
+        title={t.opportunities.noMatchesTitle}
+        body={t.opportunities.noMatchesBody}
+        cta={{ href: profileHref, label: t.opportunities.noMatchesCta }}
       />
     );
   }
@@ -189,10 +193,10 @@ export default function OpportunityWorkbench({
       <aside className="space-y-3">
         <div className="rounded-xl border border-border-default bg-bg-raised p-4">
           <p className="text-[10px] uppercase tracking-[0.2em] text-fg-muted">
-            Top matches · {countryName}
+            {fmt(t.opportunities.topMatches, { country: countryName })}
           </p>
           <p className="mt-1 text-sm text-fg-secondary">
-            {matches.length} occupations ranked by skills fit
+            {fmt(t.opportunities.matchesRanked, { n: matches.length })}
           </p>
         </div>
         <ul className="space-y-2">
@@ -217,14 +221,17 @@ export default function OpportunityWorkbench({
                 <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-fg-secondary">
                   <Pill tone="accent">
                     <Wallet className="h-3 w-3" />
-                    {currencySymbol} {m.medianWageMonthly.toLocaleString()}/mo
+                    {fmt(t.opportunities.wagePill, {
+                      symbol: currencySymbol,
+                      amount: m.medianWageMonthly.toLocaleString(),
+                    })}
                   </Pill>
                   <Pill tone={m.sectorGrowthYoY >= 0 ? "positive" : "danger"}>
                     <TrendingUp className="h-3 w-3" />
                     {m.sectorGrowthYoY >= 0 ? "+" : ""}
                     {m.sectorGrowthYoY.toFixed(1)}%
                   </Pill>
-                  <RiskPill score={m.automationRiskCalibrated} />
+                  <RiskPill score={m.automationRiskCalibrated} t={t} />
                 </div>
               </button>
             </li>
@@ -233,7 +240,7 @@ export default function OpportunityWorkbench({
       </aside>
 
       <section className="space-y-6">
-        <div className="rounded-2xl border border-border-default bg-bg-raised p-6">
+        <div className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <p className="text-[10px] uppercase tracking-[0.25em] text-accent">
@@ -251,22 +258,24 @@ export default function OpportunityWorkbench({
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <SignalCard
               icon={<Wallet className="h-4 w-4" />}
-              label="Median monthly wage"
+              label={t.opportunities.wageLabel}
               value={`${currencySymbol} ${active.medianWageMonthly.toLocaleString()}`}
-              sub={`Source: ILOSTAT, ${currency}`}
+              sub={fmt(t.opportunities.wageSub, { currency })}
             />
             <SignalCard
               icon={<TrendingUp className="h-4 w-4" />}
-              label="Sector growth (YoY)"
+              label={t.opportunities.growthLabel}
               value={`${active.sectorGrowthYoY >= 0 ? "+" : ""}${active.sectorGrowthYoY.toFixed(1)}%`}
-              sub="Source: World Bank WDI"
+              sub={t.opportunities.growthSub}
               tone={active.sectorGrowthYoY >= 0 ? "positive" : "danger"}
             />
             <SignalCard
               icon={<ShieldAlert className="h-4 w-4" />}
-              label="AI displacement risk"
+              label={t.opportunities.riskLabel}
               value={`${(active.automationRiskCalibrated * 100).toFixed(0)}%`}
-              sub={`Frey-Osborne raw ${(active.automationRiskRaw * 100).toFixed(0)}%, LMIC-calibrated`}
+              sub={fmt(t.opportunities.riskSubLmic, {
+                raw: (active.automationRiskRaw * 100).toFixed(0),
+              })}
               tone={
                 active.automationRiskCalibrated < 0.35
                   ? "positive"
@@ -280,7 +289,7 @@ export default function OpportunityWorkbench({
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div>
               <p className="text-[10px] uppercase tracking-widest text-fg-muted">
-                Skills you have that match
+                {t.opportunities.skillsHave}
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {active.matchedSkills.map((s) => (
@@ -290,12 +299,12 @@ export default function OpportunityWorkbench({
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-widest text-fg-muted">
-                Adjacent skills that would strengthen fit
+                {t.opportunities.skillsAdjacent}
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {active.missingSkills.length === 0 ? (
                   <span className="text-xs text-fg-muted">
-                    Profile already covers core skills.
+                    {t.opportunities.alreadyCovers}
                   </span>
                 ) : (
                   active.missingSkills.map((s) => (
@@ -311,10 +320,10 @@ export default function OpportunityWorkbench({
           <header className="mb-3 flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-fg-primary">
-                Reachable pathways
+                {t.opportunities.pathwaysTitle}
               </h3>
               <p className="text-xs text-fg-muted">
-                Formal, self-employment, gig, training. Generated for {countryName}.
+                {fmt(t.opportunities.pathwaysHint, { country: countryName })}
               </p>
             </div>
           </header>
@@ -323,7 +332,11 @@ export default function OpportunityWorkbench({
               <PathwaySkeleton />
             ) : (
               pathways[active.iscoCode].map((o) => (
-                <PathwayCard key={o.id} opportunity={o} />
+                <PathwayCard
+                  key={o.id}
+                  opportunity={o}
+                  typeLabel={TYPE_LABEL[o.type]}
+                />
               ))
             )}
           </div>
@@ -332,14 +345,16 @@ export default function OpportunityWorkbench({
         <div>
           <header className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-medium text-fg-primary">
-              Live job listings
+              {t.opportunities.liveJobs}
             </h3>
-            <span className="text-xs text-fg-muted">via Tavily Search</span>
+            <span className="text-xs text-fg-muted">
+              {t.opportunities.liveJobsSource}
+            </span>
           </header>
           <div className="space-y-2">
             {(jobs[active.iscoCode] ?? []).length === 0 ? (
               <p className="rounded-lg border border-dashed border-border-default p-4 text-xs text-fg-muted">
-                No live listings surfaced (or Tavily key not configured).
+                {t.opportunities.noLiveJobs}
               </p>
             ) : (
               jobs[active.iscoCode].map((j) => (
@@ -378,10 +393,15 @@ function FitBar({ value }: { value: number }) {
   );
 }
 
-function RiskPill({ score }: { score: number }) {
+function RiskPill({ score, t }: { score: number; t: Dictionary }) {
   const tone: "positive" | "warning" | "danger" =
     score < 0.35 ? "positive" : score < 0.65 ? "warning" : "danger";
-  const label = score < 0.35 ? "Low AI risk" : score < 0.65 ? "Medium AI risk" : "High AI risk";
+  const label =
+    score < 0.35
+      ? t.opportunities.lowAi
+      : score < 0.65
+        ? t.opportunities.mediumAi
+        : t.opportunities.highAi;
   return <Pill tone={tone}>{label}</Pill>;
 }
 
@@ -416,7 +436,13 @@ function SignalCard({
   );
 }
 
-function PathwayCard({ opportunity }: { opportunity: Opportunity }) {
+function PathwayCard({
+  opportunity,
+  typeLabel,
+}: {
+  opportunity: Opportunity;
+  typeLabel: string;
+}) {
   const TONE: Record<OpportunityType, "accent" | "positive" | "warning" | "neutral"> = {
     formal: "accent",
     "self-employment": "positive",
@@ -424,10 +450,10 @@ function PathwayCard({ opportunity }: { opportunity: Opportunity }) {
     training: "neutral",
   };
   return (
-    <article className="rounded-xl border border-border-default bg-bg-raised p-4 transition hover:border-border-strong">
+    <article className="rounded-xl border border-border-default bg-bg-raised p-4 transition hover:border-border-strong hover:shadow-sm">
       <div className="flex items-center justify-between gap-3">
         <Pill tone={TONE[opportunity.type]}>
-          {TYPE_ICON[opportunity.type]} {TYPE_LABEL[opportunity.type]}
+          {TYPE_ICON[opportunity.type]} {typeLabel}
         </Pill>
         {opportunity.estimatedEarning && (
           <span className="text-[11px] text-fg-secondary">

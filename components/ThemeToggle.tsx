@@ -8,10 +8,11 @@ type Theme = "dark" | "light";
 const STORAGE_KEY = "unmapped-theme";
 
 function readPersistedTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === "light" || stored === "dark") return stored;
-  return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  // Default LIGHT unless OS explicitly prefers dark
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function applyTheme(t: Theme) {
@@ -20,7 +21,7 @@ function applyTheme(t: Theme) {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -42,23 +43,23 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      className="grid h-8 w-8 place-items-center rounded-md border border-border-default bg-bg-raised text-fg-secondary transition hover:border-border-strong hover:text-fg-primary"
+      className="grid h-9 w-9 place-items-center rounded-lg border border-border-default bg-bg-raised text-fg-secondary transition hover:border-border-strong hover:bg-bg-hover hover:text-fg-primary"
     >
       {mounted ? (
         theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />
       ) : (
-        <span className="h-4 w-4" />
+        <Sun className="h-4 w-4 opacity-0" />
       )}
     </button>
   );
 }
 
-/** No-flash inline script. Render this once in <head>. */
+/** No-flash inline script. Runs synchronously before React hydrates. */
 export const ThemeNoFlashScript = () => (
   <script
     // eslint-disable-next-line react/no-danger
     dangerouslySetInnerHTML={{
-      __html: `(function(){try{var k='${STORAGE_KEY}';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:(matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){}})();`,
+      __html: `(function(){try{var k='${STORAGE_KEY}';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var h=document.documentElement;h.setAttribute('data-theme',t);h.style.colorScheme=t;}catch(e){}})();`,
     }}
   />
 );

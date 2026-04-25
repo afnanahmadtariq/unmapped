@@ -21,76 +21,69 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <SiteHeader
-        countryCode={country.code}
-        locale={locale}
-        active="config"
-        labels={{ country: t.selectors.country, language: t.selectors.language }}
-      />
+      <SiteHeader countryCode={country.code} locale={locale} active="config" t={t} />
 
       <section className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-6 md:py-10">
         <div className="mb-8">
           <Pill tone="accent">
             <FolderTree className="h-3 w-3" />
-            Configurability proof
+            {t.admin.moduleEyebrow}
           </Pill>
           <h1 className="mt-3 text-3xl font-semibold text-fg-primary">
-            Country-agnostic by construction
+            {t.admin.title}
           </h1>
           <p className="mt-2 max-w-3xl text-sm text-fg-secondary">
-            The brief requires that labour data, education taxonomy, language,
-            automation calibration, and opportunity types are configurable
-            without changing the codebase. This page is the audit trail.
+            {t.admin.subtitle}
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <ConfigCard
             icon={<Layers className="h-5 w-5 text-accent" />}
-            label="Labour market data"
-            requirement="Wage indices + sector classifications"
+            label={t.admin.labourTitle}
+            requirement={t.admin.labourReq}
             location={`/public/data/${country.code.toLowerCase()}/wages.json + growth.json`}
-            detail={`${wagesCount} ISCO occupations · ${sectorsCount} sectors · vintage ${data.wages.vintage}`}
+            detail={`${wagesCount} ISCO · ${sectorsCount} sectors · vintage ${data.wages.vintage}`}
             source={data.wages._source}
+            configurableLabel={t.admin.configurable}
           />
           <ConfigCard
             icon={<FileJson className="h-5 w-5 text-positive" />}
-            label="Education taxonomy and credentials"
-            requirement="Per-country credential mapping"
+            label={t.admin.credTitle}
+            requirement={t.admin.credReq}
             location={`/public/data/${country.code.toLowerCase()}/credentials.json`}
-            detail={`${data.credentials.formalCredentials.length} formal credentials · ${data.credentials.vocationalCredentials.length} vocational programs`}
-            source="Country-specific (WASSCE, NVTI, SSC, BTEB, SEIP, ...)"
+            detail={`${data.credentials.formalCredentials.length} formal · ${data.credentials.vocationalCredentials.length} vocational`}
+            source="WASSCE, NVTI, SSC, BTEB, SEIP, ..."
+            configurableLabel={t.admin.configurable}
           />
           <ConfigCard
             icon={<Languages className="h-5 w-5 text-warning" />}
-            label="Language and script"
-            requirement="UI strings + script support"
+            label={t.admin.langTitle}
+            requirement={t.admin.langReq}
             location="/locales/{en,fr,bn}.json"
-            detail={`${SUPPORTED_LOCALES.length} locales loaded · default for ${country.name} is ${country.defaultLocale.toUpperCase()}`}
-            source="Drop a JSON file to add a new language."
+            detail={`${SUPPORTED_LOCALES.length} locales · default ${country.defaultLocale.toUpperCase()}`}
+            source="Drop-in JSON file."
+            configurableLabel={t.admin.configurable}
           />
           <ConfigCard
             icon={<ShieldAlert className="h-5 w-5 text-danger" />}
-            label="Automation calibration"
-            requirement="LMIC multiplier on Frey-Osborne"
+            label={t.admin.calibTitle}
+            requirement={t.admin.calibReq}
             location={`/public/data/${country.code.toLowerCase()}/calibration.json`}
-            detail={`Global ×${data.calibration.globalMultiplier.toFixed(2)} · ${Object.keys(data.calibration.sectorOverrides).length} sector overrides`}
+            detail={`Global ×${data.calibration.globalMultiplier.toFixed(2)} · ${Object.keys(data.calibration.sectorOverrides).length} overrides`}
             source={data.calibration.rationale}
+            configurableLabel={t.admin.configurable}
           />
         </div>
 
-        <section className="mt-10 rounded-2xl border border-border-default bg-bg-raised p-6">
+        <section className="mt-10 rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
           <header className="mb-5 flex flex-wrap items-baseline justify-between gap-3">
             <div>
-              <h2 className="text-lg font-medium text-fg-primary">
-                Live configuration diff
-              </h2>
-              <p className="text-xs text-fg-muted">
-                Same codebase. Different configuration objects. No rebuild required.
-              </p>
+              <h2 className="text-lg font-medium text-fg-primary">{t.admin.diffTitle}</h2>
+              <p className="text-xs text-fg-muted">{t.admin.diffSub}</p>
             </div>
             <Pill tone="positive">
-              <Check className="h-3 w-3" /> Drop-in country support
+              <Check className="h-3 w-3" /> {t.admin.dropIn}
             </Pill>
           </header>
           <div className="overflow-x-auto">
@@ -116,37 +109,29 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
                   label="Automation multiplier"
                   cells={listCountries().map((c) => `×${c.automationCalibration.toFixed(2)}`)}
                 />
-                <CompareRow
-                  label="Data path"
-                  cells={listCountries().map((c) => c.dataPath)}
-                />
+                <CompareRow label="Data path" cells={listCountries().map((c) => c.dataPath)} />
               </tbody>
             </table>
           </div>
         </section>
 
-        <section className="mt-10 rounded-2xl border border-border-default bg-bg-raised p-6">
-          <h2 className="text-lg font-medium text-fg-primary">
-            Add a new country in 4 steps
-          </h2>
+        <section className="mt-10 rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
+          <h2 className="text-lg font-medium text-fg-primary">{t.admin.stepsTitle}</h2>
           <ol className="mt-4 space-y-3 text-sm text-fg-secondary">
-            <Step n={1} text="Create /public/data/<country>/ folder with wages.json, growth.json, credentials.json, calibration.json (real ILOSTAT + WDI + local TVET sources)." />
-            <Step n={2} text={`Add an entry to COUNTRY_REGISTRY in lib/config.ts (currently ${listCountries().length} countries: ${listCountries().map(c => c.name).join(", ")}).`} />
-            <Step n={3} text="Optionally drop a /locales/<lang>.json file if the country needs a new UI language." />
-            <Step n={4} text="Done. The matcher, calibration, dashboard, and PDF export all read the new country automatically." />
+            <Step n={1} text={t.admin.step1} />
+            <Step n={2} text={t.admin.step2} />
+            <Step n={3} text={t.admin.step3} />
+            <Step n={4} text={t.admin.step4} />
           </ol>
         </section>
 
         <section className="mt-10 grid gap-4 md:grid-cols-3">
-          <Stat label="ESCO skills loaded" value={ESCO_SKILLS.length.toString()} />
-          <Stat label="ISCO occupations loaded" value={ISCO_OCCUPATIONS.length.toString()} />
-          <Stat label="Frey-Osborne scores loaded" value={Object.keys(FREY_OSBORNE).length.toString()} />
+          <Stat label={t.admin.statEsco} value={ESCO_SKILLS.length.toString()} />
+          <Stat label={t.admin.statIsco} value={ISCO_OCCUPATIONS.length.toString()} />
+          <Stat label={t.admin.statFrey} value={Object.keys(FREY_OSBORNE).length.toString()} />
         </section>
 
-        <p className="mt-10 text-center text-xs text-fg-muted">
-          UNMAPPED is open infrastructure. Fork it. Localise it. The codebase
-          does not change, only the configuration does.
-        </p>
+        <p className="mt-10 text-center text-xs text-fg-muted">{t.admin.footer}</p>
       </section>
     </main>
   );
@@ -159,6 +144,7 @@ function ConfigCard({
   location,
   detail,
   source,
+  configurableLabel,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -166,9 +152,10 @@ function ConfigCard({
   location: string;
   detail: string;
   source: string;
+  configurableLabel: string;
 }) {
   return (
-    <article className="rounded-2xl border border-border-default bg-bg-raised p-5">
+    <article className="rounded-2xl border border-border-default bg-bg-raised p-5 shadow-sm">
       <header className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="grid h-9 w-9 place-items-center rounded-lg border border-border-default bg-bg-base">
@@ -180,7 +167,7 @@ function ConfigCard({
           </div>
         </div>
         <Pill tone="positive">
-          <Check className="h-3 w-3" /> Configurable
+          <Check className="h-3 w-3" /> {configurableLabel}
         </Pill>
       </header>
       <p className="mt-4 font-mono text-[11px] text-accent">{location}</p>
@@ -220,7 +207,7 @@ function Step({ n, text }: { n: number; text: string }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border-default bg-bg-raised p-4">
+    <div className="rounded-xl border border-border-default bg-bg-raised p-4 shadow-sm">
       <p className="text-[10px] uppercase tracking-widest text-fg-muted">{label}</p>
       <p className="mt-2 text-2xl font-semibold text-fg-primary">{value}</p>
     </div>

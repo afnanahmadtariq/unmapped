@@ -1,22 +1,27 @@
 import Link from "next/link";
 import ContextSelector from "@/components/ContextSelector";
 import ThemeToggle from "@/components/ThemeToggle";
+import type { Dictionary } from "@/lib/i18n";
 
 interface Props {
   countryCode: string;
   locale: string;
   active?: "profile" | "opportunities" | "dashboard" | "config" | "home";
-  labels: { country: string; language: string };
+  t: Dictionary;
 }
 
-const NAV: Array<{ key: NonNullable<Props["active"]>; label: string; href: (qs: string) => string }> = [
-  { key: "profile", label: "Skills profile", href: (q) => `/profile${q}` },
-  { key: "opportunities", label: "Opportunities", href: (q) => `/opportunities${q}` },
-  { key: "dashboard", label: "Dashboard", href: (q) => `/dashboard${q}` },
-  { key: "config", label: "Config", href: (q) => `/admin/config${q}` },
+const NAV: Array<{
+  key: NonNullable<Props["active"]>;
+  labelKey: keyof Dictionary["nav"];
+  href: (qs: string) => string;
+}> = [
+  { key: "profile", labelKey: "profile", href: (q) => `/profile${q}` },
+  { key: "opportunities", labelKey: "opportunities", href: (q) => `/opportunities${q}` },
+  { key: "dashboard", labelKey: "dashboard", href: (q) => `/dashboard${q}` },
+  { key: "config", labelKey: "config", href: (q) => `/admin/config${q}` },
 ];
 
-export default function SiteHeader({ countryCode, locale, active = "home", labels }: Props) {
+export default function SiteHeader({ countryCode, locale, active = "home", t }: Props) {
   const qs = `?country=${countryCode}&locale=${locale}`;
   return (
     <header className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-border-default bg-bg-base/80 px-4 py-3 backdrop-blur-md md:px-6 md:py-4">
@@ -24,10 +29,10 @@ export default function SiteHeader({ countryCode, locale, active = "home", label
         href={`/${qs}`}
         className="flex items-center gap-2 text-base font-semibold tracking-wide md:text-lg"
       >
-        <span className="grid h-7 w-7 place-items-center rounded-md bg-accent font-mono text-[10px] font-bold text-white">
+        <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-[10px] font-bold text-white">
           UM
         </span>
-        <span className="text-fg-primary">UNMAPPED</span>
+        <span className="text-fg-primary">{t.app.name}</span>
       </Link>
 
       <nav className="order-3 -mx-4 flex w-full overflow-x-auto border-t border-border-default px-4 py-2 text-xs md:order-2 md:mx-0 md:w-auto md:border-0 md:p-0">
@@ -44,7 +49,7 @@ export default function SiteHeader({ countryCode, locale, active = "home", label
                       : "rounded-md px-3 py-1.5 text-fg-secondary hover:bg-bg-hover hover:text-fg-primary"
                   }
                 >
-                  {item.label}
+                  {t.nav[item.labelKey]}
                 </Link>
               </li>
             );
@@ -56,7 +61,10 @@ export default function SiteHeader({ countryCode, locale, active = "home", label
         <ContextSelector
           country={countryCode}
           locale={locale}
-          labels={labels}
+          labels={{
+            country: t.selectors.country,
+            language: t.selectors.language,
+          }}
         />
         <ThemeToggle />
       </div>

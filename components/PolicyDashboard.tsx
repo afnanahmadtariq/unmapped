@@ -19,12 +19,23 @@ import {
 } from "recharts";
 import { ChevronDown, Download, TrendingUp, Users, Briefcase } from "lucide-react";
 import Pill from "@/components/Pill";
+import AiRiskLens from "@/components/AiRiskLens";
+import type { Dictionary } from "@/lib/i18n";
+import { fmt } from "@/lib/i18n";
+
+interface SectorRisk {
+  sectorId: string;
+  occupations: string[];
+  rawAvg: number;
+  calibrated: number;
+}
 
 type Snapshot = {
   countryCode: string;
   countryName: string;
   currency: string;
   currencySymbol: string;
+  context: string;
   youthUnemploymentRate: number;
   informalEmploymentShare: number;
   minimumWage: number;
@@ -32,10 +43,12 @@ type Snapshot = {
   wagesByISCO: Record<string, number>;
   occupationLookup: Record<string, { title: string; sectorId: string }>;
   automationCalibration: { multiplier: number; rationale: string };
+  sectorRisks: SectorRisk[];
 };
 
 interface Props {
   snapshot: Snapshot;
+  t: Dictionary;
 }
 
 function readVar(name: string, fallback: string) {
@@ -43,28 +56,27 @@ function readVar(name: string, fallback: string) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
-export default function PolicyDashboard({ snapshot }: Props) {
-  // Re-read CSS theme tokens on mount + theme attribute change so charts repaint.
+export default function PolicyDashboard({ snapshot, t }: Props) {
   const [tokens, setTokens] = useState({
     fgMuted: "#737373",
-    fgSecondary: "#a3a3a3",
-    border: "#1f1f1f",
-    bg: "#0d0d0d",
-    accent: "#38bdf8",
-    positive: "#34d399",
-    danger: "#f87171",
+    fgSecondary: "#404040",
+    border: "#e5e5e5",
+    bg: "#ffffff",
+    accent: "#0369a1",
+    positive: "#059669",
+    danger: "#dc2626",
   });
 
   useEffect(() => {
     const refresh = () =>
       setTokens({
         fgMuted: readVar("--fg-muted", "#737373"),
-        fgSecondary: readVar("--fg-secondary", "#a3a3a3"),
-        border: readVar("--border-default", "#1f1f1f"),
-        bg: readVar("--bg-raised", "#0d0d0d"),
-        accent: readVar("--accent", "#38bdf8"),
-        positive: readVar("--positive", "#34d399"),
-        danger: readVar("--danger", "#f87171"),
+        fgSecondary: readVar("--fg-secondary", "#404040"),
+        border: readVar("--border-default", "#e5e5e5"),
+        bg: readVar("--bg-raised", "#ffffff"),
+        accent: readVar("--accent", "#0369a1"),
+        positive: readVar("--positive", "#059669"),
+        danger: readVar("--danger", "#dc2626"),
       });
     refresh();
     const obs = new MutationObserver(refresh);
@@ -107,6 +119,13 @@ export default function PolicyDashboard({ snapshot }: Props) {
       [],
       ["isco", "title", "sector", "median_monthly_wage_local"],
       ...wageData.map((w) => [w.iscoCode, w.title, w.sector, w.wage.toString()]),
+      [],
+      ["sector", "raw_avg_automation_pct", "calibrated_pct"],
+      ...snapshot.sectorRisks.map((r) => [
+        r.sectorId,
+        Math.round(r.rawAvg * 100).toString(),
+        Math.round(r.calibrated * 100).toString(),
+      ]),
     ];
     const csv = rows.map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
@@ -124,7 +143,7 @@ export default function PolicyDashboard({ snapshot }: Props) {
     background: tokens.bg,
     border: `1px solid ${tokens.border}`,
     borderRadius: 8,
-    color: readVar("--fg-primary", "#fafafa"),
+    color: readVar("--fg-primary", "#0a0a0a"),
   };
 
   return (
@@ -132,28 +151,28 @@ export default function PolicyDashboard({ snapshot }: Props) {
       <div className="grid gap-4 md:grid-cols-3">
         <Kpi
           icon={<Users className="h-4 w-4" />}
-          label="Youth unemployment"
+          label={t.dashboard.kpiYouth}
           value={`${snapshot.youthUnemploymentRate.toFixed(1)}%`}
-          sub="ILOSTAT, 2023"
+          sub={t.dashboard.kpiYouthSub}
           tone="warning"
         />
         <Kpi
           icon={<Briefcase className="h-4 w-4" />}
-          label="Informal employment share"
+          label={t.dashboard.kpiInformal}
           value={`${snapshot.informalEmploymentShare.toFixed(1)}%`}
-          sub="ILO Informality Stats"
+          sub={t.dashboard.kpiInformalSub}
           tone="accent"
         />
         <Kpi
           icon={<TrendingUp className="h-4 w-4" />}
-          label="Minimum wage"
+          label={t.dashboard.kpiMinWage}
           value={`${snapshot.currencySymbol} ${snapshot.minimumWage.toLocaleString()}`}
-          sub={`Per month, ${snapshot.currency}`}
+          sub={fmt(t.dashboard.kpiMinWageSub, { currency: snapshot.currency })}
           tone="positive"
         />
       </div>
 
-      <Card title="Sector employment growth (YoY)" subtitle="Source: World Bank WDI + ILO">
+      <Card title={t.dashboard.sectorGrowthTitle} subtitle={t.dashboard.sectorGrowthSub}>
         <ResponsiveContainer width="100%" height={320}>
           <BarChart data={sectorData} margin={{ top: 10, right: 16, bottom: 30, left: 0 }}>
             <CartesianGrid stroke={tokens.border} strokeDasharray="3 3" vertical={false} />
@@ -180,8 +199,18 @@ export default function PolicyDashboard({ snapshot }: Props) {
         </ResponsiveContainer>
       </Card>
 
+      <AiRiskLens
+        rows={snapshot.sectorRisks}
+        multiplier={snapshot.automationCalibration.multiplier}
+        title={t.dashboard.aiLensTitle}
+        subtitle={t.dashboard.aiLensSub}
+        riskLow={t.dashboard.aiLensRiskLow}
+        riskMed={t.dashboard.aiLensRiskMed}
+        riskHigh={t.dashboard.aiLensRiskHigh}
+      />
+
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card title="Top occupations by median wage" subtitle="ILOSTAT monthly nominal earnings">
+        <Card title={t.dashboard.topWagesTitle} subtitle={t.dashboard.topWagesSub}>
           <ResponsiveContainer width="100%" height={320}>
             <BarChart layout="vertical" data={wageData} margin={{ top: 10, right: 16, bottom: 10, left: 110 }}>
               <CartesianGrid stroke={tokens.border} strokeDasharray="3 3" horizontal={false} />
@@ -197,7 +226,7 @@ export default function PolicyDashboard({ snapshot }: Props) {
           </ResponsiveContainer>
         </Card>
 
-        <Card title="Sector demand profile" subtitle="Normalised radar of YoY growth">
+        <Card title={t.dashboard.radarTitle} subtitle={t.dashboard.radarSub}>
           <ResponsiveContainer width="100%" height={320}>
             <RadarChart data={radarData}>
               <PolarGrid stroke={tokens.border} />
@@ -210,18 +239,15 @@ export default function PolicyDashboard({ snapshot }: Props) {
         </Card>
       </div>
 
-      <Card
-        title="Automation calibration assumption"
-        subtitle="The Frey-Osborne baseline is OECD-calibrated. We multiply per country."
-      >
+      <Card title={t.dashboard.calibrationTitle} subtitle={t.dashboard.calibrationSub}>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-sm text-fg-secondary">
-              Active multiplier:{" "}
+              {t.dashboard.calibrationActive}{" "}
               <span className="font-mono text-accent">
                 ×{snapshot.automationCalibration.multiplier.toFixed(2)}
               </span>{" "}
-              vs OECD baseline
+              {t.dashboard.calibrationVs}
             </p>
             <p className="mt-1 max-w-3xl text-xs text-fg-muted">
               {snapshot.automationCalibration.rationale}
@@ -236,7 +262,7 @@ export default function PolicyDashboard({ snapshot }: Props) {
           onClick={exportCsv}
           className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-raised px-4 py-2 text-xs text-fg-secondary hover:bg-bg-hover"
         >
-          <Download className="h-4 w-4" /> Export snapshot (CSV)
+          <Download className="h-4 w-4" /> {t.dashboard.exportCsv}
         </button>
       </div>
     </div>
@@ -262,7 +288,7 @@ function Kpi({
     warning: "text-warning",
   };
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-raised p-5">
+    <div className="rounded-2xl border border-border-default bg-bg-raised p-5 shadow-sm">
       <div className="flex items-center gap-2 text-fg-muted">
         <span>{icon}</span>
         <span className="text-[10px] uppercase tracking-widest">{label}</span>
@@ -283,7 +309,7 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-border-default bg-bg-raised p-5">
+    <section className="rounded-2xl border border-border-default bg-bg-raised p-5 shadow-sm">
       <header className="mb-4 flex items-baseline justify-between gap-3">
         <div>
           <h3 className="text-sm font-medium text-fg-primary">{title}</h3>

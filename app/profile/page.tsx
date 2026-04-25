@@ -19,34 +19,27 @@ export default async function ProfilePage({ searchParams }: PageProps) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <SiteHeader
-        countryCode={country.code}
-        locale={locale}
-        active="profile"
-        labels={{ country: t.selectors.country, language: t.selectors.language }}
-      />
+      <SiteHeader countryCode={country.code} locale={locale} active="profile" t={t} />
 
       <section className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-6 md:py-10">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <Pill tone="accent">
               <Sparkles className="h-3 w-3" />
-              Module 01 · Skills Signal Engine
+              {t.profile.moduleEyebrow}
             </Pill>
             <h1 className="mt-3 text-3xl font-semibold text-fg-primary">
               {t.profile.title}
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-fg-secondary">
-              Mapped to ESCO (EU Skills Taxonomy) and ISCO-08 (ILO). Your
-              profile is portable across borders and sectors, and explainable
-              to you, not just to an algorithm.
+              {t.profile.subtitle}
             </p>
           </div>
           <Link
             href={`/opportunities${qs}`}
             className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-raised px-4 py-2 text-xs text-fg-secondary hover:bg-bg-hover"
           >
-            Skip to opportunities
+            {t.profile.skipToOpportunities}
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -54,7 +47,7 @@ export default async function ProfilePage({ searchParams }: PageProps) {
           countryCode={country.code}
           countryName={country.name}
           locale={locale}
-          labels={t.profile}
+          t={t}
           opportunitiesHref={`/opportunities${qs}`}
         />
       </section>
