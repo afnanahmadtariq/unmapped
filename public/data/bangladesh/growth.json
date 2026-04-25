@@ -1,0 +1,23 @@
+{
+  "_source": "World Bank WDI + Bangladesh Bureau of Statistics LFS — sector employment growth YoY (2022-2024 averages, %). Approximated for ISIC-to-sector mapping.",
+  "vintage": "2022-2024 avg",
+  "growthBySector": {
+    "ICT": 14.6,
+    "REPAIR": 3.5,
+    "CONSTRUCTION": 5.9,
+    "MANUFACTURING": 7.1,
+    "HOSPITALITY": 6.2,
+    "PERSONAL_SERVICES": 4.8,
+    "RETAIL": 4.1,
+    "BPO": 11.5,
+    "ADMIN": 1.5,
+    "TRANSPORT": 4.4,
+    "AGRICULTURE": -2.3,
+    "CARE": 5.5,
+    "HEALTH": 5.2,
+    "EDUCATION": 3.4,
+    "CREATIVE": 9.8
+  },
+  "youthUnemploymentRate": 15.7,
+  "informalEmploymentShare": 84.9
+}
