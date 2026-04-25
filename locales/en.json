@@ -1,0 +1,44 @@
+{
+  "app": {
+    "name": "UNMAPPED",
+    "tagline": "Open skills infrastructure for the AI age."
+  },
+  "landing": {
+    "hero": "600 million young people. Unrecognised skills. Invisible to the formal economy.",
+    "subhero": "UNMAPPED maps real skills to real opportunity — with real data, country by country.",
+    "ctaPrimary": "Map My Skills",
+    "ctaSecondary": "Open Policymaker Dashboard",
+    "amaraTitle": "Meet Amara",
+    "amaraStory": "Amara is 22, lives outside Accra, and holds a secondary school certificate. She speaks three languages, has run a phone repair business since she was 17, and taught herself basic coding from YouTube. By any reasonable measure, she has skills. To the formal economy, she is unmapped. She is not the exception — she is the rule."
+  },
+  "selectors": {
+    "country": "Country",
+    "language": "Language"
+  },
+  "profile": {
+    "title": "Tell us what you know how to do",
+    "education": "Highest completed education",
+    "languages": "Languages you speak",
+    "years": "Years of work experience (formal or informal)",
+    "story": "In your own words, what do you do?",
+    "skills": "Specific skills you have",
+    "submit": "Map My Skills"
+  },
+  "opportunities": {
+    "title": "Opportunities matched to you",
+    "wage": "Median monthly wage",
+    "growth": "Sector growth (YoY)",
+    "automationRisk": "AI displacement risk",
+    "viewListings": "View live listings",
+    "typeFormal": "Formal employment",
+    "typeSelf": "Self-employment",
+    "typeGig": "Gig work",
+    "typeTraining": "Training pathway"
+  },
+  "dashboard": {
+    "title": "Policymaker view",
+    "youthUnemployment": "Youth unemployment",
+    "wageDistribution": "Wage distribution by sector",
+    "skillSupplyGap": "Skill supply vs labor demand"
+  }
+}

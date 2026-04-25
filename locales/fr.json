@@ -1,0 +1,44 @@
+{
+  "app": {
+    "name": "UNMAPPED",
+    "tagline": "Infrastructure ouverte des compétences pour l'ère de l'IA."
+  },
+  "landing": {
+    "hero": "600 millions de jeunes. Compétences non reconnues. Invisibles pour l'économie formelle.",
+    "subhero": "UNMAPPED relie les vraies compétences aux vraies opportunités — avec de vraies données, pays par pays.",
+    "ctaPrimary": "Cartographier mes compétences",
+    "ctaSecondary": "Ouvrir le tableau de bord des décideurs",
+    "amaraTitle": "Voici Amara",
+    "amaraStory": "Amara a 22 ans, vit près d'Accra, et possède un certificat de fin d'études secondaires. Elle parle trois langues, dirige une entreprise de réparation de téléphones depuis ses 17 ans, et a appris seule à coder grâce à YouTube. Selon toute mesure raisonnable, elle a des compétences. Pour l'économie formelle, elle est invisible. Elle n'est pas l'exception — elle est la règle."
+  },
+  "selectors": {
+    "country": "Pays",
+    "language": "Langue"
+  },
+  "profile": {
+    "title": "Dites-nous ce que vous savez faire",
+    "education": "Niveau d'études le plus élevé achevé",
+    "languages": "Langues parlées",
+    "years": "Années d'expérience (formelle ou informelle)",
+    "story": "Avec vos propres mots, que faites-vous ?",
+    "skills": "Compétences spécifiques",
+    "submit": "Cartographier mes compétences"
+  },
+  "opportunities": {
+    "title": "Opportunités qui vous correspondent",
+    "wage": "Salaire mensuel médian",
+    "growth": "Croissance du secteur (annuelle)",
+    "automationRisk": "Risque de déplacement par l'IA",
+    "viewListings": "Voir les offres en direct",
+    "typeFormal": "Emploi formel",
+    "typeSelf": "Travail indépendant",
+    "typeGig": "Travail à la tâche",
+    "typeTraining": "Parcours de formation"
+  },
+  "dashboard": {
+    "title": "Vue décideurs",
+    "youthUnemployment": "Chômage des jeunes",
+    "wageDistribution": "Répartition des salaires par secteur",
+    "skillSupplyGap": "Offre de compétences vs demande de travail"
+  }
+}
