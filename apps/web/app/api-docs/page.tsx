@@ -131,7 +131,7 @@ export default async function ApiDocsPage({ searchParams }: PageProps) {
             Protocol, not product
           </h1>
           <p className="mt-2 max-w-3xl text-sm text-fg-secondary">
-            Every page on UNMAPPED is a thin client over these endpoints. Any
+            Every page on Cartographer is a thin client over these endpoints. Any
             government, NGO, training provider or employer can plug straight
             into them. All endpoints accept JSON; responses are JSON; no auth
             required for read endpoints, write endpoints accept the same JSON

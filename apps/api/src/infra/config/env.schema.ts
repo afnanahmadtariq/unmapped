@@ -54,7 +54,7 @@ export const envSchema = z.object({
 
   // Optional end-user accounts. Sign-up is allowed when `USER_AUTH_ENABLED`
   // is true AND `USER_JWT_SECRET` is set. Sessions live in the
-  // `unmapped_user_session` cookie (separate from the admin one).
+  // `cartographer_user_session` cookie (separate from the admin one).
   USER_AUTH_ENABLED: z
     .enum(['true', 'false'])
     .default('true')

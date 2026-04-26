@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "面向AI时代的开放技能基础设施。"
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank青年峰会 · Hack-Nation 2026",
     "hero": "6亿年轻人。未被识别的技能。在正规经济中不可见。",
-    "subhero": "UNMAPPED利用真实数据,逐国绘制真实技能与真实机会的连接。",
+    "subhero": "Cartographer利用真实数据,逐国绘制真实技能与真实机会的连接。",
     "ctaPrimary": "绘制我的技能",
     "ctaSecondary": "打开政策制定者仪表板",
     "amaraTitle": "认识Amara",
@@ -396,6 +396,6 @@
     "statEsco": "已加载ESCO技能",
     "statIsco": "已加载ISCO职业",
     "statFrey": "已加载Frey-Osborne分数",
-    "footer": "UNMAPPED是开放基础设施。分叉它。本地化它。代码库不变,只有配置改变。"
+    "footer": "Cartographer是开放基础设施。分叉它。本地化它。代码库不变,只有配置改变。"
   }
 }

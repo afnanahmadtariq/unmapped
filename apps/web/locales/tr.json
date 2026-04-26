@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Yapay zeka çağı için açık beceri altyapısı."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank Gençlik Zirvesi · Hack-Nation 2026",
     "hero": "600 milyon genç. Tanınmayan beceriler. Resmi ekonomi için görünmez.",
-    "subhero": "UNMAPPED, gerçek becerileri gerçek fırsatlara, gerçek verilerle, ülke ülke eşler.",
+    "subhero": "Cartographer, gerçek becerileri gerçek fırsatlara, gerçek verilerle, ülke ülke eşler.",
     "ctaPrimary": "Becerilerimi eşle",
     "ctaSecondary": "Politika yapıcı gösterge panosunu aç",
     "amaraTitle": "Amara ile tanışın",
@@ -396,6 +396,6 @@
     "statEsco": "ESCO becerileri yüklendi",
     "statIsco": "ISCO meslekleri yüklendi",
     "statFrey": "Frey-Osborne puanları yüklendi",
-    "footer": "UNMAPPED açık altyapıdır. Çatallayın. Yerelleştirin. Kod tabanı değişmez, sadece yapılandırma değişir."
+    "footer": "Cartographer açık altyapıdır. Çatallayın. Yerelleştirin. Kod tabanı değişmez, sadece yapılandırma değişir."
   }
 }

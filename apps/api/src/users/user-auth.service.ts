@@ -59,7 +59,7 @@ export class UserAuthService {
   }
 
   cookieName(): string {
-    return 'unmapped_user_session';
+    return 'cartographer_user_session';
   }
 
   cookieMaxAgeMs(): number {

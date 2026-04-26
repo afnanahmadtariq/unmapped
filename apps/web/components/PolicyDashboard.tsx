@@ -157,7 +157,7 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `unmapped-${snapshot.countryCode.toLowerCase()}-snapshot.csv`;
+    a.download = `cartographer-${snapshot.countryCode.toLowerCase()}-snapshot.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

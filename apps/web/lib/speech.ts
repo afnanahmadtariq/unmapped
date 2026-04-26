@@ -1,4 +1,4 @@
-// UNMAPPED - thin typed wrapper around the Web Speech API for voice input.
+// Cartographer - thin typed wrapper around the Web Speech API for voice input.
 // Free, browser-native, no API key. Works in Chrome / Edge / Safari (with
 // vendor prefix). Firefox does not support it - we degrade gracefully.
 

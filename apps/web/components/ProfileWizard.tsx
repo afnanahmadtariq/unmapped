@@ -291,7 +291,7 @@ export default function ProfileWizard({
     if (fromHash) {
       setProfile(fromHash);
       sessionStorage.setItem(
-        `unmapped:profile:${fromHash.countryCode}`,
+        `cartographer:profile:${fromHash.countryCode}`,
         JSON.stringify(fromHash)
       );
       toast.push({
@@ -442,7 +442,7 @@ export default function ProfileWizard({
     setClarify(null);
     if (typeof window !== "undefined") {
       sessionStorage.setItem(
-        `unmapped:profile:${countryCode}`,
+        `cartographer:profile:${countryCode}`,
         JSON.stringify(data)
       );
     }
@@ -597,14 +597,14 @@ export default function ProfileWizard({
   const exportJSON = () => {
     if (!profile) return;
     const blob = new Blob([JSON.stringify(profile, null, 2)], { type: "application/json" });
-    triggerDownload(blob, `unmapped-profile-${profile.countryCode}.json`);
+    triggerDownload(blob, `cartographer-profile-${profile.countryCode}.json`);
     toast.push({ tone: "success", title: t.profile.jsonDownloaded });
   };
 
   const exportPDF = () => {
     if (!profile) return;
     const doc = buildSkillsProfilePdf({ profile, countryName, locale });
-    doc.save(`unmapped-profile-${profile.countryCode}.pdf`);
+    doc.save(`cartographer-profile-${profile.countryCode}.pdf`);
     toast.push({ tone: "success", title: t.profile.pdfDownloaded });
   };
 
@@ -625,7 +625,7 @@ export default function ProfileWizard({
     });
     const url = buildProfileUrl(profile, "/profile", sp);
     const native = await nativeShare(
-      "My UNMAPPED skills profile",
+      "My Cartographer skills profile",
       `${profile.skills.length} ESCO skills (${countryName})`,
       url
     );

@@ -238,7 +238,7 @@ function AccountInner() {
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-fg-secondary">
               Your saved skills profiles, fresh insights, and how your
-              occupations compare to other UNMAPPED visitors in the same
+              occupations compare to other Cartographer visitors in the same
               country.
             </p>
           </div>
@@ -447,7 +447,7 @@ function SavedProfileCard({
           </p>
           {!competition || competition.total === 0 ? (
             <p className="mt-3 text-xs text-fg-muted">
-              No other UNMAPPED users in your country yet — you&apos;re
+              No other Cartographer users in your country yet — you&apos;re
               setting the baseline.
             </p>
           ) : (

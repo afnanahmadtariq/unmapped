@@ -1,4 +1,4 @@
-// UNMAPPED - encode/decode a SkillsProfile into a URL hash.
+// Cartographer - encode/decode a SkillsProfile into a URL hash.
 // Pattern: /opportunities?country=PK#p=<base64url(json)>
 // The URL itself IS the profile. No backend, no auth, no PII server-side.
 

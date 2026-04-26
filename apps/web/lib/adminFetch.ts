@@ -11,7 +11,7 @@ const API_BASE =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
   "http://localhost:4000";
 
-const ADMIN_COOKIE = "unmapped_admin_session";
+const ADMIN_COOKIE = "cartographer_admin_session";
 
 export async function adminFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const cookieStore = await cookies();

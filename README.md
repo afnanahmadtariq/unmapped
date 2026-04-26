@@ -1,4 +1,4 @@
-# UNMAPPED
+# Cartographer
 
 > Open, localizable skills infrastructure for the AI age.
 >
@@ -16,7 +16,7 @@ Generic job boards don't help Amara, 22, in Accra. She needs infrastructure that
 - Calibrates AI displacement risk for her context, not for San Francisco
 - Surfaces self-employment, gig, and training pathways, not just formal jobs that don't exist
 
-UNMAPPED is the layer underneath the next generation of skills products. Country-specific parameters are **inputs**, not hardcoded assumptions.
+Cartographer is the layer underneath the next generation of skills products. Country-specific parameters are **inputs**, not hardcoded assumptions.
 
 ## Actors and journeys
 

@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 
 type Theme = "dark" | "light";
 
-const STORAGE_KEY = "unmapped-theme";
+const STORAGE_KEY = "cartographer-theme";
 const COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
 function readPersistedTheme(): Theme {

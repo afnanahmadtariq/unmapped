@@ -90,12 +90,12 @@ export default function OpportunityWorkbench({
     if (fromHash) {
       setProfile(fromHash);
       sessionStorage.setItem(
-        `unmapped:profile:${fromHash.countryCode}`,
+        `cartographer:profile:${fromHash.countryCode}`,
         JSON.stringify(fromHash)
       );
       return;
     }
-    const raw = sessionStorage.getItem(`unmapped:profile:${countryCode}`);
+    const raw = sessionStorage.getItem(`cartographer:profile:${countryCode}`);
     if (raw) {
       try {
         setProfile(JSON.parse(raw));

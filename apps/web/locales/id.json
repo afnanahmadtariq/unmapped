@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Infrastruktur keterampilan terbuka untuk era AI."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank Youth Summit · Hack-Nation 2026",
     "hero": "600 juta kaum muda. Keterampilan yang tidak diakui. Tak terlihat oleh ekonomi formal.",
-    "subhero": "UNMAPPED memetakan keterampilan nyata ke peluang nyata, dengan data nyata, negara demi negara.",
+    "subhero": "Cartographer memetakan keterampilan nyata ke peluang nyata, dengan data nyata, negara demi negara.",
     "ctaPrimary": "Petakan keterampilan saya",
     "ctaSecondary": "Buka dasbor pembuat kebijakan",
     "amaraTitle": "Mengenal Amara",
@@ -396,6 +396,6 @@
     "statEsco": "Keterampilan ESCO dimuat",
     "statIsco": "Pekerjaan ISCO dimuat",
     "statFrey": "Skor Frey-Osborne dimuat",
-    "footer": "UNMAPPED adalah infrastruktur terbuka. Fork-lah. Lokalisasi-lah. Basis kode tidak berubah, hanya konfigurasinya."
+    "footer": "Cartographer adalah infrastruktur terbuka. Fork-lah. Lokalisasi-lah. Basis kode tidak berubah, hanya konfigurasinya."
   }
 }

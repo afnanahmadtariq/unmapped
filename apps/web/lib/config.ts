@@ -1,4 +1,4 @@
-// UNMAPPED - country registry, sourced from lib/data/countries.json.
+// Cartographer - country registry, sourced from lib/data/countries.json.
 // Adding a new country = adding one entry to that file. No code changes here.
 // The same file lives in apps/api/src/country/data/countries.json — keep in sync.
 

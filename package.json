@@ -1,11 +1,11 @@
 {
-  "name": "unmapped-monorepo",
+  "name": "cartographer-monorepo",
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "dev:web": "turbo run dev --filter=@unmapped/web",
-    "dev:api": "turbo run start:dev --filter=@unmapped/api",
+    "dev:web": "turbo run dev --filter=@cartographer/web",
+    "dev:api": "turbo run start:dev --filter=@cartographer/api",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test"

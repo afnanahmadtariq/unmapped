@@ -8,7 +8,7 @@ import { UserAuthService, AuthenticatedUser } from './user-auth.service';
 
 /**
  * Guard for end-user `/me/*` routes. Reads the JWT from the
- * `unmapped_user_session` cookie (default browser flow) or an
+ * `cartographer_user_session` cookie (default browser flow) or an
  * `Authorization: Bearer ...` header (curl / programmatic flow).
  *
  * Distinct from `AuthGuard` (which gates the single-admin `/admin/*`

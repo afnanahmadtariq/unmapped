@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Hạ tầng kỹ năng mở cho thời đại AI."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank Youth Summit · Hack-Nation 2026",
     "hero": "600 triệu thanh niên. Kỹ năng chưa được công nhận. Vô hình với nền kinh tế chính thức.",
-    "subhero": "UNMAPPED lập bản đồ kỹ năng thực với cơ hội thực, bằng dữ liệu thực, từng quốc gia một.",
+    "subhero": "Cartographer lập bản đồ kỹ năng thực với cơ hội thực, bằng dữ liệu thực, từng quốc gia một.",
     "ctaPrimary": "Lập bản đồ kỹ năng của tôi",
     "ctaSecondary": "Mở bảng điều khiển nhà hoạch định chính sách",
     "amaraTitle": "Gặp Amara",
@@ -396,6 +396,6 @@
     "statEsco": "Đã tải kỹ năng ESCO",
     "statIsco": "Đã tải nghề nghiệp ISCO",
     "statFrey": "Đã tải điểm Frey-Osborne",
-    "footer": "UNMAPPED là hạ tầng mở. Fork nó. Bản địa hóa nó. Mã nguồn không thay đổi, chỉ cấu hình thay đổi."
+    "footer": "Cartographer là hạ tầng mở. Fork nó. Bản địa hóa nó. Mã nguồn không thay đổi, chỉ cấu hình thay đổi."
   }
 }

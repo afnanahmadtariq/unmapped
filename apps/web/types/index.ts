@@ -1,4 +1,4 @@
-// UNMAPPED - shared type definitions
+// Cartographer - shared type definitions
 // All shapes that cross the API boundary live here.
 
 // Country code is an ISO 3166-1 alpha-2 string. The supported list is in
