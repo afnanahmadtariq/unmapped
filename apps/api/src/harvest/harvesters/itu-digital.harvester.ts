@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // ITU Digital Development — via World Bank WDI (no auth)
@@ -9,7 +10,9 @@ export class ItuDigitalHarvester extends BaseHarvester {
   get sourceId() { return 'itu-digital'; }
   get cronExpression() { return '0 4 * * 2'; }
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   private readonly indicators = [
     { id: 'IT.NET.USER.ZS', name: 'Individuals using the Internet (% of population)' },
@@ -42,7 +45,7 @@ export class ItuDigitalHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'ITU Digital Development (via World Bank)',
       category: 'automation',

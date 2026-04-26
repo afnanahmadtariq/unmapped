@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // ILO ISCO-08 Occupation Classification — Public
@@ -11,7 +12,9 @@ export class IloIscoHarvester extends BaseHarvester {
   get sourceId() { return 'ilo-isco'; }
   get cronExpression() { return '0 5 1 * *'; } // 1st of every month 05:00
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   @Cron('0 5 1 * *')
   async harvest(): Promise<void> {
@@ -47,7 +50,7 @@ export class IloIscoHarvester extends BaseHarvester {
       this.logger.warn(`ILO ISCO: no records returned (total rows: ${rows.length})`);
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'ILO ISCO-08',
       category: 'labor',

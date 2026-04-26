@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // UN Population Division — Public (no auth required)
@@ -11,7 +12,9 @@ export class UnPopulationHarvester extends BaseHarvester {
   get sourceId() { return 'un-population'; }
   get cronExpression() { return '0 6 1 * *'; } // 1st of every month
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   // Key indicators:
   // 49 = Total Population (both sexes, thousands)
@@ -70,7 +73,7 @@ export class UnPopulationHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'UN Population Division',
       category: 'education',

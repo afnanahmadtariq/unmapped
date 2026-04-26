@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // ILO ILOSTAT Public API — rplumber.ilo.org
@@ -11,7 +12,9 @@ export class IloIlostatHarvester extends BaseHarvester {
   get sourceId() { return 'ilo-ilostat'; }
   get cronExpression() { return '0 2 * * 1'; } // Every Monday 02:00
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   // Key ILO indicators to harvest
   private readonly indicators = [
@@ -60,7 +63,7 @@ export class IloIlostatHarvester extends BaseHarvester {
       return;
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'ILO ILOSTAT',
       category: 'labor',

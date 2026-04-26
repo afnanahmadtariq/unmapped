@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // ILO Future of Work Datasets — Public (same rplumber.ilo.org API)
@@ -10,7 +11,9 @@ export class IloFowHarvester extends BaseHarvester {
   get sourceId() { return 'ilo-fow'; }
   get cronExpression() { return '0 2 * * 2'; } // Every Tuesday 02:00
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   private readonly indicators = [
     { id: 'SDG_C821_SEX_RT', name: 'Labour income share (%)' },
@@ -51,7 +54,7 @@ export class IloFowHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'ILO Future of Work Datasets',
       category: 'automation',

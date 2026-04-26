@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // World Bank WDI — api.worldbank.org — No auth required
@@ -10,7 +11,9 @@ export class WorldBankWdiHarvester extends BaseHarvester {
   get sourceId() { return 'wb-wdi'; }
   get cronExpression() { return '0 3 * * 1'; } // Every Monday 03:00
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   private readonly indicators = [
     { id: 'SL.UEM.TOTL.ZS', name: 'Unemployment rate, total (%)' },
@@ -45,7 +48,7 @@ export class WorldBankWdiHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'World Bank WDI',
       category: 'labor',

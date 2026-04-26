@@ -3,7 +3,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { ArrowRight, HelpCircle, Loader2, MessageCircleQuestion } from "lucide-react";
-import type { ClarifyingQuestion } from "@/lib/llm";
+import type { ClarifyingQuestion } from "@/lib/apiClient";
 import type { Dictionary } from "@/lib/i18n";
 
 interface Props {

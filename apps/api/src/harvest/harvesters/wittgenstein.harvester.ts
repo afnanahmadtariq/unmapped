@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // Wittgenstein Centre — Public bulk CSV download (no auth, no API key)
@@ -11,7 +12,9 @@ export class WittgensteinHarvester extends BaseHarvester {
   get sourceId() { return 'wittgenstein'; }
   get cronExpression() { return '0 7 1 1,4,7,10 *'; } // Quarterly (new projections released annually)
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   @Cron('0 7 1 1,4,7,10 *')
   async harvest(): Promise<void> {
@@ -36,7 +39,7 @@ export class WittgensteinHarvester extends BaseHarvester {
         population: parseFloat(r['pop'] || r['population'] || '0') || null,
       }));
 
-      await this.storage.save(this.makeDataset({
+      await this.persist(this.makeDataset({
         sourceId: this.sourceId,
         sourceName: 'Wittgenstein Centre (WCDE v3)',
         category: 'education',
@@ -54,7 +57,7 @@ export class WittgensteinHarvester extends BaseHarvester {
         const altUrl = 'https://www.oeaw.ac.at/fileadmin/subsites/Institute/VID/dataexplorer/wcde-v3-data/wcde_v3_country.csv';
         const { data } = await this.http.get(altUrl, { responseType: 'text', timeout: 60000 });
         const rows = this.parseCsv(data as string);
-        await this.storage.save(this.makeDataset({
+        await this.persist(this.makeDataset({
           sourceId: this.sourceId,
           sourceName: 'Wittgenstein Centre (WCDE v3)',
           category: 'education',

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // UNESCO UIS via World Bank Education Stats (Source 12) — No auth required
@@ -10,7 +11,9 @@ export class UnescoUisHarvester extends BaseHarvester {
   get sourceId() { return 'unesco-uis'; }
   get cronExpression() { return '0 3 8 * *'; } // 8th of every month
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   private readonly indicators = [
     { id: 'SE.ADT.LITR.ZS', name: 'Adult literacy rate (%)' },
@@ -45,7 +48,7 @@ export class UnescoUisHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'UNESCO Institute for Statistics (via World Bank)',
       category: 'education',

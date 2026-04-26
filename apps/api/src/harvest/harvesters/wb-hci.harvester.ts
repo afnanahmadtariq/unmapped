@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // World Bank Human Capital Index — No auth required
@@ -10,7 +11,9 @@ export class WorldBankHciHarvester extends BaseHarvester {
   get sourceId() { return 'wb-hci'; }
   get cronExpression() { return '0 4 * * 1'; }
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   private readonly indicators = [
     { id: 'HD.HCI.OVRL', name: 'Human Capital Index (HCI) — overall (scale 0-1)' },
@@ -43,7 +46,7 @@ export class WorldBankHciHarvester extends BaseHarvester {
       }
     }
 
-    await this.storage.save(this.makeDataset({
+    await this.persist(this.makeDataset({
       sourceId: this.sourceId,
       sourceName: 'World Bank Human Capital Index',
       category: 'labor',

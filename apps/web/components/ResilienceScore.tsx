@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { Shield, TrendingUp, Layers, Plug } from "lucide-react";
-import type { ResilienceBreakdown } from "@/lib/resilience";
+import type { ResilienceBreakdown } from "@/lib/apiClient";
 
 interface Props {
   score: ResilienceBreakdown;

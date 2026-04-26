@@ -1,0 +1,14 @@
+{
+  "_source": "ILO Future of Work LMIC adjustment + ITU Digital Development Report 2024 - Ghana automation calibration multiplier. Lower than OECD baseline because (a) infrastructure constraints slow capital substitution, (b) informal economy share is 81%, where automation pressure is structurally weaker.",
+  "countryCode": "GH",
+  "globalMultiplier": 0.62,
+  "sectorOverrides": {
+    "AGRICULTURE": 0.45,
+    "CONSTRUCTION": 0.55,
+    "BPO": 0.85,
+    "ICT": 0.95,
+    "RETAIL": 0.70,
+    "ADMIN": 0.80
+  },
+  "rationale": "Multipliers below 1.0 reflect ILO finding that Frey-Osborne overstates LMIC automation displacement by ~30-40% in low-formality, low-capital sectors. BPO and ICT remain near-baseline because they sit on global digital infrastructure."
+}

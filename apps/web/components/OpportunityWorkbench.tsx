@@ -18,7 +18,7 @@ import clsx from "clsx";
 import Pill from "@/components/Pill";
 import ResilienceScore from "@/components/ResilienceScore";
 import { readProfileFromHash } from "@/lib/profileUrl";
-import type { ResilienceBreakdown } from "@/lib/resilience";
+import { apiClient, type ResilienceBreakdown } from "@/lib/apiClient";
 import type {
   CountryCode,
   MatchedOccupation,
@@ -107,16 +107,7 @@ export default function OpportunityWorkbench({
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/match-occupations", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ profile, countryCode }),
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as {
-          matches: MatchedOccupation[];
-          resilience: ResilienceBreakdown;
-        };
+        const data = await apiClient.matchOccupations({ profile, countryCode });
         if (cancelled) return;
         setMatches(data.matches);
         setResilience(data.resilience);
@@ -138,29 +129,21 @@ export default function OpportunityWorkbench({
     if (!occupation) return;
 
     if (!pathways[activeIsco]) {
-      fetch("/api/opportunity-pathways", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      apiClient
+        .opportunityPathways({
           occupationTitle: occupation.title,
           iscoCode: activeIsco,
           countryCode,
           matchedSkills: occupation.matchedSkills,
-        }),
-      })
-        .then((r) => r.json())
+        })
         .then((d) =>
-          setPathways((prev) => ({ ...prev, [activeIsco]: d.opportunities ?? [] }))
+          setPathways((prev) => ({ ...prev, [activeIsco]: d.opportunities ?? [] })),
         )
         .catch(() => undefined);
     }
     if (!jobs[activeIsco]) {
-      fetch("/api/find-jobs", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: occupation.title, countryCode }),
-      })
-        .then((r) => r.json())
+      apiClient
+        .findJobs({ title: occupation.title, countryCode })
         .then((d) => setJobs((prev) => ({ ...prev, [activeIsco]: d.jobs ?? [] })))
         .catch(() => undefined);
     }

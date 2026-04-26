@@ -19,7 +19,7 @@ interface Endpoint {
 const ENDPOINTS: Endpoint[] = [
   {
     method: "GET",
-    path: "/api/data-status",
+    path: "/health/data-status",
     purpose: "Probe per-source freshness (live ESCO + WB, snapshots elsewhere).",
     response: `{
   "esco": "live",
@@ -31,7 +31,7 @@ const ENDPOINTS: Endpoint[] = [
   },
   {
     method: "POST",
-    path: "/api/extract-skills",
+    path: "/profile/extract",
     purpose:
       "Two-tool LLM extraction. Returns either a finalised ESCO-mapped profile or a set of close-ended clarifying questions when input is conflicting or thin.",
     request: `{
@@ -60,7 +60,7 @@ const ENDPOINTS: Endpoint[] = [
   },
   {
     method: "POST",
-    path: "/api/match-occupations",
+    path: "/profile/match",
     purpose:
       "Match a SkillsProfile to ISCO-08 occupations. Surfaces wage (ILOSTAT), sector growth (WDI), LMIC-calibrated AI risk per match, and a 0-100 Resilience Score.",
     request: `{ "profile": {...}, "countryCode": "GH" }`,
@@ -90,7 +90,7 @@ const ENDPOINTS: Endpoint[] = [
   },
   {
     method: "POST",
-    path: "/api/opportunity-pathways",
+    path: "/profile/opportunities",
     purpose:
       "Generate exactly 4 reachable pathways for an occupation: formal employment, self-employment, gig work, training. LLM-generated, country-aware.",
     request: `{
@@ -103,7 +103,7 @@ const ENDPOINTS: Endpoint[] = [
   },
   {
     method: "POST",
-    path: "/api/find-jobs",
+    path: "/jobs/search",
     purpose:
       "Live job-listing search via Tavily. Country-specific site: hints applied (Jobberman, BrighterMonday, Bdjobs, etc.).",
     request: `{ "title": "Electronics mechanics and servicers", "countryCode": "GH" }`,

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { StorageService } from '../../storage/storage.service';
+import { PostgresLoader } from '../../storage/postgres.loader';
 import { BaseHarvester } from '../base.harvester';
 
 // Frey & Osborne (2013) — "The Future of Employment: How Susceptible Are Jobs to Computerisation?"
@@ -13,7 +14,9 @@ export class FreyOsborneHarvester extends BaseHarvester {
   get sourceId() { return 'frey-osborne'; }
   get cronExpression() { return '0 8 1 1 *'; } // Annually — data does not change (2013 paper)
 
-  constructor(storage: StorageService) { super(storage); }
+  constructor(storage: StorageService, loader: PostgresLoader) {
+    super(storage, loader);
+  }
 
   // Publicly accessible mirrors of the Frey-Osborne Table A1
   private readonly csvSources = [
@@ -45,7 +48,7 @@ export class FreyOsborneHarvester extends BaseHarvester {
           category: r['category'] || '',
         })).filter((r: any) => r.socCode && r.occupation);
 
-        await this.storage.save(this.makeDataset({
+        await this.persist(this.makeDataset({
           sourceId: this.sourceId,
           sourceName: 'Frey & Osborne (2013) — Automation Risk',
           category: 'automation',

@@ -29,6 +29,7 @@ import ClarificationCard from "@/components/ClarificationCard";
 import EmailLinkModal from "@/components/EmailLinkModal";
 import VoiceInputButton from "@/components/VoiceInputButton";
 import { useToast } from "@/components/Toast";
+import { apiClient } from "@/lib/apiClient";
 import { buildSkillsProfilePdf } from "@/lib/pdf";
 import {
   buildProfileUrl,
@@ -51,7 +52,7 @@ import type {
   WorkFrequency,
   WorkMode,
 } from "@/types";
-import type { ClarifyingQuestion } from "@/lib/llm";
+import type { ClarifyingQuestion } from "@/lib/apiClient";
 import type { Dictionary } from "@/lib/i18n";
 import { fmt } from "@/lib/i18n";
 
@@ -375,35 +376,25 @@ export default function ProfileWizard({
     setClarify(null);
     setConversation(null);
     try {
-      const res = await fetch("/api/extract-skills", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          countryCode,
-          educationLevel: t.profile.education[educationKey],
-          languages,
-          yearsExperience: years,
-          story,
-          declaredSkills: skills,
-          demographics: {
-            ageRange,
-            gender,
-            location: location.trim() || undefined,
-            workMode,
-          },
-          context: buildContext(),
-        }),
+      const data = await apiClient.extractInitial({
+        countryCode,
+        educationLevel: t.profile.education[educationKey],
+        languages,
+        yearsExperience: years,
+        story,
+        declaredSkills: skills,
+        demographics: {
+          ageRange,
+          gender,
+          location: location.trim() || undefined,
+          workMode,
+        },
+        context: buildContext(),
       });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? `HTTP ${res.status}`);
-      }
-      const data = await res.json();
       const baseInput = data.baseInput;
       const history = data.history;
       if (data.result?.kind === "clarify") {
         setClarify({ reason: data.result.reason, questions: data.result.questions });
-        // Stash the assistant tool_use block (= last item in history) for the follow-up call.
         const lastAssistant = (history as Array<{ role: string; content: unknown[] }>).at(-1)?.content ?? [];
         setConversation({ history, lastAssistant, baseInput });
       } else if (data.result?.kind === "profile") {
@@ -425,22 +416,12 @@ export default function ProfileWizard({
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/extract-skills", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phase: "follow-up",
-          history: conversation.history,
-          lastAssistant: conversation.lastAssistant,
-          answers,
-          baseInput: conversation.baseInput,
-        }),
+      const data = await apiClient.extractFollowUp({
+        history: conversation.history,
+        lastAssistant: conversation.lastAssistant,
+        answers,
+        baseInput: conversation.baseInput,
       });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? `HTTP ${res.status}`);
-      }
-      const data = await res.json();
       if (data.result?.kind === "clarify") {
         setClarify({ reason: data.result.reason, questions: data.result.questions });
       } else if (data.result?.kind === "profile") {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Mail, X } from "lucide-react";
 import clsx from "clsx";
 import { useToast } from "@/components/Toast";
+import { apiClient } from "@/lib/apiClient";
 import type { Dictionary } from "@/lib/i18n";
 
 interface Props {
@@ -54,12 +55,12 @@ export default function EmailLinkModal({ open, onClose, url, countryName, skillC
     if (!valid) return;
     setLoading(true);
     try {
-      const res = await fetch("/api/email-link", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), url, countryName, skillCount }),
+      const data = await apiClient.emailProfileLink({
+        email: email.trim(),
+        url,
+        countryName,
+        skillCount,
       });
-      const data = await res.json();
       if (data.sent) {
         toast.push({ tone: "success", title: t.profile.emailSentTitle, body: t.profile.emailSentBody });
         onClose();

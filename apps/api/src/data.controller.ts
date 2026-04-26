@@ -5,11 +5,7 @@ import { HarvestService } from './harvest/harvest.service';
 export class DataController {
   constructor(private readonly harvest: HarvestService) {}
 
-  /** GET /health — Service health */
-  @Get('health')
-  health() {
-    return { status: 'ok', timestamp: new Date().toISOString() };
-  }
+  // /health and /health/data-status moved to HealthController.
 
   /** GET /schedule — List all cron schedules */
   @Get('schedule')
