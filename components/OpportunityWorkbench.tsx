@@ -17,6 +17,7 @@ import {
 import clsx from "clsx";
 import Pill from "@/components/Pill";
 import ResilienceScore from "@/components/ResilienceScore";
+import { readProfileFromHash } from "@/lib/profileUrl";
 import type { ResilienceBreakdown } from "@/lib/resilience";
 import type {
   CountryCode,
@@ -77,6 +78,18 @@ export default function OpportunityWorkbench({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // Priority order:
+    //   1. profile encoded in URL hash (Save-link landing)
+    //   2. sessionStorage (came from /profile this visit)
+    const fromHash = readProfileFromHash();
+    if (fromHash) {
+      setProfile(fromHash);
+      sessionStorage.setItem(
+        `unmapped:profile:${fromHash.countryCode}`,
+        JSON.stringify(fromHash)
+      );
+      return;
+    }
     const raw = sessionStorage.getItem(`unmapped:profile:${countryCode}`);
     if (raw) {
       try {

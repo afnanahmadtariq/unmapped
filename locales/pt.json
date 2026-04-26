@@ -143,7 +143,14 @@
       "study": "Na escola ou em treinamento",
       "looking": "Procurando trabalho"
     },
-    "locationPlaceholder": "Cidade ou município"
+    "locationPlaceholder": "Cidade ou município",
+    "saveLink": "Salvar link",
+    "shareLink": "Compartilhar",
+    "linkCopied": "Link copiado",
+    "linkCopiedBody": "Envie para você mesmo; abrir o link em qualquer dispositivo restaura seu perfil.",
+    "linkCopyFailed": "Não foi possível copiar",
+    "loadedFromLinkTitle": "Perfil carregado",
+    "loadedFromLinkBody": "Restaurado do link salvo. Você pode editar e compartilhar novamente."
   },
   "opportunities": {
     "moduleEyebrow": "Módulo 03 · Correspondência de Oportunidades",

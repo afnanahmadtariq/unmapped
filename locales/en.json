@@ -112,6 +112,13 @@
     "whyThisSkill": "Why this skill?",
     "jsonDownloaded": "JSON downloaded",
     "pdfDownloaded": "PDF downloaded",
+    "saveLink": "Save link",
+    "shareLink": "Share",
+    "linkCopied": "Link copied",
+    "linkCopiedBody": "Send it to yourself; opening the link on any device restores your profile.",
+    "linkCopyFailed": "Could not copy",
+    "loadedFromLinkTitle": "Profile loaded",
+    "loadedFromLinkBody": "Restored from the saved link. You can edit and re-share.",
     "education": {
       "none": "No formal schooling",
       "primary": "Primary",

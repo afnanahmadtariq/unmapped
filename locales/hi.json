@@ -143,7 +143,14 @@
       "study": "स्कूल या प्रशिक्षण में",
       "looking": "काम की तलाश में"
     },
-    "locationPlaceholder": "शहर या कस्बा"
+    "locationPlaceholder": "शहर या कस्बा",
+    "saveLink": "लिंक सहेजें",
+    "shareLink": "साझा करें",
+    "linkCopied": "लिंक कॉपी हो गया",
+    "linkCopiedBody": "इसे अपने आप को भेजें; किसी भी डिवाइस पर लिंक खोलने से आपकी प्रोफ़ाइल पुनर्स्थापित हो जाती है।",
+    "linkCopyFailed": "कॉपी नहीं हो सका",
+    "loadedFromLinkTitle": "प्रोफ़ाइल लोड हो गई",
+    "loadedFromLinkBody": "सहेजे गए लिंक से पुनर्स्थापित किया गया। आप संपादित और पुनः साझा कर सकते हैं।"
   },
   "opportunities": {
     "moduleEyebrow": "मॉड्यूल 03 · अवसर मिलान",

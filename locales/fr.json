@@ -143,7 +143,14 @@
       "study": "En études ou formation",
       "looking": "À la recherche d'un emploi"
     },
-    "locationPlaceholder": "Ville ou village"
+    "locationPlaceholder": "Ville ou village",
+    "saveLink": "Enregistrer le lien",
+    "shareLink": "Partager",
+    "linkCopied": "Lien copié",
+    "linkCopiedBody": "Envoyez-le vous-même ; ouvrir le lien sur n'importe quel appareil restaure votre profil.",
+    "linkCopyFailed": "Impossible de copier",
+    "loadedFromLinkTitle": "Profil chargé",
+    "loadedFromLinkBody": "Restauré à partir du lien enregistré. Vous pouvez modifier et repartager."
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Mise en correspondance",

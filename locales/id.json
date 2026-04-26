@@ -143,7 +143,14 @@
       "study": "Sedang sekolah atau pelatihan",
       "looking": "Mencari pekerjaan"
     },
-    "locationPlaceholder": "Kota atau kecamatan"
+    "locationPlaceholder": "Kota atau kecamatan",
+    "saveLink": "Simpan tautan",
+    "shareLink": "Bagikan",
+    "linkCopied": "Tautan tersalin",
+    "linkCopiedBody": "Kirim ke diri Anda sendiri; membuka tautan di perangkat apa pun akan memulihkan profil Anda.",
+    "linkCopyFailed": "Tidak dapat menyalin",
+    "loadedFromLinkTitle": "Profil dimuat",
+    "loadedFromLinkBody": "Dipulihkan dari tautan yang disimpan. Anda dapat mengedit dan membagikan ulang."
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Pencocokan Peluang",

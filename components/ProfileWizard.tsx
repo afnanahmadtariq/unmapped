@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -11,8 +11,10 @@ import {
   FileJson,
   GraduationCap,
   Languages,
+  Link2,
   Loader2,
   PencilLine,
+  Share2,
   Sparkles,
   Wand2,
 } from "lucide-react";
@@ -21,6 +23,12 @@ import SkillChipInput from "@/components/SkillChipInput";
 import ClarificationCard from "@/components/ClarificationCard";
 import { useToast } from "@/components/Toast";
 import { buildSkillsProfilePdf } from "@/lib/pdf";
+import {
+  buildProfileUrl,
+  copyToClipboard,
+  nativeShare,
+  readProfileFromHash,
+} from "@/lib/profileUrl";
 import type {
   AgeRange,
   CountryCode,
@@ -200,6 +208,28 @@ export default function ProfileWizard({
     baseInput: unknown;
   } | null>(null);
 
+  // On first mount, if a profile is encoded in the URL hash, hydrate it
+  // straight into the result view so the user can see/edit/re-share without
+  // re-typing anything.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const fromHash = readProfileFromHash();
+    if (fromHash) {
+      setProfile(fromHash);
+      sessionStorage.setItem(
+        `unmapped:profile:${fromHash.countryCode}`,
+        JSON.stringify(fromHash)
+      );
+      toast.push({
+        tone: "info",
+        title: t.profile.loadedFromLinkTitle,
+        body: t.profile.loadedFromLinkBody,
+      });
+    }
+    // run once on mount only
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const langSuggestions = useMemo(
     () => languageSuggestionsFor(countryCode),
     [countryCode]
@@ -357,6 +387,33 @@ export default function ProfileWizard({
     toast.push({ tone: "success", title: t.profile.pdfDownloaded });
   };
 
+  // Build a stable URL that contains the profile in the hash, then either
+  // open the native share sheet (mobile) or copy to clipboard (desktop).
+  const shareProfile = async () => {
+    if (!profile) return;
+    const sp = new URLSearchParams({
+      country: profile.countryCode,
+      locale: locale,
+    });
+    const url = buildProfileUrl(profile, "/profile", sp);
+    const native = await nativeShare(
+      "My UNMAPPED skills profile",
+      `${profile.skills.length} ESCO skills (${countryName})`,
+      url
+    );
+    if (native) return;
+    const ok = await copyToClipboard(url);
+    if (ok) {
+      toast.push({
+        tone: "success",
+        title: t.profile.linkCopied,
+        body: t.profile.linkCopiedBody,
+      });
+    } else {
+      toast.push({ tone: "error", title: t.profile.linkCopyFailed });
+    }
+  };
+
   if (profile) {
     return (
       <ProfileResult
@@ -372,6 +429,7 @@ export default function ProfileWizard({
         }}
         onExportJSON={exportJSON}
         onExportPDF={exportPDF}
+        onShare={shareProfile}
       />
     );
   }
@@ -818,6 +876,7 @@ function ProfileResult({
   onReset,
   onExportJSON,
   onExportPDF,
+  onShare,
 }: {
   profile: SkillsProfile;
   countryName: string;
@@ -826,6 +885,7 @@ function ProfileResult({
   onReset: () => void;
   onExportJSON: () => void;
   onExportPDF: () => void;
+  onShare: () => void;
 }) {
   return (
     <div className="space-y-4 animate-[slideUp_220ms_ease-out]">
@@ -844,6 +904,12 @@ function ProfileResult({
             className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
           >
             {t.profile.editAgain}
+          </button>
+          <button
+            onClick={onShare}
+            className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent/20"
+          >
+            <Share2 className="h-3.5 w-3.5" /> {t.profile.shareLink}
           </button>
           <button
             onClick={onExportJSON}

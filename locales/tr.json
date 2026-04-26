@@ -143,7 +143,14 @@
       "study": "Okulda veya eğitimde",
       "looking": "İş arıyor"
     },
-    "locationPlaceholder": "Şehir veya kasaba"
+    "locationPlaceholder": "Şehir veya kasaba",
+    "saveLink": "Bağlantıyı kaydet",
+    "shareLink": "Paylaş",
+    "linkCopied": "Bağlantı kopyalandı",
+    "linkCopiedBody": "Kendinize gönderin; bağlantıyı herhangi bir cihazda açmak profilinizi geri yükler.",
+    "linkCopyFailed": "Kopyalanamadı",
+    "loadedFromLinkTitle": "Profil yüklendi",
+    "loadedFromLinkBody": "Kayıtlı bağlantıdan geri yüklendi. Düzenleyebilir ve yeniden paylaşabilirsiniz."
   },
   "opportunities": {
     "moduleEyebrow": "Modül 03 · Fırsat Eşleştirme",

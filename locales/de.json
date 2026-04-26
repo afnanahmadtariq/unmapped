@@ -143,7 +143,14 @@
       "study": "In Schule oder Ausbildung",
       "looking": "Auf Arbeitssuche"
     },
-    "locationPlaceholder": "Stadt oder Gemeinde"
+    "locationPlaceholder": "Stadt oder Gemeinde",
+    "saveLink": "Link speichern",
+    "shareLink": "Teilen",
+    "linkCopied": "Link kopiert",
+    "linkCopiedBody": "Senden Sie ihn an sich selbst; beim Öffnen des Links auf einem beliebigen Gerät wird Ihr Profil wiederhergestellt.",
+    "linkCopyFailed": "Kopieren fehlgeschlagen",
+    "loadedFromLinkTitle": "Profil geladen",
+    "loadedFromLinkBody": "Aus dem gespeicherten Link wiederhergestellt. Sie können es bearbeiten und erneut teilen."
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Chancen-Matching",

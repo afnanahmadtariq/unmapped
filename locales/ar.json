@@ -143,7 +143,14 @@
       "study": "في المدرسة أو التدريب",
       "looking": "أبحث عن عمل"
     },
-    "locationPlaceholder": "المدينة أو البلدة"
+    "locationPlaceholder": "المدينة أو البلدة",
+    "saveLink": "حفظ الرابط",
+    "shareLink": "مشاركة",
+    "linkCopied": "تم نسخ الرابط",
+    "linkCopiedBody": "أرسله لنفسك؛ فتح الرابط على أي جهاز يستعيد ملفك الشخصي.",
+    "linkCopyFailed": "تعذر النسخ",
+    "loadedFromLinkTitle": "تم تحميل الملف الشخصي",
+    "loadedFromLinkBody": "تمت الاستعادة من الرابط المحفوظ. يمكنك التعديل وإعادة المشاركة."
   },
   "opportunities": {
     "moduleEyebrow": "الوحدة 03 · مطابقة الفرص",

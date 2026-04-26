@@ -143,7 +143,14 @@
       "study": "En la escuela o capacitación",
       "looking": "Buscando trabajo"
     },
-    "locationPlaceholder": "Ciudad o pueblo"
+    "locationPlaceholder": "Ciudad o pueblo",
+    "saveLink": "Guardar enlace",
+    "shareLink": "Compartir",
+    "linkCopied": "Enlace copiado",
+    "linkCopiedBody": "Envíatelo a ti mismo; al abrir el enlace en cualquier dispositivo se restaura tu perfil.",
+    "linkCopyFailed": "No se pudo copiar",
+    "loadedFromLinkTitle": "Perfil cargado",
+    "loadedFromLinkBody": "Restaurado desde el enlace guardado. Puedes editar y volver a compartir."
   },
   "opportunities": {
     "moduleEyebrow": "Módulo 03 · Emparejamiento de Oportunidades",

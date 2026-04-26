@@ -143,7 +143,14 @@
       "study": "পড়াশোনা বা প্রশিক্ষণে",
       "looking": "কাজ খুঁজছি"
     },
-    "locationPlaceholder": "শহর বা গ্রাম"
+    "locationPlaceholder": "শহর বা গ্রাম",
+    "saveLink": "লিংক সংরক্ষণ করুন",
+    "shareLink": "শেয়ার করুন",
+    "linkCopied": "লিংক কপি হয়েছে",
+    "linkCopiedBody": "এটি নিজের কাছে পাঠান; যেকোনো ডিভাইসে লিংক খুললে আপনার প্রোফাইল পুনরুদ্ধার হবে।",
+    "linkCopyFailed": "কপি করা যায়নি",
+    "loadedFromLinkTitle": "প্রোফাইল লোড হয়েছে",
+    "loadedFromLinkBody": "সংরক্ষিত লিংক থেকে পুনরুদ্ধার করা হয়েছে। আপনি সম্পাদনা এবং পুনরায় শেয়ার করতে পারবেন।"
   },
   "opportunities": {
     "moduleEyebrow": "মডিউল ০৩ · সুযোগ মিলান",

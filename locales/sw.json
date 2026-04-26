@@ -143,7 +143,14 @@
       "study": "Shuleni au mafunzoni",
       "looking": "Natafuta kazi"
     },
-    "locationPlaceholder": "Jiji au mji"
+    "locationPlaceholder": "Jiji au mji",
+    "saveLink": "Hifadhi kiungo",
+    "shareLink": "Shiriki",
+    "linkCopied": "Kiungo kimenakiliwa",
+    "linkCopiedBody": "Kijitumie; kufungua kiungo kwenye kifaa chochote kinarudisha wasifu wako.",
+    "linkCopyFailed": "Imeshindwa kunakili",
+    "loadedFromLinkTitle": "Wasifu umepakiwa",
+    "loadedFromLinkBody": "Umerejeleshwa kutoka kiungo kilichohifadhiwa. Unaweza kuhariri na kushiriki tena."
   },
   "opportunities": {
     "moduleEyebrow": "Sehemu ya 03 · Kulinganisha Fursa",

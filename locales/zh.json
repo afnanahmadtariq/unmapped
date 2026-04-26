@@ -143,7 +143,14 @@
       "study": "在校或培训",
       "looking": "寻找工作"
     },
-    "locationPlaceholder": "城市或乡镇"
+    "locationPlaceholder": "城市或乡镇",
+    "saveLink": "保存链接",
+    "shareLink": "分享",
+    "linkCopied": "链接已复制",
+    "linkCopiedBody": "发送给自己；在任何设备上打开链接即可恢复您的个人资料。",
+    "linkCopyFailed": "无法复制",
+    "loadedFromLinkTitle": "个人资料已加载",
+    "loadedFromLinkBody": "已从保存的链接恢复。您可以编辑并重新分享。"
   },
   "opportunities": {
     "moduleEyebrow": "模块03 · 机会匹配",

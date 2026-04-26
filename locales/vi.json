@@ -143,7 +143,14 @@
       "study": "Đang học hoặc đào tạo",
       "looking": "Đang tìm việc"
     },
-    "locationPlaceholder": "Thành phố hoặc thị trấn"
+    "locationPlaceholder": "Thành phố hoặc thị trấn",
+    "saveLink": "Lưu liên kết",
+    "shareLink": "Chia sẻ",
+    "linkCopied": "Đã sao chép liên kết",
+    "linkCopiedBody": "Gửi cho chính bạn; mở liên kết trên bất kỳ thiết bị nào sẽ khôi phục hồ sơ của bạn.",
+    "linkCopyFailed": "Không thể sao chép",
+    "loadedFromLinkTitle": "Đã tải hồ sơ",
+    "loadedFromLinkBody": "Đã khôi phục từ liên kết đã lưu. Bạn có thể chỉnh sửa và chia sẻ lại."
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Ghép nối cơ hội",

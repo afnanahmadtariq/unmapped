@@ -143,7 +143,14 @@
       "study": "اسکول یا تربیت میں",
       "looking": "کام تلاش کر رہے ہیں"
     },
-    "locationPlaceholder": "شہر یا قصبہ"
+    "locationPlaceholder": "شہر یا قصبہ",
+    "saveLink": "لنک محفوظ کریں",
+    "shareLink": "شیئر کریں",
+    "linkCopied": "لنک کاپی ہو گیا",
+    "linkCopiedBody": "اسے اپنے آپ کو بھیجیں؛ کسی بھی ڈیوائس پر لنک کھولنے سے آپ کا پروفائل بحال ہو جاتا ہے۔",
+    "linkCopyFailed": "کاپی نہیں ہو سکا",
+    "loadedFromLinkTitle": "پروفائل لوڈ ہو گیا",
+    "loadedFromLinkBody": "محفوظ شدہ لنک سے بحال کیا گیا۔ آپ ترمیم اور دوبارہ شیئر کر سکتے ہیں۔"
   },
   "opportunities": {
     "moduleEyebrow": "ماڈیول 03 · موقع کی میچنگ",
