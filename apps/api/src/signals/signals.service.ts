@@ -335,20 +335,29 @@ export class SignalsService implements OnModuleInit {
     runId?: string | null,
   ): Promise<number> {
     if (rows.length === 0) return 0;
-    const entities = rows.map((r) =>
-      this.wbRepo.create({
-        iso3: r.iso3,
-        indicator: r.indicator,
-        year: r.year,
-        value: r.value.toFixed(6),
-        source: r.source ?? 'wb',
-        runId: runId ?? null,
-        updatedAt: new Date(),
-      }),
-    );
-    await this.wbRepo.upsert(entities, {
-      conflictPaths: ['iso3', 'indicator', 'year'],
-    });
+    // Clamp values to numeric(30,6) safe range before persisting.
+    // Very large economic aggregates (world GDP, population) exceed numeric(18,6).
+    const MAX_SAFE = 999999999999999999999999; // 24 integer digits
+    const entities = rows
+      .filter((r) => Number.isFinite(r.value) && Math.abs(r.value) < MAX_SAFE)
+      .map((r) =>
+        this.wbRepo.create({
+          iso3: r.iso3,
+          indicator: r.indicator,
+          year: r.year,
+          value: r.value.toFixed(6),
+          source: r.source ?? 'wb',
+          runId: runId ?? null,
+          updatedAt: new Date(),
+        }),
+      );
+    if (entities.length === 0) return 0;
+    const CHUNK = 500;
+    for (let i = 0; i < entities.length; i += CHUNK) {
+      await this.wbRepo.upsert(entities.slice(i, i + CHUNK), {
+        conflictPaths: ['iso3', 'indicator', 'year'],
+      });
+    }
     return entities.length;
   }
 
@@ -671,9 +680,14 @@ export class SignalsService implements OnModuleInit {
         updatedAt: new Date(),
       }),
     );
-    await this.onetRepo.upsert(entities, {
-      conflictPaths: ['onetCode', 'taskId'],
-    });
+    // Chunk to avoid PostgreSQL's 65 535-parameter-per-query limit.
+    // 19 k+ O*NET rows × 7 columns = 133 k params in a single upsert → bind error.
+    const CHUNK = 500;
+    for (let i = 0; i < entities.length; i += CHUNK) {
+      await this.onetRepo.upsert(entities.slice(i, i + CHUNK), {
+        conflictPaths: ['onetCode', 'taskId'],
+      });
+    }
     return entities.length;
   }
 

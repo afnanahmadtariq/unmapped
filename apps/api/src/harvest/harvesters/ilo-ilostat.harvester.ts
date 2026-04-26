@@ -106,6 +106,12 @@ export class IloIlostatHarvester extends BaseHarvester {
     );
   }
 
+  // Byte cap: skip CSV parsing when the response exceeds ~2 MB.
+  // The large multi-country indicators (EMP_TEMP_SEX_AGE_NB, UNE_DEAP_SEX_AGE_RT)
+  // can return 500 k+ rows as a synchronous string, which exhausts V8's call stack
+  // inside csvParse. We truncate to the first MAX_ROWS lines instead.
+  private readonly MAX_CSV_ROWS = 3000;
+
   private async fetchIloIndicator(indicator: {
     id: string;
     name: string;
@@ -118,11 +124,19 @@ export class IloIlostatHarvester extends BaseHarvester {
       (headers['content-type'] as string | string[] | undefined) ?? '',
     );
 
-    const rows: Record<string, any>[] = ct.includes('json')
-      ? Array.isArray(data)
-        ? data
-        : []
-      : this.parseCsv(data as string);
+    let rows: Record<string, any>[];
+    if (ct.includes('json')) {
+      rows = Array.isArray(data) ? data : [];
+    } else {
+      const text = data as string;
+      // Guard against enormous CSVs that cause synchronous-parse stack overflow.
+      const lines = text.split('\n');
+      const safe =
+        lines.length > this.MAX_CSV_ROWS + 1
+          ? lines.slice(0, this.MAX_CSV_ROWS + 1).join('\n')
+          : text;
+      rows = this.parseCsv(safe);
+    }
 
     return rows.map((r) => ({
       indicatorId: indicator.id,

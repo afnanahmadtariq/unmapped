@@ -18,7 +18,7 @@ export class WbIndicatorPointEntity {
   @Column({ type: 'int' })
   year!: number;
 
-  @Column({ type: 'numeric', precision: 18, scale: 6 })
+  @Column({ type: 'numeric', precision: 30, scale: 6 })
   value!: string;
 
   @Column({ type: 'varchar', length: 32, default: 'wb' })
