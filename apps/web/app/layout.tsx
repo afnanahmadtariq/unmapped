@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "Cartographer, Open Skills Infrastructure",
   description:
     "Mapping the real skills of 600 million unmapped young people to real economic opportunity. Built for the World Bank Youth Summit × Hack-Nation Global AI Hackathon 2026.",
+  icons: {
+    icon: "/fav.icon",
+    shortcut: "/fav.icon",
+    apple: "/fav.icon",
+  },
 };
 
 type Theme = "dark" | "light";

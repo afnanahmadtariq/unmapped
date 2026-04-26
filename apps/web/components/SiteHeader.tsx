@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ContextSelector from "@/components/ContextSelector";
 import ThemeToggle from "@/components/ThemeToggle";
 import AccountMenu from "@/components/AccountMenu";
@@ -29,12 +30,16 @@ export default function SiteHeader({ countryCode, locale, active = "home", t }: 
     <header className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-border-default bg-bg-base/80 px-4 py-3 backdrop-blur-md md:px-6 md:py-4">
       <Link
         href={`/${qs}`}
-        className="flex items-center gap-2 text-base font-semibold tracking-wide md:text-lg"
+        className="flex items-center gap-2"
       >
-        <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-[10px] font-bold text-white">
-          UM
-        </span>
-        <span className="text-fg-primary">{t.app.name}</span>
+        <Image
+          src="/logo.png"
+          alt={t.app.name}
+          width={140}
+          height={35}
+          className="h-8 w-auto object-contain"
+          priority
+        />
       </Link>
 
       <nav className="order-3 -mx-4 flex w-full overflow-x-auto border-t border-border-default px-4 py-2 text-xs md:order-2 md:mx-0 md:w-auto md:border-0 md:p-0">
