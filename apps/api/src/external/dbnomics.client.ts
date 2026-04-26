@@ -20,10 +20,8 @@ export interface DbnomicsObservation {
  * surface: `/series/{provider}/{dataset}/{seriesCode}` returns a
  * `period_start_day` / `value` array. Callers compose the seriesCode
  * (e.g. `WB/WDI/NY.GDP.PCAP.CD-USA`) and let this client take care of
- * caching + safe error handling.
- *
- * See plan.md "Phase 6 — Polish: Add DBnomics client … use it as a
- * fallback in any harvester whose primary endpoint times out."
+ * caching + safe error handling. Harvesters call this when a primary
+ * statistics endpoint times out or returns no rows.
  */
 @Injectable()
 export class DbnomicsClient {

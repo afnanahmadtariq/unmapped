@@ -7,7 +7,7 @@ import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary } from "@/lib/i18n";
 
 interface PageProps {
-  searchParams: Promise<{ country?: string; locale?: string }>;
+  searchParams: Promise<{ country?: string; locale?: string; role?: string }>;
 }
 
 export default async function ProfilePage({ searchParams }: PageProps) {
@@ -16,6 +16,7 @@ export default async function ProfilePage({ searchParams }: PageProps) {
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
   const qs = `?country=${country.code}&locale=${locale}`;
+  const navigatorMode = sp.role === "navigator";
 
   return (
     <main className="flex flex-1 flex-col">
@@ -49,6 +50,7 @@ export default async function ProfilePage({ searchParams }: PageProps) {
           locale={locale}
           t={t}
           opportunitiesHref={`/opportunities${qs}`}
+          navigatorMode={navigatorMode}
         />
       </section>
     </main>

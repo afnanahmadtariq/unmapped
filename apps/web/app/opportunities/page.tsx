@@ -1,9 +1,11 @@
 import SiteHeader from "@/components/SiteHeader";
 import OpportunityWorkbench from "@/components/OpportunityWorkbench";
+import WittgensteinCard from "@/components/WittgensteinCard";
 import Pill from "@/components/Pill";
 import { Sparkles } from "lucide-react";
 import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary, fmt } from "@/lib/i18n";
+import { apiClient, type WittgensteinPoint } from "@/lib/apiClient";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -15,6 +17,14 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
   const profileHref = `/profile?country=${country.code}&locale=${locale}`;
+
+  let wittgensteinProjections: WittgensteinPoint[] | null = null;
+  try {
+    const snap = await apiClient.dashboardSnapshot(country.code);
+    wittgensteinProjections = snap.wittgensteinProjections;
+  } catch {
+    wittgensteinProjections = null;
+  }
 
   return (
     <main className="flex flex-1 flex-col">
@@ -38,6 +48,16 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
             {t.opportunities.subtitle}
           </p>
         </div>
+        {wittgensteinProjections && wittgensteinProjections.length > 0 ? (
+          <div className="mb-8">
+            <WittgensteinCard
+              projections={wittgensteinProjections}
+              countryName={country.name}
+              title={t.opportunities.wittgensteinYouthTitle}
+              subtitle={t.opportunities.wittgensteinYouthSubtitle}
+            />
+          </div>
+        ) : null}
         <OpportunityWorkbench
           countryCode={country.code}
           countryName={country.name}

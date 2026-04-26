@@ -3,19 +3,12 @@
 import clsx from "clsx";
 import { Shield, TrendingUp, Layers, Plug } from "lucide-react";
 import type { ResilienceBreakdown } from "@/lib/apiClient";
+import type { Dictionary } from "@/lib/i18n";
 
 interface Props {
   score: ResilienceBreakdown;
-  title: string;
-  subtitle: string;
+  t: Dictionary;
 }
-
-const BAND_COPY: Record<ResilienceBreakdown["band"], string> = {
-  low: "Low resilience",
-  medium: "Building resilience",
-  high: "Resilient",
-  "very-high": "Highly resilient",
-};
 
 const BAND_TONE: Record<ResilienceBreakdown["band"], string> = {
   low: "text-danger",
@@ -24,19 +17,27 @@ const BAND_TONE: Record<ResilienceBreakdown["band"], string> = {
   "very-high": "text-positive",
 };
 
-export default function ResilienceScore({ score, title, subtitle }: Props) {
+const BAND_KEY: Record<ResilienceBreakdown["band"], keyof Dictionary["opportunities"]> = {
+  low: "resilienceBandLow",
+  medium: "resilienceBandMedium",
+  high: "resilienceBandHigh",
+  "very-high": "resilienceBandVeryHigh",
+};
+
+export default function ResilienceScore({ score, t }: Props) {
   const pct = Math.max(0, Math.min(100, score.total));
   const ring = `conic-gradient(var(--accent) 0 ${pct * 3.6}deg, color-mix(in oklab, var(--bg-hover) 70%, transparent) ${pct * 3.6}deg 360deg)`;
+  const bandLabel = t.opportunities[BAND_KEY[score.band]];
 
   return (
     <section className="rounded-2xl border border-border-default bg-bg-raised p-5 shadow-sm">
       <header className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
         <div>
-          <h3 className="text-sm font-medium text-fg-primary">{title}</h3>
-          <p className="text-[11px] text-fg-muted">{subtitle}</p>
+          <h3 className="text-sm font-medium text-fg-primary">{t.opportunities.resilienceTitle}</h3>
+          <p className="text-[11px] text-fg-muted">{t.opportunities.resilienceSubtitle}</p>
         </div>
         <span className={clsx("text-xs font-medium uppercase tracking-wider", BAND_TONE[score.band])}>
-          {BAND_COPY[score.band]}
+          {bandLabel}
         </span>
       </header>
 
@@ -58,31 +59,31 @@ export default function ResilienceScore({ score, title, subtitle }: Props) {
         <div className="space-y-3">
           <SubBar
             icon={<Layers className="h-3.5 w-3.5" />}
-            label="Skill diversity"
+            label={t.opportunities.resilienceSkillDiversity}
             value={score.diversity}
             max={25}
-            hint="Distinct ESCO categories you span"
+            hint={t.opportunities.resilienceSkillDiversityHint}
           />
           <SubBar
             icon={<Shield className="h-3.5 w-3.5" />}
-            label="AI durability"
+            label={t.opportunities.resilienceAiDurability}
             value={score.durability}
             max={25}
-            hint="Inverse of avg LMIC-calibrated automation risk"
+            hint={t.opportunities.resilienceAiDurabilityHint}
           />
           <SubBar
             icon={<TrendingUp className="h-3.5 w-3.5" />}
-            label="Sector momentum"
+            label={t.opportunities.resilienceSectorMomentum}
             value={score.momentum}
             max={25}
-            hint="Avg YoY employment growth across top 3 matches"
+            hint={t.opportunities.resilienceSectorMomentumHint}
           />
           <SubBar
             icon={<Plug className="h-3.5 w-3.5" />}
-            label="Adjacency"
+            label={t.opportunities.resilienceAdjacency}
             value={score.adjacency}
             max={25}
-            hint="Coverage of skills your top matches require"
+            hint={t.opportunities.resilienceAdjacencyHint}
           />
         </div>
       </div>

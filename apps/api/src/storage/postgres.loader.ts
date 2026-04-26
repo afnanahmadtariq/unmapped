@@ -11,8 +11,8 @@ import type { HarvestedDataset } from '../types/dataset.types';
  * based on `dataset.category` and (when needed) the `sourceId`.
  *
  * Every batch upsert is tagged with `ctx.runId` so LineageService can
- * cascade-delete a run later. Sources without a final entity emit a
- * TODO note (cron stays green) until Phase 3 fills in their loaders.
+ * cascade-delete a run later. Unrecognised `sourceId` values fall through
+ * to generic JSONB storage (`custom_records`) so uploads still persist.
  */
 @Injectable()
 export class PostgresLoader implements DatasetLoader {

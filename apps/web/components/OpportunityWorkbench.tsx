@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -204,13 +204,7 @@ export default function OpportunityWorkbench({
 
   return (
     <div className="space-y-6 animate-[fadeIn_240ms_ease-out]">
-      {resilience && (
-        <ResilienceScore
-          score={resilience}
-          title="Your resilience score"
-          subtitle="Composite of skill diversity, AI durability, sector momentum, and adjacency to top matches"
-        />
-      )}
+      {resilience && <ResilienceScore score={resilience} t={t} />}
     <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
       <aside className="space-y-3">
         <div className="rounded-xl border border-border-default bg-bg-raised p-4">
@@ -311,6 +305,7 @@ export default function OpportunityWorkbench({
           <CompositeSignalsRow
             signals={signals[active.iscoCode]}
             currencySymbol={currencySymbol}
+            t={t}
           />
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -506,67 +501,115 @@ function PathwayCard({
 function CompositeSignalsRow({
   signals,
   currencySymbol,
+  t,
 }: {
   signals: CompositeSignals | undefined;
   currencySymbol: string;
+  t: Dictionary;
 }) {
   if (!signals) return null;
   const cards: Array<{
+    key: string;
     label: string;
     value: string;
     sub: string;
     tone: "accent" | "positive" | "warning" | "danger";
+    icon: ReactNode;
   }> = [];
   if (signals.income.wageFloor !== null) {
     cards.push({
-      label: "Wage floor",
+      key: "wf",
+      label: t.opportunities.compositeWageFloor,
       value: `${currencySymbol} ${Math.round(signals.income.wageFloor).toLocaleString()}`,
-      sub: "ILOSTAT 10th percentile",
+      sub: t.opportunities.compositeWageFloorSub,
       tone: "accent",
+      icon: <Wallet className="h-4 w-4" />,
     });
   }
   if (signals.income.wageGrowthYoY !== null) {
     const v = signals.income.wageGrowthYoY;
     cards.push({
-      label: "Wage growth (YoY)",
+      key: "wg",
+      label: t.opportunities.compositeWageGrowthYoY,
       value: `${v >= 0 ? "+" : ""}${v.toFixed(1)}%`,
-      sub: "ILOSTAT earnings",
+      sub: t.opportunities.compositeWageGrowthSub,
       tone: v >= 0 ? "positive" : "danger",
+      icon: <TrendingUp className="h-4 w-4" />,
     });
   }
   if (signals.automation.routineRatio !== null) {
     const v = signals.automation.routineRatio;
+    const pct = v <= 1 ? v * 100 : v;
     cards.push({
-      label: "Routine task share",
-      value: `${(v * (v <= 1 ? 100 : 1)).toFixed(0)}%`,
-      sub: "ILO Future of Work",
+      key: "rt",
+      label: t.opportunities.compositeRoutineShare,
+      value: `${pct.toFixed(0)}%`,
+      sub: t.opportunities.compositeRoutineSub,
       tone: v >= 0.6 ? "danger" : v >= 0.3 ? "warning" : "positive",
+      icon: <ShieldAlert className="h-4 w-4" />,
     });
   }
   if (signals.automation.skillDurability !== null) {
     const v = signals.automation.skillDurability;
     cards.push({
-      label: "Skill durability",
+      key: "sd",
+      label: t.opportunities.compositeSkillDurability,
       value: `${(v * 100).toFixed(0)}%`,
-      sub: "Calibrated 1−AI exposure",
+      sub: t.opportunities.compositeSkillDurabilitySub,
       tone: v >= 0.6 ? "positive" : v >= 0.4 ? "warning" : "danger",
+      icon: <ShieldAlert className="h-4 w-4" />,
     });
   }
   if (signals.demand.vacancyRate !== null) {
     cards.push({
-      label: "Live vacancies",
+      key: "vac",
+      label: t.opportunities.compositeVacancies,
       value: `${signals.demand.vacancyRate}`,
-      sub: "Tavily snapshot",
+      sub: t.opportunities.compositeVacanciesSub,
       tone: "accent",
+      icon: <Briefcase className="h-4 w-4" />,
+    });
+  }
+  if (signals.education.tertiaryShare2030 !== null) {
+    const v = signals.education.tertiaryShare2030;
+    cards.push({
+      key: "tert",
+      label: t.opportunities.compositeTertiary2030,
+      value: `${(v * 100).toFixed(1)}%`,
+      sub: t.opportunities.compositeTertiary2030Sub,
+      tone: "accent",
+      icon: <GraduationCap className="h-4 w-4" />,
+    });
+  }
+  if (signals.education.upperSecondaryShare2030 !== null) {
+    const v = signals.education.upperSecondaryShare2030;
+    cards.push({
+      key: "upsec",
+      label: t.opportunities.compositeUpperSec2030,
+      value: `${(v * 100).toFixed(1)}%`,
+      sub: t.opportunities.compositeUpperSec2030Sub,
+      tone: "accent",
+      icon: <GraduationCap className="h-4 w-4" />,
+    });
+  }
+  if (signals.education.educationSpendShareGdp !== null) {
+    const v = signals.education.educationSpendShareGdp;
+    cards.push({
+      key: "edsp",
+      label: t.opportunities.compositeEduSpend,
+      value: `${v.toFixed(1)}%`,
+      sub: t.opportunities.compositeEduSpendSub,
+      tone: "accent",
+      icon: <GraduationCap className="h-4 w-4" />,
     });
   }
   if (cards.length === 0) return null;
   return (
-    <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
       {cards.map((c) => (
         <SignalCard
-          key={c.label}
-          icon={<TrendingUp className="h-4 w-4" />}
+          key={c.key}
+          icon={c.icon}
           label={c.label}
           value={c.value}
           sub={c.sub}

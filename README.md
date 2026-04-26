@@ -11,7 +11,7 @@
 
 Generic job boards don't help Amara, 22, in Accra. She needs infrastructure that:
 
-- Speaks her language (literally: EN, FR, Bangla)
+- Speaks her language (15 UI locales including EN, FR, Bangla, Swahili, and more)
 - Understands her credentials (WASSCE in Ghana, SSC in Bangladesh, not "high school diploma")
 - Calibrates AI displacement risk for her context, not for San Francisco
 - Surfaces self-employment, gig, and training pathways, not just formal jobs that don't exist
@@ -32,34 +32,36 @@ When the demo switches to Bangladesh, the same infrastructure reconfigures: Bang
 |---|---|---|
 | **01: Skills Signal Engine** | Built | Free-text story to ESCO-mapped profile, plain-English tooltips, JSON + PDF export |
 | **03: Opportunity Matching & Dashboard** | Built | ESCO to ISCO match, surfaces wage + growth + AI-risk on every card, dual interface (youth + policymaker) |
-| **02: AI Readiness Lens** | Light | Frey-Osborne badge per occupation with per-country LMIC calibration |
+| **02: AI Readiness Lens** | Light (plus youth context) | Frey-Osborne per occupation with LMIC calibration; ILO Future-of-Work style task signals in composite API; **Wittgenstein 2025–2035** chart on `/opportunities` and `/dashboard` when data is available |
 
 ### Country-agnostic by construction
 
-Five things are configurable **without touching the codebase**:
+Five things are configurable **without application code changes** (data + config files, Admin upload, or registry entries):
 
-1. **Labor market data**: `/public/data/<country>/wages.json`, `growth.json`
-2. **Education taxonomy**: `/public/data/<country>/credentials.json` (WASSCE, NVTI, SSC, HSC, TVET ...)
-3. **Language & script**: `/locales/{en,fr,bn}.json` via `next-intl`
-4. **Automation calibration**: `/public/data/<country>/calibration.json` (LMIC multiplier on Frey-Osborne)
+1. **Labor market data**: per-country JSON under `apps/api/src/signals/data/<code>/` (or ingested via API), wages and sector growth
+2. **Education taxonomy**: `credentials.json` per country (WASSCE, NVTI, SSC, HSC, TVET, KCSE, ...)
+3. **Language & script**: `apps/web/locales/*.json` dictionaries loaded by `?locale=`
+4. **Automation calibration**: per-country multiplier and sector overrides
 5. **Opportunity types**: formal employment, self-employment, gig, training pathways
 
-Live demo switches between **Ghana** and **Bangladesh** in one click.
+The country registry lists **200+** ISO markets with synthesised baselines; **Ghana, Bangladesh, and Kenya** ship hand-curated ILOSTAT-style snapshots. The live demo typically switches **Ghana** and **Bangladesh** in one click.
+
+**Navigator mode:** open `/profile?country=GH&locale=en&role=navigator` so a training provider or community navigator sees guidance when entering a profile for someone else (same flow; export JSON/PDF for the participant).
 
 ## Tech stack
 
-- **Framework:** Next.js 16 (App Router) + React 19 + TypeScript strict
+- **Monorepo:** Turborepo — `apps/web` (Next.js 16 App Router + React 19 + TypeScript strict) and `apps/api` (NestJS signals, matching, RAG, harvesters)
 - **Styling:** Tailwind CSS 4
-- **LLM:** Anthropic Claude Sonnet 4.6 (skills extraction via tool-use, post-filtered against valid ESCO codes)
+- **LLM:** Anthropic Claude (skills extraction via tool-use, post-filtered against valid ESCO codes)
 - **Search:** Tavily API (live formal-job listings)
-- **Charts:** Recharts (policymaker dashboard)
-- **i18n:** `next-intl` for EN, FR, BN
-- **Data:** Static JSON snapshots in `/public/data/` (avoids ILOSTAT/WDI rate limits during judging)
-- **Deployment:** Vercel
+- **Charts:** Recharts (youth Wittgenstein strip + policymaker dashboard)
+- **i18n:** JSON locale files in `apps/web/locales/` (15 languages)
+- **Data:** Curated JSON snapshots + optional **live** World Bank and other harvesters in the API; ILOSTAT-style series may be snapshotted where APIs are rate-limited
+- **Deployment:** Vercel (web); API URL via `NEXT_PUBLIC_API_URL` on the web app
 
 ## Data sources & citations
 
-All datasets are real and publicly sourced. Every JSON file in `/public/data/` carries a citation comment.
+All datasets are real and publicly sourced. Bundled JSON under `apps/api/src/signals/data/` includes citation metadata where applicable.
 
 | Dataset | Used for | Source |
 |---|---|---|
@@ -69,59 +71,50 @@ All datasets are real and publicly sourced. Every JSON file in `/public/data/` c
 | World Bank WDI | Youth unemployment, sector growth | [data.worldbank.org](https://data.worldbank.org) |
 | Frey-Osborne (2013) | Automation risk per occupation | *The Future of Employment*, Frey & Osborne, Oxford |
 | Wittgenstein Centre | Education projections 2025 to 2035 | [wittgensteincentre.org](https://www.wittgensteincentre.org) |
+| O*NET (US DOL) | Task statements (RAG / retrieval) | [onetcenter.org](https://www.onetcenter.org) |
+| UNESCO UIS / ITU / UN Population (via API harvesters) | Education spend, connectivity, demographics | Mirrored or cited per harvester notes in `apps/api` |
 
-## Architecture
+**Not integrated:** World Bank **STEP** skill measurement microdata is not wired into this prototype (see Limitations).
+
+## Architecture (high level)
 
 ```
 unmapped/
-├── app/
-│   ├── page.tsx                  Landing + Amara story
-│   ├── profile/                  Skills input + ESCO display
-│   ├── opportunities/            Youth-facing matches
-│   ├── dashboard/                Policymaker view
-│   ├── admin/config/             Country-agnostic configurability proof
-│   └── api/
-│       ├── extract-skills/       Claude to ESCO mapping
-│       ├── match-occupations/    Cosine similarity to ISCO codes
-│       ├── automation-risk/      Frey-Osborne + LMIC calibration
-│       ├── find-jobs/            Tavily formal job search
-│       ├── self-employment/      Self-employment opportunities
-│       ├── gig-opportunities/    Gig pathways
-│       ├── training-pathways/    Local upskilling routes
-│       └── explain/              Honest 2-sentence explanations
-├── lib/
-│   ├── llm.ts                    Anthropic client + tool-use
-│   ├── tavily.ts                 Tavily client
-│   ├── matcher.ts                ISCO scoring
-│   ├── calibration.ts            Per-country automation multipliers
-│   ├── credentials.ts            Per-country credential mapping
-│   └── config.ts                 Country config registry
-├── public/data/
-│   ├── esco-skills.json          Top 500 ESCO skills
-│   ├── isco-occupations.json     Top 200 ISCO codes
-│   ├── frey-osborne.json         Automation probabilities
-│   ├── ghana/                    GH wages, growth, credentials, calibration
-│   └── bangladesh/               BD wages, growth, credentials, calibration
-└── locales/                      en.json, fr.json, bn.json
+├── apps/web/                 Next.js UI
+│   ├── app/                  Routes: landing, profile, opportunities, dashboard, admin/config, api-docs
+│   ├── components/           ProfileWizard, OpportunityWorkbench, PolicyDashboard, ...
+│   ├── lib/                  apiClient, config, i18n, matcher helpers, PDF export
+│   └── locales/              15 × JSON dictionaries
+├── apps/api/                 NestJS API
+│   ├── src/dashboard/        Policymaker snapshot + Wittgenstein bundle
+│   ├── src/profile/          Extract-skills, match occupations, pathways
+│   ├── src/signals/          Composite A–H signals, ILOSTAT/WDI entities, per-country JSON
+│   ├── src/harvest/          Optional cron harvesters (WB HCI, UNESCO UIS, ITU, O*NET, ...)
+│   └── src/rag/              ESCO + O*NET retrieval and explain
+└── scripts/                  e.g. generate-countries.mjs
 ```
+
+The browser **never** called deleted Next `app/api/*` routes; the web app uses `NEXT_PUBLIC_API_URL` (default `http://localhost:4000`) for all server logic.
 
 ## Getting started
 
 ```bash
 git clone https://github.com/Muhammadzeeshsn/unmapped.git
 cd unmapped
-npm install
-cp .env.local.example .env.local       # add ANTHROPIC_API_KEY and TAVILY_API_KEY
-npm run dev
+pnpm install
+# Web: copy apps/web/.env.example if present; set ANTHROPIC_API_KEY, TAVILY_API_KEY, NEXT_PUBLIC_API_URL
+# API: configure apps/api env (database, Milvus, etc.) per apps/api README if you run the full stack
+pnpm run dev            # turbo: web + api in parallel (or `pnpm run dev:web` only)
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open the web app (default [http://localhost:3000](http://localhost:3000)) with the API running if you need matching, snapshots, and composite rows.
 
-### Required env vars
+### Required env vars (web)
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 TAVILY_API_KEY=tvly-...
+NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
 ## Demo flow
@@ -129,23 +122,24 @@ TAVILY_API_KEY=tvly-...
 1. Landing page, Amara story, click **Map My Skills**
 2. Enter free-text background (phone repair, self-taught JavaScript, no formal CS degree)
 3. Profile generates with ESCO codes + plain-English tooltips
-4. Click **See Opportunities**, 5 matches appear with **wage**, **growth**, **AI risk** visible on every card
+4. Click **See Opportunities** — matches show **wage**, **growth**, **AI risk**; optional **composite** row (wage floor, routine tasks, education projections 2030, UNESCO spend when the API has data); **Wittgenstein** chart when projections exist for that country
 5. All four opportunity types shown: formal job, self-employment, gig, training
 6. Toggle **Ghana** to **Bangladesh** in the header. UI, currency, sectors, credentials, language all update live.
 7. Open `/dashboard` for the policymaker view with charts + CSV export.
 
 ## Limitations (honest)
 
-This is an 18-hour prototype. We were deliberate about scope:
+This is a hackathon-scale prototype. We were deliberate about scope:
 
-- **Data is snapshotted, not live.** ILOSTAT and WDI are pre-fetched into `/public/data/`. Production would refresh on a cron.
-- **Two countries only.** Ghana and Bangladesh are wired end-to-end. Adding a third country means dropping a folder under `/public/data/<country>/` plus a locale file. We did not implement an admin UI for it.
-- **ESCO subset.** We use the top 500 most-relevant ESCO skills, not the full ~13,000. Long-tail skills fall back to a "closest match" badge.
-- **Frey-Osborne is dated (2013).** We apply an LMIC multiplier as a coarse calibration. A real product would use a recent OECD or McKinsey LMIC-specific automation index.
-- **Tavily job search is best-effort.** Results depend on what's on the public web in the target country. Expect lower coverage outside major metros.
-- **No auth, no persistence.** Profiles live in the browser; export to JSON/PDF to keep them. A real deployment needs accounts plus offline-first sync for low-bandwidth users.
-- **PDF export is client-side (jsPDF).** Layout is functional, not beautiful. Server-side rendering with proper typography is a v2 item.
-- **No automated tests.** Manual testing only within the hackathon window.
+- **World Bank STEP** survey microdata is **not** integrated; skills remain self-reported and LLM-mapped, not calibrated against STEP distributions.
+- **No third-party skill verification.** There is no employer or training-provider attestation layer, only **navigator mode** (`?role=navigator`) copy for facilitators using the same intake flow.
+- **ILOSTAT granularity** may be snapshotted or partial depending on environment; composite and dashboard degrade gracefully when series are missing.
+- **ESCO subset** in some pipelines (top skills list), not the full ~13,000. Long-tail skills may fall back to closest matches.
+- **Frey-Osborne (2013)** plus LMIC multiplier is a coarse automation lens, not a forecast.
+- **Tavily** job search is best-effort and coverage varies by country and language.
+- **No auth / limited persistence** in the default demo path; export JSON or PDF for portability.
+- **PDF** is client-side (jsPDF); typography is functional.
+- **No automated tests** in the hackathon window.
 
 We chose to ship something honest and end-to-end rather than something polished and partial.
 

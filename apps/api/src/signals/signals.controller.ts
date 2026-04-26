@@ -14,7 +14,9 @@ export class SignalsController {
    * `declaredSkills` is optional and accepts a comma-separated list of
    * ISCO codes (used by `skillDurability` and `crossSkillTransferability`).
    */
-  @Get('composite/:country/:iscoCode?')
+  // path-to-regexp v8 (Nest 11) dropped the `?` optional suffix.
+  // Express two routes onto the same handler instead.
+  @Get(['composite/:country', 'composite/:country/:iscoCode'])
   getComposite(
     @Param('country') country: string,
     @Param('iscoCode') iscoCode?: string,

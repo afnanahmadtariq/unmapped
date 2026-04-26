@@ -64,6 +64,8 @@ interface Props {
   locale: string;
   t: Dictionary;
   opportunitiesHref: string;
+  /** When true (e.g. `?role=navigator`), show guidance for community navigators entering a profile for someone else. */
+  navigatorMode?: boolean;
 }
 
 const EDUCATION_KEYS = [
@@ -227,6 +229,7 @@ export default function ProfileWizard({
   locale,
   t,
   opportunitiesHref,
+  navigatorMode = false,
 }: Props) {
   const toast = useToast();
   const [step, setStep] = useState<Step>(0);
@@ -242,7 +245,7 @@ export default function ProfileWizard({
   const [story, setStory] = useState("");
   const [storyInterim, setStoryInterim] = useState("");
 
-  // New context state (Phase 8 expansion)
+  // Extended wizard fields (work history, tools, voice, etc.)
   const [phoneAccess, setPhoneAccess] = useState<PhoneAccess | undefined>(undefined);
   const [selfLearning, setSelfLearning] = useState<SelfLearningChannel[]>([]);
   const [workEntries, setWorkEntries] = useState<WorkEntry[]>([]);
@@ -695,7 +698,17 @@ export default function ProfileWizard({
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <div className="space-y-4">
+      {navigatorMode ? (
+        <div
+          role="note"
+          className="rounded-xl border border-accent/40 bg-accent/5 px-4 py-3 text-sm text-fg-primary"
+        >
+          <p className="font-medium text-fg-primary">{t.profile.navigatorBannerTitle}</p>
+          <p className="mt-1 text-fg-secondary">{t.profile.navigatorBannerBody}</p>
+        </div>
+      ) : null}
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <section className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
         <Stepper step={step} steps={STEPS} />
 
@@ -1195,6 +1208,7 @@ export default function ProfileWizard({
           </div>
         )}
       </aside>
+    </div>
     </div>
   );
 }
