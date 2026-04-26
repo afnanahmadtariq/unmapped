@@ -55,19 +55,11 @@ export default function ThemeToggle() {
 }
 
 /** No-flash inline script. Runs synchronously before React hydrates. */
-export const ThemeNoFlashScript = () => {
-  // Prevent React from warning about script tag in client components
-  // by only rendering this raw script on the server.
-  if (typeof window !== "undefined") {
-    return null;
-  }
-
-  return (
-    <script
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: `(function(){try{var k='${STORAGE_KEY}';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var h=document.documentElement;h.setAttribute('data-theme',t);h.style.colorScheme=t;}catch(e){}})();`,
-      }}
-    />
-  );
-};
+export const ThemeNoFlashScript = () => (
+  <script
+    // eslint-disable-next-line react/no-danger
+    dangerouslySetInnerHTML={{
+      __html: `(function(){try{var k='${STORAGE_KEY}';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var h=document.documentElement;h.setAttribute('data-theme',t);h.style.colorScheme=t;}catch(e){}})();`,
+    }}
+  />
+);

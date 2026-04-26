@@ -12,6 +12,7 @@ import { IloFowHarvester } from './harvesters/ilo-fow.harvester';
 import { ItuDigitalHarvester } from './harvesters/itu-digital.harvester';
 import { EscoHarvester } from './harvesters/esco.harvester';
 import { StorageService } from '../storage/storage.service';
+import cron from 'node-cron';
 
 @Injectable()
 export class HarvestService {
@@ -77,11 +78,12 @@ export class HarvestService {
     return results.map(r => (r.status === 'fulfilled' ? r.value : { sourceId: 'unknown', success: false, message: 'Rejected' }));
   }
 
-  /** List all harvester source IDs and their cron expressions */
-  getSchedule(): { sourceId: string; cron: string }[] {
+  /** List all harvester source IDs and validate their cron expressions */
+  getSchedule(): { sourceId: string; cron: string; valid: boolean }[] {
     return Object.entries(this.harvesterMap).map(([id, h]) => ({
       sourceId: id,
       cron: h.cronExpression,
+      valid: cron.validate(h.cronExpression),
     }));
   }
 

@@ -1,30 +1,16 @@
 {
-  "name": "unmapped",
-  "version": "0.1.0",
+  "name": "unmapped-monorepo",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.91.1",
-    "clsx": "^2.1.1",
-    "jspdf": "^4.2.1",
-    "lucide-react": "^1.11.0",
-    "next": "16.2.4",
-    "nodemailer": "^8.0.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "recharts": "^3.8.1"
+    "dev": "turbo run dev --parallel",
+    "dev:web": "turbo run dev --filter=@unmapped/web",
+    "dev:api": "turbo run start:dev --filter=@unmapped/api",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/nodemailer": "^8.0.0",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "turbo": "^2.5.8"
   }
 }
