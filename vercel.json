@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm --filter @unmapped/web build",
+  "installCommand": "pnpm install --frozen-lockfile=false",
+  "outputDirectory": "apps/web/.next",
+  "framework": "nextjs",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- apps/web pnpm-lock.yaml package.json turbo.json"
+}
