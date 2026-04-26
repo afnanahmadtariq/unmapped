@@ -1,7 +1,13 @@
 // Cartographer — typed fetch wrapper for the NestJS API.
-// All server-side logic now lives in apps/api. The web layer just
-// posts JSON and renders the response. Configure NEXT_PUBLIC_API_URL
-// in apps/web/.env (defaults to http://localhost:4000 — Nest default PORT).
+//
+// Address resolution:
+//   * Browser → always `/api/proxy` (same-origin reverse proxy under
+//     apps/web/app/api/proxy/[...path]/route.ts). This keeps the upstream
+//     API hostname out of the client bundle, sidesteps CORS, and lets the
+//     API URL change at runtime without rebuilding.
+//   * Server (RSC, route handlers, etc.) → direct fetch against the
+//     upstream URL. Prefer the server-only `API_URL` env var; fall back
+//     to `NEXT_PUBLIC_API_URL` for back-compat.
 //
 // Payload shapes are kept identical to the deleted /api/* routes so
 // callers only swap URL → apiClient method, no body changes.
@@ -17,16 +23,17 @@ import type {
   SkillsProfile,
 } from "@/types";
 
-function normaliseApiBase(raw: string | undefined): string {
-  const trimmed = (raw ?? "").replace(/\/$/, "").trim();
-  if (!trimmed) return "http://localhost:4000";
-  // Ensure an explicit scheme so Node fetch doesn't throw "Failed to parse URL".
-  // railway.internal URLs need http://, public URLs already carry https://.
-  if (!/^https?:\/\//i.test(trimmed)) return `http://${trimmed}`;
-  return trimmed;
+function resolveApiBase(): string {
+  if (typeof window !== "undefined") return "/api/proxy";
+  const raw = (process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "")
+    .replace(/\/$/, "")
+    .trim();
+  if (!raw) return "http://localhost:4000";
+  if (!/^https?:\/\//i.test(raw)) return `https://${raw}`;
+  return raw;
 }
 
-const API_BASE = normaliseApiBase(process.env.NEXT_PUBLIC_API_URL);
+const API_BASE = resolveApiBase();
 
 /** Public copy of the resolved API base URL — used by direct download links. */
 export const apiBase = API_BASE;

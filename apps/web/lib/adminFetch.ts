@@ -7,17 +7,19 @@
 
 import { cookies, headers } from "next/headers";
 
-// Reuse the same normalisation logic as apiClient.ts so a missing protocol
-// (e.g. "unmappedapi.railway.internal" without http://) doesn't cause
-// "Failed to parse URL" on the server side.
-function normaliseBase(raw: string | undefined): string {
-  const trimmed = (raw ?? "").replace(/\/$/, "").trim();
-  if (!trimmed) return "http://localhost:4000";
-  if (!/^https?:\/\//i.test(trimmed)) return `http://${trimmed}`;
-  return trimmed;
+// adminFetch is server-only; talk directly to the upstream API. Prefer
+// the server-only `API_URL` env var so secrets never leak to the client
+// bundle; fall back to `NEXT_PUBLIC_API_URL` for back-compat.
+function resolveBase(): string {
+  const raw = (process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "")
+    .replace(/\/$/, "")
+    .trim();
+  if (!raw) return "http://localhost:4000";
+  if (!/^https?:\/\//i.test(raw)) return `https://${raw}`;
+  return raw;
 }
 
-const API_BASE = normaliseBase(process.env.NEXT_PUBLIC_API_URL);
+const API_BASE = resolveBase();
 
 const ADMIN_COOKIE = "cartographer_admin_session";
 
