@@ -1,14 +1,35 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "NODE_ENV",
+    "PORT",
+    "WEB_ORIGIN",
+    "POSTGRES_URL",
+    "MILVUS_URI",
+    "MILVUS_TOKEN",
+    "MILVUS_USER",
+    "MILVUS_PASSWORD",
+    "MILVUS_DATABASE",
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_MODEL",
+    "EMBEDDINGS_PROVIDER",
+    "EMBEDDINGS_API_KEY",
+    "EMBEDDINGS_MODEL",
+    "EMBEDDINGS_DIM",
+    "TAVILY_API_KEY",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASS",
+    "SMTP_FROM",
+    "SMTP_SECURE",
+    "TYPEORM_SYNC",
+    "TYPEORM_LOGGING"
+  ],
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        ".next/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
     },
     "dev": {
       "cache": false,
@@ -22,12 +43,8 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "coverage/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
     }
   }
 }

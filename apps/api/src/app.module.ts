@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -28,7 +29,22 @@ import { DataController } from './data.controller';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env', 'apps/api/.env'],
+      // Resolved relative to this compiled file so it works regardless of
+      // which directory the API is launched from (turbo run, nest start,
+      // jest, ts-node, etc.). Order: first hit wins.
+      //   __dirname when running ts-node:  apps/api/src
+      //   __dirname when running compiled: apps/api/dist
+      // Both layouts walk up to apps/api/ then to monorepo root.
+      envFilePath: [
+        // ts-node:                __dirname = apps/api/src
+        // nest start --watch:     __dirname = apps/api/dist/src
+        // Try every plausible depth so this works in either layout.
+        path.resolve(__dirname, '../.env'),            // apps/api/.env (override)
+        path.resolve(__dirname, '../../.env'),         // monorepo root from src/
+        path.resolve(__dirname, '../../../.env'),      // monorepo root from dist/src/
+        path.resolve(__dirname, '../../../../.env'),   // monorepo root from dist/src/<sub>/
+        path.resolve(process.cwd(), '.env'),           // fallback to CWD
+      ],
     }),
     EnvModule,
     DatabaseModule,
