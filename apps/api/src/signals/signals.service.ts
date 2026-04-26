@@ -140,7 +140,13 @@ export class SignalsService implements OnModuleInit {
   }
 
   private async seedCountrySnapshots(): Promise<void> {
-    if ((await this.calRepo.count()) > 0) return;
+    // Seed if EITHER calibration OR wages are missing — a previous boot may
+    // have seeded calibration but crashed before writing wages.
+    const [calCount, wageCount] = await Promise.all([
+      this.calRepo.count(),
+      this.wageRepo.count(),
+    ]);
+    if (calCount > 0 && wageCount > 0) return;
     for (const [code, snap] of Object.entries(SNAPSHOT_INDEX)) {
       await this.calRepo.save(
         this.calRepo.create({

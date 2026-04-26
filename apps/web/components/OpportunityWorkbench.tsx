@@ -90,12 +90,12 @@ export default function OpportunityWorkbench({
     if (fromHash) {
       setProfile(fromHash);
       sessionStorage.setItem(
-        `cartographer:profile:${fromHash.countryCode}`,
+        `unmapped:profile:${fromHash.countryCode}`,
         JSON.stringify(fromHash)
       );
       return;
     }
-    const raw = sessionStorage.getItem(`cartographer:profile:${countryCode}`);
+    const raw = sessionStorage.getItem(`unmapped:profile:${countryCode}`);
     if (raw) {
       try {
         setProfile(JSON.parse(raw));
@@ -237,10 +237,12 @@ export default function OpportunityWorkbench({
                 <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-fg-secondary">
                   <Pill tone="accent">
                     <Wallet className="h-3 w-3" />
-                    {fmt(t.opportunities.wagePill, {
-                      symbol: currencySymbol,
-                      amount: m.medianWageMonthly.toLocaleString(),
-                    })}
+                    {m.medianWageMonthly > 0
+                      ? fmt(t.opportunities.wagePill, {
+                          symbol: currencySymbol,
+                          amount: m.medianWageMonthly.toLocaleString(),
+                        })
+                      : t.opportunities.wageUnavailable ?? "Wage data unavailable"}
                   </Pill>
                   <Pill tone={m.sectorGrowthYoY >= 0 ? "positive" : "danger"}>
                     <TrendingUp className="h-3 w-3" />
@@ -275,8 +277,16 @@ export default function OpportunityWorkbench({
             <SignalCard
               icon={<Wallet className="h-4 w-4" />}
               label={t.opportunities.wageLabel}
-              value={`${currencySymbol} ${active.medianWageMonthly.toLocaleString()}`}
-              sub={fmt(t.opportunities.wageSub, { currency })}
+              value={
+                active.medianWageMonthly > 0
+                  ? `${currencySymbol} ${active.medianWageMonthly.toLocaleString()}`
+                  : "—"
+              }
+              sub={
+                active.medianWageMonthly > 0
+                  ? fmt(t.opportunities.wageSub, { currency })
+                  : t.opportunities.wageUnavailable ?? "No wage data for this occupation"
+              }
             />
             <SignalCard
               icon={<TrendingUp className="h-4 w-4" />}
