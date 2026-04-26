@@ -15,8 +15,8 @@ import { UserProfileEntity } from './user-profile.entity';
  * Distinct from the single-admin auth model (`AuthModule`):
  *   - Multi-user: one row per signup, identified by lower-cased email.
  *   - Bcrypt password hash stored alongside the row (never the plaintext).
- *   - Sessions live in the `unmapped_user_session` cookie (separate from
- *     `unmapped_admin_session` so admin + user sessions never collide).
+ *   - Sessions live in the `cartographer_user_session` cookie (separate from
+ *     `cartographer_admin_session` so admin + user sessions never collide).
  *
  * Every user owns zero-or-more `UserProfileEntity` rows — one per country
  * they've run the wizard for. Cascade-deletes on user removal.

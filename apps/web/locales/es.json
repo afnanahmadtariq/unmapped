@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Infraestructura abierta de habilidades para la era de la IA."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "Cumbre Juvenil World Bank · Hack-Nation 2026",
     "hero": "600 millones de jóvenes. Habilidades no reconocidas. Invisibles para la economía formal.",
-    "subhero": "UNMAPPED mapea habilidades reales a oportunidades reales, con datos reales, país por país.",
+    "subhero": "Cartographer mapea habilidades reales a oportunidades reales, con datos reales, país por país.",
     "ctaPrimary": "Mapear mis habilidades",
     "ctaSecondary": "Abrir panel de responsables de política",
     "amaraTitle": "Conoce a Amara",
@@ -396,6 +396,6 @@
     "statEsco": "Habilidades ESCO cargadas",
     "statIsco": "Ocupaciones ISCO cargadas",
     "statFrey": "Puntajes Frey-Osborne cargados",
-    "footer": "UNMAPPED es infraestructura abierta. Bifúrcalo. Localízalo. El código no cambia, solo la configuración."
+    "footer": "Cartographer es infraestructura abierta. Bifúrcalo. Localízalo. El código no cambia, solo la configuración."
   }
 }

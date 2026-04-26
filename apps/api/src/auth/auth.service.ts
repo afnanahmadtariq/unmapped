@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   cookieName(): string {
-    return 'unmapped_admin_session';
+    return 'cartographer_admin_session';
   }
 
   cookieMaxAgeMs(): number {

@@ -1,4 +1,4 @@
-// UNMAPPED — typed fetch wrapper for the NestJS API.
+// Cartographer — typed fetch wrapper for the NestJS API.
 // All server-side logic now lives in apps/api. The web layer just
 // posts JSON and renders the response. Configure NEXT_PUBLIC_API_URL
 // in apps/web/.env (defaults to http://localhost:4000 — Nest default PORT).

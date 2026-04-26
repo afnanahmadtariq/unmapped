@@ -157,7 +157,7 @@ export default function UploadDialog({ sources }: { sources: AdminDataSource[] }
             {target === "vector" ? (
               <>
                 <FileText className="h-3 w-3" /> will embed into{" "}
-                <code>unmapped_custom_{selected?.slug ?? "&lt;slug&gt;"}</code>
+                <code>cartographer_custom_{selected?.slug ?? "&lt;slug&gt;"}</code>
               </>
             ) : (
               <>

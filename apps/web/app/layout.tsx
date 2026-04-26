@@ -17,14 +17,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UNMAPPED, Open Skills Infrastructure",
+  title: "Cartographer, Open Skills Infrastructure",
   description:
     "Mapping the real skills of 600 million unmapped young people to real economic opportunity. Built for the World Bank Youth Summit × Hack-Nation Global AI Hackathon 2026.",
 };
 
 type Theme = "dark" | "light";
 
-const THEME_COOKIE = "unmapped-theme";
+const THEME_COOKIE = "cartographer-theme";
 
 function parseTheme(value: string | undefined): Theme {
   return value === "dark" ? "dark" : "light";

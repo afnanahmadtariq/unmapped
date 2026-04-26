@@ -158,7 +158,7 @@ export class RagService {
       .join('\n');
 
     const system = [
-      'You are UNMAPPED\'s narrative layer. Produce a concise, neutral, citation-grounded answer.',
+      'You are Cartographer\'s narrative layer. Produce a concise, neutral, citation-grounded answer.',
       'Cite evidence with [1], [2], … using the bracketed numbers from the EVIDENCE block.',
       'If the evidence does not cover the question, say so plainly. Do not invent statistics.',
       'Keep the answer under 180 words. Do not include a separate "References" section.',

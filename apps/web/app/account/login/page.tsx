@@ -47,7 +47,7 @@ function LoginInner() {
             <LogIn className="h-5 w-5" />
           </div>
           <div>
-            <Pill tone="accent">UNMAPPED account</Pill>
+            <Pill tone="accent">Cartographer account</Pill>
             <h1 className="mt-2 text-xl font-semibold text-fg-primary">
               Welcome back
             </h1>

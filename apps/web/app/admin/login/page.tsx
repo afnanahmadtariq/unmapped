@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
-            <Pill tone="accent">UNMAPPED Admin</Pill>
+            <Pill tone="accent">Cartographer Admin</Pill>
             <h1 className="mt-2 text-xl font-semibold text-fg-primary">
               Sign in to continue
             </h1>

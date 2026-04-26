@@ -1,4 +1,4 @@
-// UNMAPPED - Next.js 16 proxy (formerly middleware). Two responsibilities:
+// Cartographer - Next.js 16 proxy (formerly middleware). Two responsibilities:
 //   1. Auto-detect the visitor's country from IP via Vercel/CF headers and
 //      seed the URL's ?country= param if unset (covers user-facing pages).
 //   2. Gate `/admin/*` routes behind the API admin session cookie. The
@@ -21,7 +21,7 @@ const COUNTRY_PATHS = [
   "/account/signup",
 ];
 
-const ADMIN_COOKIE = "unmapped_admin_session";
+const ADMIN_COOKIE = "cartographer_admin_session";
 
 export function proxy(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl;

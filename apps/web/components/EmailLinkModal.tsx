@@ -37,7 +37,7 @@ export default function EmailLinkModal({ open, onClose, url, countryName, skillC
   const valid = EMAIL_RX.test(email.trim());
 
   const openMailto = () => {
-    const subject = encodeURIComponent(`Your UNMAPPED skills profile - ${countryName}`);
+    const subject = encodeURIComponent(`Your Cartographer skills profile - ${countryName}`);
     const body = encodeURIComponent(
       [
         "Open this link to restore your portable skills profile on any device.",

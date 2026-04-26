@@ -37,7 +37,7 @@ const KNOWN_CORPUS_COLLECTIONS: Record<string, string> = {
   training_programs: TRAINING_PROGRAMS_COLLECTION,
 };
 
-const CUSTOM_COLLECTION_PREFIX = 'unmapped_custom_';
+const CUSTOM_COLLECTION_PREFIX = 'cartographer_custom_';
 const CUSTOM_COLLECTION_MAX_LEN = 64;
 
 function customCollectionFor(slug: string): string {
@@ -441,7 +441,7 @@ export class LineageService {
     // Document corpora — group by corpus so we hit each Milvus collection
     // once. First-party corpora (`policy_reports`, `training_programs`)
     // map to their dedicated collection. Anything else is an admin-defined
-    // custom corpus, which lives in `unmapped_custom_<slug>`.
+    // custom corpus, which lives in `cartographer_custom_<slug>`.
     try {
       const chunkRows = await this.chunkRepo.find({
         where: { runId },

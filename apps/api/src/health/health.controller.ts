@@ -9,7 +9,7 @@ export class HealthController {
   basic() {
     return {
       status: 'ok',
-      service: 'unmapped-api',
+      service: 'cartographer-api',
       timestamp: new Date().toISOString(),
     };
   }

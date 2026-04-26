@@ -33,7 +33,7 @@ export class DbnomicsClient {
     this.http = axios.create({
       baseURL: DBNOMICS_BASE,
       timeout: TIMEOUT_MS,
-      headers: { Accept: 'application/json', 'User-Agent': 'UNMAPPED/1.0' },
+      headers: { Accept: 'application/json', 'User-Agent': 'Cartographer/1.0' },
     });
   }
 

@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Open skills infrastructure for the AI age."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank Youth Summit · Hack-Nation 2026",
     "hero": "600 million young people. Unrecognised skills. Invisible to the formal economy.",
-    "subhero": "UNMAPPED maps real skills to real opportunity, with real data, country by country.",
+    "subhero": "Cartographer maps real skills to real opportunity, with real data, country by country.",
     "ctaPrimary": "Map my skills",
     "ctaSecondary": "Open policymaker dashboard",
     "amaraTitle": "Meet Amara",
@@ -396,6 +396,6 @@
     "statEsco": "ESCO skills loaded",
     "statIsco": "ISCO occupations loaded",
     "statFrey": "Frey-Osborne scores loaded",
-    "footer": "UNMAPPED is open infrastructure. Fork it. Localise it. The codebase does not change, only the configuration does."
+    "footer": "Cartographer is open infrastructure. Fork it. Localise it. The codebase does not change, only the configuration does."
   }
 }

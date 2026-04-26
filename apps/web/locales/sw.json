@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "UNMAPPED",
+    "name": "Cartographer",
     "tagline": "Miundombinu ya ujuzi wazi kwa enzi ya AI."
   },
   "selectors": {
@@ -21,7 +21,7 @@
   "landing": {
     "eyebrow": "World Bank Youth Summit · Hack-Nation 2026",
     "hero": "Vijana milioni 600. Ujuzi usiokubaliwa. Hawaonekani kwenye uchumi rasmi.",
-    "subhero": "UNMAPPED inapanga ramani ya ujuzi halisi kwenda fursa halisi, kwa data halisi, nchi kwa nchi.",
+    "subhero": "Cartographer inapanga ramani ya ujuzi halisi kwenda fursa halisi, kwa data halisi, nchi kwa nchi.",
     "ctaPrimary": "Panga ramani ya ujuzi wangu",
     "ctaSecondary": "Fungua dashibodi ya watunga sera",
     "amaraTitle": "Kutana na Amara",
@@ -396,6 +396,6 @@
     "statEsco": "Ujuzi wa ESCO umepakiwa",
     "statIsco": "Ajira za ISCO zimepakiwa",
     "statFrey": "Alama za Frey-Osborne zimepakiwa",
-    "footer": "UNMAPPED ni miundombinu wazi. Igawie. Ifanyie ndani. Msimbo haubadiliki, usanidi pekee ndio unabadilika."
+    "footer": "Cartographer ni miundombinu wazi. Igawie. Ifanyie ndani. Msimbo haubadiliki, usanidi pekee ndio unabadilika."
   }
 }

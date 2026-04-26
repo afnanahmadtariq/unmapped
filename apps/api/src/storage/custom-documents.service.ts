@@ -15,7 +15,7 @@ export interface CustomDocumentInput {
   metadata?: Record<string, unknown>;
 }
 
-const COLLECTION_PREFIX = 'unmapped_custom_';
+const COLLECTION_PREFIX = 'cartographer_custom_';
 const COLLECTION_MAX_LEN = 64;
 const CHUNK_SIZE = 1800;
 const CHUNK_OVERLAP = 200;
@@ -24,7 +24,7 @@ const BATCH_SIZE = 32;
 /**
  * Generic vector ingest for admin upload sources whose payload is text
  * (markdown, plain text, JSON/CSV with a `body` column). Each source slug
- * gets its own Milvus collection — `unmapped_custom_<sanitised-slug>` —
+ * gets its own Milvus collection — `cartographer_custom_<sanitised-slug>` —
  * created on first use. The `document_chunks` Postgres table is reused
  * for chunk authority and cascade-deletion (it already has a `corpus`
  * column we can repurpose by storing the slug there).

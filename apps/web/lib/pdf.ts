@@ -1,4 +1,4 @@
-// UNMAPPED - PDF generation for the portable skills profile.
+// Cartographer - PDF generation for the portable skills profile.
 // Uses jsPDF (client-side). Brand band header, 2-column metadata, sectioned skills,
 // code badges, page footer with page numbers + brand strip.
 
@@ -29,7 +29,7 @@ export function buildSkillsProfilePdf({
   profile,
   countryName,
   locale,
-  appName = "UNMAPPED",
+  appName = "Cartographer",
 }: BuildOpts): jsPDF {
   const doc = new jsPDF({ unit: "pt", format: "a4" });
   let pageNum = 1;
@@ -303,7 +303,7 @@ function drawFooter(doc: jsPDF, page: number) {
   doc.setFontSize(8);
   doc.setTextColor(...COLOR_MUTED);
   doc.text(
-    "UNMAPPED · open skills infrastructure · grounded in ESCO (EU) + ISCO-08 (ILO)",
+    "Cartographer · open skills infrastructure · grounded in ESCO (EU) + ISCO-08 (ILO)",
     MARGIN,
     FOOTER_Y
   );

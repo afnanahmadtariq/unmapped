@@ -54,7 +54,7 @@ export class EmailService {
       maxMessages: 50,
     });
     const customFrom = env.get('SMTP_FROM');
-    this.fromAddress = customFrom ?? `UNMAPPED <${user}>`;
+    this.fromAddress = customFrom ?? `Cartographer <${user}>`;
   }
 
   async sendProfileLink(
@@ -76,11 +76,11 @@ export class EmailService {
       };
     }
 
-    const subject = `Your UNMAPPED skills profile${
+    const subject = `Your Cartographer skills profile${
       input.countryName ? ' - ' + input.countryName : ''
     }`;
     const text = [
-      'Here is the link to your portable UNMAPPED skills profile.',
+      'Here is the link to your portable Cartographer skills profile.',
       'Open it on any device. Edit any time and re-share a fresh link.',
       '',
       input.url,
@@ -89,7 +89,7 @@ export class EmailService {
         ? `${input.skillCount} ESCO-grounded skills, mapped from your own description.`
         : '',
       '',
-      'UNMAPPED is open infrastructure. Your profile lives in the URL itself.',
+      'Cartographer is open infrastructure. Your profile lives in the URL itself.',
       'Nothing about you is stored on our servers.',
     ]
       .filter(Boolean)
@@ -128,7 +128,7 @@ export class EmailService {
 <body style="font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;background:#fafafa;color:#0a0a0a;padding:24px;">
   <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;">
     <div style="background:#0369a1;color:#fff;padding:20px 24px;">
-      <div style="font-weight:700;letter-spacing:0.04em;font-size:18px;">UNMAPPED</div>
+      <div style="font-weight:700;letter-spacing:0.04em;font-size:18px;">Cartographer</div>
       <div style="opacity:0.9;font-size:12px;margin-top:4px;">Open Skills Infrastructure</div>
     </div>
     <div style="padding:24px;">
@@ -147,7 +147,7 @@ export class EmailService {
       <p style="margin:0;word-break:break-all;font-size:11px;color:#404040;">${esc(input.url)}</p>
       <hr style="border:none;border-top:1px solid #e5e5e5;margin:20px 0;">
       <p style="margin:0;font-size:11px;color:#737373;">
-        Your profile lives entirely inside this URL. Nothing about you is stored on UNMAPPED servers. Edit any time and re-share a fresh link.
+        Your profile lives entirely inside this URL. Nothing about you is stored on Cartographer servers. Edit any time and re-share a fresh link.
       </p>
     </div>
   </div>

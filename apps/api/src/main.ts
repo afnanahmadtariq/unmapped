@@ -26,7 +26,7 @@ async function bootstrap() {
   const port = env.get('PORT');
   await app.listen(port);
   const logger = new Logger('Bootstrap');
-  logger.log(`UNMAPPED API listening on http://localhost:${port}`);
+  logger.log(`Cartographer API listening on http://localhost:${port}`);
   logger.log(`CORS allowed origin: ${env.get('WEB_ORIGIN')}`);
 }
 void bootstrap();

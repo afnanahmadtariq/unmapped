@@ -53,7 +53,7 @@ export class VectorLoader implements DatasetLoader {
   /**
    * Generic vector ingest for any admin-defined source whose payload is
    * text. Each upload becomes a set of `document_chunks` rows + Milvus
-   * embeddings in `unmapped_custom_<slug>`. Cascade-delete is handled
+   * embeddings in `cartographer_custom_<slug>`. Cascade-delete is handled
    * uniformly by `LineageService.deleteRun` via `corpus = sourceSlug`.
    */
   private async loadCustomCorpus(
