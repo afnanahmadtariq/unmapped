@@ -42,6 +42,44 @@ export interface Demographics {
   workMode?: WorkMode;
 }
 
+// Optional richer context. The wizard collects this in steps 3-5 but the
+// minimum-viable extraction still works without any of it.
+export type PhoneAccess = "own" | "shared" | "none";
+export type SelfLearningChannel = "youtube" | "apprenticeship" | "work" | "family" | "course";
+export type TaskPrimitive =
+  | "fixed-built"      // Fixed or built things
+  | "customer-talk"    // Talked to customers
+  | "managed-money"    // Handled money / accounts
+  | "used-tech"        // Used a phone or computer for work
+  | "taught-others"    // Taught or supervised others
+  | "sold-products";   // Sold products or services
+export type ToolUsed = "smartphone" | "computer" | "machinery" | "internet-tools";
+export type WorkFrequency = "daily" | "weekly" | "monthly" | "occasional";
+
+export interface WorkEntry {
+  activity: string;
+  years: number;
+  frequency: WorkFrequency;
+  paid: boolean;
+}
+
+export interface Constraints {
+  maxTravelKm?: number;
+  needIncomeNow?: boolean;
+  canStudy?: boolean;
+  hasInternet?: boolean;
+}
+
+export interface ProfileContext {
+  phoneAccess?: PhoneAccess;
+  selfLearning?: SelfLearningChannel[];
+  workEntries?: WorkEntry[];
+  tasks?: TaskPrimitive[];
+  tools?: ToolUsed[];
+  constraints?: Constraints;
+  aspirations?: string;
+}
+
 export interface SkillsProfile {
   userInputSummary: string;
   countryCode: CountryCode;
@@ -49,6 +87,7 @@ export interface SkillsProfile {
   languages: string[];
   yearsExperience: number;
   demographics?: Demographics;
+  context?: ProfileContext;
   skills: SkillEvidence[];
   generatedAt: string;
 }

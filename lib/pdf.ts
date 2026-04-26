@@ -134,6 +134,32 @@ function drawMetaTable(doc: jsPDF, y: number, profile: SkillsProfile): number {
   if (profile.demographics?.location) rows.push(["Location", profile.demographics.location]);
   if (profile.demographics?.workMode) rows.push(["Current work mode", profile.demographics.workMode]);
 
+  const ctx = profile.context;
+  if (ctx?.phoneAccess) rows.push(["Phone access", ctx.phoneAccess]);
+  if (ctx?.selfLearning?.length) rows.push(["Self-learning", ctx.selfLearning.join(", ")]);
+  if (ctx?.tasks?.length) rows.push(["Tasks", ctx.tasks.join(", ")]);
+  if (ctx?.tools?.length) rows.push(["Tools", ctx.tools.join(", ")]);
+  if (ctx?.workEntries?.length) {
+    rows.push([
+      "Work history",
+      ctx.workEntries
+        .map((w) => `${w.activity} (${w.years}y, ${w.frequency}${w.paid ? "" : ", unpaid"})`)
+        .join("; "),
+    ]);
+  }
+  if (ctx?.constraints) {
+    const c = ctx.constraints;
+    const parts: string[] = [];
+    if (c.maxTravelKm != null) parts.push(`travel <= ${c.maxTravelKm}km`);
+    if (c.needIncomeNow) parts.push("needs income now");
+    if (c.canStudy === false) parts.push("cannot study");
+    if (c.canStudy === true) parts.push("can study");
+    if (c.hasInternet === false) parts.push("no internet");
+    if (c.hasInternet === true) parts.push("has internet");
+    if (parts.length) rows.push(["Constraints", parts.join("; ")]);
+  }
+  if (ctx?.aspirations) rows.push(["Aspirations", ctx.aspirations]);
+
   // Two-column layout: split rows down the middle
   const half = Math.ceil(rows.length / 2);
   const left = rows.slice(0, half);

@@ -6,18 +6,22 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  Briefcase,
   Check,
   Download,
   FileJson,
   GraduationCap,
+  Hammer,
   Languages,
   Link2,
   Loader2,
   Mail,
   PencilLine,
+  Plus,
   Share2,
   Sparkles,
   Wand2,
+  X,
 } from "lucide-react";
 import clsx from "clsx";
 import SkillChipInput from "@/components/SkillChipInput";
@@ -35,8 +39,15 @@ import type {
   AgeRange,
   CountryCode,
   Gender,
+  PhoneAccess,
+  ProfileContext,
+  SelfLearningChannel,
   SkillsProfile,
   SkillEvidence,
+  TaskPrimitive,
+  ToolUsed,
+  WorkEntry,
+  WorkFrequency,
   WorkMode,
 } from "@/types";
 import type { ClarifyingQuestion } from "@/lib/llm";
@@ -156,6 +167,36 @@ function sampleStoryFor(code: string): string {
   return SAMPLE_STORIES_BY_COUNTRY[code] ?? GENERIC_SAMPLE;
 }
 
+function selfLearningLabel(k: SelfLearningChannel, t: Dictionary): string {
+  switch (k) {
+    case "youtube": return t.profile.learnYouTube;
+    case "apprenticeship": return t.profile.learnApprentice;
+    case "work": return t.profile.learnWork;
+    case "family": return t.profile.learnFamily;
+    case "course": return t.profile.learnCourse;
+  }
+}
+
+function taskLabel(k: TaskPrimitive, t: Dictionary): string {
+  switch (k) {
+    case "fixed-built": return t.profile.taskFixedBuilt;
+    case "customer-talk": return t.profile.taskCustomerTalk;
+    case "managed-money": return t.profile.taskManagedMoney;
+    case "used-tech": return t.profile.taskUsedTech;
+    case "taught-others": return t.profile.taskTaughtOthers;
+    case "sold-products": return t.profile.taskSoldProducts;
+  }
+}
+
+function toolLabel(k: ToolUsed, t: Dictionary): string {
+  switch (k) {
+    case "smartphone": return t.profile.toolSmartphone;
+    case "computer": return t.profile.toolComputer;
+    case "machinery": return t.profile.toolMachinery;
+    case "internet-tools": return t.profile.toolInternetTools;
+  }
+}
+
 function languageSuggestionsFor(code: string): string[] {
   return LANGUAGE_SUGGESTIONS_BY_COUNTRY[code] ?? DEFAULT_LANG_SUGGESTIONS;
 }
@@ -174,7 +215,7 @@ const SAMPLE_CITY_BY_COUNTRY: Record<string, string> = {
   AF: "Kabul", IR: "Tehran",
 };
 
-type Step = 0 | 1 | 2;
+type Step = 0 | 1 | 2 | 3 | 4;
 
 export default function ProfileWizard({
   countryCode,
@@ -195,6 +236,19 @@ export default function ProfileWizard({
   const [languages, setLanguages] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
   const [story, setStory] = useState("");
+
+  // New context state (Phase 8 expansion)
+  const [phoneAccess, setPhoneAccess] = useState<PhoneAccess | undefined>(undefined);
+  const [selfLearning, setSelfLearning] = useState<SelfLearningChannel[]>([]);
+  const [workEntries, setWorkEntries] = useState<WorkEntry[]>([]);
+  const [tasks, setTasks] = useState<TaskPrimitive[]>([]);
+  const [tools, setTools] = useState<ToolUsed[]>([]);
+  const [maxTravelKm, setMaxTravelKm] = useState<number | undefined>(undefined);
+  const [needIncomeNow, setNeedIncomeNow] = useState<boolean | undefined>(undefined);
+  const [canStudy, setCanStudy] = useState<boolean | undefined>(undefined);
+  const [hasInternet, setHasInternet] = useState<boolean | undefined>(undefined);
+  const [aspirations, setAspirations] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [profile, setProfile] = useState<SkillsProfile | null>(null);
@@ -244,7 +298,9 @@ export default function ProfileWizard({
   const STEPS = [
     { key: 0 as Step, label: t.profile.step1Title, icon: GraduationCap },
     { key: 1 as Step, label: t.profile.step2Title, icon: Languages },
-    { key: 2 as Step, label: t.profile.step3Title, icon: PencilLine },
+    { key: 2 as Step, label: t.profile.step3Title, icon: Briefcase },
+    { key: 3 as Step, label: t.profile.step4Title, icon: Hammer },
+    { key: 4 as Step, label: t.profile.step5Title, icon: PencilLine },
   ];
 
   const charCount = story.length;
@@ -252,7 +308,9 @@ export default function ProfileWizard({
   const stepValid: Record<Step, boolean> = {
     0: !!educationKey,
     1: true,
-    2: storyValid,
+    2: true, // optional, can skip with no entries
+    3: true, // optional
+    4: storyValid,
   };
 
   const fillSample = () => {
@@ -290,6 +348,24 @@ export default function ProfileWizard({
     });
   };
 
+  const buildContext = (): ProfileContext | undefined => {
+    const constraints =
+      maxTravelKm != null || needIncomeNow != null || canStudy != null || hasInternet != null
+        ? { maxTravelKm, needIncomeNow, canStudy, hasInternet }
+        : undefined;
+    const ctx: ProfileContext = {
+      phoneAccess,
+      selfLearning: selfLearning.length ? selfLearning : undefined,
+      workEntries: workEntries.length ? workEntries : undefined,
+      tasks: tasks.length ? tasks : undefined,
+      tools: tools.length ? tools : undefined,
+      constraints,
+      aspirations: aspirations.trim() || undefined,
+    };
+    const hasAnything = Object.values(ctx).some((v) => v !== undefined);
+    return hasAnything ? ctx : undefined;
+  };
+
   const submit = async () => {
     setLoading(true);
     setError(null);
@@ -313,6 +389,7 @@ export default function ProfileWizard({
             location: location.trim() || undefined,
             workMode,
           },
+          context: buildContext(),
         }),
       });
       if (!res.ok) {
@@ -376,7 +453,7 @@ export default function ProfileWizard({
     }
   };
 
-  const next = () => setStep((s) => (Math.min(2, s + 1) as Step));
+  const next = () => setStep((s) => (Math.min(4, s + 1) as Step));
   const prev = () => setStep((s) => (Math.max(0, s - 1) as Step));
 
   const exportJSON = () => {
@@ -565,6 +642,18 @@ export default function ProfileWizard({
                   />
                 </Field>
               </div>
+
+              <Field label={t.profile.fieldPhoneAccess}>
+                <ChipGroup
+                  options={[
+                    { key: "own", label: t.profile.phoneOwn },
+                    { key: "shared", label: t.profile.phoneShared },
+                    { key: "none", label: t.profile.phoneNone },
+                  ]}
+                  value={phoneAccess}
+                  onChange={(v) => setPhoneAccess(v as PhoneAccess)}
+                />
+              </Field>
             </StepBody>
           )}
 
@@ -591,6 +680,19 @@ export default function ProfileWizard({
                   ariaLabel={t.profile.fieldSkills}
                 />
               </Field>
+              <Field label={t.profile.fieldSelfLearning}>
+                <MultiChipGroup
+                  options={[
+                    { key: "youtube", label: t.profile.learnYouTube },
+                    { key: "apprenticeship", label: t.profile.learnApprentice },
+                    { key: "work", label: t.profile.learnWork },
+                    { key: "family", label: t.profile.learnFamily },
+                    { key: "course", label: t.profile.learnCourse },
+                  ]}
+                  value={selfLearning}
+                  onChange={(v) => setSelfLearning(v as SelfLearningChannel[])}
+                />
+              </Field>
             </StepBody>
           )}
 
@@ -598,6 +700,53 @@ export default function ProfileWizard({
             <StepBody
               title={t.profile.step3Heading}
               hint={t.profile.step3Hint}
+            >
+              <WorkEntryEditor
+                entries={workEntries}
+                onChange={setWorkEntries}
+                t={t}
+              />
+            </StepBody>
+          )}
+
+          {step === 3 && (
+            <StepBody
+              title={t.profile.step4Heading}
+              hint={t.profile.step4Hint}
+            >
+              <Field label={t.profile.fieldTasks}>
+                <MultiChipGroup
+                  options={[
+                    { key: "fixed-built", label: t.profile.taskFixedBuilt },
+                    { key: "customer-talk", label: t.profile.taskCustomerTalk },
+                    { key: "managed-money", label: t.profile.taskManagedMoney },
+                    { key: "used-tech", label: t.profile.taskUsedTech },
+                    { key: "taught-others", label: t.profile.taskTaughtOthers },
+                    { key: "sold-products", label: t.profile.taskSoldProducts },
+                  ]}
+                  value={tasks}
+                  onChange={(v) => setTasks(v as TaskPrimitive[])}
+                />
+              </Field>
+              <Field label={t.profile.fieldTools}>
+                <MultiChipGroup
+                  options={[
+                    { key: "smartphone", label: t.profile.toolSmartphone },
+                    { key: "computer", label: t.profile.toolComputer },
+                    { key: "machinery", label: t.profile.toolMachinery },
+                    { key: "internet-tools", label: t.profile.toolInternetTools },
+                  ]}
+                  value={tools}
+                  onChange={(v) => setTools(v as ToolUsed[])}
+                />
+              </Field>
+            </StepBody>
+          )}
+
+          {step === 4 && (
+            <StepBody
+              title={t.profile.step5Heading}
+              hint={t.profile.step5Hint}
               actions={
                 <button
                   type="button"
@@ -616,11 +765,60 @@ export default function ProfileWizard({
                 <textarea
                   value={story}
                   onChange={(e) => setStory(e.target.value)}
-                  rows={6}
+                  rows={5}
                   placeholder={sampleStoryFor(countryCode).slice(0, 80) + "..."}
                   className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-fg-primary transition focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
                 />
               </Field>
+
+              <Field label={t.profile.fieldConstraints}>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <label className="flex items-center justify-between gap-3 rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm">
+                    <span className="text-fg-secondary">{t.profile.constraintTravel}</span>
+                    <input
+                      type="number"
+                      min={0}
+                      max={500}
+                      value={maxTravelKm ?? ""}
+                      onChange={(e) =>
+                        setMaxTravelKm(e.target.value === "" ? undefined : Number(e.target.value))
+                      }
+                      className="w-20 rounded border border-border-default bg-bg-raised px-2 py-1 text-right font-mono text-sm text-fg-primary focus:border-accent/60 focus:outline-hidden"
+                    />
+                  </label>
+                  <YesNoChip
+                    label={t.profile.constraintIncomeNow}
+                    yes={t.profile.constraintYes}
+                    no={t.profile.constraintNo}
+                    value={needIncomeNow}
+                    onChange={setNeedIncomeNow}
+                  />
+                  <YesNoChip
+                    label={t.profile.constraintCanStudy}
+                    yes={t.profile.constraintYes}
+                    no={t.profile.constraintNo}
+                    value={canStudy}
+                    onChange={setCanStudy}
+                  />
+                  <YesNoChip
+                    label={t.profile.constraintInternet}
+                    yes={t.profile.constraintYes}
+                    no={t.profile.constraintNo}
+                    value={hasInternet}
+                    onChange={setHasInternet}
+                  />
+                </div>
+              </Field>
+
+              <Field label={t.profile.fieldAspirations}>
+                <input
+                  value={aspirations}
+                  onChange={(e) => setAspirations(e.target.value)}
+                  placeholder={t.profile.aspirationsPlaceholder}
+                  className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-fg-primary focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
+                />
+              </Field>
+
               {error && (
                 <p className="rounded-md border border-danger/30 bg-danger/10 px-3 py-2 text-xs text-danger">
                   {t.profile.errorTitle}: {error}
@@ -642,7 +840,7 @@ export default function ProfileWizard({
           <p className="text-[11px] text-fg-muted">
             {fmt(t.profile.stepProgress, { current: step + 1, total: STEPS.length })}
           </p>
-          {step < 2 ? (
+          {step < 4 ? (
             <button
               type="button"
               onClick={next}
@@ -733,6 +931,102 @@ export default function ProfileWizard({
             }
           />
           <Row
+            label={t.profile.draftPhone}
+            value={
+              phoneAccess
+                ? phoneAccess === "own"
+                  ? t.profile.phoneOwn
+                  : phoneAccess === "shared"
+                    ? t.profile.phoneShared
+                    : t.profile.phoneNone
+                : t.profile.draftEmpty
+            }
+          />
+          <Row
+            label={t.profile.draftSelfLearning}
+            value={
+              selfLearning.length > 0 ? (
+                <span className="flex flex-wrap gap-1">
+                  {selfLearning.map((k) => (
+                    <span key={k} className="rounded bg-bg-hover px-1.5 py-0.5 text-[11px] text-fg-secondary">
+                      {selfLearningLabel(k, t)}
+                    </span>
+                  ))}
+                </span>
+              ) : (
+                t.profile.draftEmpty
+              )
+            }
+          />
+          <Row
+            label={t.profile.draftWorkEntries}
+            value={
+              workEntries.length === 0 ? (
+                t.profile.draftEmpty
+              ) : (
+                <span className="flex flex-col gap-0.5 text-[11px]">
+                  {workEntries.map((w, i) => (
+                    <span key={i} className="text-fg-secondary">
+                      {w.activity || "(unnamed)"} - {w.years}y, {w.frequency}
+                      {w.paid ? "" : " (unpaid)"}
+                    </span>
+                  ))}
+                </span>
+              )
+            }
+          />
+          <Row
+            label={t.profile.draftTasks}
+            value={
+              tasks.length > 0 ? (
+                <span className="flex flex-wrap gap-1">
+                  {tasks.map((k) => (
+                    <span key={k} className="rounded bg-bg-hover px-1.5 py-0.5 text-[11px] text-fg-secondary">
+                      {taskLabel(k, t)}
+                    </span>
+                  ))}
+                </span>
+              ) : (
+                t.profile.draftEmpty
+              )
+            }
+          />
+          <Row
+            label={t.profile.draftTools}
+            value={
+              tools.length > 0 ? (
+                <span className="flex flex-wrap gap-1">
+                  {tools.map((k) => (
+                    <span key={k} className="rounded bg-bg-hover px-1.5 py-0.5 text-[11px] text-fg-secondary">
+                      {toolLabel(k, t)}
+                    </span>
+                  ))}
+                </span>
+              ) : (
+                t.profile.draftEmpty
+              )
+            }
+          />
+          <Row
+            label={t.profile.draftConstraints}
+            value={
+              maxTravelKm == null && needIncomeNow == null && canStudy == null && hasInternet == null
+                ? t.profile.draftEmpty
+                : [
+                    maxTravelKm != null ? `≤${maxTravelKm}km` : null,
+                    needIncomeNow === true ? "income now" : null,
+                    canStudy === false ? "cannot study" : canStudy === true ? "can study" : null,
+                    hasInternet === false ? "no internet" : hasInternet === true ? "internet" : null,
+                  ]
+                    .filter(Boolean)
+                    .join(", ")
+            }
+          />
+          <Row
+            label={t.profile.draftAspirations}
+            value={aspirations.trim() || t.profile.draftEmpty}
+          />
+          <Row
             label={t.profile.draftStory}
             value={
               story.trim().length === 0
@@ -780,6 +1074,186 @@ function ChipGroup({
           {o.label}
         </button>
       ))}
+    </div>
+  );
+}
+
+function MultiChipGroup({
+  options,
+  value,
+  onChange,
+}: {
+  options: Array<{ key: string; label: string }>;
+  value: string[];
+  onChange: (next: string[]) => void;
+}) {
+  const toggle = (k: string) => {
+    onChange(value.includes(k) ? value.filter((v) => v !== k) : [...value, k]);
+  };
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => {
+        const on = value.includes(o.key);
+        return (
+          <button
+            key={o.key}
+            type="button"
+            onClick={() => toggle(o.key)}
+            className={clsx(
+              "rounded-full border px-3 py-1 text-xs transition",
+              on
+                ? "border-accent bg-accent/10 text-accent"
+                : "border-border-default bg-bg-base text-fg-secondary hover:border-border-strong hover:text-fg-primary"
+            )}
+          >
+            {on ? <Check className="-ml-0.5 mr-1 inline h-3 w-3" /> : null}
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function YesNoChip({
+  label,
+  yes,
+  no,
+  value,
+  onChange,
+}: {
+  label: string;
+  yes: string;
+  no: string;
+  value: boolean | undefined;
+  onChange: (v: boolean | undefined) => void;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-3 rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm">
+      <span className="text-fg-secondary">{label}</span>
+      <div className="flex gap-1">
+        <button
+          type="button"
+          onClick={() => onChange(value === true ? undefined : true)}
+          className={clsx(
+            "rounded-md border px-2 py-0.5 text-xs transition",
+            value === true
+              ? "border-positive bg-positive/10 text-positive"
+              : "border-border-default text-fg-secondary hover:border-border-strong"
+          )}
+        >
+          {yes}
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange(value === false ? undefined : false)}
+          className={clsx(
+            "rounded-md border px-2 py-0.5 text-xs transition",
+            value === false
+              ? "border-danger bg-danger/10 text-danger"
+              : "border-border-default text-fg-secondary hover:border-border-strong"
+          )}
+        >
+          {no}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function WorkEntryEditor({
+  entries,
+  onChange,
+  t,
+}: {
+  entries: WorkEntry[];
+  onChange: (next: WorkEntry[]) => void;
+  t: Dictionary;
+}) {
+  const update = (idx: number, patch: Partial<WorkEntry>) => {
+    const next = entries.slice();
+    next[idx] = { ...next[idx], ...patch };
+    onChange(next);
+  };
+  const add = () => {
+    onChange([
+      ...entries,
+      { activity: "", years: 1, frequency: "weekly", paid: true },
+    ]);
+  };
+  const remove = (idx: number) => {
+    onChange(entries.filter((_, i) => i !== idx));
+  };
+
+  return (
+    <div className="space-y-3">
+      {entries.length === 0 && (
+        <p className="rounded-md border border-dashed border-border-default bg-bg-base p-3 text-xs text-fg-muted">
+          {t.profile.noWorkEntriesYet}
+        </p>
+      )}
+      {entries.map((e, i) => (
+        <div
+          key={i}
+          className="rounded-lg border border-border-default bg-bg-base p-3 animate-[fadeIn_120ms_ease-out]"
+        >
+          <div className="flex items-start gap-2">
+            <input
+              value={e.activity}
+              onChange={(ev) => update(i, { activity: ev.target.value })}
+              placeholder={t.profile.workActivityPlaceholder}
+              className="flex-1 rounded border border-border-default bg-bg-raised px-2 py-1 text-sm text-fg-primary focus:border-accent/60 focus:outline-hidden"
+            />
+            <button
+              type="button"
+              onClick={() => remove(i)}
+              className="rounded p-1 text-fg-muted hover:bg-bg-hover hover:text-danger"
+              aria-label={t.profile.removeEntry}
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="mt-2 grid grid-cols-3 gap-2 text-xs">
+            <label className="flex items-center gap-1.5">
+              <span className="text-fg-muted">{t.profile.workYearsLabel}</span>
+              <input
+                type="number"
+                min={0}
+                max={40}
+                value={e.years}
+                onChange={(ev) => update(i, { years: Number(ev.target.value) })}
+                className="w-14 rounded border border-border-default bg-bg-raised px-1.5 py-0.5 text-right font-mono text-xs text-fg-primary focus:border-accent/60 focus:outline-hidden"
+              />
+            </label>
+            <select
+              value={e.frequency}
+              onChange={(ev) => update(i, { frequency: ev.target.value as WorkFrequency })}
+              className="rounded border border-border-default bg-bg-raised px-1.5 py-0.5 text-xs text-fg-primary focus:border-accent/60 focus:outline-hidden"
+            >
+              <option value="daily">{t.profile.workFreqDaily}</option>
+              <option value="weekly">{t.profile.workFreqWeekly}</option>
+              <option value="monthly">{t.profile.workFreqMonthly}</option>
+              <option value="occasional">{t.profile.workFreqOccasional}</option>
+            </select>
+            <label className="flex items-center justify-end gap-1.5">
+              <input
+                type="checkbox"
+                checked={e.paid}
+                onChange={(ev) => update(i, { paid: ev.target.checked })}
+                className="h-3.5 w-3.5 accent-accent"
+              />
+              <span className="text-fg-muted">{t.profile.workPaidLabel}</span>
+            </label>
+          </div>
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={add}
+        className="inline-flex items-center gap-1.5 rounded-md border border-dashed border-border-strong bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:border-accent/40 hover:text-accent"
+      >
+        <Plus className="h-3.5 w-3.5" /> {t.profile.addWorkEntry}
+      </button>
     </div>
   );
 }

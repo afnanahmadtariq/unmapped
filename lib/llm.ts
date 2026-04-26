@@ -9,6 +9,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import type {
   CountryCode,
   Demographics,
+  ProfileContext,
   SkillsProfile,
   SkillEvidence,
 } from "@/types";
@@ -120,6 +121,7 @@ export interface ExtractInput {
   story: string;
   declaredSkills: string[];
   demographics?: Demographics;
+  context?: ProfileContext;
 }
 
 export interface ClarifyingQuestion {
@@ -159,12 +161,44 @@ function userTurn(input: ExtractInput): string {
         input.demographics.workMode ? `Current work mode: ${input.demographics.workMode}` : null,
       ].filter(Boolean) as string[]
     : [];
+
+  const ctx = input.context;
+  const contextLines: string[] = [];
+  if (ctx) {
+    if (ctx.phoneAccess) contextLines.push(`Phone access: ${ctx.phoneAccess}`);
+    if (ctx.selfLearning?.length)
+      contextLines.push(`Self-learning channels: ${ctx.selfLearning.join(", ")}`);
+    if (ctx.workEntries?.length) {
+      contextLines.push("Real-world work history:");
+      for (const w of ctx.workEntries) {
+        contextLines.push(
+          `  - ${w.activity}: ${w.years}y, ${w.frequency}, ${w.paid ? "paid" : "unpaid"}`
+        );
+      }
+    }
+    if (ctx.tasks?.length) contextLines.push(`Tasks performed: ${ctx.tasks.join(", ")}`);
+    if (ctx.tools?.length) contextLines.push(`Tools used: ${ctx.tools.join(", ")}`);
+    if (ctx.constraints) {
+      const c = ctx.constraints;
+      const parts: string[] = [];
+      if (c.maxTravelKm != null) parts.push(`travel ≤ ${c.maxTravelKm}km`);
+      if (c.needIncomeNow) parts.push("needs income now");
+      if (c.canStudy === false) parts.push("cannot study/train");
+      if (c.canStudy === true) parts.push("can study/train");
+      if (c.hasInternet === false) parts.push("no internet");
+      if (c.hasInternet === true) parts.push("has internet");
+      if (parts.length) contextLines.push(`Constraints: ${parts.join("; ")}`);
+    }
+    if (ctx.aspirations) contextLines.push(`Aspirations (soft signal): ${ctx.aspirations}`);
+  }
+
   return [
     `Country context: ${input.countryCode}`,
     `Education level: ${input.educationLevel}`,
     `Languages: ${input.languages.join(", ") || "(none stated)"}`,
     `Years of experience (formal or informal): ${input.yearsExperience}`,
     ...demoLines,
+    ...contextLines,
     `User's own description: """${input.story}"""`,
     `Declared specific skills: ${input.declaredSkills.join(", ") || "(none)"}`,
     "",
@@ -200,6 +234,7 @@ function buildProfile(
     languages: input.languages,
     yearsExperience: input.yearsExperience,
     demographics: input.demographics,
+    context: input.context,
     skills: cleanSkills,
     generatedAt: new Date().toISOString(),
   };

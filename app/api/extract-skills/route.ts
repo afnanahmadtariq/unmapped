@@ -55,6 +55,7 @@ export async function POST(req: Request) {
       story: body.story,
       declaredSkills: body.declaredSkills ?? [],
       demographics: body.demographics,
+      context: body.context,
     };
 
     const { result, history } = await extractInitial(baseInput);
