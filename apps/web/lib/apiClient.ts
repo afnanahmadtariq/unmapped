@@ -17,9 +17,16 @@ import type {
   SkillsProfile,
 } from "@/types";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
-  "http://localhost:4000";
+function normaliseApiBase(raw: string | undefined): string {
+  const trimmed = (raw ?? "").replace(/\/$/, "").trim();
+  if (!trimmed) return "http://localhost:4000";
+  // Ensure an explicit scheme so Node fetch doesn't throw "Failed to parse URL".
+  // railway.internal URLs need http://, public URLs already carry https://.
+  if (!/^https?:\/\//i.test(trimmed)) return `http://${trimmed}`;
+  return trimmed;
+}
+
+const API_BASE = normaliseApiBase(process.env.NEXT_PUBLIC_API_URL);
 
 /** Public copy of the resolved API base URL — used by direct download links. */
 export const apiBase = API_BASE;
