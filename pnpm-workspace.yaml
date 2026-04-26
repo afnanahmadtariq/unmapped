@@ -1,2 +1,7 @@
 packages:
   - "apps/*"
+allowBuilds:
+  '@nestjs/core': true
+  core-js: true
+  sharp: true
+  unrs-resolver: true
