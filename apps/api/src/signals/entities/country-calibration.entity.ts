@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 /**
  * Country-level automation calibration: a global multiplier on Frey-Osborne
@@ -22,6 +22,10 @@ export class CountryCalibrationEntity {
 
   @Column({ type: 'varchar', length: 32, default: 'snapshot' })
   source!: string;
+
+  @Index('country_calibration_run_idx')
+  @Column({ type: 'uuid', nullable: true })
+  runId!: string | null;
 
   @Column({ type: 'timestamptz', default: () => 'now()' })
   updatedAt!: Date;

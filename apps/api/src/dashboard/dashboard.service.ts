@@ -117,14 +117,10 @@ export class DashboardService {
       }),
     );
 
-    // Wittgenstein projections from the bundled seed
-    const wittBlock = WITT_BY_COUNTRY[iso3];
-    const wittgensteinProjections: WittgensteinPoint[] | null = wittBlock
-      ? (['2025', '2030', '2035'] as const).map((y) => ({
-          year: Number(y) as 2025 | 2030 | 2035,
-          shares: wittBlock[y] as unknown as WittgensteinShares,
-        }))
-      : null;
+    // Wittgenstein projections: prefer DB-derived shares (populated by the
+    // harvester), fall back to the bundled seed when empty.
+    const wittgensteinProjections: WittgensteinPoint[] | null =
+      (await this.deriveWittgensteinFromDb(iso3)) ?? this.wittFromSeed(iso3);
 
     const youthWb = liveWb.YOUTH_UNEMPLOYMENT;
     const youthSnap =
@@ -156,5 +152,77 @@ export class DashboardService {
       sectorRisks,
       wittgensteinProjections,
     };
+  }
+
+  /**
+   * Try to build the (2025/2030/2035) education share triple from
+   * `wittgenstein_projections` rows in Postgres. Returns null when the
+   * harvester hasn't populated the table yet so the caller can fall back
+   * to the bundled seed.
+   */
+  private async deriveWittgensteinFromDb(
+    iso3: string,
+  ): Promise<WittgensteinPoint[] | null> {
+    try {
+      const repo = this.signals.wittgensteinRepository();
+      const rows = await repo.find({ where: { iso3 } });
+      if (!rows.length) return null;
+      const targetYears: Array<2025 | 2030 | 2035> = [2025, 2030, 2035];
+      const out: WittgensteinPoint[] = [];
+      for (const year of targetYears) {
+        const yearRows = rows.filter((r) => r.year === year);
+        if (!yearRows.length) return null;
+        const totals = {
+          noEdu: 0,
+          primary: 0,
+          lowerSec: 0,
+          upperSec: 0,
+          tertiary: 0,
+        };
+        let total = 0;
+        for (const r of yearRows) {
+          const pop = Number(r.population ?? 0);
+          if (!Number.isFinite(pop) || pop <= 0) continue;
+          total += pop;
+          const lvl = (r.educLevel ?? '').toLowerCase();
+          if (lvl.includes('no') || lvl.includes('none')) totals.noEdu += pop;
+          else if (lvl.includes('primary') && !lvl.includes('post'))
+            totals.primary += pop;
+          else if (lvl.includes('lower') || lvl.includes('lowsec'))
+            totals.lowerSec += pop;
+          else if (lvl.includes('upper') || lvl.includes('upsec'))
+            totals.upperSec += pop;
+          else if (
+            lvl.includes('tert') ||
+            lvl.includes('post') ||
+            lvl.includes('terti')
+          )
+            totals.tertiary += pop;
+        }
+        if (total <= 0) return null;
+        out.push({
+          year,
+          shares: {
+            noEdu: totals.noEdu / total,
+            primary: totals.primary / total,
+            lowerSec: totals.lowerSec / total,
+            upperSec: totals.upperSec / total,
+            tertiary: totals.tertiary / total,
+          },
+        });
+      }
+      return out.length === 3 ? out : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private wittFromSeed(iso3: string): WittgensteinPoint[] | null {
+    const wittBlock = WITT_BY_COUNTRY[iso3];
+    if (!wittBlock) return null;
+    return (['2025', '2030', '2035'] as const).map((y) => ({
+      year: Number(y) as 2025 | 2030 | 2035,
+      shares: wittBlock[y] as unknown as WittgensteinShares,
+    }));
   }
 }

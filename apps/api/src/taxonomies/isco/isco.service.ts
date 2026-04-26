@@ -70,6 +70,7 @@ export class IscoService implements OnModuleInit {
       sectorId?: string | null;
       source?: string;
     }>,
+    runId?: string | null,
   ): Promise<number> {
     if (rows.length === 0) return 0;
     const entities = rows.map((r) =>
@@ -79,6 +80,7 @@ export class IscoService implements OnModuleInit {
         skillLevel: r.skillLevel ?? null,
         sectorId: r.sectorId ?? null,
         source: r.source ?? 'esco-live',
+        runId: runId ?? null,
         updatedAt: new Date(),
       }),
     );

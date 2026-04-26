@@ -88,7 +88,7 @@ export class EscoIngestService implements OnModuleInit {
       source?: string;
       uri?: string;
     }>,
-    opts: { skipEmbed?: boolean } = {},
+    opts: { skipEmbed?: boolean; runId?: string | null } = {},
   ): Promise<{ inserted: number; embedded: number }> {
     if (rows.length === 0) return { inserted: 0, embedded: 0 };
 
@@ -102,6 +102,7 @@ export class EscoIngestService implements OnModuleInit {
         source: r.source ?? 'snapshot',
         uri: r.uri ?? null,
         embedded: false,
+        runId: opts.runId ?? null,
         updatedAt: new Date(),
       }),
     );
@@ -110,7 +111,7 @@ export class EscoIngestService implements OnModuleInit {
 
     let embedded = 0;
     if (!opts.skipEmbed) {
-      embedded = await this.embedAndUpsertMilvus(entities);
+      embedded = await this.embedAndUpsertMilvus(entities, opts.runId ?? null);
     }
 
     this.logger.log(
@@ -119,7 +120,10 @@ export class EscoIngestService implements OnModuleInit {
     return { inserted: entities.length, embedded };
   }
 
-  private async embedAndUpsertMilvus(rows: EscoSkillEntity[]): Promise<number> {
+  private async embedAndUpsertMilvus(
+    rows: EscoSkillEntity[],
+    runId: string | null,
+  ): Promise<number> {
     let embedded = 0;
     for (let i = 0; i < rows.length; i += this.batchSize) {
       const batch = rows.slice(i, i + this.batchSize);
@@ -135,6 +139,7 @@ export class EscoIngestService implements OnModuleInit {
           metadata: {
             label: r.label,
             category: r.category,
+            ...(runId ? { run_id: runId } : {}),
           },
         })),
       );
@@ -150,7 +155,7 @@ export class EscoIngestService implements OnModuleInit {
   /** Force a re-embed of every Postgres row. Useful after model upgrades. */
   async reembedAll(): Promise<{ embedded: number }> {
     const rows = await this.repo.find();
-    const embedded = await this.embedAndUpsertMilvus(rows);
+    const embedded = await this.embedAndUpsertMilvus(rows, null);
     return { embedded };
   }
 }

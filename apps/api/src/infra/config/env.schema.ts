@@ -44,6 +44,28 @@ export const envSchema = z.object({
   SMTP_FROM: z.string().optional(),
   SMTP_SECURE: z.coerce.boolean().optional(),
 
+  // Admin (single-user, env-driven). Hashes are bcrypt; secret signs short-lived JWT.
+  // The hash + plaintext are dev-friendly: provide a hash in production, plaintext only for local.
+  ADMIN_EMAIL: z.string().email().optional(),
+  ADMIN_PASSWORD: z.string().optional(),
+  ADMIN_PASSWORD_HASH: z.string().optional(),
+  ADMIN_JWT_SECRET: z.string().min(16).optional(),
+  ADMIN_JWT_TTL_HOURS: z.coerce.number().int().positive().default(12),
+
+  // Optional end-user accounts. Sign-up is allowed when `USER_AUTH_ENABLED`
+  // is true AND `USER_JWT_SECRET` is set. Sessions live in the
+  // `unmapped_user_session` cookie (separate from the admin one).
+  USER_AUTH_ENABLED: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((v) => v === 'true'),
+  USER_JWT_SECRET: z.string().min(16).optional(),
+  USER_JWT_TTL_HOURS: z.coerce.number().int().positive().default(168),
+  USER_SIGNUP_ENABLED: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((v) => v === 'true'),
+
   // Database controls — never auto-sync in production; opt-in for dev.
   TYPEORM_SYNC: z
     .enum(['true', 'false'])
@@ -53,6 +75,25 @@ export const envSchema = z.object({
     .enum(['true', 'false'])
     .default('false')
     .transform((v) => v === 'true'),
+
+  // Startup harvest — when true, the API kicks off a sequential refresh of
+  // every registered harvester shortly after boot. Sources with a successful
+  // run younger than HARVEST_STARTUP_FRESHNESS_HOURS are skipped, so this is
+  // idempotent across restarts.
+  HARVEST_ON_STARTUP: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((v) => v === 'true'),
+  HARVEST_STARTUP_DELAY_MS: z.coerce
+    .number()
+    .int()
+    .nonnegative()
+    .default(5_000),
+  HARVEST_STARTUP_FRESHNESS_HOURS: z.coerce
+    .number()
+    .int()
+    .positive()
+    .default(24),
 });
 
 export type EnvConfig = z.infer<typeof envSchema>;

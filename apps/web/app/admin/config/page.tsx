@@ -9,9 +9,11 @@ import {
 } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import Pill from "@/components/Pill";
+import AdminTabs from "@/components/admin/AdminTabs";
 import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary, SUPPORTED_LOCALES } from "@/lib/i18n";
-import { apiClient, type AdminConfigSummary } from "@/lib/apiClient";
+import { adminFetch } from "@/lib/adminFetch";
+import type { AdminConfigSummary } from "@/lib/apiClient";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -23,8 +25,8 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
 
-  const cfg: AdminConfigSummary = await apiClient.adminConfigSummary(
-    country.code,
+  const cfg: AdminConfigSummary = await adminFetch<AdminConfigSummary>(
+    `/admin/config-summary/${country.code}`,
   );
 
   return (
@@ -44,6 +46,8 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
             {t.admin.subtitle}
           </p>
         </div>
+
+        <AdminTabs />
 
         <div className="grid gap-4 md:grid-cols-2">
           <ConfigCard

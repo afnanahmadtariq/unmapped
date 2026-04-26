@@ -1,17 +1,42 @@
-// UNMAPPED - Next.js 16 proxy (formerly middleware). Auto-detects the
-// visitor's country from IP via Vercel's free `x-vercel-ip-country` header
-// and seeds the URL's ?country= param if unset. The user can still override
-// via the dropdown.
+// UNMAPPED - Next.js 16 proxy (formerly middleware). Two responsibilities:
+//   1. Auto-detect the visitor's country from IP via Vercel/CF headers and
+//      seed the URL's ?country= param if unset (covers user-facing pages).
+//   2. Gate `/admin/*` routes behind the API admin session cookie. The
+//      cookie itself is set by the API at /auth/login and verified there
+//      with `AuthGuard`; here we only check existence to avoid round-tripping
+//      every request.
 
 import { NextRequest, NextResponse } from "next/server";
 import { isSupportedCountry } from "@/lib/config";
 
-const HANDLED_PATHS = ["/", "/profile", "/opportunities", "/dashboard", "/admin/config", "/api-docs"];
+const COUNTRY_PATHS = [
+  "/",
+  "/profile",
+  "/opportunities",
+  "/dashboard",
+  "/admin/config",
+  "/api-docs",
+  "/account",
+  "/account/login",
+  "/account/signup",
+];
+
+const ADMIN_COOKIE = "unmapped_admin_session";
 
 export function proxy(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl;
 
-  if (!HANDLED_PATHS.includes(pathname)) return NextResponse.next();
+  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+    const session = req.cookies.get(ADMIN_COOKIE)?.value;
+    if (!session) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/admin/login";
+      url.searchParams.set("from", pathname + req.nextUrl.search);
+      return NextResponse.redirect(url, 307);
+    }
+  }
+
+  if (!COUNTRY_PATHS.includes(pathname)) return NextResponse.next();
   if (searchParams.get("country")) return NextResponse.next();
 
   const ipCountry =
@@ -29,5 +54,14 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/profile", "/opportunities", "/dashboard", "/admin/config", "/api-docs"],
+  matcher: [
+    "/",
+    "/profile",
+    "/opportunities",
+    "/dashboard",
+    "/admin/:path*",
+    "/api-docs",
+    "/account",
+    "/account/:path*",
+  ],
 };

@@ -127,4 +127,22 @@ export class MilvusVectorClient implements OnModuleInit {
   async dropCollection(name: string): Promise<void> {
     await this.client.dropCollection({ collection_name: name });
   }
+
+  /**
+   * Bulk delete rows by primary key. Used by LineageService to fan out
+   * a Postgres run-deletion into the corresponding vector collections.
+   * Quotes IDs and emits a single `id in [...]` expression so we don't
+   * round-trip per row.
+   */
+  async deleteByIds(name: string, ids: string[]): Promise<number> {
+    if (ids.length === 0) return 0;
+    const escaped = ids
+      .map((id) => `"${String(id).replace(/"/g, '\\"')}"`)
+      .join(',');
+    await this.client.deleteEntities({
+      collection_name: name,
+      expr: `id in [${escaped}]`,
+    });
+    return ids.length;
+  }
 }

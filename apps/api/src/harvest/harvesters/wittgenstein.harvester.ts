@@ -12,6 +12,15 @@ export class WittgensteinHarvester extends BaseHarvester {
   get sourceId() {
     return 'wittgenstein';
   }
+  get sourceName() {
+    return 'Wittgenstein Centre (WCDE v3)';
+  }
+  get sourceUrl() {
+    return 'https://dataexplorer.wittgensteincentre.org/wcde/';
+  }
+  get sourceCategory() {
+    return 'education';
+  }
   get cronExpression() {
     return '0 7 1 1,4,7,10 *';
   } // Quarterly (new projections released annually)

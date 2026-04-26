@@ -18,7 +18,11 @@ import clsx from "clsx";
 import Pill from "@/components/Pill";
 import ResilienceScore from "@/components/ResilienceScore";
 import { readProfileFromHash } from "@/lib/profileUrl";
-import { apiClient, type ResilienceBreakdown } from "@/lib/apiClient";
+import {
+  apiClient,
+  type CompositeSignals,
+  type ResilienceBreakdown,
+} from "@/lib/apiClient";
 import type {
   CountryCode,
   MatchedOccupation,
@@ -66,6 +70,7 @@ export default function OpportunityWorkbench({
   const [activeIsco, setActiveIsco] = useState<string | null>(null);
   const [pathways, setPathways] = useState<Record<string, Opportunity[]>>({});
   const [jobs, setJobs] = useState<Record<string, JobHit[]>>({});
+  const [signals, setSignals] = useState<Record<string, CompositeSignals>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -147,7 +152,13 @@ export default function OpportunityWorkbench({
         .then((d) => setJobs((prev) => ({ ...prev, [activeIsco]: d.jobs ?? [] })))
         .catch(() => undefined);
     }
-  }, [activeIsco, matches, pathways, jobs, countryCode]);
+    if (!signals[activeIsco]) {
+      apiClient
+        .compositeSignals(countryCode, activeIsco, occupation.matchedSkills)
+        .then((s) => setSignals((prev) => ({ ...prev, [activeIsco]: s })))
+        .catch(() => undefined);
+    }
+  }, [activeIsco, matches, pathways, jobs, signals, countryCode]);
 
   if (!profile) {
     return (
@@ -296,6 +307,11 @@ export default function OpportunityWorkbench({
               }
             />
           </div>
+
+          <CompositeSignalsRow
+            signals={signals[active.iscoCode]}
+            currencySymbol={currencySymbol}
+          />
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div>
@@ -484,6 +500,80 @@ function PathwayCard({
         {opportunity.timeToReadiness && <span>{opportunity.timeToReadiness}</span>}
       </footer>
     </article>
+  );
+}
+
+function CompositeSignalsRow({
+  signals,
+  currencySymbol,
+}: {
+  signals: CompositeSignals | undefined;
+  currencySymbol: string;
+}) {
+  if (!signals) return null;
+  const cards: Array<{
+    label: string;
+    value: string;
+    sub: string;
+    tone: "accent" | "positive" | "warning" | "danger";
+  }> = [];
+  if (signals.income.wageFloor !== null) {
+    cards.push({
+      label: "Wage floor",
+      value: `${currencySymbol} ${Math.round(signals.income.wageFloor).toLocaleString()}`,
+      sub: "ILOSTAT 10th percentile",
+      tone: "accent",
+    });
+  }
+  if (signals.income.wageGrowthYoY !== null) {
+    const v = signals.income.wageGrowthYoY;
+    cards.push({
+      label: "Wage growth (YoY)",
+      value: `${v >= 0 ? "+" : ""}${v.toFixed(1)}%`,
+      sub: "ILOSTAT earnings",
+      tone: v >= 0 ? "positive" : "danger",
+    });
+  }
+  if (signals.automation.routineRatio !== null) {
+    const v = signals.automation.routineRatio;
+    cards.push({
+      label: "Routine task share",
+      value: `${(v * (v <= 1 ? 100 : 1)).toFixed(0)}%`,
+      sub: "ILO Future of Work",
+      tone: v >= 0.6 ? "danger" : v >= 0.3 ? "warning" : "positive",
+    });
+  }
+  if (signals.automation.skillDurability !== null) {
+    const v = signals.automation.skillDurability;
+    cards.push({
+      label: "Skill durability",
+      value: `${(v * 100).toFixed(0)}%`,
+      sub: "Calibrated 1−AI exposure",
+      tone: v >= 0.6 ? "positive" : v >= 0.4 ? "warning" : "danger",
+    });
+  }
+  if (signals.demand.vacancyRate !== null) {
+    cards.push({
+      label: "Live vacancies",
+      value: `${signals.demand.vacancyRate}`,
+      sub: "Tavily snapshot",
+      tone: "accent",
+    });
+  }
+  if (cards.length === 0) return null;
+  return (
+    <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {cards.map((c) => (
+        <SignalCard
+          key={c.label}
+          icon={<TrendingUp className="h-4 w-4" />}
+          label={c.label}
+          value={c.value}
+          sub={c.sub}
+          tone={c.tone}
+        />
+      ))}
+    </div>
   );
 }
 

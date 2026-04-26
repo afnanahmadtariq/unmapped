@@ -23,6 +23,10 @@ import { HarvestModule } from './harvest/harvest.module';
 import { StorageModule } from './storage/storage.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { LineageModule } from './lineage/lineage.module';
+import { CorporaModule } from './corpora/corpora.module';
 import { DataController } from './data.controller';
 
 @Module({
@@ -63,6 +67,10 @@ import { DataController } from './data.controller';
     HealthModule,
 
     ScheduleModule.forRoot(),
+    LineageModule,
+    AuthModule,
+    UsersModule,
+    CorporaModule,
     StorageModule,
     HarvestModule,
     DashboardModule,
