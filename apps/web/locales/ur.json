@@ -244,6 +244,7 @@
     "topMatches": "اعلیٰ میچز · {country}",
     "matchesRanked": "مہارت کی فٹ کے لحاظ سے {n} پیشے درجہ بند",
     "wagePill": "{symbol} {amount}/ماہ",
+    "wageUnavailable": "تنخواہ کا ڈیٹا دستیاب نہیں",
     "lowAi": "کم AI خطرہ",
     "mediumAi": "درمیانہ AI خطرہ",
     "highAi": "زیادہ AI خطرہ",

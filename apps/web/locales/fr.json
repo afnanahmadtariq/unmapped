@@ -244,6 +244,7 @@
     "topMatches": "Meilleures correspondances · {country}",
     "matchesRanked": "{n} professions classées par adéquation",
     "wagePill": "{symbol} {amount}/mois",
+    "wageUnavailable": "Données salariales indisponibles",
     "lowAi": "Risque IA faible",
     "mediumAi": "Risque IA moyen",
     "highAi": "Risque IA élevé",

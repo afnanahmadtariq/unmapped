@@ -244,6 +244,7 @@
     "topMatches": "Kecocokan teratas · {country}",
     "matchesRanked": "{n} pekerjaan diperingkat berdasarkan kesesuaian keterampilan",
     "wagePill": "{symbol} {amount}/bln",
+    "wageUnavailable": "Data upah tidak tersedia",
     "lowAi": "Risiko AI rendah",
     "mediumAi": "Risiko AI sedang",
     "highAi": "Risiko AI tinggi",

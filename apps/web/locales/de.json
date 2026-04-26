@@ -244,6 +244,7 @@
     "topMatches": "Top-Übereinstimmungen · {country}",
     "matchesRanked": "{n} Berufe nach Kompetenzpassung sortiert",
     "wagePill": "{symbol} {amount}/Mon.",
+    "wageUnavailable": "Gehaltsdaten nicht verfügbar",
     "lowAi": "Niedriges KI-Risiko",
     "mediumAi": "Mittleres KI-Risiko",
     "highAi": "Hohes KI-Risiko",

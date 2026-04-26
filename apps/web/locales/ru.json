@@ -244,6 +244,7 @@
     "topMatches": "Лучшие совпадения · {country}",
     "matchesRanked": "{n} профессий ранжированы по соответствию навыкам",
     "wagePill": "{symbol} {amount}/мес.",
+    "wageUnavailable": "Данные о зарплате недоступны",
     "lowAi": "Низкий риск ИИ",
     "mediumAi": "Средний риск ИИ",
     "highAi": "Высокий риск ИИ",

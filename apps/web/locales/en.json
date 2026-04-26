@@ -244,6 +244,7 @@
     "topMatches": "Top matches · {country}",
     "matchesRanked": "{n} occupations ranked by skills fit",
     "wagePill": "{symbol} {amount}/mo",
+    "wageUnavailable": "Wage data unavailable",
     "lowAi": "Low AI risk",
     "mediumAi": "Medium AI risk",
     "highAi": "High AI risk",

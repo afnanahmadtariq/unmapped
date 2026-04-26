@@ -244,6 +244,7 @@
     "topMatches": "En iyi eşleşmeler · {country}",
     "matchesRanked": "Beceri uyumuna göre sıralanan {n} meslek",
     "wagePill": "{symbol} {amount}/ay",
+    "wageUnavailable": "Ücret verisi mevcut değil",
     "lowAi": "Düşük AI riski",
     "mediumAi": "Orta AI riski",
     "highAi": "Yüksek AI riski",

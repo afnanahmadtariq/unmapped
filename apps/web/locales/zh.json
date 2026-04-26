@@ -244,6 +244,7 @@
     "topMatches": "顶级匹配 · {country}",
     "matchesRanked": "{n}个职业按技能匹配度排序",
     "wagePill": "{symbol} {amount}/月",
+    "wageUnavailable": "工资数据不可用",
     "lowAi": "低AI风险",
     "mediumAi": "中等AI风险",
     "highAi": "高AI风险",

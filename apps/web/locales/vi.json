@@ -244,6 +244,7 @@
     "topMatches": "Kết quả ghép hàng đầu · {country}",
     "matchesRanked": "{n} nghề nghiệp được xếp hạng theo mức độ phù hợp kỹ năng",
     "wagePill": "{symbol} {amount}/tháng",
+    "wageUnavailable": "Dữ liệu lương không có sẵn",
     "lowAi": "Rủi ro AI thấp",
     "mediumAi": "Rủi ro AI trung bình",
     "highAi": "Rủi ro AI cao",

@@ -244,6 +244,7 @@
     "topMatches": "শীর্ষ ম্যাচ · {country}",
     "matchesRanked": "{n} টি পেশা দক্ষতা মিলের ভিত্তিতে র‍্যাঙ্কড",
     "wagePill": "{symbol} {amount}/মাস",
+    "wageUnavailable": "মজুরি ডেটা পাওয়া যাচ্ছে না",
     "lowAi": "কম এআই ঝুঁকি",
     "mediumAi": "মাঝারি এআই ঝুঁকি",
     "highAi": "উচ্চ এআই ঝুঁকি",

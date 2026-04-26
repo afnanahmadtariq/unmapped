@@ -244,6 +244,7 @@
     "topMatches": "Mejores coincidencias · {country}",
     "matchesRanked": "{n} ocupaciones clasificadas por ajuste de habilidades",
     "wagePill": "{symbol} {amount}/mes",
+    "wageUnavailable": "Datos salariales no disponibles",
     "lowAi": "Bajo riesgo de IA",
     "mediumAi": "Riesgo medio de IA",
     "highAi": "Alto riesgo de IA",

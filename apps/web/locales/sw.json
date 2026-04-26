@@ -244,6 +244,7 @@
     "topMatches": "Mechi bora · {country}",
     "matchesRanked": "Ajira {n} zimepangwa kwa kulingana na ujuzi",
     "wagePill": "{symbol} {amount}/mwezi",
+    "wageUnavailable": "Data ya mshahara haipatikani",
     "lowAi": "Hatari ya chini ya AI",
     "mediumAi": "Hatari ya kati ya AI",
     "highAi": "Hatari ya juu ya AI",

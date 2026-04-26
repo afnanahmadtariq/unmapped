@@ -244,6 +244,7 @@
     "topMatches": "शीर्ष मैच · {country}",
     "matchesRanked": "कौशल फिट द्वारा रैंक किए गए {n} व्यवसाय",
     "wagePill": "{symbol} {amount}/माह",
+    "wageUnavailable": "वेतन डेटा उपलब्ध नहीं",
     "lowAi": "कम AI जोखिम",
     "mediumAi": "मध्यम AI जोखिम",
     "highAi": "उच्च AI जोखिम",
