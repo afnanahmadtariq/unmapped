@@ -11,7 +11,8 @@
     "profile": "দক্ষতা প্রোফাইল",
     "opportunities": "সুযোগ",
     "dashboard": "ড্যাশবোর্ড",
-    "config": "কনফিগার"
+    "config": "কনফিগার",
+    "api": "API"
   },
   "themeToggle": {
     "switchToLight": "হালকা মোডে যান",

@@ -7,6 +7,7 @@ import { getDictionary, fmt } from "@/lib/i18n";
 import { getCountryData, ISCO_OCCUPATIONS } from "@/lib/data";
 import { calibrateRisk } from "@/lib/calibration";
 import { fetchIndicators } from "@/lib/worldBankApi";
+import { getProjectionsForCountry } from "@/lib/wittgenstein";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -49,6 +50,8 @@ export default async function DashboardPage({ searchParams }: PageProps) {
     calibrated: v.calSum / v.n,
   }));
 
+  const wittgensteinProjections = getProjectionsForCountry(country.code);
+
   const snapshot = {
     countryCode: country.code,
     countryName: country.name,
@@ -71,6 +74,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       rationale: data.calibration.rationale,
     },
     sectorRisks,
+    wittgensteinProjections,
   };
 
   return (

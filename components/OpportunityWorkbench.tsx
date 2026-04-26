@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import Pill from "@/components/Pill";
+import ResilienceScore from "@/components/ResilienceScore";
+import type { ResilienceBreakdown } from "@/lib/resilience";
 import type {
   CountryCode,
   MatchedOccupation,
@@ -59,6 +61,7 @@ export default function OpportunityWorkbench({
 }: Props) {
   const [profile, setProfile] = useState<SkillsProfile | null>(null);
   const [matches, setMatches] = useState<MatchedOccupation[] | null>(null);
+  const [resilience, setResilience] = useState<ResilienceBreakdown | null>(null);
   const [activeIsco, setActiveIsco] = useState<string | null>(null);
   const [pathways, setPathways] = useState<Record<string, Opportunity[]>>({});
   const [jobs, setJobs] = useState<Record<string, JobHit[]>>({});
@@ -97,9 +100,13 @@ export default function OpportunityWorkbench({
           body: JSON.stringify({ profile, countryCode }),
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as { matches: MatchedOccupation[] };
+        const data = (await res.json()) as {
+          matches: MatchedOccupation[];
+          resilience: ResilienceBreakdown;
+        };
         if (cancelled) return;
         setMatches(data.matches);
+        setResilience(data.resilience);
         if (data.matches[0]) setActiveIsco(data.matches[0].iscoCode);
       } catch (e) {
         if (!cancelled) setError(e instanceof Error ? e.message : "Unknown");
@@ -189,7 +196,15 @@ export default function OpportunityWorkbench({
   const active = matches.find((m) => m.iscoCode === activeIsco) ?? matches[0];
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] animate-[fadeIn_240ms_ease-out]">
+    <div className="space-y-6 animate-[fadeIn_240ms_ease-out]">
+      {resilience && (
+        <ResilienceScore
+          score={resilience}
+          title="Your resilience score"
+          subtitle="Composite of skill diversity, AI durability, sector momentum, and adjacency to top matches"
+        />
+      )}
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
       <aside className="space-y-3">
         <div className="rounded-xl border border-border-default bg-bg-raised p-4">
           <p className="text-[10px] uppercase tracking-[0.2em] text-fg-muted">
@@ -380,6 +395,7 @@ export default function OpportunityWorkbench({
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

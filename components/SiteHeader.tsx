@@ -6,7 +6,7 @@ import type { Dictionary } from "@/lib/i18n";
 interface Props {
   countryCode: string;
   locale: string;
-  active?: "profile" | "opportunities" | "dashboard" | "config" | "home";
+  active?: "profile" | "opportunities" | "dashboard" | "config" | "api" | "home";
   t: Dictionary;
 }
 
@@ -19,6 +19,7 @@ const NAV: Array<{
   { key: "opportunities", labelKey: "opportunities", href: (q) => `/opportunities${q}` },
   { key: "dashboard", labelKey: "dashboard", href: (q) => `/dashboard${q}` },
   { key: "config", labelKey: "config", href: (q) => `/admin/config${q}` },
+  { key: "api", labelKey: "api", href: (q) => `/api-docs${q}` },
 ];
 
 export default function SiteHeader({ countryCode, locale, active = "home", t }: Props) {

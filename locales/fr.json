@@ -11,7 +11,8 @@
     "profile": "Profil de compétences",
     "opportunities": "Opportunités",
     "dashboard": "Tableau de bord",
-    "config": "Configuration"
+    "config": "Configuration",
+    "api": "API"
   },
   "themeToggle": {
     "switchToLight": "Passer au mode clair",

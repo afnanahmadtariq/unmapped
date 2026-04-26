@@ -20,6 +20,7 @@ import {
 import { ChevronDown, Download, TrendingUp, Users, Briefcase } from "lucide-react";
 import Pill from "@/components/Pill";
 import AiRiskLens from "@/components/AiRiskLens";
+import WittgensteinCard from "@/components/WittgensteinCard";
 import type { Dictionary } from "@/lib/i18n";
 import { fmt } from "@/lib/i18n";
 
@@ -49,6 +50,10 @@ type Snapshot = {
   occupationLookup: Record<string, { title: string; sectorId: string }>;
   automationCalibration: { multiplier: number; rationale: string };
   sectorRisks: SectorRisk[];
+  wittgensteinProjections: Array<{
+    year: 2025 | 2030 | 2035;
+    shares: { noEdu: number; primary: number; lowerSec: number; upperSec: number; tertiary: number };
+  }> | null;
 };
 
 interface Props {
@@ -247,6 +252,15 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
         riskMed={t.dashboard.aiLensRiskMed}
         riskHigh={t.dashboard.aiLensRiskHigh}
       />
+
+      {snapshot.wittgensteinProjections && (
+        <WittgensteinCard
+          projections={snapshot.wittgensteinProjections}
+          countryName={snapshot.countryName}
+          title="Education projections 2025-2035"
+          subtitle="Wittgenstein Centre SSP2 - share of population aged 15-29 by ISCED bucket"
+        />
+      )}
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card title={t.dashboard.topWagesTitle} subtitle={t.dashboard.topWagesSub}>

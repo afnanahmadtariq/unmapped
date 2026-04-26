@@ -11,7 +11,8 @@
     "profile": "Skills profile",
     "opportunities": "Opportunities",
     "dashboard": "Dashboard",
-    "config": "Config"
+    "config": "Config",
+    "api": "API"
   },
   "themeToggle": {
     "switchToLight": "Switch to light mode",
