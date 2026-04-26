@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Briefcase, GraduationCap, Cpu, Layers, ExternalLink, CheckCircle2, AlertCircle, X, Database, Lock, Settings } from 'lucide-react';
 import './data-sources.css';
 
@@ -200,6 +200,14 @@ export default function DataSourcesPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<'config' | 'result'>('config');
+  const [harvesterStatus, setHarvesterStatus] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/datasets')
+      .then(res => res.json())
+      .then(data => setHarvesterStatus(data))
+      .catch(err => console.error('Harvester not running', err));
+  }, []);
 
   const openSource = (src: Source) => {
     setSelected(src);
@@ -239,6 +247,23 @@ export default function DataSourcesPage() {
           <span><strong>{SOURCES.length}</strong> Total Sources</span>
         </div>
       </div>
+
+      {harvesterStatus.length > 0 && (
+        <div style={{ maxWidth: '800px', margin: '0 auto 3rem', background: '#0f0f1a', border: '1px solid rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '16px' }}>
+          <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem', color: '#a5b4fc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Database size={18} /> Harvester Storage Status
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '0.75rem' }}>
+            {harvesterStatus.map((ds: any) => (
+              <div key={ds.sourceId} style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', padding: '0.75rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <span style={{ color: '#d1d5db', fontWeight: 600, fontSize: '0.85rem' }}>{SOURCES.find(s => s.id === ds.sourceId)?.name || ds.sourceId}</span>
+                <span style={{ color: '#10b981', fontSize: '0.75rem', fontWeight: 500 }}>{ds.recordCount.toLocaleString()} records cached</span>
+                <span style={{ color: '#6b6b8a', fontSize: '0.7rem' }}>Updated: {new Date(ds.lastFetched).toLocaleString()}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {categories.map(cat => (
         <div key={cat} className="ds-section">

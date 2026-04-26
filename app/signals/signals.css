@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.sig-container {
+  min-height: 100vh;
+  background: #08080f;
+  color: #f0f0f8;
+  font-family: 'Inter', sans-serif;
+  padding: 3rem 1.5rem 6rem;
+  background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 70%);
+}
+
+.sig-header { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
+.sig-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+}
+.sig-header p { color: #6b6b8a; font-size: 1.1rem; line-height: 1.6; }
+
+.sig-controls {
+  max-width: 1000px; margin: 0 auto 3rem; display: flex; gap: 1rem; align-items: flex-end;
+  background: #0f0f1a; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.07);
+}
+.sig-input-group { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.sig-input-group label { font-size: 0.85rem; font-weight: 600; color: #a5b4fc; text-transform: uppercase; letter-spacing: 0.05em; }
+.sig-input-group input, .sig-input-group select {
+  background: #151525; border: 1px solid rgba(255,255,255,0.1); color: #fff;
+  padding: 0.75rem 1rem; border-radius: 8px; font-size: 1rem; outline: none; transition: all 0.2s;
+}
+.sig-input-group input:focus, .sig-input-group select:focus { border-color: #6366f1; }
+.sig-btn {
+  background: #6366f1; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; height: 46px;
+}
+.sig-btn:hover { background: #4f46e5; }
+.sig-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.sig-grid {
+  max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem;
+}
+
+.sig-card {
+  background: #0f0f1a; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px; padding: 1.5rem; transition: transform 0.2s; display: flex; flex-direction: column; gap: 1.25rem;
+}
+.sig-card:hover { border-color: rgba(99,102,241,0.3); transform: translateY(-2px); }
+.sig-card-header { display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 1rem; }
+.sig-card-icon { font-size: 1.5rem; }
+.sig-card-title h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+.sig-card-title p { font-size: 0.8rem; color: #6b6b8a; }
+
+.sig-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.sig-field-header { display: flex; justify-content: space-between; align-items: center; }
+.sig-field-label { font-size: 0.9rem; font-weight: 600; color: #d1d5db; }
+.sig-badge { font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 100px; font-weight: 700; text-transform: uppercase; }
+.sig-badge.api { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.sig-badge.manual { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+
+.sig-value-box {
+  background: #151525; border: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 1rem; border-radius: 8px;
+  font-size: 1.1rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between;
+}
+.sig-value-input {
+  background: transparent; border: none; color: #f59e0b; font-size: 1.1rem; font-weight: 700; width: 100%; outline: none; font-family: 'Inter', sans-serif;
+}
+.sig-value-input::placeholder { color: rgba(245,158,11,0.4); font-weight: 500; }
+.sig-source-note { font-size: 0.75rem; color: #6b6b8a; display: block; margin-top: 0.2rem; }
+
+@media (max-width: 768px) {
+  .sig-controls { flex-direction: column; align-items: stretch; }
+  .sig-btn { width: 100%; }
+}

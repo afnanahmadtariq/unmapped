@@ -39,7 +39,7 @@ export class DataController {
     // Optional filtering by countryCode
     if (country) {
       records = records.filter(r =>
-        (r.countryCode || r.country_code || r.iso3 || '').toLowerCase() === country.toLowerCase()
+        (r.countryCode || r.country_code || r.iso3 || r.refArea || '').toLowerCase() === country.toLowerCase()
       );
     }
 
