@@ -1,0 +1,2727 @@
+{
+  "sourceId": "esco",
+  "sourceName": "ESCO Skills Taxonomy (EU)",
+  "category": "skills",
+  "metadata": {
+    "apiUrl": "https://esco.ec.europa.eu/en/use-esco/esco-web-services",
+    "version": "ESCO v1.1.1",
+    "totalSkills": 200,
+    "totalOccupations": 100,
+    "note": "No API key required. European Skills, Competences, Qualifications and Occupations taxonomy."
+  },
+  "records": [
+    {
+      "uri": "http://data.europa.eu/esco/skill/9bc3b9ae-50d8-4a32-857e-8cf8d9b4ba8e",
+      "title": "3D body scanning technologies",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0914",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6e53fd99-b646-4327-9580-ac062ab21188",
+      "title": "3D lighting",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0211",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/97965983-0da4-4902-9daf-d5cd2693ef73",
+      "title": "3D modelling",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0541",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2afb2b59-c9a3-4cf3-b1dd-1a2fad51e583",
+      "title": "3D printing process",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0211",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3e7516dc-0f7c-4686-8b2f-fade4e5d21be",
+      "title": "3D texturing",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0211",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/eb0e5615-1575-4a86-a1a2-7d39595033c5",
+      "title": "ABAP",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0613",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9a35cb50-8106-45f9-8aba-2df99dd6f913",
+      "title": "ABBYY FineReader",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0613",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6bc02a4a-66af-4b49-9bd3-d07695d52b42",
+      "title": "abide by business ethical code of conducts",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "A2.3.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c0ccbd15-36f3-4515-ae0b-b4062d225ee2",
+      "title": "abide by regulations on banned materials",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/27247d7e-d327-4ba2-87fe-215143be6453",
+      "title": "abrasive blasting processes",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "1021",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f777173e-567c-4d4a-80b3-0ff5353bb9ce",
+      "title": "abrasive machining processes",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0722",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/0189f448-179e-47cc-9716-c5c3ac4b1aec",
+      "title": "Absorb (learning management systems)",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0612",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/a311ab20-75df-4aff-8016-3142c5659d30",
+      "title": "accept constructive criticism",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S1.8.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/125258b2-23c1-472c-90c6-4ec2e90ed893",
+      "title": "accept feedback on artistic performance",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.8.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f90d4810-8bac-4e5e-b870-3e35a4138ff7",
+      "title": "accept own accountability",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.8.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5e1ae060-3827-403b-b875-2f45a054ce03",
+      "title": "acclimatise timber",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S6.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5f8a6414-7095-410f-aee6-774cec68077e",
+      "title": "accommodate cargo in freight transport vehicle",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/e32a8119-ca4e-48be-9470-6d45b5a7219f",
+      "title": "accommodate special seating",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S3.4.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ab89ad86-1098-44bb-9465-05af5624557c",
+      "title": "accompany people",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.4.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ecc18804-a466-40d9-98b4-fba5cd67dd4b",
+      "title": "accounting",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0411",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/08371fe9-c658-4f6a-966f-71dbb0ab683d",
+      "title": "accounting department processes",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0411",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/99b163e8-7815-43e2-83f3-a47f3076354c",
+      "title": "accounting entries",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0411",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/880c54f9-866e-4f37-b5fa-25ef8a7d49b6",
+      "title": "accounting techniques",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0411",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bd556223-d9af-434b-a6bf-e70fa3ed3d12",
+      "title": "accurately estimate work hours",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S2.6.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/393a7e6b-8deb-41a3-a48e-30d5dd68a7df",
+      "title": "accurise guns",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S6.5.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c09bf6d4-f8a7-40f3-aead-ef01643f2352",
+      "title": "achieve sales targets",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.6.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/0939079f-e4dc-46c3-94fa-5155fc34c888",
+      "title": "acoustical engineering",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "0732",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/26879b10-1df9-4071-a4c5-cb8e32eddb99",
+      "title": "acoustics",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0533",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/29b22cea-531c-4a6c-a28e-33e87ec4aa67",
+      "title": "acquire antique items",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/83fbfa2f-0eb7-4667-a574-d12e3b7fdc2b",
+      "title": "acquire licences for the use of weapons",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S2.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/1667e510-709d-4093-96bd-8264050cd978",
+      "title": "acquire license for selling tobacco products",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S2.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025",
+      "title": "acquire system component",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S5.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/43268a87-8280-4e3f-bf97-97dc973d60ef",
+      "title": "act as a company ambassador",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6299f204-534b-4251-9338-7aaa386ce49e",
+      "title": "act as a resource person in dance",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2d78d7e4-767a-436d-90cb-e0775ed613ee",
+      "title": "act as a watchstander",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S8.3.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/00f2eee1-cd4d-4a45-ae10-b6060f53ad5d",
+      "title": "act as contact person during equipment incident",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S3.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/88f2ee42-01c8-4390-a108-e733cecaaa77",
+      "title": "act discreetly",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "A2.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b983e86d-61d5-4ebf-8810-2650c91da096",
+      "title": "act for an audience",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/25e16679-a7d0-464d-916c-63210001bbab",
+      "title": "act reliably",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "A1.13.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/91fc256e-00ec-4367-b3b4-dcd564ed3fd2",
+      "title": "acting and directing techniques",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0215",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/74be20a7-fcfe-4715-bb62-8937a547a982",
+      "title": "acting techniques",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0215",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c9f4efcd-e16a-4515-a0cb-60c6c479853d",
+      "title": "actuarial science",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0542",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/29eaa382-a9b3-4965-b32b-5e7dedd3a25c",
+      "title": "acupressure",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0917",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f4eede2b-492c-4b1d-b118-ce681859a712",
+      "title": "acupuncture methods",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0917",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9b9244b4-6f62-4834-839b-19e9eba0a407",
+      "title": "acute care",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0913",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/65209d28-1ba7-4b39-9d89-cadf9493c3be",
+      "title": "adapt a script",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.13.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/409b165c-ddae-4366-aeac-fa95c79e57a9",
+      "title": "adapt artistic plan to location",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/254235cd-d928-49d1-ae51-b7c909404fe1",
+      "title": "adapt communication style according to recipient",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.7.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/8ce089ee-cb1e-49d0-b7a3-a11d07b28525",
+      "title": "adapt costumes",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.11.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/892f8e2f-189a-41d5-a4b6-b8e2afb99974",
+      "title": "adapt designers’ work to the performance venue",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ea876ec3-4382-478c-b8b3-600c6b23ae85",
+      "title": "adapt developed game to the market",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S2.9.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ce541a71-0eaa-40e7-999d-793d1f16fa4c",
+      "title": "adapt efficient food processing practices",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S2.8.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f191c306-f0eb-4cb8-82fb-3331adbbc6f1",
+      "title": "adapt energy distribution schedules",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S8.4.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c0733631-0c5e-4b5c-a291-aad52ca493ce",
+      "title": "adapt existing designs to changed circumstances",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2ef14732-87de-4592-b968-bb6920e7e294",
+      "title": "adapt fighting techniques for performance",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5d589320-2a07-4994-837d-334b57f283d5",
+      "title": "adapt fitness exercises",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9fec670e-4427-482f-b2ce-6355cba6b68e",
+      "title": "adapt hearing tests",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.2.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b4832996-b36c-40b2-b54e-780325b2546e",
+      "title": "adapt instruction to labour market",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S2.9.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/79c012c7-4b09-497e-8152-e73e5d1d3384",
+      "title": "adapt leadership styles in healthcare",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S4.5.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/40ee68b0-9f80-4607-9a2d-998385cc261f",
+      "title": "adapt lifestyle to perform at the highest level in sport",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.14.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/a702736a-f400-49bf-b929-1719ef2eb5d6",
+      "title": "adapt Pilates exercises",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.3.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6e9aaf01-f2a4-4405-9733-29dc9825efa9",
+      "title": "adapt production levels",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S4.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/28a8aa5e-b4e7-4ff7-93eb-dcc28b5e59af",
+      "title": "adapt props",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2065ebac-6c3d-4474-9978-57a08a8c64a5",
+      "title": "adapt sets",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/573d3f91-c81c-407e-a56d-0f3a63272b43",
+      "title": "adapt teaching to student's capabilities",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "A2.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b2a9587a-49a4-4384-b134-0d394be806e3",
+      "title": "adapt teaching to target group",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "A2.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/839f05ab-c8e0-4893-8b41-9fcae53e71f3",
+      "title": "adapt text culturally",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.13.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/591dd514-735b-46e4-a28d-3a4c42f49b72",
+      "title": "adapt to artists' creative demands",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/49de9958-2aa4-4eef-a89d-fe5d5bcd28c4",
+      "title": "adapt to change",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2daa2d63-07ef-4c16-b0f3-697bbb6fc205",
+      "title": "adapt to change in marketing",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9207098f-d6fc-444b-bc92-d286d03d7729",
+      "title": "adapt to changes in forestry",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f5308e60-d763-4ead-be95-88c96fb3e02b",
+      "title": "adapt to changes in technological development plans",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.9.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3dd4f292-65a5-4883-8217-c05d15140669",
+      "title": "adapt to changes on a boat",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5592ab32-4e7a-4cda-8e64-ca36d5de8a10",
+      "title": "adapt to changing situations",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f34ee429-b36d-49f9-a927-80b67a467cc8",
+      "title": "adapt to different roles",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3577e49b-951d-4d46-a1f4-417087a8fb6d",
+      "title": "adapt to different weather conditions",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/21c35dda-555a-4db7-8984-c01dcd8ad865",
+      "title": "adapt to emergency care environment",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.9.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/63e21f22-0aa9-4337-87e4-46e8008f1524",
+      "title": "adapt to new design materials",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S2.9.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5ca9f3d6-d7dd-4bb1-a4ca-75c6b14b7b6f",
+      "title": "adapt to new technology used in cars",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "A1.1.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/7378b8c3-3b62-46de-9d67-1c9528954615",
+      "title": "adapt to type of media",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.4.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/83c88276-6eb9-4749-94e5-5155bd475d51",
+      "title": "adapt voice register to the audio material",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9d4d6f90-6564-4ffe-a9b2-9ed5d09de5df",
+      "title": "add chemicals to drilling fluid",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S8.4.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/aba9e850-623b-46e2-9ce1-82a87bf34df5",
+      "title": "add coils to ceramic work",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.12.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/157568b3-11d6-4aee-a007-b97e8fe9ca39",
+      "title": "add colour",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S7.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/487fd260-be20-4980-a8e4-b819f0b549f1",
+      "title": "add computer components",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S5.0.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3bf78e05-5ef1-4cce-906c-9dca91105bb3",
+      "title": "add elocution techniques to recording audio materials",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S8.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/69282ad4-8793-421e-a42c-636b75f32aac",
+      "title": "add paint hardeners",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S6.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/d30d9f4a-a541-4174-b197-232695a668c6",
+      "title": "add paint thinners",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S7.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c4275b3b-77ab-4f7f-a9aa-27ee092fd67e",
+      "title": "add scent",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S6.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/7c4fc5e4-10cc-4457-9038-77907fee1290",
+      "title": "add slabs to ceramic work",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/4efae845-a71a-4b10-a245-f996394cccf4",
+      "title": "address aircraft mechanical issues",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S8.7.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/609a8ac1-9d29-4237-9886-596dbbe7ca8a",
+      "title": "address an audience",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S1.4.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/502c2af4-5290-425c-a51a-2faf944e66c3",
+      "title": "address gender-related issues in family planning counselling",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.1.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/a8604296-8796-40e9-aa42-3f4f1b0b252d",
+      "title": "address potential aerodrome hazards",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b9f16465-56a9-426b-a047-0f9f1f95ec92",
+      "title": "address problems critically",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.9.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/1cebfd4f-2ab3-480a-a3c8-8065a303717d",
+      "title": "address public health issues",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S4.1.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2f92c4ed-279c-467e-82bd-4709172514f5",
+      "title": "address side effects of menopause",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S2.1.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/68aefa78-9a8c-4d5f-879a-abcfe1cd464f",
+      "title": "adhere to health well-being and safety",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2d9aaad3-a3c8-4c5b-bf67-46984d860873",
+      "title": "adhere to OHSAS 18001",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S3.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/d2564da5-c21f-4c02-8887-c78a001bb183",
+      "title": "adhere to organisational code of ethics",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "A2.3.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/7838b15f-1beb-4da3-b4f2-22d8ae6e9079",
+      "title": "promote service users' rights",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bf5ab3df-9589-4e99-b8f6-a83b494f40be",
+      "title": "promote social awareness",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/644209ac-8452-4e81-959a-2b10050023cc",
+      "title": "promote social change",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/144aba2f-dddd-41bc-b519-0ea6d51bcd6b",
+      "title": "promote social security programmes",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f155b8be-f4f9-4236-b22a-a875ca6a3293",
+      "title": "promote sport activities in public health",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S4.1.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5895a0b8-da35-482d-bf25-1017b4a03632",
+      "title": "promote sports in schools",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/61c55674-9c8a-4433-8c78-f0912bb79c66",
+      "title": "promote sports organisation",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/469e19ed-a0bd-445a-ae2d-4ba9430e296b",
+      "title": "promote sustainability",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/1a6c7e0d-fc13-41d7-a5c0-8ca00606de89",
+      "title": "promote sustainable energy",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9263f0d8-7266-4782-b0ee-38f62656e97e",
+      "title": "promote sustainable interior design",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.11.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6742977a-aa00-4c8c-9861-898b0373907e",
+      "title": "promote sustainable management",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/51399b1c-15d6-4e4c-8673-30c25a094fce",
+      "title": "promote sustainable packaging",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.6.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bcd94e4d-1ab5-4e02-b474-590ae0a627e2",
+      "title": "promote the air transport operator at events",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/4579d794-f8ae-4c07-86c4-340829ff4863",
+      "title": "promote the conservatory",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/98a0c718-40b1-4a4f-a366-b8155f238d9b",
+      "title": "promote the safeguarding of young people",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/807b974a-3901-49c4-87ef-86c3edaba222",
+      "title": "promote your writings",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/a04c2655-5996-4744-bca2-4f4c8b3e4667",
+      "title": "promote yourself",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/4381b317-c2c9-48a4-be25-f89b6291b0bf",
+      "title": "promote youth work in the local community",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/e44a0396-77e2-4d57-8c80-36796238f80c",
+      "title": "prompt performers",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/8e16511d-3540-47e1-8620-8f111b7ae280",
+      "title": "pronunciation techniques",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0215",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/70c573a8-de56-45cc-ae69-0a1073eef2b3",
+      "title": "proofing methods",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0413",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/637ca2e2-0624-48b1-be6e-9ff4580344ac",
+      "title": "proofread text",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.13.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/844e9480-7aef-49f6-9260-d88c27249241",
+      "title": "propagate plants",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.4.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/db1484fb-3b59-439d-ae82-0905af2790aa",
+      "title": "properties of fabrics",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0723",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b3a4924a-f793-485c-8dc1-54e12198d95d",
+      "title": "property law",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0421",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/54fe3a6b-d02e-4455-843b-718a6b5723eb",
+      "title": "propose avenues for exploration to generate the artistic content",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.12.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328",
+      "title": "propose ICT solutions to business problems",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.11.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9fd126c7-ae3d-470f-ba64-c27a85e5bb27",
+      "title": "propose improvements to artistic production",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.14.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f18bb25a-2e7b-499d-89d6-b5896d047a01",
+      "title": "propose leisure activities",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S4.2.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/218cc765-9451-4538-bab5-871603217c57",
+      "title": "propose projects to artist",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S4.1.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bc24fe02-d93c-4191-8897-ca2c593bc84b",
+      "title": "propose settlements",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.1.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6d97bf55-6fb6-4795-8282-3ef915ae0bb8",
+      "title": "prospect new customers",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/f41f860f-91ab-4ca7-a906-483fa9d13c16",
+      "title": "prospect new regional contracts",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.1.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/80ffa169-a3ff-47a8-9be1-7731ba543739",
+      "title": "prosthetic devices",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0914",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/e81f2d1a-9b32-493d-899a-ab87cee06d15",
+      "title": "prosthetic-orthotic device materials",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0914",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c440bd51-6fc2-49dc-91d1-d34d417f5e2f",
+      "title": "prosthetic-orthotic examination",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "0914",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ae6d655d-bbce-4701-ba04-d687cfa90eda",
+      "title": "protect biodiversity",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/25a7fc25-f2fc-4bfd-9999-943c03d53372",
+      "title": "protect client interests",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/72836f47-cf5c-48e1-a82b-1cf6e4e0f623",
+      "title": "protect employee rights",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.2.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b4bd4b00-be51-4631-b202-dcb0e33c0899",
+      "title": "protect game",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/55dda75d-698c-4c10-9984-8c4538fcc957",
+      "title": "protect health and safety when handling animals",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/d1ed5b3a-cab5-4c5d-baf8-0214998b58fb",
+      "title": "protect health and well-being while using digital technologies",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S3.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/df329d70-87b0-466b-a214-3431f36e2a5e",
+      "title": "protect ICT devices",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S5.2.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/419d9b5b-0456-477f-b06c-0bd03628f41d",
+      "title": "protect important clients",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S3.3.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/33a82b83-c838-4889-ae62-fae1317481eb",
+      "title": "protect personal data and privacy",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S3.3.6",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2e77d381-df21-4f84-b3dd-6062be7ef4e1",
+      "title": "protect plants during pest control",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/30bfd573-ab0b-457e-95fa-851dc681af60",
+      "title": "protect surfaces during construction work",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S7.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/6cb07eb8-8fa2-4e77-997b-85507e09405d",
+      "title": "protect surrounding area during chimney sweeping process",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c4ba12d1-4698-42fa-8abb-789462ea2586",
+      "title": "protect the environment from the impact of the digital technologies",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "transversal",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bb859329-0cd8-45c0-a09f-48b6dcd9fc1a",
+      "title": "protect trees",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3aa7e88e-bebd-48b1-94ba-6efddeecf08f",
+      "title": "protect vulnerable social service users",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.1.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/5be72e00-e506-45ca-a251-b59500d7fca7",
+      "title": "protect wilderness areas",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.3.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/e515466d-48ba-4a07-816e-d1cbce6af684",
+      "title": "protect window frames",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S7.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/10095abb-e2e0-401a-b9d4-b871ca4e3d0a",
+      "title": "protect workpiece components from processing",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S7.3.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/073a58a6-08b5-4727-abd0-890ce615af77",
+      "title": "protection from natural elements",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "0522",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3955cd15-a1fa-4c16-99b4-c39cb17db21d",
+      "title": "protective measures against the introduction of organisms",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0522",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/a6ce205e-22d1-4a8c-8f83-cd7a04462fc7",
+      "title": "protective measures related to swimming pool chemicals",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "1022",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/e23f7e8a-63dc-4182-9a00-5e3c835b8051",
+      "title": "protective safety equipment",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "1022",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/eccf1659-e252-4971-8176-474fea83d6db",
+      "title": "protein",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "0511",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ed1d8bd4-cd2a-4c64-b665-56d70651026c",
+      "title": "Prototyping development",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "0613",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/0f16809e-a1a4-46a4-ae8e-058f5d0d358a",
+      "title": "prototyping in the wearing apparel industry",
+      "type": "Skill",
+      "skillType": "knowledge",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "0723",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/402ebc59-b960-400c-9a6d-ab96e601b71a",
+      "title": "provide a psychotherapeutic environment",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.4.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/eb5d30e5-75e3-4025-a2d5-55c24a8e6bfb",
+      "title": "provide accurate information on water routes",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.4.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/59f2dfec-ea06-4eb5-9e10-01578b2e8526",
+      "title": "provide advanced clinical practice in physiotherapy",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.2.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c15e9da0-6177-4afd-93f4-65655374ad8a",
+      "title": "provide advertisement samples",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9f6946f7-60aa-409a-b33d-152f244299d8",
+      "title": "provide advice on breaches of regulation",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/57217fd3-8562-4b0e-9354-818f05bda003",
+      "title": "provide advice on furniture maintenance",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/cae4146d-71d8-46a8-9a90-748a63c22f25",
+      "title": "provide advice on inventions",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.6",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/4f9bbbb7-a5f8-4c39-ac6f-4c4a6da28262",
+      "title": "provide advice on pet training",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.8",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/d4abfcab-2b74-4487-a2dc-e24a3ebfb56a",
+      "title": "provide advice on pilot licence application procedures",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b99ffdda-699d-4d55-b361-23036da33f1e",
+      "title": "provide advice on safety",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.9",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/c15cd412-922c-47fc-bca3-602a5627d376",
+      "title": "provide advice on trademarks",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ee0146ce-68d1-4fd0-9317-b81ac7297d86",
+      "title": "provide advice on travel destinations",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b3a6dda3-e084-40e4-b211-7abb76a07eb6",
+      "title": "provide advice to clients in terms of export restrictions",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.5.0",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/be974fa8-60d4-4f4f-bd8d-e8c32a661fe2",
+      "title": "provide advice to clients in terms of import restrictions",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.5.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/9d56d8d6-f542-4f69-a817-3fb92794a44c",
+      "title": "provide advice to emergency callers",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/235b15d9-5ccd-4406-8993-f6dd0de2c4c9",
+      "title": "provide advice to farmers",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.5.7",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3a08450a-7e60-449d-84cb-a39b3d8aaece",
+      "title": "provide advice to hatcheries",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.5.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/8c474534-707f-46f3-b356-810bbfe8b693",
+      "title": "provide advice to technicians",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.6",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/42f8adc8-e4ff-4263-be44-fe9a83ef286e",
+      "title": "provide advocacy interpreting services",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.15.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/77eda69d-ddf6-40ca-b66f-870ea996734d",
+      "title": "provide after school care",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.6.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/8550a96d-3970-46e1-83e1-371c59473ec4",
+      "title": "provide agri-touristic services",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.6.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b31816f3-0591-46d1-8364-d273bd404c04",
+      "title": "provide amusement park information",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.4.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/41730268-d97a-42dd-b6e0-b117d9432eb5",
+      "title": "provide an enriching environment for animals",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.9.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/ef822959-5142-4a45-967f-8cc745ceab38",
+      "title": "provide anaesthetics to animals",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.9.7",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/da342b33-736f-4024-9c4e-590e10850312",
+      "title": "provide anger management counselling",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.1.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/b9636ea8-c1f6-4991-81e7-4ad1ab99f9cc",
+      "title": "provide animal related information for legal proceedings",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.4.3",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/d92d88cf-dd72-4c3b-a98a-2c2a12600df3",
+      "title": "provide animal training",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.9.6",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/0e685cc5-df53-451f-b987-7fd6d7025447",
+      "title": "provide anti-cancer medical treatment",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/3c8c7fb6-60b5-4b5e-bf13-86d3887e5da2",
+      "title": "provide arts coaching sessions",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.3.5",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/34783459-e867-4f50-90dd-fb020b543f43",
+      "title": "provide assistance to a variety of airport users",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.4.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/cf6dcd52-0641-487e-960f-7f4455aff85d",
+      "title": "provide assistance to lecturer",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S1.3.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/7903f946-aeff-4024-b146-8e48018d4eb9",
+      "title": "provide assistance with job search",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S1.5.8",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/2cc35da7-3fd8-42e8-aa70-87ef8a3b1f3b",
+      "title": "provide assistive technology",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.2.6",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/15a828a2-84a9-493c-81d2-a80a220c8da7",
+      "title": "provide athletic equipment to clients",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.4.4",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/24f980ba-b44f-4739-b563-205104c3190d",
+      "title": "provide basic support to patients",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/95531758-6341-4217-a9c3-95f95382db52",
+      "title": "provide care for a patient group with specific characteristics",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S3.6.2",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/540e80b9-0e1e-4842-a9d8-e46804e567f0",
+      "title": "provide care for horses",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "sector-specific",
+      "iscoGroup": "S6.9.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/bdee6867-b76a-4652-bd15-824fce9dc792",
+      "title": "provide care for the mother during labour",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "occupation-specific",
+      "iscoGroup": "S3.2.1",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/skill/fd88851f-4d1d-4de8-aee1-4464c3012969",
+      "title": "provide career counselling",
+      "type": "Skill",
+      "skillType": "skill",
+      "reuseLevel": "cross-sector",
+      "iscoGroup": "S1.5.8",
+      "recordType": "skill"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/52df9d56-efd4-48d0-ad93-59231943fc4c",
+      "title": "3D animator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/bab5fa79-7f96-4e21-87b6-1eba560b8d9a",
+      "title": "3D modeller",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4cf7be91-fed9-47a7-9ca9-e74c7eb6becb",
+      "title": "3D printing technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/3c0af499-39f6-4468-9ba4-b13a26d5f888",
+      "title": "abrasive blasting operator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c706886d-5bc7-4430-9a72-051fc483235f",
+      "title": "absorbent pad machine operator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/abab3d6a-82b9-49bd-8a4b-7bc678130558",
+      "title": "academic advisor",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/2ddde737-28f3-444d-b1f8-ef12cc2df3c7",
+      "title": "academic support officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/53cdd34e-22f2-41bd-b3c7-de22bf9bbcae",
+      "title": "accommodation manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/eda0d957-3c3c-4139-b89a-a18bc9e18897",
+      "title": "accountant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/caafca69-9faa-4850-8930-a3fa07fea4e6",
+      "title": "accounting analyst",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/bfe142b9-a049-4d41-89c4-fd2f34ac56b6",
+      "title": "accounting assistant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/04f39bfa-bc03-4480-98bc-b18ce4fe4b4b",
+      "title": "accounting manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b065b637-5cb5-44d9-8c39-08004b51734e",
+      "title": "acoustical engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/98358049-fbcd-479e-a644-e92bde5af2e0",
+      "title": "activism officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/234be692-befb-41df-bdf0-e1b2f4eaf5e7",
+      "title": "activity leader",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/26171f39-e85a-448f-bd28-a73a5a99927f",
+      "title": "actor/actress",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/160c1469-bbb6-48d3-b2a7-db8b30d724b5",
+      "title": "actuarial assistant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/068c2787-58ff-468e-bbb6-c4e5dd6ee482",
+      "title": "actuarial consultant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/2dcb5dad-1902-4051-9023-d725485479a7",
+      "title": "acupuncturist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/044d78cc-f62f-4532-83a5-8e04f2889652",
+      "title": "administrative assistant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/6e1b1bd7-9eec-4f10-bce7-94a27d9023e8",
+      "title": "admissions coordinator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c6239b9e-5973-4b0a-a2ed-4c4b41331e04",
+      "title": "adult community care worker",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/02f1ae71-f89c-47b7-af2c-50d7ab1d9b8a",
+      "title": "adult literacy teacher",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/36494988-69d2-4420-9db4-eb56605ac983",
+      "title": "advanced nurse practitioner",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/a317e9c2-62d5-4a24-8ad4-5cb7b9db3f3b",
+      "title": "advanced physiotherapist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/54cba39a-5bb8-4e4c-89cd-d6097d3c6c3a",
+      "title": "advertising assistant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b1ab3572-fa2f-4624-8eac-3c3d986d237b",
+      "title": "advertising copywriter",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c28cb56b-003e-499a-8dbf-b654864e7867",
+      "title": "advertising installer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4ebf2dae-c326-4627-befe-fbc91410f432",
+      "title": "advertising manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4795d4e3-c623-47ff-abab-7de97fcb764e",
+      "title": "advertising media buyer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b55718eb-e8ff-4485-8ad0-bbac32cbd77b",
+      "title": "advertising media planner",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f5332f2d-3119-4194-8b5c-d0a5d97f55ef",
+      "title": "advertising sales agent",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/e01719f4-d7dd-42fe-b504-93128520f84a",
+      "title": "advertising specialist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/9e47c727-5718-48f1-a567-6a4c09397a21",
+      "title": "aerodynamics engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4be03a63-0423-4e50-acbf-aec405bb0741",
+      "title": "aeronautical information service officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f470b785-643c-46f9-8b31-6085427ab7b8",
+      "title": "aeronautical information specialist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/d7e663b2-f042-47d8-9fda-b5b8ba30ca04",
+      "title": "aerospace engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/1c9937fe-5eaa-4f7e-ba31-77e6e7db022c",
+      "title": "aerospace engineering drafter",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/05a55bb3-68d6-4ff0-83fd-46a68a45a598",
+      "title": "aerospace engineering technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/a1e1a788-2352-4172-8fcf-1f985a6968b0",
+      "title": "aesthetician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/98e58946-3227-4f6c-a5d1-5892fe76883d",
+      "title": "after-sales service technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4d5bd738-9202-4fd7-bd8c-7dbe914048de",
+      "title": "agricultural engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/a5dc92b4-9712-4bc5-a08a-f6efa07b855f",
+      "title": "agricultural equipment design engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/715b902f-b1b6-4366-afc6-ddb8ab715229",
+      "title": "agricultural inspector",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/e04bca7b-c0c7-454d-9d15-dfb64a30dc0a",
+      "title": "agricultural machinery and equipment distribution manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f7145f87-5940-43f5-bc98-aa1a2b872b47",
+      "title": "agricultural machinery technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/98f17395-0f8c-4f51-9072-cb8f66fd6044",
+      "title": "agricultural policy officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/449f6aef-a8e6-4edc-aea4-802a7b773e00",
+      "title": "agricultural raw materials, seeds and animal feeds distribution manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c25b3700-6095-42b7-99fc-b87dc326c044",
+      "title": "agricultural scientist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/1f8314c2-01bd-4af4-babc-04d7034591b8",
+      "title": "agricultural technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/91ba2935-f5c9-426d-8573-997b8b91e5ed",
+      "title": "agriculture, forestry and fishery vocational teacher",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f5e80af5-eebe-4133-878a-5dc5ef34fe93",
+      "title": "agronomic crop production team leader",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c40ef517-d4ab-4932-b184-9c2ea5b24fe2",
+      "title": "agronomist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f2cc5978-e45c-4f28-b859-7f89221b0505",
+      "title": "air force officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c94dc5b2-6b23-4915-8de5-a4e6ae86d802",
+      "title": "air force pilot",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/febd4100-9a9b-46a0-b964-8623d79d0f32",
+      "title": "air pollution analyst",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/235ce16a-1ef7-4535-a82e-e371213c392b",
+      "title": "air separation plant operator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/3c2da05f-eb24-41f7-8307-46c96660fee0",
+      "title": "air traffic controller",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4553ecf8-1f0c-4bf1-8718-d8a6b95d6fc2",
+      "title": "air traffic instructor",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/0d442b70-5413-4820-bebf-36dd5ce437ac",
+      "title": "air traffic manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/0022f466-426c-41a4-ac96-a235c945cf97",
+      "title": "air traffic safety technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/ad7c76e8-af96-42af-99a5-d579f707758c",
+      "title": "aircraft assembler",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b10d45f4-482d-4301-bc39-da206b17815c",
+      "title": "aircraft assembly inspector",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/96e139de-0756-45ad-b512-f7c2109a72b1",
+      "title": "aircraft assembly supervisor",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/f3eb330a-03b5-4537-ac0e-bcee5c67bcff",
+      "title": "aircraft cargo operations coordinator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/a429e4fe-22c6-4cb5-89ef-ca4d5b4d0363",
+      "title": "aircraft de-icer installer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/6e785f05-969e-4940-aedb-d0f896bb0230",
+      "title": "aircraft dispatcher",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/036dc42f-bd4d-4533-a3cc-fcd313227ce3",
+      "title": "aircraft engine assembler",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/ef9c2914-2f3d-464c-ae0a-d02b403dc7e9",
+      "title": "aircraft engine inspector",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/0ac8fe65-32e6-4c25-8345-2b87bc7b2698",
+      "title": "aircraft engine specialist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b343dd0c-8a83-4e13-a79c-0ac52f526c64",
+      "title": "aircraft engine tester",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/1e9e18cb-80b6-4598-acdb-ae3b51047720",
+      "title": "aircraft fuel system operator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/7d599049-d15a-4fda-afe9-b334b0614ec7",
+      "title": "aircraft gas turbine engine overhaul technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/69e4e877-9d7a-4df0-973b-34defd318e26",
+      "title": "aircraft groomer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/c932109b-3e4f-43aa-b346-1ea421da0adb",
+      "title": "aircraft interior technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b27854dd-3fbe-406e-a750-54f677d55936",
+      "title": "aircraft maintenance coordinator",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/81a1e1f5-cce3-444d-bfc3-9771236d57cd",
+      "title": "aircraft maintenance engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/91373a70-79b6-47a2-aa50-07dfe20dd258",
+      "title": "aircraft maintenance technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/7f7d2bfe-f038-436f-95ff-29bc90726430",
+      "title": "aircraft marshaller",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/9a4ba556-e72b-49c2-834c-d6a03a2fc906",
+      "title": "aircraft pilot",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b4bff870-5c8f-4c33-b07f-f04d79830633",
+      "title": "airline food service worker",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/522c55ca-ee4a-407d-9fc6-f810c5266523",
+      "title": "airline transport pilot",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/3d974e0c-8ed9-47a7-aec2-ebdb34391c87",
+      "title": "airport baggage handler",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/4be4ea31-1211-4f0c-82bb-f6fe10791f4d",
+      "title": "airport chief executive",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/fc35b7ca-ecec-40d7-91b5-5065f662d955",
+      "title": "airport director",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/69e6db0b-30b4-4e0e-b95b-173f8bc3da73",
+      "title": "airport environment officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/822bbc2d-bc6a-4fb5-afb8-89170120c6d8",
+      "title": "airport maintenance technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/9967986b-570d-4db1-a179-aad7d1623ea8",
+      "title": "airport operations officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/bc1c82a5-0fc3-453f-8537-9d1a6e9e85aa",
+      "title": "airport planning engineer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/b00e9e89-fd8d-4655-b6a2-f58b17629473",
+      "title": "airport security officer",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/44ec4c04-c2d4-4b92-bb27-e56f5b096d97",
+      "title": "airside safety manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/cfda19c9-c7e1-497d-a18b-66e29c773745",
+      "title": "airspace manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/289c7385-2342-4a4e-b0b1-7b2e977aea79",
+      "title": "alternative animal therapist",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/190ec9a5-938c-45a5-bd9c-c12b1af33353",
+      "title": "ambassador",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/183d60f2-277f-47c8-a8c6-f5c8eedba2b0",
+      "title": "ammunition assembler",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/87fd9791-0922-4da0-a984-f518aadf85ec",
+      "title": "ammunition shop manager",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/0d9eed6b-4908-4112-bf37-ae08e2f0f326",
+      "title": "ammunition specialised seller",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/e31c83ac-cb74-4936-88f1-90ed0997b29b",
+      "title": "amusement and recreation attendant",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/38eb308f-0075-451e-9c1a-c557fd173022",
+      "title": "amusement park cleaner",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    },
+    {
+      "uri": "http://data.europa.eu/esco/occupation/16e65196-3449-4c88-b379-0aa98f43db2b",
+      "title": "anaesthetic technician",
+      "type": "Occupation",
+      "skillType": null,
+      "reuseLevel": null,
+      "iscoGroup": null,
+      "recordType": "occupation"
+    }
+  ],
+  "cronExpression": "0 5 1 1,7 *",
+  "lastFetched": "2026-04-26T13:23:25.994Z",
+  "nextScheduled": "2026-05-26T13:23:25.994Z",
+  "recordCount": 300,
+  "fields": [
+    "uri",
+    "title",
+    "type",
+    "skillType",
+    "reuseLevel",
+    "iscoGroup",
+    "recordType"
+  ]
+}

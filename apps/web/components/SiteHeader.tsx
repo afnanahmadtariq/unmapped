@@ -32,16 +32,14 @@ export default function SiteHeader({ countryCode, locale, active = "home", t }: 
       <div className="mx-auto flex max-w-screen-2xl items-center gap-4 px-4 py-2 md:px-6 md:py-2.5">
         {/* Brand */}
         <Link href={`/${qs}`} className="flex shrink-0 items-center">
-          <span className="flex items-center rounded-xl bg-slate-900 px-3 py-1.5 dark:bg-slate-800">
-            <Image
-              src="/logo.png"
-              alt={t.app.name}
-              width={2400}
-              height={600}
-              className="h-7 w-auto object-contain md:h-8"
-              priority
-            />
-          </span>
+          <Image
+            src="/logo.png"
+            alt={t.app.name}
+            width={2400}
+            height={600}
+            className="h-9 w-auto object-contain mix-blend-multiply dark:mix-blend-screen md:h-11"
+            priority
+          />
         </Link>
 
         {/* Desktop nav - centred in remaining space */}
