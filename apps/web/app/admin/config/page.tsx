@@ -4,9 +4,11 @@ import {
   Globe2,
   Languages,
   Layers,
+  RefreshCw,
   ShieldAlert,
   FileJson,
 } from "lucide-react";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import Pill from "@/components/Pill";
 import AdminTabs from "@/components/admin/AdminTabs";
@@ -25,9 +27,43 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
 
-  const cfg: AdminConfigSummary = await adminFetch<AdminConfigSummary>(
-    `/admin/config-summary/${country.code}`,
-  );
+  let cfg: AdminConfigSummary | null = null;
+  let fetchError: string | null = null;
+
+  try {
+    cfg = await adminFetch<AdminConfigSummary>(
+      `/admin/config-summary/${country.code}`,
+    );
+  } catch (err) {
+    fetchError = err instanceof Error ? err.message : "Could not reach the data service.";
+  }
+
+  if (fetchError || !cfg) {
+    return (
+      <main className="flex flex-1 flex-col">
+        <SiteHeader countryCode={country.code} locale={locale} active="config" t={t} />
+        <section className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-4 py-24 text-center">
+          <div className="mb-4 rounded-full bg-warning/10 p-4">
+            <RefreshCw className="h-8 w-8 text-warning" />
+          </div>
+          <h1 className="mb-2 text-xl font-semibold text-fg-primary">Config data unavailable</h1>
+          <p className="mb-1 max-w-sm text-sm text-fg-secondary">
+            The data service is still starting up or temporarily unreachable.
+          </p>
+          {fetchError && (
+            <p className="mb-6 font-mono text-xs text-fg-muted">{fetchError}</p>
+          )}
+          <Link
+            href={`/admin/config?country=${country.code}&locale=${locale}`}
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+          >
+            <RefreshCw className="h-4 w-4" />
+            Retry
+          </Link>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="flex flex-1 flex-col">

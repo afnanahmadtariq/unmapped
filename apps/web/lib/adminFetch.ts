@@ -7,9 +7,17 @@
 
 import { cookies, headers } from "next/headers";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
-  "http://localhost:4000";
+// Reuse the same normalisation logic as apiClient.ts so a missing protocol
+// (e.g. "unmappedapi.railway.internal" without http://) doesn't cause
+// "Failed to parse URL" on the server side.
+function normaliseBase(raw: string | undefined): string {
+  const trimmed = (raw ?? "").replace(/\/$/, "").trim();
+  if (!trimmed) return "http://localhost:4000";
+  if (!/^https?:\/\//i.test(trimmed)) return `http://${trimmed}`;
+  return trimmed;
+}
+
+const API_BASE = normaliseBase(process.env.NEXT_PUBLIC_API_URL);
 
 const ADMIN_COOKIE = "cartographer_admin_session";
 
