@@ -221,7 +221,17 @@
     "draftTools": "Outils",
     "draftConstraints": "Contraintes",
     "draftAspirations": "Aspirations",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Parler",
+    "voiceStop": "Arrêter",
+    "voiceListening": "Écoute en cours...",
+    "voiceUnsupported": "La saisie vocale n'est pas prise en charge par ce navigateur. Essayez Chrome, Edge ou Safari.",
+    "voiceUnsupportedShort": "Voix non prise en charge",
+    "voiceErrorPermission": "Permission du microphone refusée",
+    "voiceErrorNoSpeech": "Rien n'a été entendu",
+    "voiceErrorNetwork": "Erreur réseau",
+    "voiceErrorGeneric": "La saisie vocale a échoué",
+    "voiceInterimHint": "(en train de parler...)"
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Mise en correspondance",

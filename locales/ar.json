@@ -221,7 +221,17 @@
     "draftTools": "الأدوات",
     "draftConstraints": "القيود",
     "draftAspirations": "التطلعات",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "تحدث",
+    "voiceStop": "إيقاف",
+    "voiceListening": "جارٍ الاستماع...",
+    "voiceUnsupported": "إدخال الصوت غير مدعوم في هذا المتصفح. جرب Chrome أو Edge أو Safari.",
+    "voiceUnsupportedShort": "الصوت غير مدعوم",
+    "voiceErrorPermission": "تم رفض إذن الميكروفون",
+    "voiceErrorNoSpeech": "لم يتم سماع أي شيء",
+    "voiceErrorNetwork": "خطأ في الشبكة",
+    "voiceErrorGeneric": "فشل إدخال الصوت",
+    "voiceInterimHint": "(يتحدث...)"
   },
   "opportunities": {
     "moduleEyebrow": "الوحدة 03 · مطابقة الفرص",

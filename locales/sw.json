@@ -221,7 +221,17 @@
     "draftTools": "Zana",
     "draftConstraints": "Vikwazo",
     "draftAspirations": "Matarajio",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Zungumza",
+    "voiceStop": "Acha",
+    "voiceListening": "Inasikiliza...",
+    "voiceUnsupported": "Ingizo la sauti halizungumzwi katika kivinjari hiki. Jaribu Chrome, Edge, au Safari.",
+    "voiceUnsupportedShort": "Sauti haizungumzwi",
+    "voiceErrorPermission": "Ruhusa ya kipaza sauti imekataliwa",
+    "voiceErrorNoSpeech": "Hakusikia chochote",
+    "voiceErrorNetwork": "Hitilafu ya mtandao",
+    "voiceErrorGeneric": "Ingizo la sauti limeshindwa",
+    "voiceInterimHint": "(inazungumza...)"
   },
   "opportunities": {
     "moduleEyebrow": "Sehemu ya 03 · Kulinganisha Fursa",

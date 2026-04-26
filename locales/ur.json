@@ -221,7 +221,17 @@
     "draftTools": "اوزار",
     "draftConstraints": "رکاوٹیں",
     "draftAspirations": "خواہشات",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "بولیں",
+    "voiceStop": "رکیں",
+    "voiceListening": "سن رہا ہے...",
+    "voiceUnsupported": "اس براؤزر میں صوتی ان پٹ تعاون یافتہ نہیں ہے۔ Chrome، Edge، یا Safari آزمائیں۔",
+    "voiceUnsupportedShort": "صوتی تعاون یافتہ نہیں",
+    "voiceErrorPermission": "مائیکروفون کی اجازت مسترد کر دی گئی",
+    "voiceErrorNoSpeech": "کچھ سنائی نہیں دیا",
+    "voiceErrorNetwork": "نیٹ ورک کی خرابی",
+    "voiceErrorGeneric": "صوتی ان پٹ ناکام ہو گیا",
+    "voiceInterimHint": "(بول رہے ہیں...)"
   },
   "opportunities": {
     "moduleEyebrow": "ماڈیول 03 · موقع کی میچنگ",

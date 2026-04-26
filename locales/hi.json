@@ -221,7 +221,17 @@
     "draftTools": "उपकरण",
     "draftConstraints": "सीमाएं",
     "draftAspirations": "आकांक्षाएं",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "बोलें",
+    "voiceStop": "रोकें",
+    "voiceListening": "सुन रहा है...",
+    "voiceUnsupported": "इस ब्राउज़र में वॉइस इनपुट समर्थित नहीं है। Chrome, Edge, या Safari आज़माएं।",
+    "voiceUnsupportedShort": "वॉइस समर्थित नहीं",
+    "voiceErrorPermission": "माइक्रोफ़ोन की अनुमति अस्वीकृत",
+    "voiceErrorNoSpeech": "कुछ सुनाई नहीं दिया",
+    "voiceErrorNetwork": "नेटवर्क त्रुटि",
+    "voiceErrorGeneric": "वॉइस इनपुट विफल",
+    "voiceInterimHint": "(बोल रहे हैं...)"
   },
   "opportunities": {
     "moduleEyebrow": "मॉड्यूल 03 · अवसर मिलान",

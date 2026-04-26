@@ -221,7 +221,17 @@
     "draftTools": "Инструменты",
     "draftConstraints": "Ограничения",
     "draftAspirations": "Стремления",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Говорить",
+    "voiceStop": "Остановить",
+    "voiceListening": "Слушаю...",
+    "voiceUnsupported": "Голосовой ввод не поддерживается в этом браузере. Попробуйте Chrome, Edge или Safari.",
+    "voiceUnsupportedShort": "Голосовой ввод не поддерживается",
+    "voiceErrorPermission": "Доступ к микрофону запрещён",
+    "voiceErrorNoSpeech": "Ничего не услышано",
+    "voiceErrorNetwork": "Ошибка сети",
+    "voiceErrorGeneric": "Ошибка голосового ввода",
+    "voiceInterimHint": "(говорит...)"
   },
   "opportunities": {
     "moduleEyebrow": "Модуль 03 · Подбор возможностей",

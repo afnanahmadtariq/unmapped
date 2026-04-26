@@ -221,7 +221,17 @@
     "draftTools": "Araçlar",
     "draftConstraints": "Kısıtlamalar",
     "draftAspirations": "Hedefler",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Konuş",
+    "voiceStop": "Durdur",
+    "voiceListening": "Dinliyor...",
+    "voiceUnsupported": "Sesli giriş bu tarayıcıda desteklenmiyor. Chrome, Edge veya Safari'yi deneyin.",
+    "voiceUnsupportedShort": "Ses desteklenmiyor",
+    "voiceErrorPermission": "Mikrofon izni reddedildi",
+    "voiceErrorNoSpeech": "Hiçbir şey duyulmadı",
+    "voiceErrorNetwork": "Ağ hatası",
+    "voiceErrorGeneric": "Sesli giriş başarısız oldu",
+    "voiceInterimHint": "(konuşuyor...)"
   },
   "opportunities": {
     "moduleEyebrow": "Modül 03 · Fırsat Eşleştirme",

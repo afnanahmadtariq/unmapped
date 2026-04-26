@@ -221,7 +221,17 @@
     "draftTools": "Công cụ",
     "draftConstraints": "Ràng buộc",
     "draftAspirations": "Nguyện vọng",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Nói",
+    "voiceStop": "Dừng",
+    "voiceListening": "Đang nghe...",
+    "voiceUnsupported": "Trình duyệt này không hỗ trợ nhập liệu bằng giọng nói. Hãy thử Chrome, Edge hoặc Safari.",
+    "voiceUnsupportedShort": "Không hỗ trợ giọng nói",
+    "voiceErrorPermission": "Quyền truy cập micrô bị từ chối",
+    "voiceErrorNoSpeech": "Không nghe thấy gì",
+    "voiceErrorNetwork": "Lỗi mạng",
+    "voiceErrorGeneric": "Nhập liệu bằng giọng nói thất bại",
+    "voiceInterimHint": "(đang nói...)"
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Ghép nối cơ hội",

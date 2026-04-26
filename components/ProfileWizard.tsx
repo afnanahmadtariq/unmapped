@@ -27,6 +27,7 @@ import clsx from "clsx";
 import SkillChipInput from "@/components/SkillChipInput";
 import ClarificationCard from "@/components/ClarificationCard";
 import EmailLinkModal from "@/components/EmailLinkModal";
+import VoiceInputButton from "@/components/VoiceInputButton";
 import { useToast } from "@/components/Toast";
 import { buildSkillsProfilePdf } from "@/lib/pdf";
 import {
@@ -236,6 +237,7 @@ export default function ProfileWizard({
   const [languages, setLanguages] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
   const [story, setStory] = useState("");
+  const [storyInterim, setStoryInterim] = useState("");
 
   // New context state (Phase 8 expansion)
   const [phoneAccess, setPhoneAccess] = useState<PhoneAccess | undefined>(undefined);
@@ -762,13 +764,29 @@ export default function ProfileWizard({
                 hint={`${charCount}/1200`}
                 hintTone={charCount > 1200 ? "danger" : storyValid ? "ok" : "muted"}
               >
-                <textarea
-                  value={story}
-                  onChange={(e) => setStory(e.target.value)}
-                  rows={5}
-                  placeholder={sampleStoryFor(countryCode).slice(0, 80) + "..."}
-                  className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-fg-primary transition focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
-                />
+                <div className="space-y-2">
+                  <div className="flex items-center justify-end">
+                    <VoiceInputButton
+                      locale={locale}
+                      value={story}
+                      onAppend={(next) => setStory(next)}
+                      onInterim={setStoryInterim}
+                      t={t}
+                    />
+                  </div>
+                  <textarea
+                    value={story}
+                    onChange={(e) => setStory(e.target.value)}
+                    rows={5}
+                    placeholder={sampleStoryFor(countryCode).slice(0, 80) + "..."}
+                    className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-fg-primary transition focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
+                  />
+                  {storyInterim && (
+                    <p className="rounded-md border border-dashed border-accent/40 bg-accent/5 px-2 py-1 text-xs italic text-accent">
+                      {t.profile.voiceInterimHint} {storyInterim}
+                    </p>
+                  )}
+                </div>
               </Field>
 
               <Field label={t.profile.fieldConstraints}>

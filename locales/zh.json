@@ -221,7 +221,17 @@
     "draftTools": "工具",
     "draftConstraints": "限制条件",
     "draftAspirations": "期望",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "开始说话",
+    "voiceStop": "停止",
+    "voiceListening": "正在聆听...",
+    "voiceUnsupported": "此浏览器不支持语音输入。请尝试使用 Chrome、Edge 或 Safari。",
+    "voiceUnsupportedShort": "不支持语音",
+    "voiceErrorPermission": "麦克风权限被拒绝",
+    "voiceErrorNoSpeech": "未听到任何内容",
+    "voiceErrorNetwork": "网络错误",
+    "voiceErrorGeneric": "语音输入失败",
+    "voiceInterimHint": "(正在说话...)"
   },
   "opportunities": {
     "moduleEyebrow": "模块03 · 机会匹配",

@@ -221,7 +221,17 @@
     "draftTools": "সরঞ্জাম",
     "draftConstraints": "সীমাবদ্ধতা",
     "draftAspirations": "আকাঙ্ক্ষা",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "বলুন",
+    "voiceStop": "থামুন",
+    "voiceListening": "শুনছি...",
+    "voiceUnsupported": "এই ব্রাউজারে ভয়েস ইনপুট সমর্থিত নয়। Chrome, Edge, বা Safari ব্যবহার করে দেখুন।",
+    "voiceUnsupportedShort": "ভয়েস সমর্থিত নয়",
+    "voiceErrorPermission": "মাইক্রোফোনের অনুমতি প্রত্যাখ্যাত",
+    "voiceErrorNoSpeech": "কিছু শোনা যায়নি",
+    "voiceErrorNetwork": "নেটওয়ার্ক ত্রুটি",
+    "voiceErrorGeneric": "ভয়েস ইনপুট ব্যর্থ হয়েছে",
+    "voiceInterimHint": "(বলছেন...)"
   },
   "opportunities": {
     "moduleEyebrow": "মডিউল ০৩ · সুযোগ মিলান",

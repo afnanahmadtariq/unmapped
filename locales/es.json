@@ -221,7 +221,17 @@
     "draftTools": "Herramientas",
     "draftConstraints": "Limitaciones",
     "draftAspirations": "Aspiraciones",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Hablar",
+    "voiceStop": "Detener",
+    "voiceListening": "Escuchando...",
+    "voiceUnsupported": "La entrada de voz no es compatible con este navegador. Prueba Chrome, Edge o Safari.",
+    "voiceUnsupportedShort": "Voz no compatible",
+    "voiceErrorPermission": "Permiso de micrófono denegado",
+    "voiceErrorNoSpeech": "No se escuchó nada",
+    "voiceErrorNetwork": "Error de red",
+    "voiceErrorGeneric": "Error en la entrada de voz",
+    "voiceInterimHint": "(hablando...)"
   },
   "opportunities": {
     "moduleEyebrow": "Módulo 03 · Emparejamiento de Oportunidades",

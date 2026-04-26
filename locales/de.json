@@ -221,7 +221,17 @@
     "draftTools": "Werkzeuge",
     "draftConstraints": "Einschränkungen",
     "draftAspirations": "Bestrebungen",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Sprechen",
+    "voiceStop": "Stopp",
+    "voiceListening": "Hört zu...",
+    "voiceUnsupported": "Spracheingabe wird in diesem Browser nicht unterstützt. Versuchen Sie Chrome, Edge oder Safari.",
+    "voiceUnsupportedShort": "Sprache nicht unterstützt",
+    "voiceErrorPermission": "Mikrofon-Berechtigung verweigert",
+    "voiceErrorNoSpeech": "Nichts gehört",
+    "voiceErrorNetwork": "Netzwerkfehler",
+    "voiceErrorGeneric": "Spracheingabe fehlgeschlagen",
+    "voiceInterimHint": "(spricht...)"
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Chancen-Matching",

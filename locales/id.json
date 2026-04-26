@@ -221,7 +221,17 @@
     "draftTools": "Alat",
     "draftConstraints": "Batasan",
     "draftAspirations": "Aspirasi",
-    "draftEmpty": "-"
+    "draftEmpty": "-",
+    "voiceStart": "Bicara",
+    "voiceStop": "Berhenti",
+    "voiceListening": "Mendengarkan...",
+    "voiceUnsupported": "Input suara tidak didukung di browser ini. Coba Chrome, Edge, atau Safari.",
+    "voiceUnsupportedShort": "Suara tidak didukung",
+    "voiceErrorPermission": "Izin mikrofon ditolak",
+    "voiceErrorNoSpeech": "Tidak mendengar apa pun",
+    "voiceErrorNetwork": "Kesalahan jaringan",
+    "voiceErrorGeneric": "Input suara gagal",
+    "voiceInterimHint": "(berbicara...)"
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Pencocokan Peluang",
