@@ -1,9 +1,9 @@
 {
   "_source": "ISO 3166-1 (subset focused on LMIC + major economies). Country-default-locale chosen from native or widely-spoken UI language. Automation calibration multiplier: 0.5-0.7 for low-formality LMICs, 0.7-0.85 for MICs, 0.9-1.0 for high-income.",
   "countries": [
-    { "code": "GH", "iso3": "GHA", "name": "Ghana", "region": "Sub-Saharan Africa", "currency": "GHS", "currencySymbol": "GH₵", "defaultLocale": "en", "automationCalibration": 0.62, "context": "urban-informal", "snapshot": true },
-    { "code": "BD", "iso3": "BGD", "name": "Bangladesh", "region": "South Asia", "currency": "BDT", "currencySymbol": "৳", "defaultLocale": "bn", "automationCalibration": 0.71, "context": "mixed-urban-rural", "snapshot": true },
-    { "code": "KE", "iso3": "KEN", "name": "Kenya", "region": "Sub-Saharan Africa", "currency": "KES", "currencySymbol": "KSh", "defaultLocale": "sw", "automationCalibration": 0.65, "context": "urban-informal", "snapshot": true },
+    { "code": "GH", "iso3": "GHA", "name": "Ghana", "region": "Sub-Saharan Africa", "currency": "GHS", "currencySymbol": "GH₵", "defaultLocale": "en", "automationCalibration": 0.62, "context": "urban-informal"},
+    { "code": "BD", "iso3": "BGD", "name": "Bangladesh", "region": "South Asia", "currency": "BDT", "currencySymbol": "৳", "defaultLocale": "bn", "automationCalibration": 0.71, "context": "mixed-urban-rural"},
+    { "code": "KE", "iso3": "KEN", "name": "Kenya", "region": "Sub-Saharan Africa", "currency": "KES", "currencySymbol": "KSh", "defaultLocale": "sw", "automationCalibration": 0.65, "context": "urban-informal"},
     { "code": "NG", "iso3": "NGA", "name": "Nigeria", "region": "Sub-Saharan Africa", "currency": "NGN", "currencySymbol": "₦", "defaultLocale": "en", "automationCalibration": 0.6, "context": "urban-informal" },
     { "code": "ZA", "iso3": "ZAF", "name": "South Africa", "region": "Sub-Saharan Africa", "currency": "ZAR", "currencySymbol": "R", "defaultLocale": "en", "automationCalibration": 0.78, "context": "mixed-urban-rural" },
     { "code": "ET", "iso3": "ETH", "name": "Ethiopia", "region": "Sub-Saharan Africa", "currency": "ETB", "currencySymbol": "Br", "defaultLocale": "en", "automationCalibration": 0.55, "context": "rural-agricultural" },

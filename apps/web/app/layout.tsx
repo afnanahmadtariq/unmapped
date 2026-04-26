@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { Suspense } from "react";
 import { ToastProvider } from "@/components/Toast";
-import { ThemeNoFlashScript } from "@/components/ThemeToggle";
 import HtmlLangSync from "@/components/HtmlLangSync";
 
 const geistSans = Geist({
@@ -22,25 +22,31 @@ export const metadata: Metadata = {
     "Mapping the real skills of 600 million unmapped young people to real economic opportunity. Built for the World Bank Youth Summit × Hack-Nation Global AI Hackathon 2026.",
 };
 
-export default function RootLayout({
+type Theme = "dark" | "light";
+
+const THEME_COOKIE = "unmapped-theme";
+
+function parseTheme(value: string | undefined): Theme {
+  return value === "dark" ? "dark" : "light";
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
+
   return (
-    // suppressHydrationWarning: the no-flash script intentionally rewrites
-    // data-theme + style.colorScheme before React hydrates, which would
-    // otherwise trip a server/client attribute mismatch.
+    // suppressHydrationWarning: client components may still sync lang/theme from
+    // browser state after hydration, but the first paint now uses the theme cookie.
     <html
       lang="en"
-      data-theme="light"
-      style={{ colorScheme: "light" }}
+      data-theme={theme}
+      style={{ colorScheme: theme }}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <ThemeNoFlashScript />
-      </head>
       <body className="min-h-full flex flex-col bg-bg-base text-fg-primary">
         <Suspense fallback={null}>
           <HtmlLangSync />

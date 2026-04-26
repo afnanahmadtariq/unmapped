@@ -24,7 +24,10 @@ export class VoyageEmbedder implements Embedder {
       baseURL: 'https://api.voyageai.com/v1',
       timeout: 30000,
       headers: apiKey
-        ? { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }
+        ? {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          }
         : { 'Content-Type': 'application/json' },
     });
   }

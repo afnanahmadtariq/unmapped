@@ -8,11 +8,7 @@ import { CountryCalibrationEntity } from './entities/country-calibration.entity'
 import { WbIndicatorPointEntity } from './entities/wb-indicator.entity';
 import { CountryService } from '../country/country.service';
 import { IscoService } from '../taxonomies/isco/isco.service';
-import {
-  CalibratedRisk,
-  CountrySnapshot,
-  RiskLevel,
-} from './signals.types';
+import { CalibratedRisk, CountrySnapshot, RiskLevel } from './signals.types';
 import type { CountryCode } from '../shared/types';
 
 import freySeed from './data/frey-osborne.seed.json';
@@ -29,7 +25,11 @@ import keCalibration from './data/kenya/calibration.json';
 const SNAPSHOT_INDEX: Record<
   string,
   {
-    wages: { currency: string; wagesByISCO: Record<string, number>; vintage: string };
+    wages: {
+      currency: string;
+      wagesByISCO: Record<string, number>;
+      vintage: string;
+    };
     growth: { growthBySector: Record<string, number>; vintage: string };
     calibration: {
       globalMultiplier: number;
@@ -39,19 +39,19 @@ const SNAPSHOT_INDEX: Record<
   }
 > = {
   GH: {
-    wages: ghWages as any,
-    growth: ghGrowth as any,
-    calibration: ghCalibration as any,
+    wages: ghWages,
+    growth: ghGrowth,
+    calibration: ghCalibration,
   },
   BD: {
-    wages: bdWages as any,
-    growth: bdGrowth as any,
-    calibration: bdCalibration as any,
+    wages: bdWages,
+    growth: bdGrowth,
+    calibration: bdCalibration,
   },
   KE: {
-    wages: keWages as any,
-    growth: keGrowth as any,
-    calibration: keCalibration as any,
+    wages: keWages,
+    growth: keGrowth,
+    calibration: keCalibration,
   },
 };
 
@@ -81,8 +81,24 @@ export class SignalsService implements OnModuleInit {
   ) {}
 
   async onModuleInit(): Promise<void> {
-    await this.seedFreyOsborne();
-    await this.seedCountrySnapshots();
+    // Seeding must NEVER crash the app: the dashboard / signals endpoints
+    // already cope with empty tables, and a schema-not-yet-created or transient
+    // Neon hiccup at boot should not take down the whole API.
+    try {
+      await this.seedFreyOsborne();
+    } catch (err) {
+      this.logger.warn(
+        `Frey-Osborne seed skipped: ${(err as Error).message}. ` +
+          `Run with TYPEORM_SYNC=true (dev) or apply migrations (prod).`,
+      );
+    }
+    try {
+      await this.seedCountrySnapshots();
+    } catch (err) {
+      this.logger.warn(
+        `Country snapshot seed skipped: ${(err as Error).message}.`,
+      );
+    }
   }
 
   // ---------- Seeding ----------
@@ -193,7 +209,7 @@ export class SignalsService implements OnModuleInit {
     );
   }
 
-  async getCurrencyFor(countryCode: CountryCode): Promise<string> {
+  getCurrencyFor(countryCode: CountryCode): string {
     return this.countries.getOrDefault(countryCode).currency;
   }
 
@@ -215,6 +231,10 @@ export class SignalsService implements OnModuleInit {
   async getFreyOsborneRaw(iscoCode: string): Promise<number> {
     const row = await this.freyRepo.findOne({ where: { iscoCode } });
     return row ? Number(row.probability) : 0.5;
+  }
+
+  freyOsborneCount(): Promise<number> {
+    return this.freyRepo.count();
   }
 
   /** Country snapshot — wages, growth, calibration — fully hydrated from DB. */

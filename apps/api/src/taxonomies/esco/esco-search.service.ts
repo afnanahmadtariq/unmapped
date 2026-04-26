@@ -3,7 +3,10 @@ import { EscoService } from './esco.service';
 import { EscoSkillEntity } from './esco.entity';
 import { ESCO_VECTOR_COLLECTION } from './esco.collection';
 import { MilvusVectorClient } from '../../infra/vector/milvus.client';
-import { EMBEDDER, type Embedder } from '../../infra/embeddings/embedder.interface';
+import {
+  EMBEDDER,
+  type Embedder,
+} from '../../infra/embeddings/embedder.interface';
 
 export interface EscoVectorHit {
   skill: EscoSkillEntity;

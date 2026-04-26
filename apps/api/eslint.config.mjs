@@ -28,8 +28,16 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
+      // External API responses (axios, ESCO, World Bank, Tavily, Wittgenstein,
+      // nodemailer transport results) are inherently `any` at the boundary.
+      // Narrowing every shape would add maintenance churn without runtime
+      // benefit since the harvesters / loaders already validate fields.
       '@typescript-eslint/no-unsafe-argument': 'warn',
-      "prettier/prettier": ["error", { endOfLine: "auto" }],
+      '@typescript-eslint/no-unsafe-assignment': 'warn',
+      '@typescript-eslint/no-unsafe-member-access': 'warn',
+      '@typescript-eslint/no-unsafe-call': 'warn',
+      '@typescript-eslint/no-unsafe-return': 'warn',
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
   },
 );

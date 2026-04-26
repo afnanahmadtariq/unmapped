@@ -15,7 +15,8 @@ interface RawCountry {
   snapshot?: boolean;
 }
 
-const RAW: RawCountry[] = (countriesJson as { countries: RawCountry[] }).countries;
+const RAW: RawCountry[] = (countriesJson as { countries: RawCountry[] })
+  .countries;
 
 const REGISTRY: Map<string, CountryConfig> = new Map(
   RAW.map((c) => [

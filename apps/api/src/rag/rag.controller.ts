@@ -1,5 +1,12 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { IsArray, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+import {
+  IsArray,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 import { RetrievalService } from './retrieval.service';
 
 class RetrieveSkillsDto {

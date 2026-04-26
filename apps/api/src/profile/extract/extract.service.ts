@@ -16,10 +16,7 @@ import {
   buildUserTurn,
 } from './extract.prompt';
 import { ASK_TOOL, SAVE_TOOL } from './extract.tools';
-import type {
-  SkillEvidence,
-  SkillsProfile,
-} from '../../shared/types';
+import type { SkillEvidence, SkillsProfile } from '../../shared/types';
 
 /**
  * Port of apps/web/lib/llm.ts. The two-tool loop and prompt wording are

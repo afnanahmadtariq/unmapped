@@ -34,10 +34,10 @@ export class MilvusVectorClient implements OnModuleInit {
     this.database = env.get('MILVUS_DATABASE');
   }
 
-  async onModuleInit(): Promise<void> {
+  onModuleInit(): void {
     this.client = new MilvusClient({
       address: this.env.get('MILVUS_URI'),
-      token: this.env.get('MILVUS_TOKEN'),
+      token: this.env.getMilvusToken(),
       database: this.database,
     });
     this.logger.log(
@@ -117,7 +117,11 @@ export class MilvusVectorClient implements OnModuleInit {
       score: number;
       metadata?: Record<string, unknown>;
     }>;
-    return rows.map((r) => ({ id: r.id, score: r.score, metadata: r.metadata }));
+    return rows.map((r) => ({
+      id: r.id,
+      score: r.score,
+      metadata: r.metadata,
+    }));
   }
 
   async dropCollection(name: string): Promise<void> {

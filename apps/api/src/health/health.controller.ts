@@ -7,7 +7,11 @@ export class HealthController {
 
   @Get('health')
   basic() {
-    return { status: 'ok', service: 'unmapped-api', timestamp: new Date().toISOString() };
+    return {
+      status: 'ok',
+      service: 'unmapped-api',
+      timestamp: new Date().toISOString(),
+    };
   }
 
   /** Same shape (and superset) as the legacy /api/data-status route. */

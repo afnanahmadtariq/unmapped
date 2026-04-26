@@ -1,11 +1,4 @@
-import {
-  Controller,
-  DefaultValuePipe,
-  Get,
-  Param,
-  ParseIntPipe,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { SignalsService } from './signals.service';
 
 @Controller('signals')
@@ -31,7 +24,7 @@ export class SignalsController {
     @Param('iscoCode') iscoCode: string,
   ) {
     const amount = await this.signals.getWageFor(country, iscoCode);
-    const currency = await this.signals.getCurrencyFor(country);
+    const currency = this.signals.getCurrencyFor(country);
     return { country, iscoCode, amount, currency };
   }
 }

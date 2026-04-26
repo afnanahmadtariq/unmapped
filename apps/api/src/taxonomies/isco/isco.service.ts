@@ -21,23 +21,31 @@ export class IscoService implements OnModuleInit {
   ) {}
 
   async onModuleInit(): Promise<void> {
-    const count = await this.repo.count();
-    if (count > 0) {
-      this.logger.log(`ISCO table populated (${count} rows). Skipping seed.`);
-      return;
+    try {
+      const count = await this.repo.count();
+      if (count > 0) {
+        this.logger.log(`ISCO table populated (${count} rows). Skipping seed.`);
+        return;
+      }
+      const rows = (iscoSeed as { occupations: SeedRow[] }).occupations.map(
+        (r) =>
+          this.repo.create({
+            code: r.code,
+            title: r.title,
+            skillLevel: r.skillLevel ?? null,
+            sectorId: r.sectorId ?? null,
+            source: 'snapshot',
+            updatedAt: new Date(),
+          }),
+      );
+      await this.repo.save(rows);
+      this.logger.log(`Seeded ${rows.length} ISCO-08 occupations.`);
+    } catch (err) {
+      this.logger.warn(
+        `ISCO seed skipped: ${(err as Error).message}. ` +
+          `Run with TYPEORM_SYNC=true (dev) or apply migrations (prod).`,
+      );
     }
-    const rows = (iscoSeed as { occupations: SeedRow[] }).occupations.map((r) =>
-      this.repo.create({
-        code: r.code,
-        title: r.title,
-        skillLevel: r.skillLevel ?? null,
-        sectorId: r.sectorId ?? null,
-        source: 'snapshot',
-        updatedAt: new Date(),
-      }),
-    );
-    await this.repo.save(rows);
-    this.logger.log(`Seeded ${rows.length} ISCO-08 occupations.`);
   }
 
   findByCode(code: string): Promise<IscoOccupationEntity | null> {

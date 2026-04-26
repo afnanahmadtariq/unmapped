@@ -1,9 +1,17 @@
-import { Check, FolderTree, Globe2, Languages, Layers, ShieldAlert, FileJson } from "lucide-react";
+import {
+  Check,
+  FolderTree,
+  Globe2,
+  Languages,
+  Layers,
+  ShieldAlert,
+  FileJson,
+} from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import Pill from "@/components/Pill";
-import { getCountry, DEFAULT_COUNTRY, listCountries } from "@/lib/config";
+import { getCountry, DEFAULT_COUNTRY } from "@/lib/config";
 import { getDictionary, SUPPORTED_LOCALES } from "@/lib/i18n";
-import { getCountryData, ESCO_SKILLS, ISCO_OCCUPATIONS, FREY_OSBORNE } from "@/lib/data";
+import { apiClient, type AdminConfigSummary } from "@/lib/apiClient";
 
 interface PageProps {
   searchParams: Promise<{ country?: string; locale?: string }>;
@@ -14,11 +22,10 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
   const country = getCountry(sp.country ?? DEFAULT_COUNTRY);
   const locale = sp.locale ?? country.defaultLocale;
   const t = getDictionary(locale);
-  const data = getCountryData(country.code);
 
-  const wagesCount = Object.keys(data.wages.wagesByISCO).length;
-  const sectorsCount = Object.keys(data.growth.growthBySector).length;
-  const snapshotCountries = listCountries().filter((c) => c.hasSnapshot);
+  const cfg: AdminConfigSummary = await apiClient.adminConfigSummary(
+    country.code,
+  );
 
   return (
     <main className="flex flex-1 flex-col">
@@ -43,18 +50,18 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
             icon={<Layers className="h-5 w-5 text-accent" />}
             label={t.admin.labourTitle}
             requirement={t.admin.labourReq}
-            location={`/public/data/${country.code.toLowerCase()}/wages.json + growth.json`}
-            detail={`${wagesCount} ISCO · ${sectorsCount} sectors · vintage ${data.wages.vintage}`}
-            source={data.wages._source}
+            location={`NestJS API /signals/country/${country.code}`}
+            detail={`${cfg.wagesCount} ISCO · ${cfg.sectorsCount} sectors · vintage ${cfg.vintage}`}
+            source="Postgres (seeded from curated snapshots + live WB harvester)"
             configurableLabel={t.admin.configurable}
           />
           <ConfigCard
             icon={<FileJson className="h-5 w-5 text-positive" />}
             label={t.admin.credTitle}
             requirement={t.admin.credReq}
-            location={`/public/data/${country.code.toLowerCase()}/credentials.json`}
-            detail={`${data.credentials.formalCredentials.length} formal · ${data.credentials.vocationalCredentials.length} vocational`}
-            source="WASSCE, NVTI, SSC, BTEB, SEIP, ..."
+            location={`NestJS API /admin/config-summary/${country.code}`}
+            detail={`${cfg.formalCredentialsCount} formal · ${cfg.vocationalCredentialsCount} vocational`}
+            source={cfg.credentialsSource}
             configurableLabel={t.admin.configurable}
           />
           <ConfigCard
@@ -70,9 +77,9 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
             icon={<ShieldAlert className="h-5 w-5 text-danger" />}
             label={t.admin.calibTitle}
             requirement={t.admin.calibReq}
-            location={`/public/data/${country.code.toLowerCase()}/calibration.json`}
-            detail={`Global ×${data.calibration.globalMultiplier.toFixed(2)} · ${Object.keys(data.calibration.sectorOverrides).length} overrides`}
-            source={data.calibration.rationale}
+            location={`NestJS API /signals/country/${country.code}`}
+            detail={`Global ×${cfg.calibrationMultiplier.toFixed(2)} · ${cfg.calibrationOverridesCount} overrides`}
+            source={cfg.calibrationRationale}
             configurableLabel={t.admin.configurable}
           />
         </div>
@@ -88,8 +95,10 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
             </Pill>
           </header>
           <p className="mb-3 text-xs text-fg-muted">
-            Showing {snapshotCountries.length} curated-snapshot countries. The system supports
-            <strong className="mx-1 font-mono text-accent">{listCountries().length}</strong>
+            Showing {cfg.snapshotCountries.length} curated-snapshot countries. The system supports
+            <strong className="mx-1 font-mono text-accent">
+              {cfg.snapshotCountries.length}+
+            </strong>
             ISO countries total via the live World Bank fallback.
           </p>
           <div className="overflow-x-auto">
@@ -97,7 +106,7 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
               <thead className="text-left">
                 <tr className="border-b border-border-default text-[10px] uppercase tracking-widest text-fg-muted">
                   <th className="py-3 pr-4 font-medium">Parameter</th>
-                  {snapshotCountries.map((c) => (
+                  {cfg.snapshotCountries.map((c) => (
                     <th key={c.code} className="py-3 pr-4 font-medium">
                       <div className="flex items-center gap-2 text-fg-secondary">
                         <Globe2 className="h-3 w-3" /> {c.name}
@@ -107,14 +116,14 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
                 </tr>
               </thead>
               <tbody className="text-fg-secondary">
-                <CompareRow label="Country code" cells={snapshotCountries.map((c) => c.code)} />
-                <CompareRow label="Region" cells={snapshotCountries.map((c) => c.region)} />
-                <CompareRow label="Default locale" cells={snapshotCountries.map((c) => c.defaultLocale.toUpperCase())} />
-                <CompareRow label="Currency" cells={snapshotCountries.map((c) => `${c.currencySymbol} ${c.currency}`)} />
-                <CompareRow label="Economy context" cells={snapshotCountries.map((c) => c.context.replace("-", " "))} />
+                <CompareRow label="Country code" cells={cfg.snapshotCountries.map((c) => c.code)} />
+                <CompareRow label="Region" cells={cfg.snapshotCountries.map((c) => c.region)} />
+                <CompareRow label="Default locale" cells={cfg.snapshotCountries.map((c) => c.defaultLocale.toUpperCase())} />
+                <CompareRow label="Currency" cells={cfg.snapshotCountries.map((c) => `${c.currencySymbol} ${c.currency}`)} />
+                <CompareRow label="Economy context" cells={cfg.snapshotCountries.map((c) => c.context.replace("-", " "))} />
                 <CompareRow
                   label="Automation multiplier"
-                  cells={snapshotCountries.map((c) => `×${c.automationCalibration.toFixed(2)}`)}
+                  cells={cfg.snapshotCountries.map((c) => `×${c.automationCalibration.toFixed(2)}`)}
                 />
               </tbody>
             </table>
@@ -132,9 +141,9 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
         </section>
 
         <section className="mt-10 grid gap-4 md:grid-cols-3">
-          <Stat label={t.admin.statEsco} value={ESCO_SKILLS.length.toString()} />
-          <Stat label={t.admin.statIsco} value={ISCO_OCCUPATIONS.length.toString()} />
-          <Stat label={t.admin.statFrey} value={Object.keys(FREY_OSBORNE).length.toString()} />
+          <Stat label={t.admin.statEsco} value={cfg.escoCount.toString()} />
+          <Stat label={t.admin.statIsco} value={cfg.iscoCount.toString()} />
+          <Stat label={t.admin.statFrey} value={cfg.freyCount.toString()} />
         </section>
 
         <p className="mt-10 text-center text-xs text-fg-muted">{t.admin.footer}</p>

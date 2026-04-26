@@ -14,5 +14,7 @@ export interface DatasetLoader {
   readonly name: string;
 
   /** Returns the number of rows actually persisted (post-validation). */
-  load(dataset: HarvestedDataset): Promise<{ persisted: number; note?: string }>;
+  load(
+    dataset: HarvestedDataset,
+  ): Promise<{ persisted: number; note?: string }>;
 }

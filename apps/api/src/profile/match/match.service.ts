@@ -66,7 +66,7 @@ export class MatchService {
     const iscoRows = await this.isco.findManyByCodes(iscoCodes);
     const iscoByCode = new Map(iscoRows.map((r) => [r.code, r]));
     const userCodes = new Set(profile.skills.map((s) => s.escoCode));
-    const currency = await this.signals.getCurrencyFor(countryCode);
+    const currency = this.signals.getCurrencyFor(countryCode);
 
     const out: MatchedOccupation[] = [];
     for (const { isco, fitScore, matched } of ranked) {

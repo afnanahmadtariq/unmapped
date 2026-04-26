@@ -16,7 +16,9 @@ export interface ProjectionPoint {
 }
 
 const BY_COUNTRY = (
-  wittSeed as { byCountry: Record<string, Record<string, Record<EducationBucket, number>>> }
+  wittSeed as {
+    byCountry: Record<string, Record<string, Record<EducationBucket, number>>>;
+  }
 ).byCountry;
 
 /**
@@ -34,13 +36,17 @@ export class WittgensteinClient {
     if (!block) return null;
     return (['2025', '2030', '2035'] as const).map((y) => ({
       year: Number(y) as 2025 | 2030 | 2035,
-      shares: block[y] as Record<EducationBucket, number>,
+      shares: block[y],
     }));
   }
 
   bucketFromEducationLabel(label: string): EducationBucket {
     const l = label.toLowerCase();
-    if (l.includes('postgrad') || l.includes('bachelor') || l.includes('diploma'))
+    if (
+      l.includes('postgrad') ||
+      l.includes('bachelor') ||
+      l.includes('diploma')
+    )
       return 'tertiary';
     if (
       l.includes('upper') ||

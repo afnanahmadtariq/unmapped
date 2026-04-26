@@ -44,7 +44,7 @@ export const SAVE_TOOL: Anthropic.Messages.Tool = {
 export const ASK_TOOL: Anthropic.Messages.Tool = {
   name: 'ask_clarifying_questions',
   description:
-    "Ask the user 1-3 close-ended multiple-choice questions ONLY when their input is conflicting (e.g. claims expert coding but lists no specific languages or tools), too thin to map confidently (e.g. < 2 evidenceable skills), or genuinely ambiguous about level. Each question must be answerable in one click.",
+    'Ask the user 1-3 close-ended multiple-choice questions ONLY when their input is conflicting (e.g. claims expert coding but lists no specific languages or tools), too thin to map confidently (e.g. < 2 evidenceable skills), or genuinely ambiguous about level. Each question must be answerable in one click.',
   input_schema: {
     type: 'object',
     properties: {
