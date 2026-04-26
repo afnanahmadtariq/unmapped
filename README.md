@@ -18,6 +18,52 @@ Generic job boards don't help Amara, 22, in Accra. She needs infrastructure that
 
 Cartographer is the layer underneath the next generation of skills products. Country-specific parameters are **inputs**, not hardcoded assumptions.
 
+## Business value proposition (visual)
+
+Cartographer converts **informal, hard-to-describe experience** into **shared, inspectable infrastructure**: ESCO-grounded skills, ISCO-linked occupations, local labor-market signals, and optional RAG-backed evidence—so governments, training providers, and product teams do not rebuild the same glue code country by country.
+
+### Stakeholder outcomes
+
+```mermaid
+flowchart TB
+  C((Cartographer))
+  C --> Y[Youth and workers]
+  C --> N[Navigators and TVET]
+  C --> P[Policymakers]
+  C --> I[Integrators]
+  Y --> Y1[Portable profile JSON PDF URL]
+  Y --> Y2[Wages growth AI risk in context]
+  Y --> Y3[Jobs training gig self-employment]
+  N --> N1[Facilitator mode same wizard]
+  N --> N2[Hand off exports for participants]
+  P --> P1[Dashboard snapshots Wittgenstein]
+  P --> P2[CSV sector youth signals]
+  I --> I1[REST via NEXT_PUBLIC_API_URL]
+  I --> I2[Admin ingest lineage Postgres Milvus]
+```
+
+### Problem → platform → value chain
+
+```mermaid
+flowchart LR
+  subgraph P[Problem today]
+    P1[Skills invisible to formal market]
+    P2[One size fits all global tools]
+    P3[Data and UX not reusable]
+  end
+  subgraph C[Cartographer]
+    C1[Narrative to ESCO ISCO]
+    C2[Country config and locale]
+    C3[API corpora and lineage]
+  end
+  subgraph V[Business value]
+    V1[Faster placement and training fit]
+    V2[Evidence backed policy and programs]
+    V3[One national layer many channels]
+  end
+  P --> C --> V
+```
+
 ## Actors and journeys
 
 | Actor | Primary routes | Goal |
@@ -90,7 +136,72 @@ All datasets are real and publicly sourced. Bundled JSON under `apps/api/src/sig
 
 ## Architecture
 
-### Logical view
+All figures in this section are **Mermaid** diagrams: use fenced blocks with the `mermaid` language tag (for example in GitHub, GitLab, or VS Code Markdown preview).
+
+### System architecture (containers)
+
+How the browser app, API, external services, and stores fit together.
+
+```mermaid
+flowchart TB
+  subgraph Client["apps/web — Next.js 16"]
+    UI[Landing profile opportunities]
+    DB[Dashboard]
+    AD[Admin config uploads]
+    DOC[API docs page]
+  end
+
+  subgraph API["apps/api — NestJS"]
+    GW[HTTP JSON controllers]
+    AUTH[JWT cookies admin and user]
+    PR[Profile extract and match]
+    SG[Signals composite dashboard]
+    JB[Live job search]
+    HV[Harvesters schedule startup]
+    RG[RAG retrieval generation]
+    LN[Lineage dataset runs]
+    UP[Admin multipart ingest]
+  end
+
+  subgraph External["External services"]
+    AN[Anthropic Claude]
+    TV[Tavily]
+    WB[World Bank and peers]
+    DBN[DBnomics fallback]
+  end
+
+  subgraph Data["Data stores"]
+    PG[(PostgreSQL TypeORM)]
+    MV[(Milvus embeddings optional)]
+    FS[Bundled JSON snapshots]
+  end
+
+  Client -->|NEXT_PUBLIC_API_URL| GW
+  GW --> AUTH
+  GW --> PR
+  GW --> SG
+  GW --> JB
+  GW --> HV
+  GW --> RG
+  GW --> LN
+  GW --> UP
+  PR --> AN
+  JB --> TV
+  SG --> PG
+  SG --> MV
+  SG --> FS
+  RG --> MV
+  RG --> AN
+  HV --> WB
+  HV --> DBN
+  HV --> PG
+  HV --> MV
+  LN --> PG
+  UP --> HV
+  PR --> PG
+```
+
+### Logical feature map
 
 ```mermaid
 flowchart LR
@@ -101,7 +212,7 @@ flowchart LR
     D[Dashboard]
     A[Admin / API docs]
   end
-  subgraph API["apps/api — NestJS"]
+  subgraph Nest["apps/api — NestJS"]
     M[Match + extract]
     S[Signals / composite]
     H[Harvesters]
@@ -112,12 +223,60 @@ flowchart LR
     MV[(Milvus optional)]
     FS[JSON snapshots]
   end
-  Web -->|HTTPS JSON| API
-  API --> PG
-  API --> MV
-  API --> FS
+  Web --> M
+  Web --> S
+  Web --> R
+  M --> PG
+  M --> MV
+  S --> PG
+  S --> MV
+  S --> FS
+  R --> MV
   H --> PG
+  H --> MV
 ```
+
+### Data processing, routing, and lineage
+
+How ingested data is routed to structured vs vector storage and tied to **data sources** and **dataset runs** (for traceability and cascade delete).
+
+```mermaid
+flowchart TB
+  subgraph Sources["Inputs"]
+    SCH[Admin structured CSV]
+    UNST[Admin text markdown JSON]
+    LIVE[Harvesters WB UNESCO ILO peers]
+    FB[DBnomics universal fallback]
+    SNAP[Repo JSON under signals/data]
+  end
+
+  subgraph API["apps/api processing"]
+    H[Harvest coordinator]
+    RT[Route by dataset target]
+    PL[PostgresLoader custom tables JSONB]
+    VL[VectorLoader chunks embeddings]
+    LN[LineageService DataSource DatasetRun]
+  end
+
+  subgraph Stores["Persistence"]
+    PG[(PostgreSQL)]
+    MV[(Milvus custom collections)]
+    FS[Filesystem snapshots]
+  end
+
+  Sources --> H
+  H --> RT
+  RT --> PL
+  RT --> VL
+  PL --> PG
+  VL --> MV
+  VL --> PG
+  H --> LN
+  LN --> PG
+  SNAP --> FS
+```
+
+Custom vector corpora use the `cartographer_custom_<slug>` collection naming convention in Milvus. Bundled JSON under `apps/api/src/signals/data/` is read by signal and dashboard code without going through the harvest coordinator.
 
 ### Request path (skills to matches)
 
@@ -141,18 +300,29 @@ sequenceDiagram
 
 ### Repository layout
 
+Repository folder name may still be `unmapped` on disk until the GitHub project is renamed; package names in `package.json` are `@cartographer/*`.
+
+```mermaid
+flowchart TB
+  R[repository-root]
+  R --> AW[apps/web]
+  R --> AA[apps/api]
+  R --> RS[scripts/]
+  AW --> AWA[app/ routes]
+  AW --> AWC[components/]
+  AW --> AWL[lib/]
+  AW --> AWI[locales/ 15 JSON]
+  AW --> AWS[scripts/ i18n tools]
+  AA --> AAS[src/ NestJS modules]
+  RS --> RSN[generate-countries.mjs etc.]
 ```
-unmapped/
-├── apps/web/
-│   ├── app/                  landing, profile, opportunities, dashboard, admin/config, api-docs
-│   ├── components/
-│   ├── lib/
-│   ├── locales/              15 JSON dictionaries
-│   └── scripts/              sync-locale-keys-from-en.mjs, apply-locale-patches.mjs, locale-patches.json
-├── apps/api/                 NestJS (see apps/api/README.md for CLI defaults)
-│   └── src/                  dashboard, profile, signals, harvest, rag, …
-└── scripts/                  e.g. generate-countries.mjs
-```
+
+| Path | Role |
+|------|------|
+| `apps/web/app/` | Landing, profile, opportunities, dashboard, admin/config, api-docs |
+| `apps/web/scripts/` | `sync-locale-keys-from-en.mjs`, `apply-locale-patches.mjs`, `locale-patches.json` |
+| `apps/api/src/` | Dashboard, profile, signals, harvest, RAG, lineage, auth, … |
+| `apps/api/README.md` | Nest CLI defaults (`start:dev`, tests, layout) |
 
 ### UI conventions
 
@@ -211,7 +381,7 @@ This is a hackathon-scale prototype. We were deliberate about scope:
 - **ESCO subset** in some pipelines (top skills list), not the full ~13,000. Long-tail skills may fall back to closest matches.
 - **Frey-Osborne (2013)** plus LMIC multiplier is a coarse automation lens, not a forecast.
 - **Tavily** job search is best-effort and coverage varies by country and language.
-- **No auth / limited persistence** in the default demo path; export JSON or PDF for portability.
+- **Auth is optional:** end-user signup saves profiles on the server when enabled; the portable URL / JSON / PDF path still works without an account.
 - **PDF** is client-side (jsPDF); typography is functional.
 - **No automated tests** in the hackathon window.
 - **Locale coverage:** `fr`, `bn`, and `sw` include hand-checked strings for the newest UI; other locale files may still show English for the same keys until patches are extended.
