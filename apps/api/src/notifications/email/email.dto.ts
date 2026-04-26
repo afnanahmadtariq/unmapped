@@ -1,4 +1,11 @@
-import { IsEmail, IsInt, IsOptional, IsString, IsUrl, Min } from 'class-validator';
+import {
+  IsEmail,
+  IsInt,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Min,
+} from 'class-validator';
 
 export class EmailProfileDto {
   @IsEmail()

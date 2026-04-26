@@ -5,7 +5,9 @@ import { z } from 'zod';
  * Validated once at boot in EnvService — fail fast on misconfiguration.
  */
 export const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
+  NODE_ENV: z
+    .enum(['development', 'test', 'production'])
+    .default('development'),
   PORT: z.coerce.number().int().positive().default(4000),
   WEB_ORIGIN: z.string().url().default('http://localhost:3000'),
 
@@ -14,7 +16,11 @@ export const envSchema = z.object({
 
   // Milvus / Zilliz (required for vector ops; ESCO ingest + RAG retrieval)
   MILVUS_URI: z.string().url(),
-  MILVUS_TOKEN: z.string().min(1).optional(),
+  // Zilliz/Milvus SDK: pass API key, or db user credentials as "user:password".
+  // If empty, MILVUS_USER + MILVUS_PASSWORD are combined to that form.
+  MILVUS_TOKEN: z.string().optional(),
+  MILVUS_USER: z.string().optional(),
+  MILVUS_PASSWORD: z.string().optional(),
   MILVUS_DATABASE: z.string().default('default'),
 
   // Anthropic (required for skill extraction + opportunity generation)

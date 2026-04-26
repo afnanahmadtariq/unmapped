@@ -19,7 +19,9 @@ export class ExtractController {
    * /api/extract-skills route (sans the `phase` discriminator).
    */
   @Post()
-  async initial(@Body() body: ExtractInitialDto): Promise<ExtractInitialResponse> {
+  async initial(
+    @Body() body: ExtractInitialDto,
+  ): Promise<ExtractInitialResponse> {
     const baseInput = body as ExtractInput;
     const { result, history } = await this.extract.extractInitial(baseInput);
     return { result, history, baseInput };

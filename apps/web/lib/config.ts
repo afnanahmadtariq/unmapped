@@ -1,7 +1,8 @@
-// UNMAPPED - country registry, sourced from /public/data/countries.json.
+// UNMAPPED - country registry, sourced from lib/data/countries.json.
 // Adding a new country = adding one entry to that file. No code changes here.
+// The same file lives in apps/api/src/country/data/countries.json — keep in sync.
 
-import countriesData from "@/public/data/countries.json";
+import countriesData from "@/lib/data/countries.json";
 import type { CountryConfig, CountryCode } from "@/types";
 
 interface RawCountry {

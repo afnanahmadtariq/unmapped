@@ -12,8 +12,12 @@ import { BaseHarvester } from '../base.harvester';
 // Postgres rows AND embeds skill descriptions into Milvus via VectorLoader.
 @Injectable()
 export class EscoHarvester extends BaseHarvester {
-  get sourceId() { return 'esco'; }
-  get cronExpression() { return '0 5 1 1,7 *'; } // Every 6 months (ESCO updates ~annually)
+  get sourceId() {
+    return 'esco';
+  }
+  get cronExpression() {
+    return '0 5 1 1,7 *';
+  } // Every 6 months (ESCO updates ~annually)
 
   constructor(storage: StorageService, loader: VectorLoader) {
     super(storage, loader);
@@ -30,31 +34,37 @@ export class EscoHarvester extends BaseHarvester {
     await this.fetchEscoType('occupation', allOccupations);
 
     const allRecords = [
-      ...allSkills.map(s => ({ ...s, recordType: 'skill' })),
-      ...allOccupations.map(o => ({ ...o, recordType: 'occupation' })),
+      ...allSkills.map((s) => ({ ...s, recordType: 'skill' })),
+      ...allOccupations.map((o) => ({ ...o, recordType: 'occupation' })),
     ];
 
-    await this.persist(this.makeDataset({
-      sourceId: this.sourceId,
-      sourceName: 'ESCO Skills Taxonomy (EU)',
-      category: 'skills',
-      metadata: {
-        apiUrl: 'https://esco.ec.europa.eu/en/use-esco/esco-web-services',
-        version: 'ESCO v1.1.1',
-        totalSkills: allSkills.length,
-        totalOccupations: allOccupations.length,
-        note: 'No API key required. European Skills, Competences, Qualifications and Occupations taxonomy.',
-      },
-      records: allRecords,
-    }));
+    await this.persist(
+      this.makeDataset({
+        sourceId: this.sourceId,
+        sourceName: 'ESCO Skills Taxonomy (EU)',
+        category: 'skills',
+        metadata: {
+          apiUrl: 'https://esco.ec.europa.eu/en/use-esco/esco-web-services',
+          version: 'ESCO v1.1.1',
+          totalSkills: allSkills.length,
+          totalOccupations: allOccupations.length,
+          note: 'No API key required. European Skills, Competences, Qualifications and Occupations taxonomy.',
+        },
+        records: allRecords,
+      }),
+    );
   }
 
-  private async fetchEscoType(type: 'skill' | 'occupation', results: Record<string, any>[]): Promise<void> {
+  private async fetchEscoType(
+    type: 'skill' | 'occupation',
+    results: Record<string, any>[],
+  ): Promise<void> {
     const limit = 100;
     let offset = 0;
     let total = Infinity;
 
-    while (offset < total && offset < 5000) { // cap at 5000 per type
+    while (offset < total && offset < 5000) {
+      // cap at 5000 per type
       try {
         const url = `https://ec.europa.eu/esco/api/search?language=en&type=${type}&offset=${offset}&limit=${limit}`;
         const { data } = await this.http.get(url);
@@ -66,16 +76,19 @@ export class EscoHarvester extends BaseHarvester {
           type: item.className,
           skillType: item.hasSkillType?.[0]?.split('/').pop() || null,
           reuseLevel: item.hasReuseLevel?.[0]?.split('/').pop() || null,
-          iscoGroup: item.broaderHierarchyConcept?.[0]?.split('/').pop() || null,
+          iscoGroup:
+            item.broaderHierarchyConcept?.[0]?.split('/').pop() || null,
         }));
 
         results.push(...items);
         offset += limit;
 
         if (items.length < limit) break; // last page
-        await new Promise(r => setTimeout(r, 200)); // be polite to the API
+        await new Promise((r) => setTimeout(r, 200)); // be polite to the API
       } catch (err: any) {
-        this.logger.warn(`ESCO ${type} offset=${offset} failed: ${err.message}`);
+        this.logger.warn(
+          `ESCO ${type} offset=${offset} failed: ${err.message}`,
+        );
         break;
       }
     }

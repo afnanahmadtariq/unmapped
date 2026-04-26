@@ -69,7 +69,7 @@ export class StorageService {
     return result;
   }
 
-  async getDataDir(): Promise<string> {
+  getDataDir(): string {
     return this.dataDir;
   }
 }

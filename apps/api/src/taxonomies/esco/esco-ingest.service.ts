@@ -5,7 +5,10 @@ import escoSeed from './data/esco-skills.seed.json';
 import { EscoSkillEntity } from './esco.entity';
 import { ESCO_VECTOR_COLLECTION } from './esco.collection';
 import { MilvusVectorClient } from '../../infra/vector/milvus.client';
-import { EMBEDDER, type Embedder } from '../../infra/embeddings/embedder.interface';
+import {
+  EMBEDDER,
+  type Embedder,
+} from '../../infra/embeddings/embedder.interface';
 
 interface SeedSkill {
   code: string;
@@ -37,22 +40,37 @@ export class EscoIngestService implements OnModuleInit {
   ) {}
 
   async onModuleInit(): Promise<void> {
-    await this.milvus.ensureCollection(
-      ESCO_VECTOR_COLLECTION,
-      this.embedder.dim,
-    );
-    const count = await this.repo.count();
-    if (count === 0) {
-      this.logger.log('ESCO table empty — seeding from bundled snapshot.');
-      await this.ingestRows(
-        (escoSeed as { skills: SeedSkill[] }).skills.map((s) => ({
-          ...s,
-          source: 'snapshot',
-        })),
-        { skipEmbed: false },
+    try {
+      await this.milvus.ensureCollection(
+        ESCO_VECTOR_COLLECTION,
+        this.embedder.dim,
       );
-    } else {
-      this.logger.log(`ESCO table populated (${count} rows). Skipping seed.`);
+    } catch (err) {
+      this.logger.warn(
+        `Milvus collection bootstrap failed: ${(err as Error).message}. ` +
+          `RAG retrieval will be unavailable until the vector store is reachable.`,
+      );
+      return;
+    }
+    try {
+      const count = await this.repo.count();
+      if (count === 0) {
+        this.logger.log('ESCO table empty — seeding from bundled snapshot.');
+        await this.ingestRows(
+          (escoSeed as { skills: SeedSkill[] }).skills.map((s) => ({
+            ...s,
+            source: 'snapshot',
+          })),
+          { skipEmbed: false },
+        );
+      } else {
+        this.logger.log(`ESCO table populated (${count} rows). Skipping seed.`);
+      }
+    } catch (err) {
+      this.logger.warn(
+        `ESCO seed skipped: ${(err as Error).message}. ` +
+          `Run with TYPEORM_SYNC=true (dev) or apply migrations (prod).`,
+      );
     }
   }
 
@@ -101,9 +119,7 @@ export class EscoIngestService implements OnModuleInit {
     return { inserted: entities.length, embedded };
   }
 
-  private async embedAndUpsertMilvus(
-    rows: EscoSkillEntity[],
-  ): Promise<number> {
+  private async embedAndUpsertMilvus(rows: EscoSkillEntity[]): Promise<number> {
     let embedded = 0;
     for (let i = 0; i < rows.length; i += this.batchSize) {
       const batch = rows.slice(i, i + this.batchSize);

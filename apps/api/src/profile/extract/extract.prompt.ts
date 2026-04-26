@@ -20,10 +20,18 @@ Skip skills you cannot justify. Better to return fewer high-confidence skills th
 export function buildUserTurn(input: ExtractInput, escoList: string): string {
   const demoLines = input.demographics
     ? ([
-        input.demographics.ageRange ? `Age range: ${input.demographics.ageRange}` : null,
-        input.demographics.gender ? `Gender: ${input.demographics.gender}` : null,
-        input.demographics.location ? `Location: ${input.demographics.location}` : null,
-        input.demographics.workMode ? `Current work mode: ${input.demographics.workMode}` : null,
+        input.demographics.ageRange
+          ? `Age range: ${input.demographics.ageRange}`
+          : null,
+        input.demographics.gender
+          ? `Gender: ${input.demographics.gender}`
+          : null,
+        input.demographics.location
+          ? `Location: ${input.demographics.location}`
+          : null,
+        input.demographics.workMode
+          ? `Current work mode: ${input.demographics.workMode}`
+          : null,
       ].filter(Boolean) as string[])
     : [];
 
@@ -32,7 +40,9 @@ export function buildUserTurn(input: ExtractInput, escoList: string): string {
   if (ctx) {
     if (ctx.phoneAccess) contextLines.push(`Phone access: ${ctx.phoneAccess}`);
     if (ctx.selfLearning?.length)
-      contextLines.push(`Self-learning channels: ${ctx.selfLearning.join(', ')}`);
+      contextLines.push(
+        `Self-learning channels: ${ctx.selfLearning.join(', ')}`,
+      );
     if (ctx.workEntries?.length) {
       contextLines.push('Real-world work history:');
       for (const w of ctx.workEntries) {
@@ -41,8 +51,10 @@ export function buildUserTurn(input: ExtractInput, escoList: string): string {
         );
       }
     }
-    if (ctx.tasks?.length) contextLines.push(`Tasks performed: ${ctx.tasks.join(', ')}`);
-    if (ctx.tools?.length) contextLines.push(`Tools used: ${ctx.tools.join(', ')}`);
+    if (ctx.tasks?.length)
+      contextLines.push(`Tasks performed: ${ctx.tasks.join(', ')}`);
+    if (ctx.tools?.length)
+      contextLines.push(`Tools used: ${ctx.tools.join(', ')}`);
     if (ctx.constraints) {
       const c = ctx.constraints;
       const parts: string[] = [];

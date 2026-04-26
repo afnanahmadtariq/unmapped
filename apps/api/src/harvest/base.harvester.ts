@@ -48,7 +48,9 @@ export abstract class BaseHarvester {
           }`,
         );
       } else if (result.note) {
-        this.logger.warn(`⏭ ${this.sourceId} → ${this.loader.name}: ${result.note}`);
+        this.logger.warn(
+          `⏭ ${this.sourceId} → ${this.loader.name}: ${result.note}`,
+        );
       }
     } catch (err: any) {
       this.logger.error(
@@ -80,7 +82,9 @@ export abstract class BaseHarvester {
         countryCode: r.countryiso3code,
         year: parseInt(r.date, 10),
         value:
-          typeof r.value === 'number' ? parseFloat(r.value.toFixed(4)) : r.value,
+          typeof r.value === 'number'
+            ? parseFloat(r.value.toFixed(4))
+            : r.value,
         unit: r.unit || '',
         indicatorId: r.indicator?.id,
         indicatorName: r.indicator?.value,
@@ -114,11 +118,16 @@ export abstract class BaseHarvester {
         columns: true,
         skip_empty_lines: true,
         trim: true,
-      }) as Record<string, any>[];
+      });
     } catch {
-      const lines = text.trim().split('\n').filter((l) => l.trim());
+      const lines = text
+        .trim()
+        .split('\n')
+        .filter((l) => l.trim());
       if (lines.length < 2) return [];
-      const headers = lines[0].split(',').map((h) => h.replace(/"/g, '').trim());
+      const headers = lines[0]
+        .split(',')
+        .map((h) => h.replace(/"/g, '').trim());
       return lines.slice(1).map((line) => {
         const vals = line.split(',').map((v) => v.replace(/"/g, '').trim());
         return Object.fromEntries(headers.map((h, i) => [h, vals[i] ?? '']));
@@ -129,7 +138,11 @@ export abstract class BaseHarvester {
   protected makeDataset(
     partial: Omit<
       HarvestedDataset,
-      'lastFetched' | 'nextScheduled' | 'cronExpression' | 'fields' | 'recordCount'
+      | 'lastFetched'
+      | 'nextScheduled'
+      | 'cronExpression'
+      | 'fields'
+      | 'recordCount'
     > & { records: Record<string, any>[] },
   ): HarvestedDataset {
     return {

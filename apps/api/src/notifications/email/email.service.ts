@@ -37,8 +37,8 @@ export class EmailService {
     const pass = env.get('SMTP_PASS');
     const secureRaw = env.get('SMTP_SECURE');
     if (!host || !port || !user || !pass) {
-      this.logger.warn(
-        'SMTP env vars missing — email will fall back to mailto: client side.',
+      this.logger.log(
+        'SMTP env vars not set — /notifications/email-profile will return a mailto: fallback.',
       );
       this.transporter = null;
       this.fromAddress = null;

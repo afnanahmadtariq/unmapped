@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 
 import { EnvModule } from './infra/config/env.module';
@@ -19,10 +20,16 @@ import { HealthModule } from './health/health.module';
 
 import { HarvestModule } from './harvest/harvest.module';
 import { StorageModule } from './storage/storage.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AdminModule } from './admin/admin.module';
 import { DataController } from './data.controller';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env', 'apps/api/.env'],
+    }),
     EnvModule,
     DatabaseModule,
     VectorModule,
@@ -42,6 +49,8 @@ import { DataController } from './data.controller';
     ScheduleModule.forRoot(),
     StorageModule,
     HarvestModule,
+    DashboardModule,
+    AdminModule,
   ],
   controllers: [DataController],
 })

@@ -9,8 +9,12 @@ import { BaseHarvester } from '../base.harvester';
 // Endpoints are publicly accessible without a key
 @Injectable()
 export class UnPopulationHarvester extends BaseHarvester {
-  get sourceId() { return 'un-population'; }
-  get cronExpression() { return '0 6 1 * *'; } // 1st of every month
+  get sourceId() {
+    return 'un-population';
+  }
+  get cronExpression() {
+    return '0 6 1 * *';
+  } // 1st of every month
 
   constructor(storage: StorageService, loader: PostgresLoader) {
     super(storage, loader);
@@ -56,34 +60,38 @@ export class UnPopulationHarvester extends BaseHarvester {
             nextUrl = nextData.nextPage;
           }
 
-          records.forEach((r: any) => allRecords.push({
-            indicatorId: ind.id,
-            indicatorName: ind.name,
-            locationId: loc.id,
-            locationName: loc.name,
-            timeMid: r.timeMid,
-            value: r.value,
-            variantName: r.variantName,
-            sex: r.sex || 'Both',
-            ageLabel: r.ageLabel || 'All',
-          }));
+          records.forEach((r: any) =>
+            allRecords.push({
+              indicatorId: ind.id,
+              indicatorName: ind.name,
+              locationId: loc.id,
+              locationName: loc.name,
+              timeMid: r.timeMid,
+              value: r.value,
+              variantName: r.variantName,
+              sex: r.sex || 'Both',
+              ageLabel: r.ageLabel || 'All',
+            }),
+          );
         } catch (err: any) {
           this.logger.warn(`UN Pop ${ind.id}/${loc.id} failed: ${err.message}`);
         }
       }
     }
 
-    await this.persist(this.makeDataset({
-      sourceId: this.sourceId,
-      sourceName: 'UN Population Division',
-      category: 'education',
-      metadata: {
-        apiUrl: 'https://population.un.org/dataportal/about/dataapi',
-        indicators: this.indicators,
-        locations: this.locations,
-        note: 'Publicly accessible, no API key required. Data from World Population Prospects 2024.',
-      },
-      records: allRecords,
-    }));
+    await this.persist(
+      this.makeDataset({
+        sourceId: this.sourceId,
+        sourceName: 'UN Population Division',
+        category: 'education',
+        metadata: {
+          apiUrl: 'https://population.un.org/dataportal/about/dataapi',
+          indicators: this.indicators,
+          locations: this.locations,
+          note: 'Publicly accessible, no API key required. Data from World Population Prospects 2024.',
+        },
+        records: allRecords,
+      }),
+    );
   }
 }

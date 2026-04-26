@@ -58,7 +58,9 @@ export class HealthService {
 
   private async probeMilvus(): Promise<boolean> {
     try {
-      const res = await this.milvus.raw().getMetric({ request: { metric_type: 'system_info' } });
+      const res = await this.milvus
+        .raw()
+        .getMetric({ request: { metric_type: 'system_info' } });
       return !!res;
     } catch {
       return false;

@@ -1,16 +1,12 @@
 import {
-  ArrayMaxSize,
-  ArrayMinSize,
   IsArray,
   IsBoolean,
-  IsIn,
   IsInt,
   IsObject,
   IsOptional,
   IsString,
   Length,
   Max,
-  MaxLength,
   Min,
   ValidateNested,
 } from 'class-validator';
@@ -50,7 +46,9 @@ class ProfileContextDto {
   @IsOptional() @IsArray() @IsString({ each: true }) tasks?: string[];
   @IsOptional() @IsArray() @IsString({ each: true }) tools?: string[];
 
-  @IsOptional() @ValidateNested() @Type(() => ConstraintsDto)
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => ConstraintsDto)
   constraints?: ConstraintsDto;
 
   @IsOptional() @IsString() aspirations?: string;
@@ -81,10 +79,14 @@ export class ExtractInputDto {
   @IsString({ each: true })
   declaredSkills!: string[];
 
-  @IsOptional() @ValidateNested() @Type(() => DemographicsDto)
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => DemographicsDto)
   demographics?: DemographicsDto;
 
-  @IsOptional() @ValidateNested() @Type(() => ProfileContextDto)
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => ProfileContextDto)
   context?: ProfileContextDto;
 }
 

@@ -8,7 +8,17 @@ import { TavilyClient } from './tavily.client';
 @Global()
 @Module({
   imports: [CountryModule],
-  providers: [EscoApiClient, WorldBankApiClient, WittgensteinClient, TavilyClient],
-  exports: [EscoApiClient, WorldBankApiClient, WittgensteinClient, TavilyClient],
+  providers: [
+    EscoApiClient,
+    WorldBankApiClient,
+    WittgensteinClient,
+    TavilyClient,
+  ],
+  exports: [
+    EscoApiClient,
+    WorldBankApiClient,
+    WittgensteinClient,
+    TavilyClient,
+  ],
 })
 export class ExternalModule {}

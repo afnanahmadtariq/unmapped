@@ -1,7 +1,7 @@
 // UNMAPPED — typed fetch wrapper for the NestJS API.
 // All server-side logic now lives in apps/api. The web layer just
 // posts JSON and renders the response. Configure NEXT_PUBLIC_API_URL
-// in apps/web/.env (defaults to http://localhost:3001).
+// in apps/web/.env (defaults to http://localhost:4000 — Nest default PORT).
 //
 // Payload shapes are kept identical to the deleted /api/* routes so
 // callers only swap URL → apiClient method, no body changes.
@@ -19,7 +19,7 @@ import type {
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
-  "http://localhost:3001";
+  "http://localhost:4000";
 
 class ApiError extends Error {
   status: number;
@@ -146,6 +146,80 @@ export interface DataStatusResponse {
   checkedAt: string;
 }
 
+// ---------- Dashboard ----------
+
+export interface SectorRisk {
+  sectorId: string;
+  occupations: string[];
+  rawAvg: number;
+  calibrated: number;
+}
+
+export interface WittgensteinShares {
+  noEdu: number;
+  primary: number;
+  lowerSec: number;
+  upperSec: number;
+  tertiary: number;
+}
+
+export interface WittgensteinPoint {
+  year: 2025 | 2030 | 2035;
+  shares: WittgensteinShares;
+}
+
+export interface DashboardSnapshot {
+  countryCode: string;
+  countryName: string;
+  currency: string;
+  currencySymbol: string;
+  context: string;
+  youthUnemploymentRate: number;
+  youthUnemploymentSource: "live-worldbank" | "snapshot";
+  youthUnemploymentYear: number;
+  gdpPerCapita: number | null;
+  gdpPerCapitaSource: "live-worldbank" | "snapshot";
+  internetUsersPct: number | null;
+  informalEmploymentShare: number;
+  minimumWage: number;
+  growthBySector: Record<string, number>;
+  wagesByISCO: Record<string, number>;
+  occupationLookup: Record<string, { title: string; sectorId: string }>;
+  automationCalibration: { multiplier: number; rationale: string };
+  sectorRisks: SectorRisk[];
+  wittgensteinProjections: WittgensteinPoint[] | null;
+}
+
+// ---------- Admin ----------
+
+export interface SnapshotCountrySummary {
+  code: string;
+  name: string;
+  region: string;
+  defaultLocale: string;
+  currency: string;
+  currencySymbol: string;
+  automationCalibration: number;
+  context: string;
+}
+
+export interface AdminConfigSummary {
+  countryCode: string;
+  wagesCount: number;
+  sectorsCount: number;
+  vintage: string;
+  calibrationMultiplier: number;
+  calibrationOverridesCount: number;
+  calibrationRationale: string;
+  formalCredentialsCount: number;
+  vocationalCredentialsCount: number;
+  credentialsSource: string;
+  escoCount: number;
+  iscoCount: number;
+  freyCount: number;
+  snapshotCountries: SnapshotCountrySummary[];
+}
+
 export const apiClient = {
   /** POST /profile/extract — initial turn (mirrors legacy /api/extract-skills initial). */
   extractInitial: (input: ExtractInput) =>
@@ -200,6 +274,14 @@ export const apiClient = {
 
   /** GET /countries/:code — single country lookup. */
   country: (code: string) => getJson<CountryConfig>(`/countries/${code}`),
+
+  /** GET /dashboard/snapshot/:countryCode — full policy dashboard payload. */
+  dashboardSnapshot: (countryCode: string) =>
+    getJson<DashboardSnapshot>(`/dashboard/snapshot/${countryCode}`),
+
+  /** GET /admin/config-summary/:countryCode — dataset counts + calibration + snapshot country list. */
+  adminConfigSummary: (countryCode: string) =>
+    getJson<AdminConfigSummary>(`/admin/config-summary/${countryCode}`),
 };
 
 export { API_BASE, ApiError };

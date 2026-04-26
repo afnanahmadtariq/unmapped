@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Param, Query, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Query,
+  NotFoundException,
+} from '@nestjs/common';
 import { HarvestService } from './harvest/harvest.service';
 
 @Controller()
@@ -28,14 +35,24 @@ export class DataController {
     @Query('country') country?: string,
   ) {
     const dataset = await this.harvest.getStorageService().load(sourceId);
-    if (!dataset) throw new NotFoundException(`Dataset '${sourceId}' not found. Run POST /harvest/${sourceId} first.`);
+    if (!dataset)
+      throw new NotFoundException(
+        `Dataset '${sourceId}' not found. Run POST /harvest/${sourceId} first.`,
+      );
 
     let records = dataset.records;
 
     // Optional filtering by countryCode
     if (country) {
-      records = records.filter(r =>
-        (r.countryCode || r.country_code || r.iso3 || r.refArea || '').toLowerCase() === country.toLowerCase()
+      records = records.filter(
+        (r) =>
+          (
+            r.countryCode ||
+            r.country_code ||
+            r.iso3 ||
+            r.refArea ||
+            ''
+          ).toLowerCase() === country.toLowerCase(),
       );
     }
 

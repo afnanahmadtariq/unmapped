@@ -6,6 +6,7 @@ import { Moon, Sun } from "lucide-react";
 type Theme = "dark" | "light";
 
 const STORAGE_KEY = "unmapped-theme";
+const COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
 function readPersistedTheme(): Theme {
   if (typeof window === "undefined") return "light";
@@ -20,6 +21,11 @@ function applyTheme(t: Theme) {
   document.documentElement.style.colorScheme = t;
 }
 
+function persistTheme(t: Theme) {
+  window.localStorage.setItem(STORAGE_KEY, t);
+  document.cookie = `${STORAGE_KEY}=${t}; Path=/; Max-Age=${COOKIE_MAX_AGE_SECONDS}; SameSite=Lax`;
+}
+
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
@@ -28,6 +34,7 @@ export default function ThemeToggle() {
     const t = readPersistedTheme();
     setTheme(t);
     applyTheme(t);
+    persistTheme(t);
     setMounted(true);
   }, []);
 
@@ -35,7 +42,7 @@ export default function ThemeToggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
     applyTheme(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    persistTheme(next);
   };
 
   return (
@@ -53,13 +60,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-
-/** No-flash inline script. Runs synchronously before React hydrates. */
-export const ThemeNoFlashScript = () => (
-  <script
-    // eslint-disable-next-line react/no-danger
-    dangerouslySetInnerHTML={{
-      __html: `(function(){try{var k='${STORAGE_KEY}';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var h=document.documentElement;h.setAttribute('data-theme',t);h.style.colorScheme=t;}catch(e){}})();`,
-    }}
-  />
-);

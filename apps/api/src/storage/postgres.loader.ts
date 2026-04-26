@@ -65,9 +65,23 @@ export class PostgresLoader implements DatasetLoader {
         const iso3 = r.countryCode ?? r.iso3 ?? r.country?.id ?? '';
         const indicator = r.indicatorId ?? r.indicator?.id ?? '';
         const year = Number(r.year ?? r.date);
-        const value = r.value !== null && r.value !== undefined ? Number(r.value) : null;
-        if (!iso3 || !indicator || !year || value === null || Number.isNaN(value)) return null;
-        return { iso3: String(iso3), indicator: String(indicator), year, value, source: dataset.sourceId };
+        const value =
+          r.value !== null && r.value !== undefined ? Number(r.value) : null;
+        if (
+          !iso3 ||
+          !indicator ||
+          !year ||
+          value === null ||
+          Number.isNaN(value)
+        )
+          return null;
+        return {
+          iso3: String(iso3),
+          indicator: String(indicator),
+          year,
+          value,
+          source: dataset.sourceId,
+        };
       })
       .filter((r): r is NonNullable<typeof r> => r !== null);
     const persisted = await this.signals.upsertWbIndicatorPoints(rows);

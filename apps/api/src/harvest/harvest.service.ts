@@ -40,17 +40,19 @@ export class HarvestService {
       'wb-hci': wbHci,
       'ilo-isco': iloIsco,
       'un-population': unPop,
-      'wittgenstein': wittgenstein,
+      wittgenstein: wittgenstein,
       'unesco-uis': unescoUis,
       'frey-osborne': freyOsborne,
       'ilo-fow': iloFow,
       'itu-digital': ituDigital,
-      'esco': esco,
+      esco: esco,
     };
   }
 
   /** Manually trigger a specific harvester by sourceId */
-  async runOne(sourceId: string): Promise<{ success: boolean; message: string }> {
+  async runOne(
+    sourceId: string,
+  ): Promise<{ success: boolean; message: string }> {
     const harvester = this.harvesterMap[sourceId];
     if (!harvester) {
       return { success: false, message: `Unknown sourceId: ${sourceId}` };
@@ -64,7 +66,9 @@ export class HarvestService {
   }
 
   /** Manually trigger ALL harvesters in parallel */
-  async runAll(): Promise<{ sourceId: string; success: boolean; message: string }[]> {
+  async runAll(): Promise<
+    { sourceId: string; success: boolean; message: string }[]
+  > {
     const results = await Promise.allSettled(
       Object.entries(this.harvesterMap).map(async ([id, h]) => {
         try {
@@ -73,9 +77,13 @@ export class HarvestService {
         } catch (e: any) {
           return { sourceId: id, success: false, message: e.message };
         }
-      })
+      }),
     );
-    return results.map(r => (r.status === 'fulfilled' ? r.value : { sourceId: 'unknown', success: false, message: 'Rejected' }));
+    return results.map((r) =>
+      r.status === 'fulfilled'
+        ? r.value
+        : { sourceId: 'unknown', success: false, message: 'Rejected' },
+    );
   }
 
   /** List all harvester source IDs and validate their cron expressions */
@@ -87,5 +95,7 @@ export class HarvestService {
     }));
   }
 
-  getStorageService() { return this.storage; }
+  getStorageService() {
+    return this.storage;
+  }
 }
