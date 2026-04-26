@@ -709,10 +709,13 @@ export default function ProfileWizard({
         </div>
       ) : null}
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-      <section className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
-        <Stepper step={step} steps={STEPS} />
+      <section className="flex flex-col rounded-2xl border border-border-default bg-bg-raised shadow-sm">
+        <div className="border-b border-border-default px-6 pt-5 pb-4">
+          <Stepper step={step} steps={STEPS} />
+        </div>
+        <div className="flex-1 px-6 py-5">
 
-        <div className="mt-7">
+        <div>
           {step === 0 && (
             <StepBody
               title={t.profile.step1Heading}
@@ -991,13 +994,14 @@ export default function ProfileWizard({
             </StepBody>
           )}
         </div>
+        </div>
 
-        <footer className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-border-default pt-5">
+        <footer className="flex flex-wrap items-center justify-between gap-3 rounded-b-2xl border-t border-border-default bg-bg-base/60 px-6 py-4">
           <button
             type="button"
             onClick={prev}
             disabled={step === 0 || loading}
-            className="inline-flex items-center gap-2 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-sm text-fg-secondary hover:bg-bg-hover disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border-default bg-bg-base px-3.5 py-2 text-sm text-fg-secondary transition hover:bg-bg-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> {t.profile.back}
           </button>
@@ -1009,7 +1013,7 @@ export default function ProfileWizard({
               type="button"
               onClick={next}
               disabled={!stepValid[step]}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-1.5 text-sm font-medium text-white hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {t.profile.continue} <ArrowRight className="h-3.5 w-3.5" />
             </button>
@@ -1018,7 +1022,7 @@ export default function ProfileWizard({
               type="button"
               onClick={submit}
               disabled={loading || !storyValid}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {loading ? (
                 <>
@@ -1034,15 +1038,17 @@ export default function ProfileWizard({
         </footer>
       </section>
 
-      <aside className="rounded-2xl border border-border-default bg-bg-raised p-6 shadow-sm">
-        <p className="text-[10px] uppercase tracking-widest text-fg-muted">
-          {t.profile.draftEyebrow}
-        </p>
-        <h3 className="mt-1 text-base font-medium text-fg-primary">
-          {t.profile.draftTitle}
-        </h3>
+      <aside className="flex flex-col rounded-2xl border border-border-default bg-bg-raised shadow-sm">
+        <div className="border-b border-border-default px-6 py-4">
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">
+            {t.profile.draftEyebrow}
+          </p>
+          <h3 className="mt-0.5 text-sm font-semibold text-fg-primary">
+            {t.profile.draftTitle}
+          </h3>
+        </div>
 
-        <dl className="mt-5 space-y-3 text-sm">
+        <dl className="flex-1 space-y-3 overflow-y-auto px-6 py-5 text-sm">
           <Row label={t.profile.draftCountry} value={countryName} />
           <Row label={t.profile.draftEducation} value={t.profile.education[educationKey]} />
           <Row
@@ -1201,7 +1207,7 @@ export default function ProfileWizard({
         </dl>
 
         {loading && (
-          <div className="mt-6 space-y-2">
+          <div className="space-y-2 px-6 py-4 border-t border-border-default">
             <div className="skeleton h-4 rounded" />
             <div className="skeleton h-4 w-3/4 rounded" />
             <div className="skeleton h-4 w-5/6 rounded" />
@@ -1430,44 +1436,61 @@ function Stepper({
   step: Step;
   steps: Array<{ key: Step; label: string; icon: React.ComponentType<{ className?: string }> }>;
 }) {
+  const pct = Math.round((step / (steps.length - 1)) * 100);
   return (
-    <ol className="flex items-center gap-2">
-      {steps.map((s, i) => {
-        const Icon = s.icon;
-        const status: "done" | "active" | "pending" =
-          i < step ? "done" : i === step ? "active" : "pending";
-        return (
-          <li key={s.key} className="flex flex-1 items-center gap-2">
-            <span
-              className={clsx(
-                "grid h-9 w-9 shrink-0 place-items-center rounded-full border text-xs font-medium transition",
-                status === "done" && "border-positive/40 bg-positive/10 text-positive",
-                status === "active" && "border-accent bg-accent/10 text-accent",
-                status === "pending" && "border-border-default bg-bg-base text-fg-muted"
-              )}
-            >
-              {status === "done" ? <Check className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
-            </span>
-            <span
-              className={clsx(
-                "hidden text-xs sm:inline",
-                status === "active" ? "font-medium text-fg-primary" : "text-fg-muted"
-              )}
-            >
-              {s.label}
-            </span>
-            {i < steps.length - 1 && (
+    <div className="space-y-3">
+      <ol className="flex items-center gap-1.5">
+        {steps.map((s, i) => {
+          const Icon = s.icon;
+          const status: "done" | "active" | "pending" =
+            i < step ? "done" : i === step ? "active" : "pending";
+          return (
+            <li key={s.key} className="flex flex-1 items-center gap-1.5">
               <span
                 className={clsx(
-                  "h-px flex-1 transition",
-                  i < step ? "bg-positive/50" : "bg-border-default"
+                  "relative grid h-8 w-8 shrink-0 place-items-center rounded-full border text-[11px] font-semibold transition",
+                  status === "done" && "border-positive/40 bg-positive/10 text-positive",
+                  status === "active" && "border-accent/60 bg-accent text-white shadow-sm",
+                  status === "pending" && "border-border-default bg-bg-base text-fg-muted"
                 )}
-              />
-            )}
-          </li>
-        );
-      })}
-    </ol>
+                aria-label={`Step ${i + 1}: ${s.label}`}
+              >
+                {status === "done" ? (
+                  <Check className="h-3.5 w-3.5" />
+                ) : status === "active" ? (
+                  <Icon className="h-3.5 w-3.5" />
+                ) : (
+                  <span>{i + 1}</span>
+                )}
+              </span>
+              <span
+                className={clsx(
+                  "hidden truncate text-[11px] sm:inline",
+                  status === "active" ? "font-semibold text-fg-primary" : "text-fg-muted"
+                )}
+              >
+                {s.label}
+              </span>
+              {i < steps.length - 1 && (
+                <span
+                  className={clsx(
+                    "h-px flex-1 transition-all duration-300",
+                    i < step ? "bg-positive/60" : "bg-border-default"
+                  )}
+                />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+      {/* Progress bar */}
+      <div className="h-1 w-full overflow-hidden rounded-full bg-bg-hover">
+        <div
+          className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -1554,52 +1577,54 @@ function ProfileResult({
 }) {
   return (
     <div className="space-y-4 animate-[slideUp_220ms_ease-out]">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-default bg-bg-raised p-4 shadow-sm">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-fg-muted">
-            {fmt(t.profile.resultEyebrow, { country: countryName })}
-          </p>
-          <p className="mt-1 text-fg-primary">
-            {fmt(t.profile.resultSummary, { n: profile.skills.length })}
-          </p>
+      <div className="rounded-2xl border border-border-default bg-bg-raised shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-default px-5 py-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-fg-muted">
+              {fmt(t.profile.resultEyebrow, { country: countryName })}
+            </p>
+            <p className="mt-0.5 font-medium text-fg-primary">
+              {fmt(t.profile.resultSummary, { n: profile.skills.length })}
+            </p>
+          </div>
+          <Link
+            href={opportunitiesHref}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-xs font-semibold text-white shadow-sm hover:opacity-90"
+          >
+            {t.profile.openOpportunities} <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 px-5 py-3">
           <button
             onClick={onReset}
-            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary transition hover:bg-bg-hover"
           >
             {t.profile.editAgain}
           </button>
           <button
             onClick={onShare}
-            className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent/20"
+            className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent transition hover:bg-accent/20"
           >
             <Share2 className="h-3.5 w-3.5" /> {t.profile.shareLink}
           </button>
           <button
             onClick={onEmail}
-            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary transition hover:bg-bg-hover"
           >
             <Mail className="h-3.5 w-3.5" /> {t.profile.emailLink}
           </button>
           <button
             onClick={onExportJSON}
-            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary transition hover:bg-bg-hover"
           >
             <FileJson className="h-3.5 w-3.5" /> {t.profile.exportJson}
           </button>
           <button
             onClick={onExportPDF}
-            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary transition hover:bg-bg-hover"
           >
             <Download className="h-3.5 w-3.5" /> {t.profile.exportPdf}
           </button>
-          <Link
-            href={opportunitiesHref}
-            className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white hover:bg-accent-strong"
-          >
-            {t.profile.openOpportunities} <ArrowUpRight className="h-3 w-3" />
-          </Link>
         </div>
       </div>
       <div className="grid gap-3 md:grid-cols-2">
