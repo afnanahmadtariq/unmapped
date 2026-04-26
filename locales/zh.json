@@ -150,7 +150,20 @@
     "linkCopiedBody": "发送给自己；在任何设备上打开链接即可恢复您的个人资料。",
     "linkCopyFailed": "无法复制",
     "loadedFromLinkTitle": "个人资料已加载",
-    "loadedFromLinkBody": "已从保存的链接恢复。您可以编辑并重新分享。"
+    "loadedFromLinkBody": "已从保存的链接恢复。您可以编辑并重新分享。",
+    "emailLink": "发送邮件给我",
+    "emailModalTitle": "将我的个人资料链接通过邮件发送给我",
+    "emailModalHint": "我们将向您发送一个指向您的便携式个人资料的链接。",
+    "emailLabel": "您的电子邮件地址",
+    "emailPrivacyNote": "您的个人资料已编码在 URL 中。我们的服务器不会存储任何关于您的信息。",
+    "emailCancel": "取消",
+    "emailSend": "发送链接",
+    "emailSending": "发送中...",
+    "emailSentTitle": "邮件已发送",
+    "emailSentBody": "请稍后查看您的收件箱。",
+    "emailFallbackTitle": "正在打开您的邮件应用",
+    "emailFallbackBody": "无法直接发送；正在打开您的邮件客户端并预填内容。",
+    "emailFailedTitle": "无法发送邮件"
   },
   "opportunities": {
     "moduleEyebrow": "模块03 · 机会匹配",

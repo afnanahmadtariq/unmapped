@@ -13,6 +13,7 @@ import {
   Languages,
   Link2,
   Loader2,
+  Mail,
   PencilLine,
   Share2,
   Sparkles,
@@ -21,6 +22,7 @@ import {
 import clsx from "clsx";
 import SkillChipInput from "@/components/SkillChipInput";
 import ClarificationCard from "@/components/ClarificationCard";
+import EmailLinkModal from "@/components/EmailLinkModal";
 import { useToast } from "@/components/Toast";
 import { buildSkillsProfilePdf } from "@/lib/pdf";
 import {
@@ -207,6 +209,10 @@ export default function ProfileWizard({
     lastAssistant: unknown[];
     baseInput: unknown;
   } | null>(null);
+  const [emailModal, setEmailModal] = useState<{ open: boolean; url: string }>({
+    open: false,
+    url: "",
+  });
 
   // On first mount, if a profile is encoded in the URL hash, hydrate it
   // straight into the result view so the user can see/edit/re-share without
@@ -387,6 +393,13 @@ export default function ProfileWizard({
     toast.push({ tone: "success", title: t.profile.pdfDownloaded });
   };
 
+  const openEmailModal = () => {
+    if (!profile) return;
+    const sp = new URLSearchParams({ country: profile.countryCode, locale });
+    const url = buildProfileUrl(profile, "/profile", sp);
+    setEmailModal({ open: true, url });
+  };
+
   // Build a stable URL that contains the profile in the hash, then either
   // open the native share sheet (mobile) or copy to clipboard (desktop).
   const shareProfile = async () => {
@@ -416,21 +429,32 @@ export default function ProfileWizard({
 
   if (profile) {
     return (
-      <ProfileResult
-        profile={profile}
-        countryName={countryName}
-        opportunitiesHref={opportunitiesHref}
-        t={t}
-        onReset={() => {
-          setProfile(null);
-          setClarify(null);
-          setConversation(null);
-          setStep(0);
-        }}
-        onExportJSON={exportJSON}
-        onExportPDF={exportPDF}
-        onShare={shareProfile}
-      />
+      <>
+        <ProfileResult
+          profile={profile}
+          countryName={countryName}
+          opportunitiesHref={opportunitiesHref}
+          t={t}
+          onReset={() => {
+            setProfile(null);
+            setClarify(null);
+            setConversation(null);
+            setStep(0);
+          }}
+          onExportJSON={exportJSON}
+          onExportPDF={exportPDF}
+          onShare={shareProfile}
+          onEmail={openEmailModal}
+        />
+        <EmailLinkModal
+          open={emailModal.open}
+          onClose={() => setEmailModal({ open: false, url: "" })}
+          url={emailModal.url}
+          countryName={countryName}
+          skillCount={profile.skills.length}
+          t={t}
+        />
+      </>
     );
   }
 
@@ -877,6 +901,7 @@ function ProfileResult({
   onExportJSON,
   onExportPDF,
   onShare,
+  onEmail,
 }: {
   profile: SkillsProfile;
   countryName: string;
@@ -886,6 +911,7 @@ function ProfileResult({
   onExportJSON: () => void;
   onExportPDF: () => void;
   onShare: () => void;
+  onEmail: () => void;
 }) {
   return (
     <div className="space-y-4 animate-[slideUp_220ms_ease-out]">
@@ -910,6 +936,12 @@ function ProfileResult({
             className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent/20"
           >
             <Share2 className="h-3.5 w-3.5" /> {t.profile.shareLink}
+          </button>
+          <button
+            onClick={onEmail}
+            className="inline-flex items-center gap-1.5 rounded-md border border-border-default bg-bg-base px-3 py-1.5 text-xs text-fg-secondary hover:bg-bg-hover"
+          >
+            <Mail className="h-3.5 w-3.5" /> {t.profile.emailLink}
           </button>
           <button
             onClick={onExportJSON}

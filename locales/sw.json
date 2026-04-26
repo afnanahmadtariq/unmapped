@@ -150,7 +150,20 @@
     "linkCopiedBody": "Kijitumie; kufungua kiungo kwenye kifaa chochote kinarudisha wasifu wako.",
     "linkCopyFailed": "Imeshindwa kunakili",
     "loadedFromLinkTitle": "Wasifu umepakiwa",
-    "loadedFromLinkBody": "Umerejeleshwa kutoka kiungo kilichohifadhiwa. Unaweza kuhariri na kushiriki tena."
+    "loadedFromLinkBody": "Umerejeleshwa kutoka kiungo kilichohifadhiwa. Unaweza kuhariri na kushiriki tena.",
+    "emailLink": "Nitumie barua pepe",
+    "emailModalTitle": "Nitumie kiungo cha wasifu wangu kwa barua pepe",
+    "emailModalHint": "Tutakutumia kiungo kimoja cha wasifu wako unaobebeka.",
+    "emailLabel": "Anwani yako ya barua pepe",
+    "emailPrivacyNote": "Wasifu wako umewekwa katika URL yenyewe. Hakuna chochote kukuhusu kinachohifadhiwa kwenye seva zetu.",
+    "emailCancel": "Ghairi",
+    "emailSend": "Tuma kiungo",
+    "emailSending": "Inatuma...",
+    "emailSentTitle": "Barua pepe imetumwa",
+    "emailSentBody": "Angalia kisanduku chako cha barua baada ya muda mfupi.",
+    "emailFallbackTitle": "Inafungua programu yako ya barua pepe",
+    "emailFallbackBody": "Hatukuweza kutuma moja kwa moja; badala yake tunafungua programu yako ya barua pepe iliyojazwa tayari.",
+    "emailFailedTitle": "Imeshindwa kutuma barua pepe"
   },
   "opportunities": {
     "moduleEyebrow": "Sehemu ya 03 · Kulinganisha Fursa",

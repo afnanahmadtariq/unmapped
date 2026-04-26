@@ -150,7 +150,20 @@
     "linkCopiedBody": "Kirim ke diri Anda sendiri; membuka tautan di perangkat apa pun akan memulihkan profil Anda.",
     "linkCopyFailed": "Tidak dapat menyalin",
     "loadedFromLinkTitle": "Profil dimuat",
-    "loadedFromLinkBody": "Dipulihkan dari tautan yang disimpan. Anda dapat mengedit dan membagikan ulang."
+    "loadedFromLinkBody": "Dipulihkan dari tautan yang disimpan. Anda dapat mengedit dan membagikan ulang.",
+    "emailLink": "Kirim email ke saya",
+    "emailModalTitle": "Kirim tautan profil saya melalui email",
+    "emailModalHint": "Kami akan mengirimkan satu tautan ke profil portabel Anda.",
+    "emailLabel": "Alamat email Anda",
+    "emailPrivacyNote": "Profil Anda dikodekan dalam URL itu sendiri. Tidak ada data Anda yang disimpan di server kami.",
+    "emailCancel": "Batal",
+    "emailSend": "Kirim tautan",
+    "emailSending": "Mengirim...",
+    "emailSentTitle": "Email terkirim",
+    "emailSentBody": "Periksa kotak masuk Anda sebentar lagi.",
+    "emailFallbackTitle": "Membuka aplikasi email Anda",
+    "emailFallbackBody": "Kami tidak dapat mengirim langsung; membuka klien email Anda yang telah terisi sebelumnya.",
+    "emailFailedTitle": "Tidak dapat mengirim email"
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Pencocokan Peluang",

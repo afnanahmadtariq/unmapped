@@ -150,7 +150,20 @@
     "linkCopiedBody": "Envoyez-le vous-même ; ouvrir le lien sur n'importe quel appareil restaure votre profil.",
     "linkCopyFailed": "Impossible de copier",
     "loadedFromLinkTitle": "Profil chargé",
-    "loadedFromLinkBody": "Restauré à partir du lien enregistré. Vous pouvez modifier et repartager."
+    "loadedFromLinkBody": "Restauré à partir du lien enregistré. Vous pouvez modifier et repartager.",
+    "emailLink": "M'envoyer par e-mail",
+    "emailModalTitle": "Recevez le lien de mon profil par e-mail",
+    "emailModalHint": "Nous vous enverrons un seul lien vers votre profil portable.",
+    "emailLabel": "Votre adresse e-mail",
+    "emailPrivacyNote": "Votre profil est encodé dans l'URL elle-même. Aucune information vous concernant n'est stockée sur nos serveurs.",
+    "emailCancel": "Annuler",
+    "emailSend": "Envoyer le lien",
+    "emailSending": "Envoi en cours...",
+    "emailSentTitle": "E-mail envoyé",
+    "emailSentBody": "Consultez votre boîte de réception dans un instant.",
+    "emailFallbackTitle": "Ouverture de votre application de messagerie",
+    "emailFallbackBody": "Nous n'avons pas pu envoyer directement ; ouverture de votre client de messagerie pré-rempli à la place.",
+    "emailFailedTitle": "Impossible d'envoyer l'e-mail"
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Mise en correspondance",

@@ -150,7 +150,20 @@
     "linkCopiedBody": "Senden Sie ihn an sich selbst; beim Öffnen des Links auf einem beliebigen Gerät wird Ihr Profil wiederhergestellt.",
     "linkCopyFailed": "Kopieren fehlgeschlagen",
     "loadedFromLinkTitle": "Profil geladen",
-    "loadedFromLinkBody": "Aus dem gespeicherten Link wiederhergestellt. Sie können es bearbeiten und erneut teilen."
+    "loadedFromLinkBody": "Aus dem gespeicherten Link wiederhergestellt. Sie können es bearbeiten und erneut teilen.",
+    "emailLink": "Per E-Mail senden",
+    "emailModalTitle": "Profillink per E-Mail senden",
+    "emailModalHint": "Wir senden Ihnen einen einzelnen Link zu Ihrem portablen Profil.",
+    "emailLabel": "Ihre E-Mail-Adresse",
+    "emailPrivacyNote": "Ihr Profil ist in der URL selbst kodiert. Nichts über Sie wird auf unseren Servern gespeichert.",
+    "emailCancel": "Abbrechen",
+    "emailSend": "Link senden",
+    "emailSending": "Wird gesendet...",
+    "emailSentTitle": "E-Mail gesendet",
+    "emailSentBody": "Überprüfen Sie gleich Ihr Postfach.",
+    "emailFallbackTitle": "E-Mail-Programm wird geöffnet",
+    "emailFallbackBody": "Direktes Senden war nicht möglich; Ihr E-Mail-Client wird stattdessen vorausgefüllt geöffnet.",
+    "emailFailedTitle": "E-Mail konnte nicht gesendet werden"
   },
   "opportunities": {
     "moduleEyebrow": "Modul 03 · Chancen-Matching",

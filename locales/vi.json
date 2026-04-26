@@ -150,7 +150,20 @@
     "linkCopiedBody": "Gửi cho chính bạn; mở liên kết trên bất kỳ thiết bị nào sẽ khôi phục hồ sơ của bạn.",
     "linkCopyFailed": "Không thể sao chép",
     "loadedFromLinkTitle": "Đã tải hồ sơ",
-    "loadedFromLinkBody": "Đã khôi phục từ liên kết đã lưu. Bạn có thể chỉnh sửa và chia sẻ lại."
+    "loadedFromLinkBody": "Đã khôi phục từ liên kết đã lưu. Bạn có thể chỉnh sửa và chia sẻ lại.",
+    "emailLink": "Gửi email cho tôi",
+    "emailModalTitle": "Gửi email liên kết hồ sơ của tôi",
+    "emailModalHint": "Chúng tôi sẽ gửi cho bạn một liên kết đến hồ sơ di động của bạn.",
+    "emailLabel": "Địa chỉ email của bạn",
+    "emailPrivacyNote": "Hồ sơ của bạn được mã hóa trong chính URL. Không có thông tin nào về bạn được lưu trên máy chủ của chúng tôi.",
+    "emailCancel": "Hủy",
+    "emailSend": "Gửi liên kết",
+    "emailSending": "Đang gửi...",
+    "emailSentTitle": "Đã gửi email",
+    "emailSentBody": "Vui lòng kiểm tra hộp thư đến của bạn trong giây lát.",
+    "emailFallbackTitle": "Đang mở ứng dụng email của bạn",
+    "emailFallbackBody": "Chúng tôi không thể gửi trực tiếp; đang mở ứng dụng email với nội dung đã điền sẵn.",
+    "emailFailedTitle": "Không thể gửi email"
   },
   "opportunities": {
     "moduleEyebrow": "Module 03 · Ghép nối cơ hội",

@@ -150,7 +150,20 @@
     "linkCopiedBody": "Envíatelo a ti mismo; al abrir el enlace en cualquier dispositivo se restaura tu perfil.",
     "linkCopyFailed": "No se pudo copiar",
     "loadedFromLinkTitle": "Perfil cargado",
-    "loadedFromLinkBody": "Restaurado desde el enlace guardado. Puedes editar y volver a compartir."
+    "loadedFromLinkBody": "Restaurado desde el enlace guardado. Puedes editar y volver a compartir.",
+    "emailLink": "Enviarme por correo",
+    "emailModalTitle": "Enviarme el enlace de mi perfil por correo",
+    "emailModalHint": "Te enviaremos un único enlace a tu perfil portable.",
+    "emailLabel": "Tu dirección de correo electrónico",
+    "emailPrivacyNote": "Tu perfil está codificado en la URL misma. No se almacena nada sobre ti en nuestros servidores.",
+    "emailCancel": "Cancelar",
+    "emailSend": "Enviar enlace",
+    "emailSending": "Enviando...",
+    "emailSentTitle": "Correo enviado",
+    "emailSentBody": "Revisa tu bandeja de entrada en un momento.",
+    "emailFallbackTitle": "Abriendo tu aplicación de correo",
+    "emailFallbackBody": "No pudimos enviar directamente; abriendo tu cliente de correo prellenado en su lugar.",
+    "emailFailedTitle": "No se pudo enviar el correo"
   },
   "opportunities": {
     "moduleEyebrow": "Módulo 03 · Emparejamiento de Oportunidades",

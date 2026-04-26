@@ -150,7 +150,20 @@
     "linkCopiedBody": "Envie para você mesmo; abrir o link em qualquer dispositivo restaura seu perfil.",
     "linkCopyFailed": "Não foi possível copiar",
     "loadedFromLinkTitle": "Perfil carregado",
-    "loadedFromLinkBody": "Restaurado do link salvo. Você pode editar e compartilhar novamente."
+    "loadedFromLinkBody": "Restaurado do link salvo. Você pode editar e compartilhar novamente.",
+    "emailLink": "Enviar por e-mail",
+    "emailModalTitle": "Enviar link do meu perfil por e-mail",
+    "emailModalHint": "Enviaremos um único link para o seu perfil portátil.",
+    "emailLabel": "Seu endereço de e-mail",
+    "emailPrivacyNote": "Seu perfil está codificado na própria URL. Nada sobre você é armazenado em nossos servidores.",
+    "emailCancel": "Cancelar",
+    "emailSend": "Enviar link",
+    "emailSending": "Enviando...",
+    "emailSentTitle": "E-mail enviado",
+    "emailSentBody": "Verifique sua caixa de entrada em instantes.",
+    "emailFallbackTitle": "Abrindo seu aplicativo de e-mail",
+    "emailFallbackBody": "Não foi possível enviar diretamente; abrindo seu cliente de e-mail pré-preenchido.",
+    "emailFailedTitle": "Não foi possível enviar e-mail"
   },
   "opportunities": {
     "moduleEyebrow": "Módulo 03 · Correspondência de Oportunidades",

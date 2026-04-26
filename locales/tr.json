@@ -150,7 +150,20 @@
     "linkCopiedBody": "Kendinize gönderin; bağlantıyı herhangi bir cihazda açmak profilinizi geri yükler.",
     "linkCopyFailed": "Kopyalanamadı",
     "loadedFromLinkTitle": "Profil yüklendi",
-    "loadedFromLinkBody": "Kayıtlı bağlantıdan geri yüklendi. Düzenleyebilir ve yeniden paylaşabilirsiniz."
+    "loadedFromLinkBody": "Kayıtlı bağlantıdan geri yüklendi. Düzenleyebilir ve yeniden paylaşabilirsiniz.",
+    "emailLink": "Bana e-posta gönder",
+    "emailModalTitle": "Profil bağlantımı bana e-postayla gönder",
+    "emailModalHint": "Size taşınabilir profilinize tek bir bağlantı göndereceğiz.",
+    "emailLabel": "E-posta adresiniz",
+    "emailPrivacyNote": "Profiliniz URL'nin kendisinde kodlanmıştır. Hakkınızda hiçbir şey sunucularımızda saklanmaz.",
+    "emailCancel": "İptal",
+    "emailSend": "Bağlantıyı gönder",
+    "emailSending": "Gönderiliyor...",
+    "emailSentTitle": "E-posta gönderildi",
+    "emailSentBody": "Birazdan gelen kutunuzu kontrol edin.",
+    "emailFallbackTitle": "E-posta uygulamanız açılıyor",
+    "emailFallbackBody": "Doğrudan gönderemedik; bunun yerine e-posta istemciniz önceden doldurulmuş olarak açılıyor.",
+    "emailFailedTitle": "E-posta gönderilemedi"
   },
   "opportunities": {
     "moduleEyebrow": "Modül 03 · Fırsat Eşleştirme",
