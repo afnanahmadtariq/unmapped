@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 /**
  * Frey & Osborne (2013) automation probability per ISCO-08 occupation.
@@ -14,6 +14,10 @@ export class FreyOsborneEntity {
 
   @Column({ type: 'varchar', length: 32, default: 'snapshot' })
   source!: string;
+
+  @Index('frey_osborne_run_idx')
+  @Column({ type: 'uuid', nullable: true })
+  runId!: string | null;
 
   @Column({ type: 'timestamptz', default: () => 'now()' })
   updatedAt!: Date;

@@ -21,6 +21,9 @@ const API_BASE =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
   "http://localhost:4000";
 
+/** Public copy of the resolved API base URL — used by direct download links. */
+export const apiBase = API_BASE;
+
 class ApiError extends Error {
   status: number;
   payload: unknown;
@@ -31,17 +34,64 @@ class ApiError extends Error {
   }
 }
 
-async function postJson<T>(path: string, body: unknown): Promise<T> {
+async function postJson<T>(
+  path: string,
+  body: unknown,
+  init?: RequestInit,
+): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     method: "POST",
+    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
+    ...init,
   });
   return parseResponse<T>(res, path);
 }
 
-async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`);
+async function getJson<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${API_BASE}${path}`, {
+    credentials: "include",
+    ...init,
+  });
+  return parseResponse<T>(res, path);
+}
+
+async function deleteJson<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${API_BASE}${path}`, {
+    method: "DELETE",
+    credentials: "include",
+    ...init,
+  });
+  return parseResponse<T>(res, path);
+}
+
+async function patchJson<T>(
+  path: string,
+  body: unknown,
+  init?: RequestInit,
+): Promise<T> {
+  const res = await fetch(`${API_BASE}${path}`, {
+    method: "PATCH",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    ...init,
+  });
+  return parseResponse<T>(res, path);
+}
+
+async function uploadForm<T>(
+  path: string,
+  form: FormData,
+  init?: RequestInit,
+): Promise<T> {
+  const res = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    credentials: "include",
+    body: form,
+    ...init,
+  });
   return parseResponse<T>(res, path);
 }
 
@@ -220,6 +270,157 @@ export interface AdminConfigSummary {
   snapshotCountries: SnapshotCountrySummary[];
 }
 
+export interface AdminDataRun {
+  id: string;
+  dataSourceId: string;
+  sourceSlug: string;
+  status: "pending" | "ok" | "failed";
+  kind: "cron" | "manual" | "upload" | "seed";
+  startedAt: string;
+  finishedAt: string | null;
+  recordCount: number;
+  error: string | null;
+  archivePath: string | null;
+  fileChecksum: string | null;
+  filename: string | null;
+}
+
+export interface AdminDataSource {
+  id: string;
+  slug: string;
+  displayName: string;
+  kind: "harvester" | "upload";
+  sourceUrl: string | null;
+  cron: string | null;
+  category: string | null;
+  isActive: boolean;
+  note: string | null;
+  schemaSpec: Record<string, unknown> | null;
+  createdAt: string;
+  updatedAt: string;
+  lastRun: AdminDataRun | null;
+  totalRuns: number;
+}
+
+export interface AdminAuthStatus {
+  enabled: boolean;
+}
+
+export interface AdminMe {
+  admin: { email: string; role: "admin"; iat?: number; exp?: number };
+}
+
+// ---------- End-user auth + saved profiles ----------
+
+export interface UserAuthStatus {
+  enabled: boolean;
+  signupEnabled: boolean;
+}
+
+export interface PublicUser {
+  id: string;
+  email: string;
+  displayName: string | null;
+  createdAt: string;
+}
+
+export interface SavedUserProfile {
+  id: string;
+  userId: string;
+  countryCode: string;
+  extractInput: Record<string, unknown>;
+  skillsProfile: Record<string, unknown>;
+  matches: Record<string, unknown> | null;
+  opportunities: Record<string, unknown> | null;
+  signals: Record<string, unknown> | null;
+  iscoCodes: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CompetitionOverlap {
+  overlap: number;
+  total: number;
+  sharedCodes: { iscoCode: string; count: number }[];
+}
+
+// ---------- Composite signals (A-H) ----------
+
+export interface CompositeSignals {
+  countryCode: string;
+  iscoCode: string | null;
+  generatedAt: string;
+  income: {
+    wageFloor: number | null;
+    wageGrowthYoY: number | null;
+    incomeVolatility: number | null;
+    informalFormalGap: number | null;
+  };
+  demand: {
+    sectorEmploymentGrowth: number | null;
+    vacancyRate: number | null;
+    demandSupplyGap: number | null;
+  };
+  automation: {
+    automationRisk: number | null;
+    automationRiskRaw: number | null;
+    routineRatio: number | null;
+    aiExposureIndex: number | null;
+    skillDurability: number | null;
+  };
+  skillsDemand: {
+    topDemandedSkills: Array<{ skillCode: string; label: string; count: number }>;
+    emergingSkills: Array<{ skillCode: string; label: string; delta: number }>;
+    skillScarcityIndex: number | null;
+    crossSkillTransferability: number | null;
+  };
+  regional: {
+    urbanRuralGap: number | null;
+    broadbandRate: number | null;
+    internetRate: number | null;
+  };
+  education: {
+    upperSecondaryShare2030: number | null;
+    tertiaryShare2030: number | null;
+    educationSpendShareGdp: number | null;
+  };
+  inequality: {
+    genderEmploymentGap: number | null;
+    informalShare: number | null;
+  };
+  stability: {
+    sectorVolatilityIndex: number | null;
+    seasonalityFlag: boolean;
+  };
+}
+
+export type RagExplainCitation =
+  | {
+      source: "esco";
+      code: string;
+      label: string;
+      category: string;
+      description: string | null;
+      score: number;
+    }
+  | {
+      source: "onet";
+      onetCode: string;
+      taskId: string;
+      statement: string;
+      taskType: string;
+      iscoCode: string | null;
+      score: number;
+    }
+  | {
+      source: "policy_reports" | "training_programs";
+      documentId: string;
+      chunkIndex: number;
+      title: string;
+      text: string;
+      score: number;
+    };
+
 export const apiClient = {
   /** POST /profile/extract — initial turn (mirrors legacy /api/extract-skills initial). */
   extractInitial: (input: ExtractInput) =>
@@ -282,6 +483,149 @@ export const apiClient = {
   /** GET /admin/config-summary/:countryCode — dataset counts + calibration + snapshot country list. */
   adminConfigSummary: (countryCode: string) =>
     getJson<AdminConfigSummary>(`/admin/config-summary/${countryCode}`),
+
+  /** GET /signals/composite/:country/:iscoCode? — full A–H signal bundle. */
+  compositeSignals: (
+    country: string,
+    iscoCode?: string | null,
+    skills: string[] = [],
+  ) => {
+    const path = iscoCode
+      ? `/signals/composite/${country}/${iscoCode}`
+      : `/signals/composite/${country}`;
+    const qs = skills.length ? `?skills=${encodeURIComponent(skills.join(","))}` : "";
+    return getJson<CompositeSignals>(`${path}${qs}`);
+  },
+
+  /** POST /rag/explain — narrative layer over ESCO + O*NET + corpora. */
+  ragExplain: (input: {
+    question: string;
+    countryCode?: string;
+    iscoCode?: string | null;
+    corpora?: Array<"esco" | "onet" | "policy_reports" | "training_programs">;
+    topK?: number;
+  }) =>
+    postJson<{
+      answer: string;
+      modelUsed: string;
+      citations: Array<RagExplainCitation>;
+    }>("/rag/explain", input),
+
+  // ---------- Auth ----------
+
+  authStatus: () => getJson<AdminAuthStatus>("/auth/status"),
+  authLogin: (email: string, password: string) =>
+    postJson<{ ok: boolean; email: string }>("/auth/login", { email, password }),
+  authLogout: () => postJson<{ ok: boolean }>("/auth/logout", {}),
+  authMe: () => getJson<AdminMe>("/auth/me"),
+
+  // ---------- Admin sources / runs / uploads ----------
+
+  adminListSources: () => getJson<AdminDataSource[]>("/admin/sources"),
+  adminCreateSource: (input: {
+    slug: string;
+    displayName: string;
+    kind?: "harvester" | "upload";
+    sourceUrl?: string | null;
+    cron?: string | null;
+    category?: string | null;
+    schemaSpec?: Record<string, unknown> | null;
+    note?: string | null;
+  }) => postJson<{ id: string; slug: string }>("/admin/sources", input),
+  adminPatchSource: (
+    id: string,
+    patch: Partial<{
+      displayName: string;
+      sourceUrl: string | null;
+      cron: string | null;
+      category: string | null;
+      isActive: boolean;
+      note: string | null;
+      schemaSpec: Record<string, unknown> | null;
+    }>,
+  ) => patchJson<{ id: string; slug: string }>(`/admin/sources/${id}`, patch),
+  adminDeleteSource: (id: string) =>
+    deleteJson<{ deletedRuns: number; deletedRows: number }>(
+      `/admin/sources/${id}`,
+    ),
+  adminListSourceRuns: (id: string, limit = 50) =>
+    getJson<AdminDataRun[]>(`/admin/sources/${id}/runs?limit=${limit}`),
+  adminTriggerSource: (id: string) =>
+    postJson<{ success: boolean; message: string }>(
+      `/admin/sources/${id}/runs`,
+      {},
+    ),
+  adminUploadToSource: (
+    id: string,
+    file: File,
+    extras: {
+      loader?: "postgres" | "vector";
+      category?: string;
+      keyFields?: string[];
+    } = {},
+  ) => {
+    const form = new FormData();
+    form.append("file", file);
+    if (extras.loader) form.append("loader", extras.loader);
+    if (extras.category) form.append("category", extras.category);
+    if (extras.keyFields && extras.keyFields.length > 0) {
+      form.append("keyFields", extras.keyFields.join(","));
+    }
+    return uploadForm<{
+      runId: string;
+      persisted: number;
+      note?: string;
+      format?: "csv" | "json" | "ndjson" | "text";
+    }>(`/admin/sources/${id}/uploads`, form);
+  },
+  adminListRuns: (limit = 50) =>
+    getJson<AdminDataRun[]>(`/admin/runs?limit=${limit}`),
+  adminDeleteRun: (id: string) =>
+    deleteJson<{ deletedRows: number }>(`/admin/runs/${id}`),
+
+  // ---------- End-user auth (optional) ----------
+
+  userAuthStatus: () => getJson<UserAuthStatus>("/auth/user/status"),
+  userSignup: (input: {
+    email: string;
+    password: string;
+    displayName?: string;
+  }) =>
+    postJson<{ ok: boolean; user: PublicUser }>("/auth/user/signup", input),
+  userLogin: (email: string, password: string) =>
+    postJson<{ ok: boolean; user: PublicUser }>("/auth/user/login", {
+      email,
+      password,
+    }),
+  userLogout: () => postJson<{ ok: boolean }>("/auth/user/logout", {}),
+  userMe: () => getJson<{ user: PublicUser }>("/auth/user/me"),
+
+  // ---------- Saved profiles ----------
+
+  meListProfiles: () =>
+    getJson<{ profiles: SavedUserProfile[] }>("/me/profile"),
+  meGetProfile: (countryCode: string) =>
+    getJson<{ profile: SavedUserProfile }>(
+      `/me/profile/${encodeURIComponent(countryCode)}`,
+    ),
+  meUpsertProfile: (input: {
+    countryCode: string;
+    extractInput: Record<string, unknown>;
+    skillsProfile: Record<string, unknown>;
+    matches?: Record<string, unknown> | null;
+    opportunities?: Record<string, unknown> | null;
+    signals?: Record<string, unknown> | null;
+    iscoCodes?: string[];
+  }) =>
+    postJson<{ profile: SavedUserProfile }>("/me/profile", input),
+  meDeleteProfile: (countryCode: string) =>
+    deleteJson<{ deleted: number }>(
+      `/me/profile/${encodeURIComponent(countryCode)}`,
+    ),
+  meCompetition: (countryCode: string) =>
+    getJson<CompetitionOverlap>(
+      `/me/profile/${encodeURIComponent(countryCode)}/competition`,
+    ),
 };
 
 export { API_BASE, ApiError };

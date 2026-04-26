@@ -11,6 +11,15 @@ export class UnescoUisHarvester extends BaseHarvester {
   get sourceId() {
     return 'unesco-uis';
   }
+  get sourceName() {
+    return 'UNESCO UIS (via World Bank)';
+  }
+  get sourceUrl() {
+    return 'https://apiportal.uis.unesco.org/';
+  }
+  get sourceCategory() {
+    return 'education';
+  }
   get cronExpression() {
     return '0 3 8 * *';
   } // 8th of every month
@@ -19,44 +28,70 @@ export class UnescoUisHarvester extends BaseHarvester {
     super(storage, loader);
   }
 
+  // DBnomics carries the same UNESCO/EdStats series under the WB/EDSTATS
+  // provider — so we can fall back when the WB API is rate-limiting.
   private readonly indicators = [
-    { id: 'SE.ADT.LITR.ZS', name: 'Adult literacy rate (%)' },
-    { id: 'SE.PRM.ENRR', name: 'Primary school enrollment rate (%)' },
-    { id: 'SE.SEC.ENRR', name: 'Secondary school enrollment rate (%)' },
-    { id: 'SE.TER.ENRR', name: 'Tertiary school enrollment rate (%)' },
+    {
+      id: 'SE.ADT.LITR.ZS',
+      name: 'Adult literacy rate (%)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.ADT.LITR.ZS-WLD',
+    },
+    {
+      id: 'SE.PRM.ENRR',
+      name: 'Primary school enrollment rate (%)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.PRM.ENRR-WLD',
+    },
+    {
+      id: 'SE.SEC.ENRR',
+      name: 'Secondary school enrollment rate (%)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.SEC.ENRR-WLD',
+    },
+    {
+      id: 'SE.TER.ENRR',
+      name: 'Tertiary school enrollment rate (%)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.TER.ENRR-WLD',
+    },
     {
       id: 'SE.XPD.TOTL.GD.ZS',
       name: 'Govt. expenditure on education (% of GDP)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.XPD.TOTL.GD.ZS-WLD',
     },
-    { id: 'SE.PRM.CMPT.ZS', name: 'Primary school completion rate (%)' },
+    {
+      id: 'SE.PRM.CMPT.ZS',
+      name: 'Primary school completion rate (%)',
+      dbnomicsSeries: 'WB/EDSTATS/SE.PRM.CMPT.ZS-WLD',
+    },
   ];
 
   @Cron('0 3 8 * *')
   async harvest(): Promise<void> {
     this.logger.log('Harvesting UNESCO UIS...');
     const allRecords: Record<string, any>[] = [];
+    let dbnomicsUsed = 0;
 
     for (const ind of this.indicators) {
       try {
-        // Use source=12 for UNESCO/Education Stats database
-        const rawRows = await this.fetchAllWorldBankPages(
-          `https://api.worldbank.org/v2/country/all/indicator/${ind.id}?format=json&per_page=300&mrv=3&source=12`,
+        const result = await this.fetchWithDbnomicsFallback({
+          label: `UNESCO/${ind.id}`,
+          series: ind.dbnomicsSeries,
+          primary: () => this.fetchUisIndicator(ind),
+          transform: (observations) =>
+            observations.map((obs) => ({
+              indicatorId: ind.id,
+              indicatorName: ind.name,
+              country: 'World',
+              countryCode: 'WLD',
+              year: obs.year,
+              value: parseFloat(obs.value.toFixed(4)),
+              source: 'dbnomics-fallback',
+            })),
+        });
+        if (result.usedFallback) dbnomicsUsed += 1;
+        allRecords.push(...result.data);
+      } catch (err) {
+        this.logger.warn(
+          `UNESCO UIS ${ind.id} unavailable from primary and DBnomics: ${(err as Error).message}`,
         );
-        rawRows.forEach((r) =>
-          allRecords.push({
-            indicatorId: ind.id,
-            indicatorName: ind.name,
-            country: r.country?.value,
-            countryCode: r.countryiso3code,
-            year: parseInt(r.date, 10),
-            value:
-              r.value !== null
-                ? parseFloat((r.value as number).toFixed(4))
-                : null,
-          }),
-        );
-      } catch (err: any) {
-        this.logger.warn(`UNESCO UIS ${ind.id} failed: ${err.message}`);
       }
     }
 
@@ -69,10 +104,31 @@ export class UnescoUisHarvester extends BaseHarvester {
           apiUrl: 'https://api.worldbank.org/v2/',
           directUisUrl: 'https://apiportal.uis.unesco.org/',
           indicators: this.indicators,
+          dbnomicsFallbacks: dbnomicsUsed,
           note: 'No API key required. Sourced from World Bank Education Stats (Source 12) which mirrors UNESCO UIS data.',
         },
         records: allRecords,
       }),
     );
+  }
+
+  private async fetchUisIndicator(ind: {
+    id: string;
+    name: string;
+  }): Promise<Record<string, any>[]> {
+    const rawRows = await this.fetchAllWorldBankPages(
+      `https://api.worldbank.org/v2/country/all/indicator/${ind.id}?format=json&per_page=300&mrv=3&source=12`,
+    );
+    return rawRows.map((r) => ({
+      indicatorId: ind.id,
+      indicatorName: ind.name,
+      country: r.country?.value,
+      countryCode: r.countryiso3code,
+      year: parseInt(r.date, 10),
+      value:
+        r.value !== null
+          ? parseFloat((r.value as number).toFixed(4))
+          : null,
+    }));
   }
 }

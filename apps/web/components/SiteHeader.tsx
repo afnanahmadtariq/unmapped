@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ContextSelector from "@/components/ContextSelector";
 import ThemeToggle from "@/components/ThemeToggle";
+import AccountMenu from "@/components/AccountMenu";
 import type { Dictionary } from "@/lib/i18n";
 
 interface Props {
@@ -68,6 +69,7 @@ export default function SiteHeader({ countryCode, locale, active = "home", t }: 
           }}
         />
         <ThemeToggle />
+        <AccountMenu qs={qs} />
       </div>
     </header>
   );

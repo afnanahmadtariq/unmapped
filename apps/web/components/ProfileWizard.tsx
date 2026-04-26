@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -29,7 +30,8 @@ import ClarificationCard from "@/components/ClarificationCard";
 import EmailLinkModal from "@/components/EmailLinkModal";
 import VoiceInputButton from "@/components/VoiceInputButton";
 import { useToast } from "@/components/Toast";
-import { apiClient } from "@/lib/apiClient";
+import { apiClient, ApiError } from "@/lib/apiClient";
+import { useUserSession } from "@/lib/userSession";
 import { buildSkillsProfilePdf } from "@/lib/pdf";
 import {
   buildProfileUrl,
@@ -271,6 +273,12 @@ export default function ProfileWizard({
     url: "",
   });
 
+  const { user: signedInUser } = useUserSession();
+  const searchParamsHook = useSearchParams();
+  const prefillRequested =
+    searchParamsHook?.get("prefill") === "1" ||
+    searchParamsHook?.get("prefill") === "true";
+
   // On first mount, if a profile is encoded in the URL hash, hydrate it
   // straight into the result view so the user can see/edit/re-share without
   // re-typing anything.
@@ -292,6 +300,97 @@ export default function ProfileWizard({
     // run once on mount only
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Once the session resolves, optionally hydrate from the user's saved
+  // profile for this country. Two modes:
+  //   - default landing  → jump to the result view (returning visitor UX)
+  //   - `?prefill=1`     → seed wizard fields so they can re-extract
+  // Skipped when the URL hash already provided a profile.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!signedInUser) return;
+    if (readProfileFromHash()) return;
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await apiClient.meGetProfile(countryCode);
+        if (cancelled) return;
+        const saved = res.profile;
+        if (prefillRequested) {
+          seedFormFromExtractInput(saved.extractInput);
+          toast.push({
+            tone: "info",
+            title: "Saved profile loaded",
+            body: "We pre-filled your last answers — adjust anything that changed and re-run.",
+          });
+        } else {
+          setProfile(saved.skillsProfile as unknown as SkillsProfile);
+          toast.push({
+            tone: "info",
+            title: "Welcome back",
+            body: "Showing your saved profile. Refresh insights or update inputs any time.",
+          });
+        }
+      } catch (err) {
+        if (err instanceof ApiError && err.status === 404) return;
+        // best-effort: anonymous fallback if the call fails for any reason
+      }
+    };
+    void load();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signedInUser, countryCode, prefillRequested]);
+
+  // Hydrates the form state from a previously-saved `extractInput` blob.
+  // Tolerant of partial / legacy payloads — any missing field stays at
+  // whatever the wizard's default is.
+  const seedFormFromExtractInput = (raw: Record<string, unknown>) => {
+    const get = <T,>(key: string): T | undefined => raw[key] as T | undefined;
+    const eduLevel = get<string>("educationLevel");
+    if (eduLevel) {
+      const matchKey = EDUCATION_KEYS.find(
+        (k) => t.profile.education[k]?.toLowerCase() === eduLevel.toLowerCase(),
+      );
+      if (matchKey) setEducationKey(matchKey);
+    }
+    const yrs = get<number>("yearsExperience");
+    if (typeof yrs === "number") setYears(yrs);
+    const langs = get<string[]>("languages");
+    if (Array.isArray(langs)) setLanguages(langs);
+    const decl = get<string[]>("declaredSkills");
+    if (Array.isArray(decl)) setSkills(decl);
+    const storyTxt = get<string>("story");
+    if (typeof storyTxt === "string") setStory(storyTxt);
+    const demo = get<Record<string, unknown>>("demographics");
+    if (demo) {
+      if (typeof demo.ageRange === "string") setAgeRange(demo.ageRange as AgeRange);
+      if (typeof demo.gender === "string") setGender(demo.gender as Gender);
+      if (typeof demo.workMode === "string") setWorkMode(demo.workMode as WorkMode);
+      if (typeof demo.location === "string") setLocation(demo.location);
+    }
+    const ctx = get<Record<string, unknown>>("context");
+    if (ctx) {
+      if (typeof ctx.phoneAccess === "string")
+        setPhoneAccess(ctx.phoneAccess as PhoneAccess);
+      if (Array.isArray(ctx.selfLearning))
+        setSelfLearning(ctx.selfLearning as SelfLearningChannel[]);
+      if (Array.isArray(ctx.workEntries))
+        setWorkEntries(ctx.workEntries as WorkEntry[]);
+      if (Array.isArray(ctx.tasks)) setTasks(ctx.tasks as TaskPrimitive[]);
+      if (Array.isArray(ctx.tools)) setTools(ctx.tools as ToolUsed[]);
+      if (typeof ctx.aspirations === "string") setAspirations(ctx.aspirations);
+      const c = ctx.constraints as Record<string, unknown> | undefined;
+      if (c) {
+        if (typeof c.maxTravelKm === "number") setMaxTravelKm(c.maxTravelKm);
+        if (typeof c.needIncomeNow === "boolean")
+          setNeedIncomeNow(c.needIncomeNow);
+        if (typeof c.canStudy === "boolean") setCanStudy(c.canStudy);
+        if (typeof c.hasInternet === "boolean") setHasInternet(c.hasInternet);
+      }
+    }
+  };
 
   const langSuggestions = useMemo(
     () => languageSuggestionsFor(countryCode),
@@ -349,6 +448,59 @@ export default function ProfileWizard({
       title: t.profile.successTitle,
       body: fmt(t.profile.successBody, { n: data.skills.length }),
     });
+    if (signedInUser) {
+      void persistProfile(data);
+    }
+  };
+
+  // Persist the freshly-extracted profile to the user's account. We also
+  // recompute /profile/match in the background so the saved row contains
+  // matches + iscoCodes — the /account dashboard uses both immediately.
+  // All errors are swallowed: anonymous-equivalent UX always wins.
+  const persistProfile = async (data: SkillsProfile) => {
+    try {
+      const baseInput = {
+        countryCode,
+        educationLevel: t.profile.education[educationKey],
+        languages,
+        yearsExperience: years,
+        story,
+        declaredSkills: skills,
+        demographics: {
+          ageRange,
+          gender,
+          location: location.trim() || undefined,
+          workMode,
+        },
+        context: buildContext(),
+      } as Record<string, unknown>;
+      let matches: { matches: unknown[] } | null = null;
+      let iscoCodes: string[] = [];
+      try {
+        const res = await apiClient.matchOccupations({
+          profile: data,
+          countryCode,
+        });
+        matches = res as unknown as { matches: unknown[] };
+        iscoCodes = res.matches.map((m) => m.iscoCode);
+      } catch {
+        // best-effort
+      }
+      await apiClient.meUpsertProfile({
+        countryCode,
+        extractInput: baseInput,
+        skillsProfile: data as unknown as Record<string, unknown>,
+        matches: matches as unknown as Record<string, unknown> | null,
+        iscoCodes,
+      });
+      toast.push({
+        tone: "success",
+        title: "Saved to your account",
+        body: "We'll use this to greet you with refreshed insights next time.",
+      });
+    } catch {
+      // Silent — saving is purely additive; the wizard already succeeded.
+    }
   };
 
   const buildContext = (): ProfileContext | undefined => {

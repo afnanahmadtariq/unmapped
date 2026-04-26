@@ -12,6 +12,15 @@ export class IloIscoHarvester extends BaseHarvester {
   get sourceId() {
     return 'ilo-isco';
   }
+  get sourceName() {
+    return 'ILO ISCO-08 Occupations';
+  }
+  get sourceUrl() {
+    return 'https://rplumber.ilo.org/__docs__/';
+  }
+  get sourceCategory() {
+    return 'labor';
+  }
   get cronExpression() {
     return '0 5 1 * *';
   } // 1st of every month 05:00

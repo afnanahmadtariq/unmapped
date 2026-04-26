@@ -14,6 +14,15 @@ export class FreyOsborneHarvester extends BaseHarvester {
   get sourceId() {
     return 'frey-osborne';
   }
+  get sourceName() {
+    return 'Frey & Osborne (2013) — Automation Risk';
+  }
+  get sourceUrl() {
+    return 'https://www.oxfordmartin.ox.ac.uk/downloads/academic/The_Future_of_Employment.pdf';
+  }
+  get sourceCategory() {
+    return 'automation';
+  }
   get cronExpression() {
     return '0 8 1 1 *';
   } // Annually — data does not change (2013 paper)

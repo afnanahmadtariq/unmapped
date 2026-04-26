@@ -10,8 +10,12 @@ import { HarvestedDataset } from '../types/dataset.types';
  * PostgresLoader (numeric / time-series) and VectorLoader (ESCO + O*NET
  * embeddings).
  *
- * It's the same on-disk format as before so existing manual harvest
- * inspections (`cat data/wb-wdi.json`) keep working during migration.
+ * Each archive call writes:
+ *   - `data/<sourceId>.json`      (latest snapshot, overwritten each run)
+ *   - `data/<sourceId>/<runId>.json` (per-run, when a runId is supplied)
+ *
+ * The per-run path is what the LineageService deletes when an admin
+ * removes a run.
  */
 @Injectable()
 export class StorageService {
@@ -23,16 +27,36 @@ export class StorageService {
     this.logger.log(`Diagnostic archive directory: ${this.dataDir}`);
   }
 
-  async archive(dataset: HarvestedDataset): Promise<void> {
-    const filePath = path.join(this.dataDir, `${dataset.sourceId}.json`);
-    await fs.writeJson(filePath, dataset, { spaces: 2 });
+  /**
+   * Persist the dataset as JSON. Returns the per-run archive path
+   * (or the legacy "latest" path when no runId is provided) so callers
+   * can record it on the dataset_runs row.
+   */
+  async archive(
+    dataset: HarvestedDataset,
+    runId?: string | null,
+  ): Promise<string> {
+    const latestPath = path.join(this.dataDir, `${dataset.sourceId}.json`);
+    await fs.writeJson(latestPath, dataset, { spaces: 2 });
+
+    if (runId) {
+      const runDir = path.join(this.dataDir, dataset.sourceId);
+      await fs.ensureDir(runDir);
+      const runPath = path.join(runDir, `${runId}.json`);
+      await fs.writeJson(runPath, dataset, { spaces: 2 });
+      this.logger.log(
+        `📦 Archived ${dataset.sourceId} run=${runId}: ${dataset.recordCount} records → ${runPath}`,
+      );
+      return runPath;
+    }
     this.logger.log(
-      `📦 Archived ${dataset.sourceId}: ${dataset.recordCount} records → ${filePath}`,
+      `📦 Archived ${dataset.sourceId}: ${dataset.recordCount} records → ${latestPath}`,
     );
+    return latestPath;
   }
 
   /** Backwards-compat alias for any caller still using `.save()`. */
-  async save(dataset: HarvestedDataset): Promise<void> {
+  async save(dataset: HarvestedDataset): Promise<string> {
     return this.archive(dataset);
   }
 

@@ -15,6 +15,15 @@ export class EscoHarvester extends BaseHarvester {
   get sourceId() {
     return 'esco';
   }
+  get sourceName() {
+    return 'ESCO Skills Taxonomy (EU)';
+  }
+  get sourceUrl() {
+    return 'https://esco.ec.europa.eu/en/use-esco/esco-web-services';
+  }
+  get sourceCategory() {
+    return 'skills';
+  }
   get cronExpression() {
     return '0 5 1 1,7 *';
   } // Every 6 months (ESCO updates ~annually)

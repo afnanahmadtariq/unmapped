@@ -38,6 +38,10 @@ export class EscoSkillEntity {
   @Column({ type: 'boolean', default: false })
   embedded!: boolean;
 
+  @Index('esco_skills_run_idx')
+  @Column({ type: 'uuid', nullable: true })
+  runId!: string | null;
+
   @Column({ type: 'timestamptz', default: () => 'now()' })
   createdAt!: Date;
 

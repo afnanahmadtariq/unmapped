@@ -1,9 +1,33 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { SignalsService } from './signals.service';
+import { CompositeSignalService } from './computed/composite.service';
 
 @Controller('signals')
 export class SignalsController {
-  constructor(private readonly signals: SignalsService) {}
+  constructor(
+    private readonly signals: SignalsService,
+    private readonly composite: CompositeSignalService,
+  ) {}
+
+  /**
+   * GET /signals/composite/:country/:iscoCode?  – the full A-H bundle.
+   * `declaredSkills` is optional and accepts a comma-separated list of
+   * ISCO codes (used by `skillDurability` and `crossSkillTransferability`).
+   */
+  @Get('composite/:country/:iscoCode?')
+  getComposite(
+    @Param('country') country: string,
+    @Param('iscoCode') iscoCode?: string,
+    @Query('skills') skills?: string,
+  ) {
+    const declared = skills
+      ? skills
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean)
+      : [];
+    return this.composite.compute(country, iscoCode ?? null, declared);
+  }
 
   /** GET /signals/country/:code — wages, growth, calibration in one shot. */
   @Get('country/:code')

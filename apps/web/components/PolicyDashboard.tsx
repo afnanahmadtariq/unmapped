@@ -23,6 +23,7 @@ import AiRiskLens from "@/components/AiRiskLens";
 import WittgensteinCard from "@/components/WittgensteinCard";
 import type { Dictionary } from "@/lib/i18n";
 import { fmt } from "@/lib/i18n";
+import { apiClient, type CompositeSignals } from "@/lib/apiClient";
 
 interface SectorRisk {
   sectorId: string;
@@ -76,6 +77,20 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
     positive: "#059669",
     danger: "#dc2626",
   });
+  const [composite, setComposite] = useState<CompositeSignals | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    apiClient
+      .compositeSignals(snapshot.countryCode)
+      .then((s) => {
+        if (!cancelled) setComposite(s);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [snapshot.countryCode]);
 
   useEffect(() => {
     const refresh = () =>
@@ -262,6 +277,8 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
         />
       )}
 
+      <CompositeSignalsSection composite={composite} />
+
       <div className="grid gap-6 lg:grid-cols-2">
         <Card title={t.dashboard.topWagesTitle} subtitle={t.dashboard.topWagesSub}>
           <ResponsiveContainer width="100%" height={320}>
@@ -383,6 +400,183 @@ function Card({
         <ChevronDown className="h-4 w-4 text-border-strong" />
       </header>
       {children}
+    </section>
+  );
+}
+
+function fmtPct(v: number | null, digits = 1): string {
+  if (v === null || v === undefined || Number.isNaN(v)) return "—";
+  return `${v.toFixed(digits)}%`;
+}
+
+function fmtFraction(v: number | null, digits = 1): string {
+  if (v === null || v === undefined || Number.isNaN(v)) return "—";
+  return `${(v * 100).toFixed(digits)}%`;
+}
+
+function CompositeSignalsSection({
+  composite,
+}: {
+  composite: CompositeSignals | null;
+}) {
+  if (!composite) return null;
+  const groups: Array<{
+    title: string;
+    subtitle: string;
+    rows: Array<{ label: string; value: string; tone?: "positive" | "warning" | "danger" }>;
+  }> = [
+    {
+      title: "B. Demand pressure",
+      subtitle: "Live vacancy proxies and sector employment trends.",
+      rows: [
+        {
+          label: "Live vacancies (Tavily)",
+          value:
+            composite.demand.vacancyRate !== null
+              ? `${composite.demand.vacancyRate}`
+              : "—",
+        },
+        {
+          label: "Sector employment growth",
+          value: fmtPct(composite.demand.sectorEmploymentGrowth, 1),
+          tone:
+            composite.demand.sectorEmploymentGrowth !== null &&
+            composite.demand.sectorEmploymentGrowth >= 0
+              ? "positive"
+              : "danger",
+        },
+        {
+          label: "Demand–supply gap",
+          value:
+            composite.demand.demandSupplyGap !== null
+              ? composite.demand.demandSupplyGap.toFixed(1)
+              : "—",
+        },
+      ],
+    },
+    {
+      title: "D. Skills demand & durability",
+      subtitle: "From the calibrated Frey-Osborne + ILO-FoW indices.",
+      rows: [
+        {
+          label: "Skill durability",
+          value: fmtFraction(composite.automation.skillDurability),
+          tone:
+            composite.automation.skillDurability !== null &&
+            composite.automation.skillDurability >= 0.6
+              ? "positive"
+              : "warning",
+        },
+        {
+          label: "Cross-skill transferability",
+          value: fmtFraction(composite.skillsDemand.crossSkillTransferability),
+        },
+        {
+          label: "Routine task share",
+          value: fmtFraction(composite.automation.routineRatio),
+          tone:
+            composite.automation.routineRatio !== null &&
+            composite.automation.routineRatio >= 0.6
+              ? "danger"
+              : "warning",
+        },
+      ],
+    },
+    {
+      title: "E. Regional / digital",
+      subtitle: "Connectivity adoption signals from ITU + WB.",
+      rows: [
+        {
+          label: "Internet usage rate",
+          value: fmtPct(composite.regional.internetRate),
+        },
+        {
+          label: "Fixed broadband adoption",
+          value: fmtPct(composite.regional.broadbandRate),
+        },
+        {
+          label: "Urban–rural digital gap",
+          value: fmtPct(composite.regional.urbanRuralGap),
+          tone:
+            composite.regional.urbanRuralGap !== null &&
+            composite.regional.urbanRuralGap > 20
+              ? "danger"
+              : "warning",
+        },
+      ],
+    },
+    {
+      title: "G. Inequality",
+      subtitle: "Gender employment gaps + informality share.",
+      rows: [
+        {
+          label: "Gender employment gap (F − M)",
+          value: fmtPct(composite.inequality.genderEmploymentGap),
+          tone:
+            composite.inequality.genderEmploymentGap !== null &&
+            composite.inequality.genderEmploymentGap < -10
+              ? "danger"
+              : "warning",
+        },
+        {
+          label: "Informal employment share",
+          value: fmtFraction(composite.inequality.informalShare),
+          tone:
+            composite.inequality.informalShare !== null &&
+            composite.inequality.informalShare > 0.5
+              ? "danger"
+              : "warning",
+        },
+      ],
+    },
+    {
+      title: "H. Stability & volatility",
+      subtitle: "Sector-level volatility + seasonality flags.",
+      rows: [
+        {
+          label: "Sector volatility (stddev)",
+          value:
+            composite.stability.sectorVolatilityIndex !== null
+              ? composite.stability.sectorVolatilityIndex.toFixed(2)
+              : "—",
+        },
+        {
+          label: "Seasonality flag",
+          value: composite.stability.seasonalityFlag ? "Yes" : "No",
+        },
+      ],
+    },
+  ];
+
+  return (
+    <section className="grid gap-4 md:grid-cols-2">
+      {groups.map((g) => (
+        <Card key={g.title} title={g.title} subtitle={g.subtitle}>
+          <ul className="space-y-2 text-sm">
+            {g.rows.map((row) => (
+              <li
+                key={row.label}
+                className="flex items-center justify-between gap-3 rounded-lg border border-border-default bg-bg-base px-3 py-2"
+              >
+                <span className="text-fg-secondary">{row.label}</span>
+                <span
+                  className={
+                    row.tone === "positive"
+                      ? "font-mono text-positive"
+                      : row.tone === "danger"
+                        ? "font-mono text-danger"
+                        : row.tone === "warning"
+                          ? "font-mono text-warning"
+                          : "font-mono text-fg-primary"
+                  }
+                >
+                  {row.value}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      ))}
     </section>
   );
 }

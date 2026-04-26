@@ -25,6 +25,10 @@ export class IscoOccupationEntity {
   @Column({ type: 'varchar', length: 32, default: 'snapshot' })
   source!: string;
 
+  @Index('isco_run_idx')
+  @Column({ type: 'uuid', nullable: true })
+  runId!: string | null;
+
   @Column({ type: 'timestamptz', default: () => 'now()' })
   updatedAt!: Date;
 }

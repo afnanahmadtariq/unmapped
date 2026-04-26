@@ -6,6 +6,13 @@ import { SectorGrowthEntity } from './entities/sector-growth.entity';
 import { FreyOsborneEntity } from './entities/frey-osborne.entity';
 import { CountryCalibrationEntity } from './entities/country-calibration.entity';
 import { WbIndicatorPointEntity } from './entities/wb-indicator.entity';
+import { IlostatTimeSeriesEntity } from './entities/ilostat-time-series.entity';
+import { WittgensteinProjectionEntity } from './entities/wittgenstein-projection.entity';
+import { UnPopulationEntity } from './entities/un-population.entity';
+import { UnescoUisEntity } from './entities/unesco-uis.entity';
+import { IloFowTaskIndexEntity } from './entities/ilo-fow-task-index.entity';
+import { ItuDigitalEntity } from './entities/itu-digital.entity';
+import { OnetTaskEntity } from './entities/onet-task.entity';
 import { CountryService } from '../country/country.service';
 import { IscoService } from '../taxonomies/isco/isco.service';
 import { CalibratedRisk, CountrySnapshot, RiskLevel } from './signals.types';
@@ -76,6 +83,20 @@ export class SignalsService implements OnModuleInit {
     private readonly calRepo: Repository<CountryCalibrationEntity>,
     @InjectRepository(WbIndicatorPointEntity)
     private readonly wbRepo: Repository<WbIndicatorPointEntity>,
+    @InjectRepository(IlostatTimeSeriesEntity)
+    private readonly ilostatRepo: Repository<IlostatTimeSeriesEntity>,
+    @InjectRepository(WittgensteinProjectionEntity)
+    private readonly wcdeRepo: Repository<WittgensteinProjectionEntity>,
+    @InjectRepository(UnPopulationEntity)
+    private readonly unPopRepo: Repository<UnPopulationEntity>,
+    @InjectRepository(UnescoUisEntity)
+    private readonly uisRepo: Repository<UnescoUisEntity>,
+    @InjectRepository(IloFowTaskIndexEntity)
+    private readonly iloFowRepo: Repository<IloFowTaskIndexEntity>,
+    @InjectRepository(ItuDigitalEntity)
+    private readonly ituRepo: Repository<ItuDigitalEntity>,
+    @InjectRepository(OnetTaskEntity)
+    private readonly onetRepo: Repository<OnetTaskEntity>,
     private readonly countries: CountryService,
     private readonly isco: IscoService,
   ) {}
@@ -305,6 +326,7 @@ export class SignalsService implements OnModuleInit {
       value: number;
       source?: string;
     }>,
+    runId?: string | null,
   ): Promise<number> {
     if (rows.length === 0) return 0;
     const entities = rows.map((r) =>
@@ -314,6 +336,7 @@ export class SignalsService implements OnModuleInit {
         year: r.year,
         value: r.value.toFixed(6),
         source: r.source ?? 'wb',
+        runId: runId ?? null,
         updatedAt: new Date(),
       }),
     );
@@ -327,6 +350,7 @@ export class SignalsService implements OnModuleInit {
 
   async upsertFreyOsborne(
     rows: Array<{ iscoCode: string; probability: number; source?: string }>,
+    runId?: string | null,
   ): Promise<number> {
     if (rows.length === 0) return 0;
     const entities = rows.map((r) =>
@@ -334,6 +358,7 @@ export class SignalsService implements OnModuleInit {
         iscoCode: r.iscoCode,
         probability: r.probability.toFixed(3),
         source: r.source ?? 'snapshot',
+        runId: runId ?? null,
         updatedAt: new Date(),
       }),
     );
@@ -350,6 +375,7 @@ export class SignalsService implements OnModuleInit {
       vintage?: string;
       source?: string;
     }>,
+    runId?: string | null,
   ): Promise<number> {
     if (rows.length === 0) return 0;
     const entities = rows.map((r) =>
@@ -360,6 +386,7 @@ export class SignalsService implements OnModuleInit {
         currency: r.currency,
         vintage: r.vintage ?? null,
         source: r.source ?? 'snapshot',
+        runId: runId ?? null,
         updatedAt: new Date(),
       }),
     );
@@ -367,5 +394,316 @@ export class SignalsService implements OnModuleInit {
       conflictPaths: ['countryCode', 'iscoCode'],
     });
     return entities.length;
+  }
+
+  async upsertSectorGrowth(
+    rows: Array<{
+      countryCode: string;
+      sectorId: string;
+      yoyPercent: number;
+      vintage?: string;
+      source?: string;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.growthRepo.create({
+        countryCode: r.countryCode,
+        sectorId: r.sectorId,
+        yoyPercent: r.yoyPercent.toFixed(3),
+        vintage: r.vintage ?? null,
+        source: r.source ?? 'snapshot',
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.growthRepo.upsert(entities, {
+      conflictPaths: ['countryCode', 'sectorId'],
+    });
+    return entities.length;
+  }
+
+  // ---------- ILOSTAT bulk upsert ----------
+
+  async upsertIlostatPoints(
+    rows: Array<{
+      refArea: string;
+      indicatorId: string;
+      indicatorName?: string | null;
+      sex?: string;
+      classif1?: string;
+      time: string;
+      year?: number | null;
+      value: number | null;
+      obsStatus?: string | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.ilostatRepo.create({
+        refArea: r.refArea,
+        indicatorId: r.indicatorId,
+        indicatorName: r.indicatorName ?? null,
+        sex: r.sex ?? '',
+        classif1: r.classif1 ?? '',
+        time: r.time,
+        year: r.year ?? this.parseIlostatYear(r.time),
+        value: r.value === null || r.value === undefined ? null : r.value.toFixed(6),
+        obsStatus: r.obsStatus ?? null,
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.ilostatRepo.upsert(entities, {
+      conflictPaths: ['refArea', 'indicatorId', 'sex', 'classif1', 'time'],
+    });
+    return entities.length;
+  }
+
+  private parseIlostatYear(time: string): number | null {
+    if (!time) return null;
+    const m = String(time).match(/^(\d{4})/);
+    return m ? Number(m[1]) : null;
+  }
+
+  // ---------- Wittgenstein bulk upsert ----------
+
+  async upsertWittgenstein(
+    rows: Array<{
+      iso3: string;
+      year: number;
+      scenario?: string;
+      educLevel?: string;
+      sex?: string;
+      ageGroup?: string;
+      population: number | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.wcdeRepo.create({
+        iso3: r.iso3,
+        year: r.year,
+        scenario: r.scenario ?? '',
+        educLevel: r.educLevel ?? '',
+        sex: r.sex ?? '',
+        ageGroup: r.ageGroup ?? '',
+        population:
+          r.population === null || r.population === undefined
+            ? null
+            : r.population.toFixed(4),
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.wcdeRepo.upsert(entities, {
+      conflictPaths: ['iso3', 'year', 'scenario', 'educLevel', 'sex', 'ageGroup'],
+    });
+    return entities.length;
+  }
+
+  // ---------- UN Population bulk upsert ----------
+
+  async upsertUnPopulation(
+    rows: Array<{
+      iso3: string;
+      indicator: string;
+      indicatorName?: string | null;
+      sex?: string;
+      ageGroup?: string;
+      year: number;
+      value: number | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.unPopRepo.create({
+        iso3: r.iso3,
+        indicator: r.indicator,
+        indicatorName: r.indicatorName ?? null,
+        sex: r.sex ?? '',
+        ageGroup: r.ageGroup ?? '',
+        year: r.year,
+        value:
+          r.value === null || r.value === undefined ? null : r.value.toFixed(4),
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.unPopRepo.upsert(entities, {
+      conflictPaths: ['iso3', 'indicator', 'sex', 'ageGroup', 'year'],
+    });
+    return entities.length;
+  }
+
+  // ---------- UNESCO UIS bulk upsert ----------
+
+  async upsertUnescoUis(
+    rows: Array<{
+      iso3: string;
+      indicator: string;
+      indicatorName?: string | null;
+      year: number;
+      value: number | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.uisRepo.create({
+        iso3: r.iso3,
+        indicator: r.indicator,
+        indicatorName: r.indicatorName ?? null,
+        year: r.year,
+        value:
+          r.value === null || r.value === undefined ? null : r.value.toFixed(6),
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.uisRepo.upsert(entities, {
+      conflictPaths: ['iso3', 'indicator', 'year'],
+    });
+    return entities.length;
+  }
+
+  // ---------- ILO FoW task indices bulk upsert ----------
+
+  async upsertIloFow(
+    rows: Array<{
+      iscoCode: string;
+      metric: string;
+      year?: number | null;
+      value: number | null;
+      note?: string | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.iloFowRepo.create({
+        iscoCode: r.iscoCode,
+        metric: r.metric,
+        year: r.year ?? null,
+        value:
+          r.value === null || r.value === undefined ? null : r.value.toFixed(4),
+        note: r.note ?? null,
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.iloFowRepo.upsert(entities, {
+      conflictPaths: ['iscoCode', 'metric', 'year'],
+    });
+    return entities.length;
+  }
+
+  // ---------- ITU digital bulk upsert ----------
+
+  async upsertItuDigital(
+    rows: Array<{
+      iso3: string;
+      indicator: string;
+      indicatorName?: string | null;
+      year: number;
+      value: number | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.ituRepo.create({
+        iso3: r.iso3,
+        indicator: r.indicator,
+        indicatorName: r.indicatorName ?? null,
+        year: r.year,
+        value:
+          r.value === null || r.value === undefined ? null : r.value.toFixed(4),
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.ituRepo.upsert(entities, {
+      conflictPaths: ['iso3', 'indicator', 'year'],
+    });
+    return entities.length;
+  }
+
+  // ---------- O*NET tasks bulk upsert ----------
+
+  async upsertOnetTasks(
+    rows: Array<{
+      onetCode: string;
+      taskId: string;
+      statement: string;
+      importance?: number | null;
+      level?: number | null;
+      taskType?: string;
+      iscoCode?: string | null;
+    }>,
+    runId?: string | null,
+  ): Promise<number> {
+    if (rows.length === 0) return 0;
+    const entities = rows.map((r) =>
+      this.onetRepo.create({
+        onetCode: r.onetCode,
+        taskId: r.taskId,
+        statement: r.statement,
+        importance:
+          r.importance === null || r.importance === undefined
+            ? null
+            : r.importance.toFixed(2),
+        level:
+          r.level === null || r.level === undefined ? null : r.level.toFixed(2),
+        taskType: r.taskType ?? '',
+        iscoCode: r.iscoCode ?? null,
+        runId: runId ?? null,
+        updatedAt: new Date(),
+      }),
+    );
+    await this.onetRepo.upsert(entities, {
+      conflictPaths: ['onetCode', 'taskId'],
+    });
+    return entities.length;
+  }
+
+  // ---------- Read helpers used by signal computers ----------
+
+  ilostatRepository(): Repository<IlostatTimeSeriesEntity> {
+    return this.ilostatRepo;
+  }
+  wittgensteinRepository(): Repository<WittgensteinProjectionEntity> {
+    return this.wcdeRepo;
+  }
+  unPopulationRepository(): Repository<UnPopulationEntity> {
+    return this.unPopRepo;
+  }
+  unescoUisRepository(): Repository<UnescoUisEntity> {
+    return this.uisRepo;
+  }
+  iloFowRepository(): Repository<IloFowTaskIndexEntity> {
+    return this.iloFowRepo;
+  }
+  ituDigitalRepository(): Repository<ItuDigitalEntity> {
+    return this.ituRepo;
+  }
+  onetRepository(): Repository<OnetTaskEntity> {
+    return this.onetRepo;
+  }
+  wbRepository(): Repository<WbIndicatorPointEntity> {
+    return this.wbRepo;
+  }
+  wageRepository(): Repository<WageEntity> {
+    return this.wageRepo;
+  }
+  growthRepository(): Repository<SectorGrowthEntity> {
+    return this.growthRepo;
+  }
+  freyRepository(): Repository<FreyOsborneEntity> {
+    return this.freyRepo;
   }
 }

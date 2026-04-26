@@ -12,6 +12,7 @@ import { FreyOsborneHarvester } from './harvesters/frey-osborne.harvester';
 import { IloFowHarvester } from './harvesters/ilo-fow.harvester';
 import { ItuDigitalHarvester } from './harvesters/itu-digital.harvester';
 import { EscoHarvester } from './harvesters/esco.harvester';
+import { OnetHarvester } from './harvesters/onet.harvester';
 
 const HARVESTERS = [
   IloIlostatHarvester,
@@ -25,6 +26,7 @@ const HARVESTERS = [
   IloFowHarvester,
   ItuDigitalHarvester,
   EscoHarvester,
+  OnetHarvester,
 ];
 
 @Module({
