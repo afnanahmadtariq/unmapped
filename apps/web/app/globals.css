@@ -65,14 +65,14 @@ html, body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-/* Subtle backdrop tint, no second orb */
+/* Flat backdrop tint (no radial gradients) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  background-image: radial-gradient(circle at 15% 0%, var(--accent-soft), transparent 45%);
+  background-color: color-mix(in oklab, var(--accent-soft) 35%, transparent);
 }
 
 :focus-visible {
@@ -94,18 +94,17 @@ body::before {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes skeletonPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--bg-raised) 60%, transparent) 0%,
-    color-mix(in oklab, var(--bg-hover) 80%, transparent) 50%,
-    color-mix(in oklab, var(--bg-raised) 60%, transparent) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  background-color: var(--bg-hover);
+  animation: skeletonPulse 1.2s ease-in-out infinite;
 }

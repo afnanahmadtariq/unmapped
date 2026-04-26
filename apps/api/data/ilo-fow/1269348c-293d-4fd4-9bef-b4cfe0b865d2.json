@@ -1,0 +1,38 @@
+{
+  "sourceId": "ilo-fow",
+  "sourceName": "ILO Future of Work Datasets",
+  "category": "automation",
+  "metadata": {
+    "apiUrl": "https://rplumber.ilo.org/__docs__/",
+    "indicators": [
+      {
+        "id": "SDG_C821_SEX_RT",
+        "name": "Labour income share (%)",
+        "dbnomicsSeries": "ILO/SDG_C821_SEX_RT"
+      },
+      {
+        "id": "EAR_INEE_SEX_ECO_NB",
+        "name": "Mean nominal monthly earnings by sex and economic activity",
+        "dbnomicsSeries": "ILO/EAR_INEE_SEX_ECO_NB"
+      },
+      {
+        "id": "IFL_XEES_SEX_RT",
+        "name": "Informal employment rate (%)",
+        "dbnomicsSeries": "ILO/IFL_XEES_SEX_RT"
+      },
+      {
+        "id": "SOC_PROT_COVRGE_RT",
+        "name": "Social protection coverage rate (%)",
+        "dbnomicsSeries": "ILO/SOC_PROT_COVRGE_RT"
+      }
+    ],
+    "dbnomicsFallbacks": 0,
+    "note": "No API key required."
+  },
+  "records": [],
+  "cronExpression": "0 2 * * 2",
+  "lastFetched": "2026-04-26T11:42:51.483Z",
+  "nextScheduled": "2026-05-03T11:42:51.483Z",
+  "recordCount": 0,
+  "fields": []
+}

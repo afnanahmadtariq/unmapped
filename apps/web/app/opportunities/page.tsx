@@ -52,9 +52,9 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
           <div className="mb-8">
             <WittgensteinCard
               projections={wittgensteinProjections}
-              countryName={country.name}
               title={t.opportunities.wittgensteinYouthTitle}
               subtitle={t.opportunities.wittgensteinYouthSubtitle}
+              sourceFoot={fmt(t.opportunities.wittgensteinFoot, { country: country.name })}
             />
           </div>
         ) : null}

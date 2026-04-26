@@ -20,9 +20,10 @@ interface ProjPoint {
 
 interface Props {
   projections: ProjPoint[];
-  countryName: string;
   title: string;
   subtitle: string;
+  /** Localized attribution line (include country name via caller `fmt`). */
+  sourceFoot: string;
 }
 
 function readVar(name: string, fallback: string) {
@@ -32,7 +33,7 @@ function readVar(name: string, fallback: string) {
 
 const COLORS = ["#a3a3a3", "#fbbf24", "#0ea5e9", "#34d399", "#7c3aed"] as const;
 
-export default function WittgensteinCard({ projections, countryName, title, subtitle }: Props) {
+export default function WittgensteinCard({ projections, title, subtitle, sourceFoot }: Props) {
   const [tokens, setTokens] = useState({ fgMuted: "#737373", border: "#e5e5e5", bg: "#ffffff" });
   useEffect(() => {
     const refresh = () =>
@@ -93,10 +94,7 @@ export default function WittgensteinCard({ projections, countryName, title, subt
         </BarChart>
       </ResponsiveContainer>
 
-      <p className="mt-3 text-[11px] text-fg-muted">
-        Source: Wittgenstein Centre Human Capital Data Explorer (SSP2 Medium scenario).
-        Share of population aged 15-29 in {countryName} by ISCED bucket.
-      </p>
+      <p className="mt-3 text-[11px] text-fg-muted">{sourceFoot}</p>
     </section>
   );
 }

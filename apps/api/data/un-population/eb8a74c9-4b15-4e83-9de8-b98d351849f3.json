@@ -1,0 +1,50 @@
+{
+  "sourceId": "un-population",
+  "sourceName": "UN Population Division",
+  "category": "education",
+  "metadata": {
+    "apiUrl": "https://population.un.org/dataportal/about/dataapi",
+    "indicators": [
+      {
+        "id": 49,
+        "name": "Total Population (thousands)",
+        "dbnomicsSeries": "WB/WDI/SP.POP.TOTL-WLD",
+        "fallbackScale": 0.001
+      },
+      {
+        "id": 65,
+        "name": "Life Expectancy at Birth (years)",
+        "dbnomicsSeries": "WB/WDI/SP.DYN.LE00.IN-WLD",
+        "fallbackScale": 1
+      },
+      {
+        "id": 78,
+        "name": "Net Migration Rate",
+        "dbnomicsSeries": "WB/WDI/SM.POP.NETM-WLD",
+        "fallbackScale": 1
+      }
+    ],
+    "locations": [
+      {
+        "id": 900,
+        "name": "World"
+      },
+      {
+        "id": 903,
+        "name": "More Developed Regions"
+      },
+      {
+        "id": 904,
+        "name": "Less Developed Regions"
+      }
+    ],
+    "dbnomicsFallbacks": 0,
+    "note": "Publicly accessible, no API key required. Data from World Population Prospects 2024."
+  },
+  "records": [],
+  "cronExpression": "0 6 1 * *",
+  "lastFetched": "2026-04-26T11:33:41.883Z",
+  "nextScheduled": "2026-05-26T11:33:41.883Z",
+  "recordCount": 0,
+  "fields": []
+}

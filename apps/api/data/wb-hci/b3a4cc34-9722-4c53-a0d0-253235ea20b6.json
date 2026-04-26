@@ -1,0 +1,7011 @@
+{
+  "sourceId": "wb-hci",
+  "sourceName": "World Bank Human Capital Index",
+  "category": "labor",
+  "metadata": {
+    "apiUrl": "https://datatopics.worldbank.org/human-capital/",
+    "indicators": [
+      {
+        "id": "HD.HCI.OVRL",
+        "name": "Human Capital Index (HCI) — overall (scale 0-1)",
+        "dbnomicsSeries": "WB/WDI/HD.HCI.OVRL-WLD"
+      },
+      {
+        "id": "HD.HCI.EYRS",
+        "name": "Expected Years of School",
+        "dbnomicsSeries": "WB/WDI/HD.HCI.EYRS-WLD"
+      },
+      {
+        "id": "HD.HCI.LAYS",
+        "name": "Learning-Adjusted Years of School",
+        "dbnomicsSeries": "WB/WDI/HD.HCI.LAYS-WLD"
+      },
+      {
+        "id": "HD.HCI.MORT",
+        "name": "Child survival rate (probability)",
+        "dbnomicsSeries": "WB/WDI/HD.HCI.MORT-WLD"
+      },
+      {
+        "id": "HD.HCI.HLOS",
+        "name": "Harmonized test scores",
+        "dbnomicsSeries": "WB/WDI/HD.HCI.HLOS-WLD"
+      }
+    ],
+    "dbnomicsFallbacks": 0,
+    "note": "No API key required. HCI data last updated 2020."
+  },
+  "records": [
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Afghanistan",
+      "countryCode": "AFG",
+      "year": 2020,
+      "value": 0.4003
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Albania",
+      "countryCode": "ALB",
+      "year": 2020,
+      "value": 0.6343
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Algeria",
+      "countryCode": "DZA",
+      "year": 2020,
+      "value": 0.5346
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Angola",
+      "countryCode": "AGO",
+      "year": 2020,
+      "value": 0.3624
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Antigua and Barbuda",
+      "countryCode": "ATG",
+      "year": 2020,
+      "value": 0.5957
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Argentina",
+      "countryCode": "ARG",
+      "year": 2020,
+      "value": 0.6021
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Armenia",
+      "countryCode": "ARM",
+      "year": 2020,
+      "value": 0.579
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Australia",
+      "countryCode": "AUS",
+      "year": 2020,
+      "value": 0.7702
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Austria",
+      "countryCode": "AUT",
+      "year": 2020,
+      "value": 0.7467
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Azerbaijan",
+      "countryCode": "AZE",
+      "year": 2020,
+      "value": 0.5778
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Bahrain",
+      "countryCode": "BHR",
+      "year": 2020,
+      "value": 0.6525
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Bangladesh",
+      "countryCode": "BGD",
+      "year": 2020,
+      "value": 0.464
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Belarus",
+      "countryCode": "BLR",
+      "year": 2020,
+      "value": 0.7001
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Belgium",
+      "countryCode": "BEL",
+      "year": 2020,
+      "value": 0.7604
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Benin",
+      "countryCode": "BEN",
+      "year": 2020,
+      "value": 0.4003
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Bhutan",
+      "countryCode": "BTN",
+      "year": 2020,
+      "value": 0.4753
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Bosnia and Herzegovina",
+      "countryCode": "BIH",
+      "year": 2020,
+      "value": 0.5797
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Botswana",
+      "countryCode": "BWA",
+      "year": 2020,
+      "value": 0.414
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Brazil",
+      "countryCode": "BRA",
+      "year": 2020,
+      "value": 0.5515
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Brunei Darussalam",
+      "countryCode": "BRN",
+      "year": 2020,
+      "value": 0.6264
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Bulgaria",
+      "countryCode": "BGR",
+      "year": 2020,
+      "value": 0.6139
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Burkina Faso",
+      "countryCode": "BFA",
+      "year": 2020,
+      "value": 0.3837
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Burundi",
+      "countryCode": "BDI",
+      "year": 2020,
+      "value": 0.3862
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Cambodia",
+      "countryCode": "KHM",
+      "year": 2020,
+      "value": 0.4916
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Cameroon",
+      "countryCode": "CMR",
+      "year": 2020,
+      "value": 0.3974
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Canada",
+      "countryCode": "CAN",
+      "year": 2020,
+      "value": 0.7975
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Central African Republic",
+      "countryCode": "CAF",
+      "year": 2020,
+      "value": 0.2916
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Chad",
+      "countryCode": "TCD",
+      "year": 2020,
+      "value": 0.2998
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Chile",
+      "countryCode": "CHL",
+      "year": 2020,
+      "value": 0.6516
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "China",
+      "countryCode": "CHN",
+      "year": 2020,
+      "value": 0.6531
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Colombia",
+      "countryCode": "COL",
+      "year": 2020,
+      "value": 0.6043
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Comoros",
+      "countryCode": "COM",
+      "year": 2020,
+      "value": 0.4047
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Congo, Dem. Rep.",
+      "countryCode": "COD",
+      "year": 2020,
+      "value": 0.3664
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Congo, Rep.",
+      "countryCode": "COG",
+      "year": 2020,
+      "value": 0.4193
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Costa Rica",
+      "countryCode": "CRI",
+      "year": 2020,
+      "value": 0.6286
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CIV",
+      "year": 2020,
+      "value": 0.3799
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Croatia",
+      "countryCode": "HRV",
+      "year": 2020,
+      "value": 0.7097
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Cyprus",
+      "countryCode": "CYP",
+      "year": 2020,
+      "value": 0.7555
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Czech Republic",
+      "countryCode": "CZE",
+      "year": 2020,
+      "value": 0.7523
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Denmark",
+      "countryCode": "DNK",
+      "year": 2020,
+      "value": 0.7551
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Dominica",
+      "countryCode": "DMA",
+      "year": 2020,
+      "value": 0.5447
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Dominican Republic",
+      "countryCode": "DOM",
+      "year": 2020,
+      "value": 0.5028
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Ecuador",
+      "countryCode": "ECU",
+      "year": 2020,
+      "value": 0.5943
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Egypt, Arab Rep.",
+      "countryCode": "EGY",
+      "year": 2020,
+      "value": 0.4944
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "El Salvador",
+      "countryCode": "SLV",
+      "year": 2020,
+      "value": 0.5462
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Estonia",
+      "countryCode": "EST",
+      "year": 2020,
+      "value": 0.7772
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Eswatini",
+      "countryCode": "SWZ",
+      "year": 2020,
+      "value": 0.3725
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Ethiopia",
+      "countryCode": "ETH",
+      "year": 2020,
+      "value": 0.3828
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Fiji",
+      "countryCode": "FJI",
+      "year": 2020,
+      "value": 0.5086
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Finland",
+      "countryCode": "FIN",
+      "year": 2020,
+      "value": 0.796
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "France",
+      "countryCode": "FRA",
+      "year": 2020,
+      "value": 0.7627
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Gabon",
+      "countryCode": "GAB",
+      "year": 2020,
+      "value": 0.4576
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Gambia, The",
+      "countryCode": "GMB",
+      "year": 2020,
+      "value": 0.4216
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Georgia",
+      "countryCode": "GEO",
+      "year": 2020,
+      "value": 0.5689
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Germany",
+      "countryCode": "DEU",
+      "year": 2020,
+      "value": 0.7512
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Ghana",
+      "countryCode": "GHA",
+      "year": 2020,
+      "value": 0.4501
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Greece",
+      "countryCode": "GRC",
+      "year": 2020,
+      "value": 0.69
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Grenada",
+      "countryCode": "GRD",
+      "year": 2020,
+      "value": 0.5651
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Guatemala",
+      "countryCode": "GTM",
+      "year": 2020,
+      "value": 0.4613
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Guinea",
+      "countryCode": "GIN",
+      "year": 2020,
+      "value": 0.3709
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Guyana",
+      "countryCode": "GUY",
+      "year": 2020,
+      "value": 0.4952
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Haiti",
+      "countryCode": "HTI",
+      "year": 2020,
+      "value": 0.4466
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Honduras",
+      "countryCode": "HND",
+      "year": 2020,
+      "value": 0.481
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Hong Kong SAR, China",
+      "countryCode": "HKG",
+      "year": 2020,
+      "value": 0.8128
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Hungary",
+      "countryCode": "HUN",
+      "year": 2020,
+      "value": 0.6831
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Iceland",
+      "countryCode": "ISL",
+      "year": 2020,
+      "value": 0.7453
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "India",
+      "countryCode": "IND",
+      "year": 2020,
+      "value": 0.4935
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Indonesia",
+      "countryCode": "IDN",
+      "year": 2020,
+      "value": 0.54
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Iran, Islamic Rep.",
+      "countryCode": "IRN",
+      "year": 2020,
+      "value": 0.5934
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Iraq",
+      "countryCode": "IRQ",
+      "year": 2020,
+      "value": 0.4076
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Ireland",
+      "countryCode": "IRL",
+      "year": 2020,
+      "value": 0.7926
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Israel",
+      "countryCode": "ISR",
+      "year": 2020,
+      "value": 0.734
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Italy",
+      "countryCode": "ITA",
+      "year": 2020,
+      "value": 0.7278
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Jamaica",
+      "countryCode": "JAM",
+      "year": 2020,
+      "value": 0.535
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Japan",
+      "countryCode": "JPN",
+      "year": 2020,
+      "value": 0.8047
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Jordan",
+      "countryCode": "JOR",
+      "year": 2020,
+      "value": 0.5532
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kazakhstan",
+      "countryCode": "KAZ",
+      "year": 2020,
+      "value": 0.6285
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kenya",
+      "countryCode": "KEN",
+      "year": 2020,
+      "value": 0.5468
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kiribati",
+      "countryCode": "KIR",
+      "year": 2020,
+      "value": 0.4926
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Korea, Rep.",
+      "countryCode": "KOR",
+      "year": 2020,
+      "value": 0.7988
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kosovo",
+      "countryCode": "",
+      "year": 2020,
+      "value": 0.5673
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kuwait",
+      "countryCode": "KWT",
+      "year": 2020,
+      "value": 0.5626
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Kyrgyz Republic",
+      "countryCode": "KGZ",
+      "year": 2020,
+      "value": 0.5966
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Lao PDR",
+      "countryCode": "LAO",
+      "year": 2020,
+      "value": 0.4567
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Latvia",
+      "countryCode": "LVA",
+      "year": 2020,
+      "value": 0.7066
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Lebanon",
+      "countryCode": "LBN",
+      "year": 2020,
+      "value": 0.5151
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Lesotho",
+      "countryCode": "LSO",
+      "year": 2020,
+      "value": 0.4004
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Liberia",
+      "countryCode": "LBR",
+      "year": 2020,
+      "value": 0.319
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Lithuania",
+      "countryCode": "LTU",
+      "year": 2020,
+      "value": 0.706
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Luxembourg",
+      "countryCode": "LUX",
+      "year": 2020,
+      "value": 0.6861
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Macao SAR, China",
+      "countryCode": "MAC",
+      "year": 2020,
+      "value": 0.7957
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Madagascar",
+      "countryCode": "MDG",
+      "year": 2020,
+      "value": 0.392
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Malawi",
+      "countryCode": "MWI",
+      "year": 2020,
+      "value": 0.4132
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Malaysia",
+      "countryCode": "MYS",
+      "year": 2020,
+      "value": 0.611
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mali",
+      "countryCode": "MLI",
+      "year": 2020,
+      "value": 0.3183
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Malta",
+      "countryCode": "MLT",
+      "year": 2020,
+      "value": 0.7092
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Marshall Islands",
+      "countryCode": "MHL",
+      "year": 2020,
+      "value": 0.4234
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mauritania",
+      "countryCode": "MRT",
+      "year": 2020,
+      "value": 0.3815
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mauritius",
+      "countryCode": "MUS",
+      "year": 2020,
+      "value": 0.6219
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mexico",
+      "countryCode": "MEX",
+      "year": 2020,
+      "value": 0.6129
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Micronesia, Fed. Sts.",
+      "countryCode": "FSM",
+      "year": 2020,
+      "value": 0.506
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Moldova",
+      "countryCode": "MDA",
+      "year": 2020,
+      "value": 0.5842
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mongolia",
+      "countryCode": "MNG",
+      "year": 2020,
+      "value": 0.6144
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Montenegro",
+      "countryCode": "MNE",
+      "year": 2020,
+      "value": 0.6332
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Morocco",
+      "countryCode": "MAR",
+      "year": 2020,
+      "value": 0.5041
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Mozambique",
+      "countryCode": "MOZ",
+      "year": 2020,
+      "value": 0.3621
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Myanmar",
+      "countryCode": "MMR",
+      "year": 2020,
+      "value": 0.4777
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Namibia",
+      "countryCode": "NAM",
+      "year": 2020,
+      "value": 0.4464
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Nauru",
+      "countryCode": "",
+      "year": 2020,
+      "value": 0.5084
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Nepal",
+      "countryCode": "NPL",
+      "year": 2020,
+      "value": 0.5046
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Netherlands",
+      "countryCode": "NLD",
+      "year": 2020,
+      "value": 0.7899
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "New Zealand",
+      "countryCode": "NZL",
+      "year": 2020,
+      "value": 0.7759
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Nicaragua",
+      "countryCode": "NIC",
+      "year": 2020,
+      "value": 0.5081
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Niger",
+      "countryCode": "NER",
+      "year": 2020,
+      "value": 0.3157
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Nigeria",
+      "countryCode": "NGA",
+      "year": 2020,
+      "value": 0.3606
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "North Macedonia",
+      "countryCode": "MKD",
+      "year": 2020,
+      "value": 0.5573
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Norway",
+      "countryCode": "NOR",
+      "year": 2020,
+      "value": 0.7711
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Oman",
+      "countryCode": "OMN",
+      "year": 2020,
+      "value": 0.6081
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Pakistan",
+      "countryCode": "PAK",
+      "year": 2020,
+      "value": 0.4061
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Palau",
+      "countryCode": "PLW",
+      "year": 2020,
+      "value": 0.5881
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Panama",
+      "countryCode": "PAN",
+      "year": 2020,
+      "value": 0.5016
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Papua New Guinea",
+      "countryCode": "PNG",
+      "year": 2020,
+      "value": 0.4292
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Paraguay",
+      "countryCode": "PRY",
+      "year": 2020,
+      "value": 0.5282
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Peru",
+      "countryCode": "PER",
+      "year": 2020,
+      "value": 0.6052
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Philippines",
+      "countryCode": "PHL",
+      "year": 2020,
+      "value": 0.516
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Poland",
+      "countryCode": "POL",
+      "year": 2020,
+      "value": 0.7531
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Portugal",
+      "countryCode": "PRT",
+      "year": 2020,
+      "value": 0.7689
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Qatar",
+      "countryCode": "QAT",
+      "year": 2020,
+      "value": 0.6378
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Romania",
+      "countryCode": "ROU",
+      "year": 2020,
+      "value": 0.5842
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Russian Federation",
+      "countryCode": "RUS",
+      "year": 2020,
+      "value": 0.6814
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Rwanda",
+      "countryCode": "RWA",
+      "year": 2020,
+      "value": 0.3796
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Samoa",
+      "countryCode": "WSM",
+      "year": 2020,
+      "value": 0.5484
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Saudi Arabia",
+      "countryCode": "SAU",
+      "year": 2020,
+      "value": 0.5764
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Senegal",
+      "countryCode": "SEN",
+      "year": 2020,
+      "value": 0.4201
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Serbia",
+      "countryCode": "SRB",
+      "year": 2020,
+      "value": 0.6766
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Seychelles",
+      "countryCode": "SYC",
+      "year": 2020,
+      "value": 0.6328
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Sierra Leone",
+      "countryCode": "SLE",
+      "year": 2020,
+      "value": 0.3627
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Singapore",
+      "countryCode": "SGP",
+      "year": 2020,
+      "value": 0.8791
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Slovak Republic",
+      "countryCode": "SVK",
+      "year": 2020,
+      "value": 0.665
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Slovenia",
+      "countryCode": "SVN",
+      "year": 2020,
+      "value": 0.775
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Solomon Islands",
+      "countryCode": "SLB",
+      "year": 2020,
+      "value": 0.4199
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "South Africa",
+      "countryCode": "ZAF",
+      "year": 2020,
+      "value": 0.4255
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "South Sudan",
+      "countryCode": "SSD",
+      "year": 2020,
+      "value": 0.3065
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Spain",
+      "countryCode": "ESP",
+      "year": 2020,
+      "value": 0.7283
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Sri Lanka",
+      "countryCode": "LKA",
+      "year": 2020,
+      "value": 0.5983
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "St. Kitts and Nevis",
+      "countryCode": "KNA",
+      "year": 2020,
+      "value": 0.5862
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "St. Lucia",
+      "countryCode": "LCA",
+      "year": 2020,
+      "value": 0.6026
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "St. Vincent and the Grenadines",
+      "countryCode": "VCT",
+      "year": 2020,
+      "value": 0.5333
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Sudan",
+      "countryCode": "SDN",
+      "year": 2020,
+      "value": 0.3774
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Sweden",
+      "countryCode": "SWE",
+      "year": 2020,
+      "value": 0.7954
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Switzerland",
+      "countryCode": "CHE",
+      "year": 2020,
+      "value": 0.7561
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Tajikistan",
+      "countryCode": "TJK",
+      "year": 2020,
+      "value": 0.5041
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Tanzania",
+      "countryCode": "TZA",
+      "year": 2020,
+      "value": 0.3898
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Thailand",
+      "countryCode": "THA",
+      "year": 2020,
+      "value": 0.6093
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Timor-Leste",
+      "countryCode": "TLS",
+      "year": 2020,
+      "value": 0.4543
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Togo",
+      "countryCode": "TGO",
+      "year": 2020,
+      "value": 0.4319
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Tonga",
+      "countryCode": "TON",
+      "year": 2020,
+      "value": 0.5311
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Trinidad and Tobago",
+      "countryCode": "TTO",
+      "year": 2020,
+      "value": 0.6035
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Tunisia",
+      "countryCode": "TUN",
+      "year": 2020,
+      "value": 0.5168
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Turkey",
+      "countryCode": "TUR",
+      "year": 2020,
+      "value": 0.6493
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Tuvalu",
+      "countryCode": "TUV",
+      "year": 2020,
+      "value": 0.4476
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Uganda",
+      "countryCode": "UGA",
+      "year": 2020,
+      "value": 0.3842
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Ukraine",
+      "countryCode": "UKR",
+      "year": 2020,
+      "value": 0.6314
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "United Arab Emirates",
+      "countryCode": "ARE",
+      "year": 2020,
+      "value": 0.673
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "United Kingdom",
+      "countryCode": "GBR",
+      "year": 2020,
+      "value": 0.7829
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "United States",
+      "countryCode": "USA",
+      "year": 2020,
+      "value": 0.7018
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Uruguay",
+      "countryCode": "URY",
+      "year": 2020,
+      "value": 0.5988
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Uzbekistan",
+      "countryCode": "UZB",
+      "year": 2020,
+      "value": 0.6228
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Vanuatu",
+      "countryCode": "VUT",
+      "year": 2020,
+      "value": 0.4547
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Vietnam",
+      "countryCode": "VNM",
+      "year": 2020,
+      "value": 0.69
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "West Bank and Gaza",
+      "countryCode": "PSE",
+      "year": 2020,
+      "value": 0.58
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Yemen, Rep.",
+      "countryCode": "YEM",
+      "year": 2020,
+      "value": 0.3728
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Zambia",
+      "countryCode": "ZMB",
+      "year": 2020,
+      "value": 0.3969
+    },
+    {
+      "indicatorId": "HD.HCI.OVRL",
+      "indicatorName": "Human Capital Index (HCI) — overall (scale 0-1)",
+      "country": "Zimbabwe",
+      "countryCode": "ZWE",
+      "year": 2020,
+      "value": 0.4669
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Afghanistan",
+      "countryCode": "AFG",
+      "year": 2020,
+      "value": 8.9019
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Albania",
+      "countryCode": "ALB",
+      "year": 2020,
+      "value": 12.8894
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Algeria",
+      "countryCode": "DZA",
+      "year": 2020,
+      "value": 11.848
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Angola",
+      "countryCode": "AGO",
+      "year": 2020,
+      "value": 8.1201
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Antigua and Barbuda",
+      "countryCode": "ATG",
+      "year": 2020,
+      "value": 12.9676
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Argentina",
+      "countryCode": "ARG",
+      "year": 2020,
+      "value": 12.8795
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Armenia",
+      "countryCode": "ARM",
+      "year": 2020,
+      "value": 11.2799
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Australia",
+      "countryCode": "AUS",
+      "year": 2020,
+      "value": 13.6014
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Austria",
+      "countryCode": "AUT",
+      "year": 2020,
+      "value": 13.4276
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Azerbaijan",
+      "countryCode": "AZE",
+      "year": 2020,
+      "value": 12.4438
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Bahrain",
+      "countryCode": "BHR",
+      "year": 2020,
+      "value": 12.8497
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Bangladesh",
+      "countryCode": "BGD",
+      "year": 2020,
+      "value": 10.1635
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Belarus",
+      "countryCode": "BLR",
+      "year": 2020,
+      "value": 13.8078
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Belgium",
+      "countryCode": "BEL",
+      "year": 2020,
+      "value": 13.5245
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Benin",
+      "countryCode": "BEN",
+      "year": 2020,
+      "value": 9.2245
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Bhutan",
+      "countryCode": "BTN",
+      "year": 2020,
+      "value": 10.2246
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Bosnia and Herzegovina",
+      "countryCode": "BIH",
+      "year": 2020,
+      "value": 11.7178
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Botswana",
+      "countryCode": "BWA",
+      "year": 2020,
+      "value": 8.1185
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Brazil",
+      "countryCode": "BRA",
+      "year": 2020,
+      "value": 11.907
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Brunei Darussalam",
+      "countryCode": "BRN",
+      "year": 2020,
+      "value": 13.1694
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Bulgaria",
+      "countryCode": "BGR",
+      "year": 2020,
+      "value": 12.3093
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Burkina Faso",
+      "countryCode": "BFA",
+      "year": 2020,
+      "value": 7.0188
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Burundi",
+      "countryCode": "BDI",
+      "year": 2020,
+      "value": 7.6356
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Cambodia",
+      "countryCode": "KHM",
+      "year": 2020,
+      "value": 9.4658
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Cameroon",
+      "countryCode": "CMR",
+      "year": 2020,
+      "value": 8.7215
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Canada",
+      "countryCode": "CAN",
+      "year": 2020,
+      "value": 13.722
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Central African Republic",
+      "countryCode": "CAF",
+      "year": 2020,
+      "value": 4.57
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Chad",
+      "countryCode": "TCD",
+      "year": 2020,
+      "value": 5.3106
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Chile",
+      "countryCode": "CHL",
+      "year": 2020,
+      "value": 13.0018
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "China",
+      "countryCode": "CHN",
+      "year": 2020,
+      "value": 13.1378
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Colombia",
+      "countryCode": "COL",
+      "year": 2020,
+      "value": 12.8604
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Comoros",
+      "countryCode": "COM",
+      "year": 2020,
+      "value": 8.1735
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Congo, Dem. Rep.",
+      "countryCode": "COD",
+      "year": 2020,
+      "value": 9.1318
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Congo, Rep.",
+      "countryCode": "COG",
+      "year": 2020,
+      "value": 8.9128
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Costa Rica",
+      "countryCode": "CRI",
+      "year": 2020,
+      "value": 13.1157
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CIV",
+      "year": 2020,
+      "value": 8.0573
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Croatia",
+      "countryCode": "HRV",
+      "year": 2020,
+      "value": 13.3903
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Cyprus",
+      "countryCode": "CYP",
+      "year": 2020,
+      "value": 13.5876
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Czech Republic",
+      "countryCode": "CZE",
+      "year": 2020,
+      "value": 13.5641
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Denmark",
+      "countryCode": "DNK",
+      "year": 2020,
+      "value": 13.3946
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Dominica",
+      "countryCode": "DMA",
+      "year": 2020,
+      "value": 12.3966
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Dominican Republic",
+      "countryCode": "DOM",
+      "year": 2020,
+      "value": 11.8739
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Ecuador",
+      "countryCode": "ECU",
+      "year": 2020,
+      "value": 12.9366
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Egypt, Arab Rep.",
+      "countryCode": "EGY",
+      "year": 2020,
+      "value": 11.4635
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "El Salvador",
+      "countryCode": "SLV",
+      "year": 2020,
+      "value": 10.9499
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Estonia",
+      "countryCode": "EST",
+      "year": 2020,
+      "value": 13.484
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Eswatini",
+      "countryCode": "SWZ",
+      "year": 2020,
+      "value": 6.4237
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Ethiopia",
+      "countryCode": "ETH",
+      "year": 2020,
+      "value": 7.8064
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Fiji",
+      "countryCode": "FJI",
+      "year": 2020,
+      "value": 11.3333
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Finland",
+      "countryCode": "FIN",
+      "year": 2020,
+      "value": 13.7467
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "France",
+      "countryCode": "FRA",
+      "year": 2020,
+      "value": 13.8027
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Gabon",
+      "countryCode": "GAB",
+      "year": 2020,
+      "value": 8.2555
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Gambia, The",
+      "countryCode": "GMB",
+      "year": 2020,
+      "value": 9.5201
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Georgia",
+      "countryCode": "GEO",
+      "year": 2020,
+      "value": 12.9357
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Germany",
+      "countryCode": "DEU",
+      "year": 2020,
+      "value": 13.3306
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Ghana",
+      "countryCode": "GHA",
+      "year": 2020,
+      "value": 12.1201
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Greece",
+      "countryCode": "GRC",
+      "year": 2020,
+      "value": 13.2889
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Grenada",
+      "countryCode": "GRD",
+      "year": 2020,
+      "value": 13.0994
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Guatemala",
+      "countryCode": "GTM",
+      "year": 2020,
+      "value": 9.7125
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Guinea",
+      "countryCode": "GIN",
+      "year": 2020,
+      "value": 6.9936
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Guyana",
+      "countryCode": "GUY",
+      "year": 2020,
+      "value": 12.2039
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Haiti",
+      "countryCode": "HTI",
+      "year": 2020,
+      "value": 11.378
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Honduras",
+      "countryCode": "HND",
+      "year": 2020,
+      "value": 9.59
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Hong Kong SAR, China",
+      "countryCode": "HKG",
+      "year": 2020,
+      "value": 13.5414
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Hungary",
+      "countryCode": "HUN",
+      "year": 2020,
+      "value": 12.9566
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Iceland",
+      "countryCode": "ISL",
+      "year": 2020,
+      "value": 13.4603
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "India",
+      "countryCode": "IND",
+      "year": 2020,
+      "value": 11.125
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Indonesia",
+      "countryCode": "IDN",
+      "year": 2020,
+      "value": 12.3884
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Iran, Islamic Rep.",
+      "countryCode": "IRN",
+      "year": 2020,
+      "value": 11.8496
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Iraq",
+      "countryCode": "IRQ",
+      "year": 2020,
+      "value": 6.9319
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Ireland",
+      "countryCode": "IRL",
+      "year": 2020,
+      "value": 13.9005
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Israel",
+      "countryCode": "ISR",
+      "year": 2020,
+      "value": 13.7629
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Italy",
+      "countryCode": "ITA",
+      "year": 2020,
+      "value": 13.2507
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Jamaica",
+      "countryCode": "JAM",
+      "year": 2020,
+      "value": 11.3946
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Japan",
+      "countryCode": "JPN",
+      "year": 2020,
+      "value": 13.6399
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Jordan",
+      "countryCode": "JOR",
+      "year": 2020,
+      "value": 11.1438
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kazakhstan",
+      "countryCode": "KAZ",
+      "year": 2020,
+      "value": 13.708
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kenya",
+      "countryCode": "KEN",
+      "year": 2020,
+      "value": 11.6346
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kiribati",
+      "countryCode": "KIR",
+      "year": 2020,
+      "value": 11.2124
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Korea, Rep.",
+      "countryCode": "KOR",
+      "year": 2020,
+      "value": 13.5934
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kosovo",
+      "countryCode": "",
+      "year": 2020,
+      "value": 13.169
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kuwait",
+      "countryCode": "KWT",
+      "year": 2020,
+      "value": 12.0338
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Kyrgyz Republic",
+      "countryCode": "KGZ",
+      "year": 2020,
+      "value": 12.8725
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Lao PDR",
+      "countryCode": "LAO",
+      "year": 2020,
+      "value": 10.6147
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Latvia",
+      "countryCode": "LVA",
+      "year": 2020,
+      "value": 13.6181
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Lebanon",
+      "countryCode": "LBN",
+      "year": 2020,
+      "value": 10.1555
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Lesotho",
+      "countryCode": "LSO",
+      "year": 2020,
+      "value": 10.0437
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Liberia",
+      "countryCode": "LBR",
+      "year": 2020,
+      "value": 4.157
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Lithuania",
+      "countryCode": "LTU",
+      "year": 2020,
+      "value": 13.8328
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Luxembourg",
+      "countryCode": "LUX",
+      "year": 2020,
+      "value": 12.4222
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Macao SAR, China",
+      "countryCode": "MAC",
+      "year": 2020,
+      "value": 12.9031
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Madagascar",
+      "countryCode": "MDG",
+      "year": 2020,
+      "value": 8.3983
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Malawi",
+      "countryCode": "MWI",
+      "year": 2020,
+      "value": 9.5721
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Malaysia",
+      "countryCode": "MYS",
+      "year": 2020,
+      "value": 12.466
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mali",
+      "countryCode": "MLI",
+      "year": 2020,
+      "value": 5.2429
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Malta",
+      "countryCode": "MLT",
+      "year": 2020,
+      "value": 13.4278
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Marshall Islands",
+      "countryCode": "MHL",
+      "year": 2020,
+      "value": 9.4317
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mauritania",
+      "countryCode": "MRT",
+      "year": 2020,
+      "value": 7.7308
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mauritius",
+      "countryCode": "MUS",
+      "year": 2020,
+      "value": 12.4344
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mexico",
+      "countryCode": "MEX",
+      "year": 2020,
+      "value": 12.824
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Micronesia, Fed. Sts.",
+      "countryCode": "FSM",
+      "year": 2020,
+      "value": 11.8227
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Moldova",
+      "countryCode": "MDA",
+      "year": 2020,
+      "value": 11.8109
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mongolia",
+      "countryCode": "MNG",
+      "year": 2020,
+      "value": 13.1628
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Montenegro",
+      "countryCode": "MNE",
+      "year": 2020,
+      "value": 12.7658
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Morocco",
+      "countryCode": "MAR",
+      "year": 2020,
+      "value": 10.3799
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Mozambique",
+      "countryCode": "MOZ",
+      "year": 2020,
+      "value": 7.5897
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Myanmar",
+      "countryCode": "MMR",
+      "year": 2020,
+      "value": 9.991
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Namibia",
+      "countryCode": "NAM",
+      "year": 2020,
+      "value": 9.3844
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Nauru",
+      "countryCode": "",
+      "year": 2020,
+      "value": 11.7409
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Nepal",
+      "countryCode": "NPL",
+      "year": 2020,
+      "value": 12.255
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Netherlands",
+      "countryCode": "NLD",
+      "year": 2020,
+      "value": 13.8788
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "New Zealand",
+      "countryCode": "NZL",
+      "year": 2020,
+      "value": 13.6968
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Nicaragua",
+      "countryCode": "NIC",
+      "year": 2020,
+      "value": 10.7587
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Niger",
+      "countryCode": "NER",
+      "year": 2020,
+      "value": 5.4983
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Nigeria",
+      "countryCode": "NGA",
+      "year": 2020,
+      "value": 10.19
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "North Macedonia",
+      "countryCode": "MKD",
+      "year": 2020,
+      "value": 11.0253
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Norway",
+      "countryCode": "NOR",
+      "year": 2020,
+      "value": 13.6708
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Oman",
+      "countryCode": "OMN",
+      "year": 2020,
+      "value": 12.7578
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Pakistan",
+      "countryCode": "PAK",
+      "year": 2020,
+      "value": 9.3739
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Palau",
+      "countryCode": "PLW",
+      "year": 2020,
+      "value": 11.7282
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Panama",
+      "countryCode": "PAN",
+      "year": 2020,
+      "value": 10.748
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Papua New Guinea",
+      "countryCode": "PNG",
+      "year": 2020,
+      "value": 10.3196
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Paraguay",
+      "countryCode": "PRY",
+      "year": 2020,
+      "value": 11.3095
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Peru",
+      "countryCode": "PER",
+      "year": 2020,
+      "value": 12.9996
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Philippines",
+      "countryCode": "PHL",
+      "year": 2020,
+      "value": 12.9483
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Poland",
+      "countryCode": "POL",
+      "year": 2020,
+      "value": 13.4108
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Portugal",
+      "countryCode": "PRT",
+      "year": 2020,
+      "value": 13.9008
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Qatar",
+      "countryCode": "QAT",
+      "year": 2020,
+      "value": 12.8343
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Romania",
+      "countryCode": "ROU",
+      "year": 2020,
+      "value": 11.8299
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Russian Federation",
+      "countryCode": "RUS",
+      "year": 2020,
+      "value": 13.6898
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Rwanda",
+      "countryCode": "RWA",
+      "year": 2020,
+      "value": 6.852
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Samoa",
+      "countryCode": "WSM",
+      "year": 2020,
+      "value": 12.2415
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Saudi Arabia",
+      "countryCode": "SAU",
+      "year": 2020,
+      "value": 12.3571
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Senegal",
+      "countryCode": "SEN",
+      "year": 2020,
+      "value": 7.3316
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Serbia",
+      "countryCode": "SRB",
+      "year": 2020,
+      "value": 13.3246
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Seychelles",
+      "countryCode": "SYC",
+      "year": 2020,
+      "value": 13.0843
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Sierra Leone",
+      "countryCode": "SLE",
+      "year": 2020,
+      "value": 9.6056
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Singapore",
+      "countryCode": "SGP",
+      "year": 2020,
+      "value": 13.9209
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Slovak Republic",
+      "countryCode": "SVK",
+      "year": 2020,
+      "value": 12.6195
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Slovenia",
+      "countryCode": "SVN",
+      "year": 2020,
+      "value": 13.6458
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Solomon Islands",
+      "countryCode": "SLB",
+      "year": 2020,
+      "value": 8.3361
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "South Africa",
+      "countryCode": "ZAF",
+      "year": 2020,
+      "value": 10.2173
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "South Sudan",
+      "countryCode": "SSD",
+      "year": 2020,
+      "value": 4.6771
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Spain",
+      "countryCode": "ESP",
+      "year": 2020,
+      "value": 12.9716
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Sri Lanka",
+      "countryCode": "LKA",
+      "year": 2020,
+      "value": 13.2222
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "St. Kitts and Nevis",
+      "countryCode": "KNA",
+      "year": 2020,
+      "value": 12.9526
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "St. Lucia",
+      "countryCode": "LCA",
+      "year": 2020,
+      "value": 12.6872
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "St. Vincent and the Grenadines",
+      "countryCode": "VCT",
+      "year": 2020,
+      "value": 12.313
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Sudan",
+      "countryCode": "SDN",
+      "year": 2020,
+      "value": 7.0816
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Sweden",
+      "countryCode": "SWE",
+      "year": 2020,
+      "value": 13.9364
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Switzerland",
+      "countryCode": "CHE",
+      "year": 2020,
+      "value": 13.2656
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Tajikistan",
+      "countryCode": "TJK",
+      "year": 2020,
+      "value": 10.8584
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Tanzania",
+      "countryCode": "TZA",
+      "year": 2020,
+      "value": 7.2155
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Thailand",
+      "countryCode": "THA",
+      "year": 2020,
+      "value": 12.7214
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Timor-Leste",
+      "countryCode": "TLS",
+      "year": 2020,
+      "value": 10.5884
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Togo",
+      "countryCode": "TGO",
+      "year": 2020,
+      "value": 9.7284
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Tonga",
+      "countryCode": "TON",
+      "year": 2020,
+      "value": 11.5625
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Trinidad and Tobago",
+      "countryCode": "TTO",
+      "year": 2020,
+      "value": 12.4319
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Tunisia",
+      "countryCode": "TUN",
+      "year": 2020,
+      "value": 10.5676
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Turkey",
+      "countryCode": "TUR",
+      "year": 2020,
+      "value": 12.0662
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Tuvalu",
+      "countryCode": "TUV",
+      "year": 2020,
+      "value": 10.8186
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Uganda",
+      "countryCode": "UGA",
+      "year": 2020,
+      "value": 6.8233
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Ukraine",
+      "countryCode": "UKR",
+      "year": 2020,
+      "value": 12.9066
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "United Arab Emirates",
+      "countryCode": "ARE",
+      "year": 2020,
+      "value": 13.4558
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "United Kingdom",
+      "countryCode": "GBR",
+      "year": 2020,
+      "value": 13.8583
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "United States",
+      "countryCode": "USA",
+      "year": 2020,
+      "value": 12.8918
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Uruguay",
+      "countryCode": "URY",
+      "year": 2020,
+      "value": 12.2105
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Uzbekistan",
+      "countryCode": "UZB",
+      "year": 2020,
+      "value": 12.041
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Vanuatu",
+      "countryCode": "VUT",
+      "year": 2020,
+      "value": 10.1102
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Vietnam",
+      "countryCode": "VNM",
+      "year": 2020,
+      "value": 12.8594
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "West Bank and Gaza",
+      "countryCode": "PSE",
+      "year": 2020,
+      "value": 12.1983
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Yemen, Rep.",
+      "countryCode": "YEM",
+      "year": 2020,
+      "value": 8.1279
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Zambia",
+      "countryCode": "ZMB",
+      "year": 2020,
+      "value": 8.789
+    },
+    {
+      "indicatorId": "HD.HCI.EYRS",
+      "indicatorName": "Expected Years of School",
+      "country": "Zimbabwe",
+      "countryCode": "ZWE",
+      "year": 2020,
+      "value": 11.0545
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Afghanistan",
+      "countryCode": "AFG",
+      "year": 2020,
+      "value": 5.0528
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Albania",
+      "countryCode": "ALB",
+      "year": 2020,
+      "value": 8.953
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Algeria",
+      "countryCode": "DZA",
+      "year": 2020,
+      "value": 7.0916
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Angola",
+      "countryCode": "AGO",
+      "year": 2020,
+      "value": 4.235
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Antigua and Barbuda",
+      "countryCode": "ATG",
+      "year": 2020,
+      "value": 8.4444
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Argentina",
+      "countryCode": "ARG",
+      "year": 2020,
+      "value": 8.4113
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Armenia",
+      "countryCode": "ARM",
+      "year": 2020,
+      "value": 7.9946
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Australia",
+      "countryCode": "AUS",
+      "year": 2020,
+      "value": 11.2225
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Austria",
+      "countryCode": "AUT",
+      "year": 2020,
+      "value": 10.9062
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Azerbaijan",
+      "countryCode": "AZE",
+      "year": 2020,
+      "value": 8.2815
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Bahrain",
+      "countryCode": "BHR",
+      "year": 2020,
+      "value": 9.2868
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Bangladesh",
+      "countryCode": "BGD",
+      "year": 2020,
+      "value": 5.9894
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Belarus",
+      "countryCode": "BLR",
+      "year": 2020,
+      "value": 10.7843
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Belgium",
+      "countryCode": "BEL",
+      "year": 2020,
+      "value": 11.1833
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Benin",
+      "countryCode": "BEN",
+      "year": 2020,
+      "value": 5.6664
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Bhutan",
+      "countryCode": "BTN",
+      "year": 2020,
+      "value": 6.3268
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Bosnia and Herzegovina",
+      "countryCode": "BIH",
+      "year": 2020,
+      "value": 7.8019
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Botswana",
+      "countryCode": "BWA",
+      "year": 2020,
+      "value": 5.083
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Brazil",
+      "countryCode": "BRA",
+      "year": 2020,
+      "value": 7.8728
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Brunei Darussalam",
+      "countryCode": "BRN",
+      "year": 2020,
+      "value": 9.2189
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Bulgaria",
+      "countryCode": "BGR",
+      "year": 2020,
+      "value": 8.6873
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Burkina Faso",
+      "countryCode": "BFA",
+      "year": 2020,
+      "value": 4.5331
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Burundi",
+      "countryCode": "BDI",
+      "year": 2020,
+      "value": 5.1647
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Cambodia",
+      "countryCode": "KHM",
+      "year": 2020,
+      "value": 6.844
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Cameroon",
+      "countryCode": "CMR",
+      "year": 2020,
+      "value": 5.2869
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Canada",
+      "countryCode": "CAN",
+      "year": 2020,
+      "value": 11.724
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Central African Republic",
+      "countryCode": "CAF",
+      "year": 2020,
+      "value": 2.6962
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Chad",
+      "countryCode": "TCD",
+      "year": 2020,
+      "value": 2.8304
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Chile",
+      "countryCode": "CHL",
+      "year": 2020,
+      "value": 9.4074
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "China",
+      "countryCode": "CHN",
+      "year": 2020,
+      "value": 9.27
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Colombia",
+      "countryCode": "COL",
+      "year": 2020,
+      "value": 8.6222
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Comoros",
+      "countryCode": "COM",
+      "year": 2020,
+      "value": 5.1294
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Congo, Dem. Rep.",
+      "countryCode": "COD",
+      "year": 2020,
+      "value": 4.5323
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Congo, Rep.",
+      "countryCode": "COG",
+      "year": 2020,
+      "value": 5.2851
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Costa Rica",
+      "countryCode": "CRI",
+      "year": 2020,
+      "value": 8.9933
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CIV",
+      "year": 2020,
+      "value": 4.8116
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Croatia",
+      "countryCode": "HRV",
+      "year": 2020,
+      "value": 10.4462
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Cyprus",
+      "countryCode": "CYP",
+      "year": 2020,
+      "value": 10.9171
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Czech Republic",
+      "countryCode": "CZE",
+      "year": 2020,
+      "value": 11.1165
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Denmark",
+      "countryCode": "DNK",
+      "year": 2020,
+      "value": 11.0988
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Dominica",
+      "countryCode": "DMA",
+      "year": 2020,
+      "value": 8.0089
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Dominican Republic",
+      "countryCode": "DOM",
+      "year": 2020,
+      "value": 6.5585
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Ecuador",
+      "countryCode": "ECU",
+      "year": 2020,
+      "value": 8.6965
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Egypt, Arab Rep.",
+      "countryCode": "EGY",
+      "year": 2020,
+      "value": 6.5294
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "El Salvador",
+      "countryCode": "SLV",
+      "year": 2020,
+      "value": 7.6373
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Estonia",
+      "countryCode": "EST",
+      "year": 2020,
+      "value": 11.7193
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Eswatini",
+      "countryCode": "SWZ",
+      "year": 2020,
+      "value": 4.5254
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Ethiopia",
+      "countryCode": "ETH",
+      "year": 2020,
+      "value": 4.3491
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Fiji",
+      "countryCode": "FJI",
+      "year": 2020,
+      "value": 6.9511
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Finland",
+      "countryCode": "FIN",
+      "year": 2020,
+      "value": 11.7388
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "France",
+      "countryCode": "FRA",
+      "year": 2020,
+      "value": 11.2687
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Gabon",
+      "countryCode": "GAB",
+      "year": 2020,
+      "value": 6.0249
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Gambia, The",
+      "countryCode": "GMB",
+      "year": 2020,
+      "value": 5.3754
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Georgia",
+      "countryCode": "GEO",
+      "year": 2020,
+      "value": 8.274
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Germany",
+      "countryCode": "DEU",
+      "year": 2020,
+      "value": 11.0331
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Ghana",
+      "countryCode": "GHA",
+      "year": 2020,
+      "value": 5.9587
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Greece",
+      "countryCode": "GRC",
+      "year": 2020,
+      "value": 9.9643
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Grenada",
+      "countryCode": "GRD",
+      "year": 2020,
+      "value": 8.2736
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Guatemala",
+      "countryCode": "GTM",
+      "year": 2020,
+      "value": 6.2977
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Guinea",
+      "countryCode": "GIN",
+      "year": 2020,
+      "value": 4.5682
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Guyana",
+      "countryCode": "GUY",
+      "year": 2020,
+      "value": 6.7632
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Haiti",
+      "countryCode": "HTI",
+      "year": 2020,
+      "value": 6.1499
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Honduras",
+      "countryCode": "HND",
+      "year": 2020,
+      "value": 6.1338
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Hong Kong SAR, China",
+      "countryCode": "HKG",
+      "year": 2020,
+      "value": 11.8868
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Hungary",
+      "countryCode": "HUN",
+      "year": 2020,
+      "value": 10.2716
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Iceland",
+      "countryCode": "ISL",
+      "year": 2020,
+      "value": 10.7183
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "India",
+      "countryCode": "IND",
+      "year": 2020,
+      "value": 7.1022
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Indonesia",
+      "countryCode": "IDN",
+      "year": 2020,
+      "value": 7.8278
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Iran, Islamic Rep.",
+      "countryCode": "IRN",
+      "year": 2020,
+      "value": 8.1925
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Iraq",
+      "countryCode": "IRQ",
+      "year": 2020,
+      "value": 4.0309
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Ireland",
+      "countryCode": "IRL",
+      "year": 2020,
+      "value": 11.5948
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Israel",
+      "countryCode": "ISR",
+      "year": 2020,
+      "value": 10.5865
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Italy",
+      "countryCode": "ITA",
+      "year": 2020,
+      "value": 10.4519
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Jamaica",
+      "countryCode": "JAM",
+      "year": 2020,
+      "value": 7.058
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Japan",
+      "countryCode": "JPN",
+      "year": 2020,
+      "value": 11.7351
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Jordan",
+      "countryCode": "JOR",
+      "year": 2020,
+      "value": 7.6661
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kazakhstan",
+      "countryCode": "KAZ",
+      "year": 2020,
+      "value": 9.1274
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kenya",
+      "countryCode": "KEN",
+      "year": 2020,
+      "value": 8.4692
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kiribati",
+      "countryCode": "KIR",
+      "year": 2020,
+      "value": 7.3819
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Korea, Rep.",
+      "countryCode": "KOR",
+      "year": 2020,
+      "value": 11.684
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kosovo",
+      "countryCode": "",
+      "year": 2020,
+      "value": 7.8708
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kuwait",
+      "countryCode": "KWT",
+      "year": 2020,
+      "value": 7.382
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Kyrgyz Republic",
+      "countryCode": "KGZ",
+      "year": 2020,
+      "value": 8.6521
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Lao PDR",
+      "countryCode": "LAO",
+      "year": 2020,
+      "value": 6.2523
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Latvia",
+      "countryCode": "LVA",
+      "year": 2020,
+      "value": 10.9788
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Lebanon",
+      "countryCode": "LBN",
+      "year": 2020,
+      "value": 6.3352
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Lesotho",
+      "countryCode": "LSO",
+      "year": 2020,
+      "value": 6.3141
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Liberia",
+      "countryCode": "LBR",
+      "year": 2020,
+      "value": 2.2065
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Lithuania",
+      "countryCode": "LTU",
+      "year": 2020,
+      "value": 10.9752
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Luxembourg",
+      "countryCode": "LUX",
+      "year": 2020,
+      "value": 9.7956
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Macao SAR, China",
+      "countryCode": "MAC",
+      "year": 2020,
+      "value": 11.5738
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Madagascar",
+      "countryCode": "MDG",
+      "year": 2020,
+      "value": 4.7134
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Malawi",
+      "countryCode": "MWI",
+      "year": 2020,
+      "value": 5.5057
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Malaysia",
+      "countryCode": "MYS",
+      "year": 2020,
+      "value": 8.8893
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mali",
+      "countryCode": "MLI",
+      "year": 2020,
+      "value": 2.5784
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Malta",
+      "countryCode": "MLT",
+      "year": 2020,
+      "value": 10.193
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Marshall Islands",
+      "countryCode": "MHL",
+      "year": 2020,
+      "value": 5.6595
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mauritania",
+      "countryCode": "MRT",
+      "year": 2020,
+      "value": 4.2314
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mauritius",
+      "countryCode": "MUS",
+      "year": 2020,
+      "value": 9.4057
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mexico",
+      "countryCode": "MEX",
+      "year": 2020,
+      "value": 8.8243
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Micronesia, Fed. Sts.",
+      "countryCode": "FSM",
+      "year": 2020,
+      "value": 7.1864
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Moldova",
+      "countryCode": "MDA",
+      "year": 2020,
+      "value": 8.2888
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mongolia",
+      "countryCode": "MNG",
+      "year": 2020,
+      "value": 9.1533
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Montenegro",
+      "countryCode": "MNE",
+      "year": 2020,
+      "value": 8.9081
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Morocco",
+      "countryCode": "MAR",
+      "year": 2020,
+      "value": 6.3177
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Mozambique",
+      "countryCode": "MOZ",
+      "year": 2020,
+      "value": 4.4718
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Myanmar",
+      "countryCode": "MMR",
+      "year": 2020,
+      "value": 6.788
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Namibia",
+      "countryCode": "NAM",
+      "year": 2020,
+      "value": 6.1061
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Nauru",
+      "countryCode": "",
+      "year": 2020,
+      "value": 6.5116
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Nepal",
+      "countryCode": "NPL",
+      "year": 2020,
+      "value": 7.2267
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Netherlands",
+      "countryCode": "NLD",
+      "year": 2020,
+      "value": 11.539
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "New Zealand",
+      "countryCode": "NZL",
+      "year": 2020,
+      "value": 11.3902
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Nicaragua",
+      "countryCode": "NIC",
+      "year": 2020,
+      "value": 6.7477
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Niger",
+      "countryCode": "NER",
+      "year": 2020,
+      "value": 2.6825
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Nigeria",
+      "countryCode": "NGA",
+      "year": 2020,
+      "value": 5.0383
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "North Macedonia",
+      "countryCode": "MKD",
+      "year": 2020,
+      "value": 7.2964
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Norway",
+      "countryCode": "NOR",
+      "year": 2020,
+      "value": 11.2339
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Oman",
+      "countryCode": "OMN",
+      "year": 2020,
+      "value": 8.645
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Pakistan",
+      "countryCode": "PAK",
+      "year": 2020,
+      "value": 5.0792
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Palau",
+      "countryCode": "PLW",
+      "year": 2020,
+      "value": 8.6922
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Panama",
+      "countryCode": "PAN",
+      "year": 2020,
+      "value": 6.4809
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Papua New Guinea",
+      "countryCode": "PNG",
+      "year": 2020,
+      "value": 5.9989
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Paraguay",
+      "countryCode": "PRY",
+      "year": 2020,
+      "value": 6.9765
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Peru",
+      "countryCode": "PER",
+      "year": 2020,
+      "value": 8.6322
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Philippines",
+      "countryCode": "PHL",
+      "year": 2020,
+      "value": 7.4923
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Poland",
+      "countryCode": "POL",
+      "year": 2020,
+      "value": 11.3742
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Portugal",
+      "countryCode": "PRT",
+      "year": 2020,
+      "value": 11.3101
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Qatar",
+      "countryCode": "QAT",
+      "year": 2020,
+      "value": 8.7782
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Romania",
+      "countryCode": "ROU",
+      "year": 2020,
+      "value": 8.3692
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Russian Federation",
+      "countryCode": "RUS",
+      "year": 2020,
+      "value": 10.8981
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Rwanda",
+      "countryCode": "RWA",
+      "year": 2020,
+      "value": 3.9258
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Samoa",
+      "countryCode": "WSM",
+      "year": 2020,
+      "value": 7.2452
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Saudi Arabia",
+      "countryCode": "SAU",
+      "year": 2020,
+      "value": 7.8882
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Senegal",
+      "countryCode": "SEN",
+      "year": 2020,
+      "value": 4.8383
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Serbia",
+      "countryCode": "SRB",
+      "year": 2020,
+      "value": 9.7526
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Seychelles",
+      "countryCode": "SYC",
+      "year": 2020,
+      "value": 9.7008
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Sierra Leone",
+      "countryCode": "SLE",
+      "year": 2020,
+      "value": 4.8547
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Singapore",
+      "countryCode": "SGP",
+      "year": 2020,
+      "value": 12.8133
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Slovak Republic",
+      "countryCode": "SVK",
+      "year": 2020,
+      "value": 9.7998
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Slovenia",
+      "countryCode": "SVN",
+      "year": 2020,
+      "value": 11.3709
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Solomon Islands",
+      "countryCode": "SLB",
+      "year": 2020,
+      "value": 4.6751
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "South Africa",
+      "countryCode": "ZAF",
+      "year": 2020,
+      "value": 5.6034
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "South Sudan",
+      "countryCode": "SSD",
+      "year": 2020,
+      "value": 2.5113
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Spain",
+      "countryCode": "ESP",
+      "year": 2020,
+      "value": 10.5147
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Sri Lanka",
+      "countryCode": "LKA",
+      "year": 2020,
+      "value": 8.4622
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "St. Kitts and Nevis",
+      "countryCode": "KNA",
+      "year": 2020,
+      "value": 8.4778
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "St. Lucia",
+      "countryCode": "LCA",
+      "year": 2020,
+      "value": 8.4803
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "St. Vincent and the Grenadines",
+      "countryCode": "VCT",
+      "year": 2020,
+      "value": 7.7107
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Sudan",
+      "countryCode": "SDN",
+      "year": 2020,
+      "value": 4.3014
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Sweden",
+      "countryCode": "SWE",
+      "year": 2020,
+      "value": 11.5809
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Switzerland",
+      "countryCode": "CHE",
+      "year": 2020,
+      "value": 10.9338
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Tajikistan",
+      "countryCode": "TJK",
+      "year": 2020,
+      "value": 6.7855
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Tanzania",
+      "countryCode": "TZA",
+      "year": 2020,
+      "value": 4.4849
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Thailand",
+      "countryCode": "THA",
+      "year": 2020,
+      "value": 8.6831
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Timor-Leste",
+      "countryCode": "TLS",
+      "year": 2020,
+      "value": 6.2927
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Togo",
+      "countryCode": "TGO",
+      "year": 2020,
+      "value": 5.9727
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Tonga",
+      "countryCode": "TON",
+      "year": 2020,
+      "value": 7.1402
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Trinidad and Tobago",
+      "countryCode": "TTO",
+      "year": 2020,
+      "value": 9.1158
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Tunisia",
+      "countryCode": "TUN",
+      "year": 2020,
+      "value": 6.4941
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Turkey",
+      "countryCode": "TUR",
+      "year": 2020,
+      "value": 9.2275
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Tuvalu",
+      "countryCode": "TUV",
+      "year": 2020,
+      "value": 5.9978
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Uganda",
+      "countryCode": "UGA",
+      "year": 2020,
+      "value": 4.3359
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Ukraine",
+      "countryCode": "UKR",
+      "year": 2020,
+      "value": 9.8745
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "United Arab Emirates",
+      "countryCode": "ARE",
+      "year": 2020,
+      "value": 9.646
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "United Kingdom",
+      "countryCode": "GBR",
+      "year": 2020,
+      "value": 11.538
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "United States",
+      "countryCode": "USA",
+      "year": 2020,
+      "value": 10.5568
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Uruguay",
+      "countryCode": "URY",
+      "year": 2020,
+      "value": 8.5512
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Uzbekistan",
+      "countryCode": "UZB",
+      "year": 2020,
+      "value": 9.1334
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Vanuatu",
+      "countryCode": "VUT",
+      "year": 2020,
+      "value": 5.6243
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Vietnam",
+      "countryCode": "VNM",
+      "year": 2020,
+      "value": 10.6805
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "West Bank and Gaza",
+      "countryCode": "PSE",
+      "year": 2020,
+      "value": 8.0473
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Yemen, Rep.",
+      "countryCode": "YEM",
+      "year": 2020,
+      "value": 4.1788
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Zambia",
+      "countryCode": "ZMB",
+      "year": 2020,
+      "value": 5.0363
+    },
+    {
+      "indicatorId": "HD.HCI.LAYS",
+      "indicatorName": "Learning-Adjusted Years of School",
+      "country": "Zimbabwe",
+      "countryCode": "ZWE",
+      "year": 2020,
+      "value": 7.0066
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Afghanistan",
+      "countryCode": "AFG",
+      "year": 2020,
+      "value": 0.9377
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Albania",
+      "countryCode": "ALB",
+      "year": 2020,
+      "value": 0.9912
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Algeria",
+      "countryCode": "DZA",
+      "year": 2020,
+      "value": 0.9765
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Angola",
+      "countryCode": "AGO",
+      "year": 2020,
+      "value": 0.9228
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Antigua and Barbuda",
+      "countryCode": "ATG",
+      "year": 2020,
+      "value": 0.9936
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Argentina",
+      "countryCode": "ARG",
+      "year": 2020,
+      "value": 0.9901
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Armenia",
+      "countryCode": "ARM",
+      "year": 2020,
+      "value": 0.9876
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Australia",
+      "countryCode": "AUS",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Austria",
+      "countryCode": "AUT",
+      "year": 2020,
+      "value": 0.9965
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Azerbaijan",
+      "countryCode": "AZE",
+      "year": 2020,
+      "value": 0.9785
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Bahrain",
+      "countryCode": "BHR",
+      "year": 2020,
+      "value": 0.9929
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Bangladesh",
+      "countryCode": "BGD",
+      "year": 2020,
+      "value": 0.9698
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Belarus",
+      "countryCode": "BLR",
+      "year": 2020,
+      "value": 0.9966
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Belgium",
+      "countryCode": "BEL",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Benin",
+      "countryCode": "BEN",
+      "year": 2020,
+      "value": 0.907
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Bhutan",
+      "countryCode": "BTN",
+      "year": 2020,
+      "value": 0.9703
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Bosnia and Herzegovina",
+      "countryCode": "BIH",
+      "year": 2020,
+      "value": 0.9942
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Botswana",
+      "countryCode": "BWA",
+      "year": 2020,
+      "value": 0.9635
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Brazil",
+      "countryCode": "BRA",
+      "year": 2020,
+      "value": 0.9856
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Brunei Darussalam",
+      "countryCode": "BRN",
+      "year": 2020,
+      "value": 0.9884
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Bulgaria",
+      "countryCode": "BGR",
+      "year": 2020,
+      "value": 0.9929
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Burkina Faso",
+      "countryCode": "BFA",
+      "year": 2020,
+      "value": 0.9236
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Burundi",
+      "countryCode": "BDI",
+      "year": 2020,
+      "value": 0.9415
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Cambodia",
+      "countryCode": "KHM",
+      "year": 2020,
+      "value": 0.972
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Cameroon",
+      "countryCode": "CMR",
+      "year": 2020,
+      "value": 0.9239
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Canada",
+      "countryCode": "CAN",
+      "year": 2020,
+      "value": 0.995
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Central African Republic",
+      "countryCode": "CAF",
+      "year": 2020,
+      "value": 0.8835
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Chad",
+      "countryCode": "TCD",
+      "year": 2020,
+      "value": 0.881
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Chile",
+      "countryCode": "CHL",
+      "year": 2020,
+      "value": 0.9928
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "China",
+      "countryCode": "CHN",
+      "year": 2020,
+      "value": 0.9914
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Colombia",
+      "countryCode": "COL",
+      "year": 2020,
+      "value": 0.9858
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Comoros",
+      "countryCode": "COM",
+      "year": 2020,
+      "value": 0.9325
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Congo, Dem. Rep.",
+      "countryCode": "COD",
+      "year": 2020,
+      "value": 0.9119
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Congo, Rep.",
+      "countryCode": "COG",
+      "year": 2020,
+      "value": 0.9499
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Costa Rica",
+      "countryCode": "CRI",
+      "year": 2020,
+      "value": 0.9912
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CIV",
+      "year": 2020,
+      "value": 0.9191
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Croatia",
+      "countryCode": "HRV",
+      "year": 2020,
+      "value": 0.9953
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Cyprus",
+      "countryCode": "CYP",
+      "year": 2020,
+      "value": 0.9976
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Czech Republic",
+      "countryCode": "CZE",
+      "year": 2020,
+      "value": 0.9966
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Denmark",
+      "countryCode": "DNK",
+      "year": 2020,
+      "value": 0.9958
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Dominica",
+      "countryCode": "DMA",
+      "year": 2020,
+      "value": 0.9643
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Dominican Republic",
+      "countryCode": "DOM",
+      "year": 2020,
+      "value": 0.9712
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Ecuador",
+      "countryCode": "ECU",
+      "year": 2020,
+      "value": 0.9858
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Egypt, Arab Rep.",
+      "countryCode": "EGY",
+      "year": 2020,
+      "value": 0.9788
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "El Salvador",
+      "countryCode": "SLV",
+      "year": 2020,
+      "value": 0.9863
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Estonia",
+      "countryCode": "EST",
+      "year": 2020,
+      "value": 0.9974
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Eswatini",
+      "countryCode": "SWZ",
+      "year": 2020,
+      "value": 0.9456
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Ethiopia",
+      "countryCode": "ETH",
+      "year": 2020,
+      "value": 0.9448
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Fiji",
+      "countryCode": "FJI",
+      "year": 2020,
+      "value": 0.9744
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Finland",
+      "countryCode": "FIN",
+      "year": 2020,
+      "value": 0.9983
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "France",
+      "countryCode": "FRA",
+      "year": 2020,
+      "value": 0.996
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Gabon",
+      "countryCode": "GAB",
+      "year": 2020,
+      "value": 0.9552
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Gambia, The",
+      "countryCode": "GMB",
+      "year": 2020,
+      "value": 0.9416
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Georgia",
+      "countryCode": "GEO",
+      "year": 2020,
+      "value": 0.9902
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Germany",
+      "countryCode": "DEU",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Ghana",
+      "countryCode": "GHA",
+      "year": 2020,
+      "value": 0.9521
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Greece",
+      "countryCode": "GRC",
+      "year": 2020,
+      "value": 0.9955
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Grenada",
+      "countryCode": "GRD",
+      "year": 2020,
+      "value": 0.9848
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Guatemala",
+      "countryCode": "GTM",
+      "year": 2020,
+      "value": 0.9738
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Guinea",
+      "countryCode": "GIN",
+      "year": 2020,
+      "value": 0.8992
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Guyana",
+      "countryCode": "GUY",
+      "year": 2020,
+      "value": 0.9699
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Haiti",
+      "countryCode": "HTI",
+      "year": 2020,
+      "value": 0.9352
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Honduras",
+      "countryCode": "HND",
+      "year": 2020,
+      "value": 0.9824
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Hong Kong SAR, China",
+      "countryCode": "HKG",
+      "year": 2020,
+      "value": 0.9914
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Hungary",
+      "countryCode": "HUN",
+      "year": 2020,
+      "value": 0.9957
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Iceland",
+      "countryCode": "ISL",
+      "year": 2020,
+      "value": 0.998
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "India",
+      "countryCode": "IND",
+      "year": 2020,
+      "value": 0.9634
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Indonesia",
+      "countryCode": "IDN",
+      "year": 2020,
+      "value": 0.975
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Iran, Islamic Rep.",
+      "countryCode": "IRN",
+      "year": 2020,
+      "value": 0.9856
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Iraq",
+      "countryCode": "IRQ",
+      "year": 2020,
+      "value": 0.9733
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Ireland",
+      "countryCode": "IRL",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Israel",
+      "countryCode": "ISR",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Italy",
+      "countryCode": "ITA",
+      "year": 2020,
+      "value": 0.997
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Jamaica",
+      "countryCode": "JAM",
+      "year": 2020,
+      "value": 0.9856
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Japan",
+      "countryCode": "JPN",
+      "year": 2020,
+      "value": 0.9975
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Jordan",
+      "countryCode": "JOR",
+      "year": 2020,
+      "value": 0.9838
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kazakhstan",
+      "countryCode": "KAZ",
+      "year": 2020,
+      "value": 0.9901
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kenya",
+      "countryCode": "KEN",
+      "year": 2020,
+      "value": 0.9589
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kiribati",
+      "countryCode": "KIR",
+      "year": 2020,
+      "value": 0.9475
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Korea, Rep.",
+      "countryCode": "KOR",
+      "year": 2020,
+      "value": 0.9968
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kosovo",
+      "countryCode": "",
+      "year": 2020,
+      "value": 0.985
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kuwait",
+      "countryCode": "KWT",
+      "year": 2020,
+      "value": 0.9921
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Kyrgyz Republic",
+      "countryCode": "KGZ",
+      "year": 2020,
+      "value": 0.9811
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Lao PDR",
+      "countryCode": "LAO",
+      "year": 2020,
+      "value": 0.9527
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Latvia",
+      "countryCode": "LVA",
+      "year": 2020,
+      "value": 0.9961
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Lebanon",
+      "countryCode": "LBN",
+      "year": 2020,
+      "value": 0.9926
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Lesotho",
+      "countryCode": "LSO",
+      "year": 2020,
+      "value": 0.9189
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Liberia",
+      "countryCode": "LBR",
+      "year": 2020,
+      "value": 0.9291
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Lithuania",
+      "countryCode": "LTU",
+      "year": 2020,
+      "value": 0.996
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Luxembourg",
+      "countryCode": "LUX",
+      "year": 2020,
+      "value": 0.9976
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Macao SAR, China",
+      "countryCode": "MAC",
+      "year": 2020,
+      "value": 0.9914
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Madagascar",
+      "countryCode": "MDG",
+      "year": 2020,
+      "value": 0.9464
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Malawi",
+      "countryCode": "MWI",
+      "year": 2020,
+      "value": 0.9503
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Malaysia",
+      "countryCode": "MYS",
+      "year": 2020,
+      "value": 0.9922
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mali",
+      "countryCode": "MLI",
+      "year": 2020,
+      "value": 0.9022
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Malta",
+      "countryCode": "MLT",
+      "year": 2020,
+      "value": 0.993
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Marshall Islands",
+      "countryCode": "MHL",
+      "year": 2020,
+      "value": 0.9669
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mauritania",
+      "countryCode": "MRT",
+      "year": 2020,
+      "value": 0.9243
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mauritius",
+      "countryCode": "MUS",
+      "year": 2020,
+      "value": 0.9845
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mexico",
+      "countryCode": "MEX",
+      "year": 2020,
+      "value": 0.9873
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Micronesia, Fed. Sts.",
+      "countryCode": "FSM",
+      "year": 2020,
+      "value": 0.9692
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Moldova",
+      "countryCode": "MDA",
+      "year": 2020,
+      "value": 0.9842
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mongolia",
+      "countryCode": "MNG",
+      "year": 2020,
+      "value": 0.9837
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Montenegro",
+      "countryCode": "MNE",
+      "year": 2020,
+      "value": 0.9975
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Morocco",
+      "countryCode": "MAR",
+      "year": 2020,
+      "value": 0.9776
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Mozambique",
+      "countryCode": "MOZ",
+      "year": 2020,
+      "value": 0.9268
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Myanmar",
+      "countryCode": "MMR",
+      "year": 2020,
+      "value": 0.9538
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Namibia",
+      "countryCode": "NAM",
+      "year": 2020,
+      "value": 0.9604
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Nauru",
+      "countryCode": "",
+      "year": 2020,
+      "value": 0.9682
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Nepal",
+      "countryCode": "NPL",
+      "year": 2020,
+      "value": 0.9678
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Netherlands",
+      "countryCode": "NLD",
+      "year": 2020,
+      "value": 0.9961
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "New Zealand",
+      "countryCode": "NZL",
+      "year": 2020,
+      "value": 0.9943
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Nicaragua",
+      "countryCode": "NIC",
+      "year": 2020,
+      "value": 0.9817
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Niger",
+      "countryCode": "NER",
+      "year": 2020,
+      "value": 0.9163
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Nigeria",
+      "countryCode": "NGA",
+      "year": 2020,
+      "value": 0.8801
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "North Macedonia",
+      "countryCode": "MKD",
+      "year": 2020,
+      "value": 0.9901
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Norway",
+      "countryCode": "NOR",
+      "year": 2020,
+      "value": 0.9975
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Oman",
+      "countryCode": "OMN",
+      "year": 2020,
+      "value": 0.9886
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Pakistan",
+      "countryCode": "PAK",
+      "year": 2020,
+      "value": 0.9307
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Palau",
+      "countryCode": "PLW",
+      "year": 2020,
+      "value": 0.9821
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Panama",
+      "countryCode": "PAN",
+      "year": 2020,
+      "value": 0.9847
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Papua New Guinea",
+      "countryCode": "PNG",
+      "year": 2020,
+      "value": 0.9522
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Paraguay",
+      "countryCode": "PRY",
+      "year": 2020,
+      "value": 0.9798
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Peru",
+      "countryCode": "PER",
+      "year": 2020,
+      "value": 0.9857
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Philippines",
+      "countryCode": "PHL",
+      "year": 2020,
+      "value": 0.9716
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Poland",
+      "countryCode": "POL",
+      "year": 2020,
+      "value": 0.9956
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Portugal",
+      "countryCode": "PRT",
+      "year": 2020,
+      "value": 0.9963
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Qatar",
+      "countryCode": "QAT",
+      "year": 2020,
+      "value": 0.9932
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Romania",
+      "countryCode": "ROU",
+      "year": 2020,
+      "value": 0.9927
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Russian Federation",
+      "countryCode": "RUS",
+      "year": 2020,
+      "value": 0.9928
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Rwanda",
+      "countryCode": "RWA",
+      "year": 2020,
+      "value": 0.9647
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Samoa",
+      "countryCode": "WSM",
+      "year": 2020,
+      "value": 0.9842
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Saudi Arabia",
+      "countryCode": "SAU",
+      "year": 2020,
+      "value": 0.9929
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Senegal",
+      "countryCode": "SEN",
+      "year": 2020,
+      "value": 0.9564
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Serbia",
+      "countryCode": "SRB",
+      "year": 2020,
+      "value": 0.9945
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Seychelles",
+      "countryCode": "SYC",
+      "year": 2020,
+      "value": 0.9855
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Sierra Leone",
+      "countryCode": "SLE",
+      "year": 2020,
+      "value": 0.8949
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Singapore",
+      "countryCode": "SGP",
+      "year": 2020,
+      "value": 0.9972
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Slovak Republic",
+      "countryCode": "SVK",
+      "year": 2020,
+      "value": 0.9944
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Slovenia",
+      "countryCode": "SVN",
+      "year": 2020,
+      "value": 0.9979
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Solomon Islands",
+      "countryCode": "SLB",
+      "year": 2020,
+      "value": 0.98
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "South Africa",
+      "countryCode": "ZAF",
+      "year": 2020,
+      "value": 0.9662
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "South Sudan",
+      "countryCode": "SSD",
+      "year": 2020,
+      "value": 0.9014
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Spain",
+      "countryCode": "ESP",
+      "year": 2020,
+      "value": 0.997
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Sri Lanka",
+      "countryCode": "LKA",
+      "year": 2020,
+      "value": 0.9926
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "St. Kitts and Nevis",
+      "countryCode": "KNA",
+      "year": 2020,
+      "value": 0.988
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "St. Lucia",
+      "countryCode": "LCA",
+      "year": 2020,
+      "value": 0.9834
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "St. Vincent and the Grenadines",
+      "countryCode": "VCT",
+      "year": 2020,
+      "value": 0.9836
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Sudan",
+      "countryCode": "SDN",
+      "year": 2020,
+      "value": 0.9395
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Sweden",
+      "countryCode": "SWE",
+      "year": 2020,
+      "value": 0.9973
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Switzerland",
+      "countryCode": "CHE",
+      "year": 2020,
+      "value": 0.9959
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Tajikistan",
+      "countryCode": "TJK",
+      "year": 2020,
+      "value": 0.9652
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Tanzania",
+      "countryCode": "TZA",
+      "year": 2020,
+      "value": 0.947
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Thailand",
+      "countryCode": "THA",
+      "year": 2020,
+      "value": 0.9909
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Timor-Leste",
+      "countryCode": "TLS",
+      "year": 2020,
+      "value": 0.9542
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Togo",
+      "countryCode": "TGO",
+      "year": 2020,
+      "value": 0.9302
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Tonga",
+      "countryCode": "TON",
+      "year": 2020,
+      "value": 0.9844
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Trinidad and Tobago",
+      "countryCode": "TTO",
+      "year": 2020,
+      "value": 0.9817
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Tunisia",
+      "countryCode": "TUN",
+      "year": 2020,
+      "value": 0.983
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Turkey",
+      "countryCode": "TUR",
+      "year": 2020,
+      "value": 0.9894
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Tuvalu",
+      "countryCode": "TUV",
+      "year": 2020,
+      "value": 0.9756
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Uganda",
+      "countryCode": "UGA",
+      "year": 2020,
+      "value": 0.9536
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Ukraine",
+      "countryCode": "UKR",
+      "year": 2020,
+      "value": 0.9913
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "United Arab Emirates",
+      "countryCode": "ARE",
+      "year": 2020,
+      "value": 0.9924
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "United Kingdom",
+      "countryCode": "GBR",
+      "year": 2020,
+      "value": 0.9957
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "United States",
+      "countryCode": "USA",
+      "year": 2020,
+      "value": 0.9935
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Uruguay",
+      "countryCode": "URY",
+      "year": 2020,
+      "value": 0.9924
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Uzbekistan",
+      "countryCode": "UZB",
+      "year": 2020,
+      "value": 0.9786
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Vanuatu",
+      "countryCode": "VUT",
+      "year": 2020,
+      "value": 0.9736
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Vietnam",
+      "countryCode": "VNM",
+      "year": 2020,
+      "value": 0.9793
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "West Bank and Gaza",
+      "countryCode": "PSE",
+      "year": 2020,
+      "value": 0.9797
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Yemen, Rep.",
+      "countryCode": "YEM",
+      "year": 2020,
+      "value": 0.945
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Zambia",
+      "countryCode": "ZMB",
+      "year": 2020,
+      "value": 0.9422
+    },
+    {
+      "indicatorId": "HD.HCI.MORT",
+      "indicatorName": "Child survival rate (probability)",
+      "country": "Zimbabwe",
+      "countryCode": "ZWE",
+      "year": 2020,
+      "value": 0.9538
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Afghanistan",
+      "countryCode": "AFG",
+      "year": 2020,
+      "value": 354.7588
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Albania",
+      "countryCode": "ALB",
+      "year": 2020,
+      "value": 434.1276
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Algeria",
+      "countryCode": "DZA",
+      "year": 2020,
+      "value": 374.0891
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Angola",
+      "countryCode": "AGO",
+      "year": 2020,
+      "value": 325.9655
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Antigua and Barbuda",
+      "countryCode": "ATG",
+      "year": 2020,
+      "value": 406.9974
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Argentina",
+      "countryCode": "ARG",
+      "year": 2020,
+      "value": 408.1726
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Armenia",
+      "countryCode": "ARM",
+      "year": 2020,
+      "value": 442.9695
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Australia",
+      "countryCode": "AUS",
+      "year": 2020,
+      "value": 515.6854
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Austria",
+      "countryCode": "AUT",
+      "year": 2020,
+      "value": 507.6394
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Azerbaijan",
+      "countryCode": "AZE",
+      "year": 2020,
+      "value": 415.9462
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Bahrain",
+      "countryCode": "BHR",
+      "year": 2020,
+      "value": 451.706
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Bangladesh",
+      "countryCode": "BGD",
+      "year": 2020,
+      "value": 368.3153
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Belarus",
+      "countryCode": "BLR",
+      "year": 2020,
+      "value": 488.1431
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Belgium",
+      "countryCode": "BEL",
+      "year": 2020,
+      "value": 516.8079
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Benin",
+      "countryCode": "BEN",
+      "year": 2020,
+      "value": 383.9229
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Bhutan",
+      "countryCode": "BTN",
+      "year": 2020,
+      "value": 386.7394
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Bosnia and Herzegovina",
+      "countryCode": "BIH",
+      "year": 2020,
+      "value": 416.1341
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Botswana",
+      "countryCode": "BWA",
+      "year": 2020,
+      "value": 391.3183
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Brazil",
+      "countryCode": "BRA",
+      "year": 2020,
+      "value": 413.2448
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Brunei Darussalam",
+      "countryCode": "BRN",
+      "year": 2020,
+      "value": 437.5159
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Bulgaria",
+      "countryCode": "BGR",
+      "year": 2020,
+      "value": 441.0933
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Burkina Faso",
+      "countryCode": "BFA",
+      "year": 2020,
+      "value": 403.6543
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Burundi",
+      "countryCode": "BDI",
+      "year": 2020,
+      "value": 422.7478
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Cambodia",
+      "countryCode": "KHM",
+      "year": 2020,
+      "value": 451.8896
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Cameroon",
+      "countryCode": "CMR",
+      "year": 2020,
+      "value": 378.8688
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Canada",
+      "countryCode": "CAN",
+      "year": 2020,
+      "value": 533.998
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Central African Republic",
+      "countryCode": "CAF",
+      "year": 2020,
+      "value": 368.7302
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Chad",
+      "countryCode": "TCD",
+      "year": 2020,
+      "value": 333.1113
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Chile",
+      "countryCode": "CHL",
+      "year": 2020,
+      "value": 452.2182
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "China",
+      "countryCode": "CHN",
+      "year": 2020,
+      "value": 441
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Colombia",
+      "countryCode": "COL",
+      "year": 2020,
+      "value": 419.0275
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Comoros",
+      "countryCode": "COM",
+      "year": 2020,
+      "value": 392.2255
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Congo, Dem. Rep.",
+      "countryCode": "COD",
+      "year": 2020,
+      "value": 310.1971
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Congo, Rep.",
+      "countryCode": "COG",
+      "year": 2020,
+      "value": 370.6141
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Costa Rica",
+      "countryCode": "CRI",
+      "year": 2020,
+      "value": 428.5557
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CIV",
+      "year": 2020,
+      "value": 373.2305
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Croatia",
+      "countryCode": "HRV",
+      "year": 2020,
+      "value": 487.5812
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Cyprus",
+      "countryCode": "CYP",
+      "year": 2020,
+      "value": 502.1622
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Czech Republic",
+      "countryCode": "CZE",
+      "year": 2020,
+      "value": 512.2216
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Denmark",
+      "countryCode": "DNK",
+      "year": 2020,
+      "value": 517.8778
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Dominica",
+      "countryCode": "DMA",
+      "year": 2020,
+      "value": 403.7832
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Dominican Republic",
+      "countryCode": "DOM",
+      "year": 2020,
+      "value": 345.2165
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Ecuador",
+      "countryCode": "ECU",
+      "year": 2020,
+      "value": 420.1486
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Egypt, Arab Rep.",
+      "countryCode": "EGY",
+      "year": 2020,
+      "value": 355.9865
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "El Salvador",
+      "countryCode": "SLV",
+      "year": 2020,
+      "value": 435.9228
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Estonia",
+      "countryCode": "EST",
+      "year": 2020,
+      "value": 543.2061
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Eswatini",
+      "countryCode": "SWZ",
+      "year": 2020,
+      "value": 440.3045
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Ethiopia",
+      "countryCode": "ETH",
+      "year": 2020,
+      "value": 348.199
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Fiji",
+      "countryCode": "FJI",
+      "year": 2020,
+      "value": 383.336
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Finland",
+      "countryCode": "FIN",
+      "year": 2020,
+      "value": 533.7076
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "France",
+      "countryCode": "FRA",
+      "year": 2020,
+      "value": 510.2606
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Gabon",
+      "countryCode": "GAB",
+      "year": 2020,
+      "value": 456.1277
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Gambia, The",
+      "countryCode": "GMB",
+      "year": 2020,
+      "value": 352.8996
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Georgia",
+      "countryCode": "GEO",
+      "year": 2020,
+      "value": 399.7663
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Germany",
+      "countryCode": "DEU",
+      "year": 2020,
+      "value": 517.2814
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Ghana",
+      "countryCode": "GHA",
+      "year": 2020,
+      "value": 307.2758
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Greece",
+      "countryCode": "GRC",
+      "year": 2020,
+      "value": 468.6362
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Grenada",
+      "countryCode": "GRD",
+      "year": 2020,
+      "value": 394.7491
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Guatemala",
+      "countryCode": "GTM",
+      "year": 2020,
+      "value": 405.2576
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Guinea",
+      "countryCode": "GIN",
+      "year": 2020,
+      "value": 408.2491
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Guyana",
+      "countryCode": "GUY",
+      "year": 2020,
+      "value": 346.3659
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Haiti",
+      "countryCode": "HTI",
+      "year": 2020,
+      "value": 337.8153
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Honduras",
+      "countryCode": "HND",
+      "year": 2020,
+      "value": 399.7508
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Hong Kong SAR, China",
+      "countryCode": "HKG",
+      "year": 2020,
+      "value": 548.6314
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Hungary",
+      "countryCode": "HUN",
+      "year": 2020,
+      "value": 495.4812
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Iceland",
+      "countryCode": "ISL",
+      "year": 2020,
+      "value": 497.6828
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "India",
+      "countryCode": "IND",
+      "year": 2020,
+      "value": 399
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Indonesia",
+      "countryCode": "IDN",
+      "year": 2020,
+      "value": 394.9151
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Iran, Islamic Rep.",
+      "countryCode": "IRN",
+      "year": 2020,
+      "value": 432.1082
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Iraq",
+      "countryCode": "IRQ",
+      "year": 2020,
+      "value": 363.4325
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Ireland",
+      "countryCode": "IRL",
+      "year": 2020,
+      "value": 521.3286
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Israel",
+      "countryCode": "ISR",
+      "year": 2020,
+      "value": 480.7522
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Italy",
+      "countryCode": "ITA",
+      "year": 2020,
+      "value": 492.9878
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Jamaica",
+      "countryCode": "JAM",
+      "year": 2020,
+      "value": 387.133
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Japan",
+      "countryCode": "JPN",
+      "year": 2020,
+      "value": 537.7234
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Jordan",
+      "countryCode": "JOR",
+      "year": 2020,
+      "value": 429.9541
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kazakhstan",
+      "countryCode": "KAZ",
+      "year": 2020,
+      "value": 416.1546
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kenya",
+      "countryCode": "KEN",
+      "year": 2020,
+      "value": 454.9584
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kiribati",
+      "countryCode": "KIR",
+      "year": 2020,
+      "value": 411.4845
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Korea, Rep.",
+      "countryCode": "KOR",
+      "year": 2020,
+      "value": 537.2097
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kosovo",
+      "countryCode": "",
+      "year": 2020,
+      "value": 373.5488
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kuwait",
+      "countryCode": "KWT",
+      "year": 2020,
+      "value": 383.4022
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Kyrgyz Republic",
+      "countryCode": "KGZ",
+      "year": 2020,
+      "value": 420.0865
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Lao PDR",
+      "countryCode": "LAO",
+      "year": 2020,
+      "value": 368.1421
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Latvia",
+      "countryCode": "LVA",
+      "year": 2020,
+      "value": 503.8698
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Lebanon",
+      "countryCode": "LBN",
+      "year": 2020,
+      "value": 389.889
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Lesotho",
+      "countryCode": "LSO",
+      "year": 2020,
+      "value": 392.912
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Liberia",
+      "countryCode": "LBR",
+      "year": 2020,
+      "value": 331.7459
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Lithuania",
+      "countryCode": "LTU",
+      "year": 2020,
+      "value": 495.8863
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Luxembourg",
+      "countryCode": "LUX",
+      "year": 2020,
+      "value": 492.8478
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Macao SAR, China",
+      "countryCode": "MAC",
+      "year": 2020,
+      "value": 560.6135
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Madagascar",
+      "countryCode": "MDG",
+      "year": 2020,
+      "value": 350.7733
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Malawi",
+      "countryCode": "MWI",
+      "year": 2020,
+      "value": 359.4841
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Malaysia",
+      "countryCode": "MYS",
+      "year": 2020,
+      "value": 445.6753
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mali",
+      "countryCode": "MLI",
+      "year": 2020,
+      "value": 307.365
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Malta",
+      "countryCode": "MLT",
+      "year": 2020,
+      "value": 474.435
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Marshall Islands",
+      "countryCode": "MHL",
+      "year": 2020,
+      "value": 375.0297
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mauritania",
+      "countryCode": "MRT",
+      "year": 2020,
+      "value": 342.0936
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mauritius",
+      "countryCode": "MUS",
+      "year": 2020,
+      "value": 472.7672
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mexico",
+      "countryCode": "MEX",
+      "year": 2020,
+      "value": 430.0651
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Micronesia, Fed. Sts.",
+      "countryCode": "FSM",
+      "year": 2020,
+      "value": 379.9026
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Moldova",
+      "countryCode": "MDA",
+      "year": 2020,
+      "value": 438.6209
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mongolia",
+      "countryCode": "MNG",
+      "year": 2020,
+      "value": 434.6187
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Montenegro",
+      "countryCode": "MNE",
+      "year": 2020,
+      "value": 436.1297
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Morocco",
+      "countryCode": "MAR",
+      "year": 2020,
+      "value": 380.4052
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Mozambique",
+      "countryCode": "MOZ",
+      "year": 2020,
+      "value": 368.2436
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Myanmar",
+      "countryCode": "MMR",
+      "year": 2020,
+      "value": 424.6313
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Namibia",
+      "countryCode": "NAM",
+      "year": 2020,
+      "value": 406.6619
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Nauru",
+      "countryCode": "",
+      "year": 2020,
+      "value": 346.6297
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Nepal",
+      "countryCode": "NPL",
+      "year": 2020,
+      "value": 368.5576
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Netherlands",
+      "countryCode": "NLD",
+      "year": 2020,
+      "value": 519.6346
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "New Zealand",
+      "countryCode": "NZL",
+      "year": 2020,
+      "value": 519.7484
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Nicaragua",
+      "countryCode": "NIC",
+      "year": 2020,
+      "value": 391.9904
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Niger",
+      "countryCode": "NER",
+      "year": 2020,
+      "value": 304.9222
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Nigeria",
+      "countryCode": "NGA",
+      "year": 2020,
+      "value": 309.025
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "North Macedonia",
+      "countryCode": "MKD",
+      "year": 2020,
+      "value": 413.6173
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Norway",
+      "countryCode": "NOR",
+      "year": 2020,
+      "value": 513.5878
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Oman",
+      "countryCode": "OMN",
+      "year": 2020,
+      "value": 423.5134
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Pakistan",
+      "countryCode": "PAK",
+      "year": 2020,
+      "value": 338.6566
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Palau",
+      "countryCode": "PLW",
+      "year": 2020,
+      "value": 463.2115
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Panama",
+      "countryCode": "PAN",
+      "year": 2020,
+      "value": 376.8647
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Papua New Guinea",
+      "countryCode": "PNG",
+      "year": 2020,
+      "value": 363.3206
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Paraguay",
+      "countryCode": "PRY",
+      "year": 2020,
+      "value": 385.5443
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Peru",
+      "countryCode": "PER",
+      "year": 2020,
+      "value": 415.0254
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Philippines",
+      "countryCode": "PHL",
+      "year": 2020,
+      "value": 361.646
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Poland",
+      "countryCode": "POL",
+      "year": 2020,
+      "value": 530.0858
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Portugal",
+      "countryCode": "PRT",
+      "year": 2020,
+      "value": 508.5149
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Qatar",
+      "countryCode": "QAT",
+      "year": 2020,
+      "value": 427.4778
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Romania",
+      "countryCode": "ROU",
+      "year": 2020,
+      "value": 442.1617
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Russian Federation",
+      "countryCode": "RUS",
+      "year": 2020,
+      "value": 497.5462
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Rwanda",
+      "countryCode": "RWA",
+      "year": 2020,
+      "value": 358.084
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Samoa",
+      "countryCode": "WSM",
+      "year": 2020,
+      "value": 369.9079
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Saudi Arabia",
+      "countryCode": "SAU",
+      "year": 2020,
+      "value": 398.9689
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Senegal",
+      "countryCode": "SEN",
+      "year": 2020,
+      "value": 412.4539
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Serbia",
+      "countryCode": "SRB",
+      "year": 2020,
+      "value": 457.4535
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Seychelles",
+      "countryCode": "SYC",
+      "year": 2020,
+      "value": 463.3793
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Sierra Leone",
+      "countryCode": "SLE",
+      "year": 2020,
+      "value": 315.8759
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Singapore",
+      "countryCode": "SGP",
+      "year": 2020,
+      "value": 575.2722
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Slovak Republic",
+      "countryCode": "SVK",
+      "year": 2020,
+      "value": 485.35
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Slovenia",
+      "countryCode": "SVN",
+      "year": 2020,
+      "value": 520.809
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Solomon Islands",
+      "countryCode": "SLB",
+      "year": 2020,
+      "value": 350.5186
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "South Africa",
+      "countryCode": "ZAF",
+      "year": 2020,
+      "value": 342.764
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "South Sudan",
+      "countryCode": "SSD",
+      "year": 2020,
+      "value": 335.5874
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Spain",
+      "countryCode": "ESP",
+      "year": 2020,
+      "value": 506.6212
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Sri Lanka",
+      "countryCode": "LKA",
+      "year": 2020,
+      "value": 400
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "St. Kitts and Nevis",
+      "countryCode": "KNA",
+      "year": 2020,
+      "value": 409.0745
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "St. Lucia",
+      "countryCode": "LCA",
+      "year": 2020,
+      "value": 417.7607
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "St. Vincent and the Grenadines",
+      "countryCode": "VCT",
+      "year": 2020,
+      "value": 391.3927
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Sudan",
+      "countryCode": "SDN",
+      "year": 2020,
+      "value": 379.6337
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Sweden",
+      "countryCode": "SWE",
+      "year": 2020,
+      "value": 519.3618
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Switzerland",
+      "countryCode": "CHE",
+      "year": 2020,
+      "value": 515.139
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Tajikistan",
+      "countryCode": "TJK",
+      "year": 2020,
+      "value": 390.5656
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Tanzania",
+      "countryCode": "TZA",
+      "year": 2020,
+      "value": 388.4802
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Thailand",
+      "countryCode": "THA",
+      "year": 2020,
+      "value": 426.6
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Timor-Leste",
+      "countryCode": "TLS",
+      "year": 2020,
+      "value": 371.4413
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Togo",
+      "countryCode": "TGO",
+      "year": 2020,
+      "value": 383.7178
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Tonga",
+      "countryCode": "TON",
+      "year": 2020,
+      "value": 385.9568
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Trinidad and Tobago",
+      "countryCode": "TTO",
+      "year": 2020,
+      "value": 458.2889
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Tunisia",
+      "countryCode": "TUN",
+      "year": 2020,
+      "value": 384.0787
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Turkey",
+      "countryCode": "TUR",
+      "year": 2020,
+      "value": 477.9626
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Tuvalu",
+      "countryCode": "TUV",
+      "year": 2020,
+      "value": 346.498
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Uganda",
+      "countryCode": "UGA",
+      "year": 2020,
+      "value": 397.1597
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Ukraine",
+      "countryCode": "UKR",
+      "year": 2020,
+      "value": 478.1733
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "United Arab Emirates",
+      "countryCode": "ARE",
+      "year": 2020,
+      "value": 448.0407
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "United Kingdom",
+      "countryCode": "GBR",
+      "year": 2020,
+      "value": 520.3564
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "United States",
+      "countryCode": "USA",
+      "year": 2020,
+      "value": 511.7987
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Uruguay",
+      "countryCode": "URY",
+      "year": 2020,
+      "value": 437.6966
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Uzbekistan",
+      "countryCode": "UZB",
+      "year": 2020,
+      "value": 474.0751
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Vanuatu",
+      "countryCode": "VUT",
+      "year": 2020,
+      "value": 347.6858
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Vietnam",
+      "countryCode": "VNM",
+      "year": 2020,
+      "value": 519.1003
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "West Bank and Gaza",
+      "countryCode": "PSE",
+      "year": 2020,
+      "value": 412.3177
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Yemen, Rep.",
+      "countryCode": "YEM",
+      "year": 2020,
+      "value": 321.327
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Zambia",
+      "countryCode": "ZMB",
+      "year": 2020,
+      "value": 358.1404
+    },
+    {
+      "indicatorId": "HD.HCI.HLOS",
+      "indicatorName": "Harmonized test scores",
+      "country": "Zimbabwe",
+      "countryCode": "ZWE",
+      "year": 2020,
+      "value": 396.1388
+    }
+  ],
+  "cronExpression": "0 4 * * 1",
+  "lastFetched": "2026-04-26T11:33:21.699Z",
+  "nextScheduled": "2026-05-03T11:33:21.699Z",
+  "recordCount": 870,
+  "fields": [
+    "indicatorId",
+    "indicatorName",
+    "country",
+    "countryCode",
+    "year",
+    "value"
+  ]
+}

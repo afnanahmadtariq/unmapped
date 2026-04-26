@@ -498,8 +498,8 @@ export default function ProfileWizard({
       });
       toast.push({
         tone: "success",
-        title: "Saved to your account",
-        body: "We'll use this to greet you with refreshed insights next time.",
+        title: t.profile.savedToAccountTitle,
+        body: t.profile.savedToAccountBody,
       });
     } catch {
       // Silent — saving is purely additive; the wizard already succeeded.

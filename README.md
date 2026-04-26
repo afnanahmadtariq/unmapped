@@ -18,13 +18,18 @@ Generic job boards don't help Amara, 22, in Accra. She needs infrastructure that
 
 UNMAPPED is the layer underneath the next generation of skills products. Country-specific parameters are **inputs**, not hardcoded assumptions.
 
-## Meet Amara
+## Actors and journeys
 
-Amara is 22, lives in Accra, repairs phones at a kiosk, and has been teaching herself JavaScript on a shared phone for 14 months. She has no LinkedIn. Her CV doesn't exist. The formal labor market does not see her.
+| Actor | Primary routes | Goal |
+|--------|----------------|------|
+| **Youth (Amara)** | `/`, `/profile`, `/opportunities` | Map informal and formal experience to ESCO + ISCO, see wages, growth, AI risk, pathways, and education projections; export JSON/PDF. |
+| **Community navigator / training provider** | `/profile?role=navigator&country=…&locale=…` | Same wizard as the youth flow, with guidance copy; complete the profile on behalf of a participant and hand off exports. |
+| **Policymaker or program officer** | `/dashboard` | Sector growth, wage distribution, youth unemployment, automation calibration, Wittgenstein chart, composite A–H-style panels, CSV export. |
+| **Integrator (government, NGO, employer)** | `NEXT_PUBLIC_API_URL` (REST), `/api-docs` (web) | Plug in country data, harvesters, and optional RAG corpora without forking core matching logic. |
 
-UNMAPPED maps her real skills to **ESCO** + **ISCO-08**, surfaces opportunities backed by **ILOSTAT** wages and **WDI** sector growth, flags AI displacement risk calibrated for Ghana, and gives her a portable JSON / PDF profile she owns.
+**Persona anchor — Amara:** 22, near Accra, secondary certificate, three languages, phone repair since 17, self-taught coding from YouTube. She is the reference user for Module 01 and the youth half of Module 03.
 
-When the demo switches to Bangladesh, the same infrastructure reconfigures: Bangla script loads, BDT replaces GHS, SSC/HSC replace WASSCE, sector mix shifts, and the Frey-Osborne risk multiplier adjusts. **No code changes.**
+When the demo switches to Bangladesh, the same infrastructure reconfigures: Bangla script loads, BDT replaces GHS, SSC/HSC replace WASSCE, sector mix shifts, and the Frey-Osborne risk multiplier adjusts. **No application code changes** — only configuration and locale.
 
 ## What's in the prototype
 
@@ -76,25 +81,85 @@ All datasets are real and publicly sourced. Bundled JSON under `apps/api/src/sig
 
 **Not integrated:** World Bank **STEP** skill measurement microdata is not wired into this prototype (see Limitations).
 
-## Architecture (high level)
+## Localization (i18n)
+
+- **15 UI dictionaries** in `apps/web/locales/*.json` (`en`, `fr`, `bn`, `es`, `ar`, `hi`, `pt`, `zh`, `sw`, `ur`, `de`, `id`, `ru`, `tr`, `vi`). Active language: `?locale=` (and optional browser autodetect in the header).
+- **Reviewed translations** for the newest strings (navigator banner, resilience block, youth composite row, dashboard extension, Wittgenstein titles, account-save toast) ship for **French (`fr`)**, **Bangla (`bn`)**, and **Swahili (`sw`)** via `apps/web/scripts/locale-patches.json` + `apply-locale-patches.mjs`.
+- **Other locales** keep English for those keys until you extend `locale-patches.json` or edit JSON by hand.
+- After editing `en.json`, run `node apps/web/scripts/sync-locale-keys-from-en.mjs` so every file keeps the same keys for TypeScript.
+
+## Architecture
+
+### Logical view
+
+```mermaid
+flowchart LR
+  subgraph Web["apps/web — Next.js"]
+    L[Landing]
+    P[Profile wizard]
+    O[Opportunities]
+    D[Dashboard]
+    A[Admin / API docs]
+  end
+  subgraph API["apps/api — NestJS"]
+    M[Match + extract]
+    S[Signals / composite]
+    H[Harvesters]
+    R[RAG explain]
+  end
+  subgraph Data["Data stores"]
+    PG[(Postgres)]
+    MV[(Milvus optional)]
+    FS[JSON snapshots]
+  end
+  Web -->|HTTPS JSON| API
+  API --> PG
+  API --> MV
+  API --> FS
+  H --> PG
+```
+
+### Request path (skills to matches)
+
+```mermaid
+sequenceDiagram
+  participant U as User browser
+  participant W as Next.js web
+  participant A as Nest API
+  participant L as LLM provider
+  U->>W: Submit profile /profile
+  W->>A: POST extract-skills
+  A->>L: Tool-use ESCO mapping
+  L-->>A: Structured profile
+  A-->>W: SkillsProfile JSON
+  U->>W: Open /opportunities
+  W->>A: POST match-occupations
+  A-->>W: ISCO matches + signals
+  W->>A: GET dashboard/snapshot (SSR)
+  A-->>W: Wittgenstein + KPIs
+```
+
+### Repository layout
 
 ```
 unmapped/
-├── apps/web/                 Next.js UI
-│   ├── app/                  Routes: landing, profile, opportunities, dashboard, admin/config, api-docs
-│   ├── components/           ProfileWizard, OpportunityWorkbench, PolicyDashboard, ...
-│   ├── lib/                  apiClient, config, i18n, matcher helpers, PDF export
-│   └── locales/              15 × JSON dictionaries
-├── apps/api/                 NestJS API
-│   ├── src/dashboard/        Policymaker snapshot + Wittgenstein bundle
-│   ├── src/profile/          Extract-skills, match occupations, pathways
-│   ├── src/signals/          Composite A–H signals, ILOSTAT/WDI entities, per-country JSON
-│   ├── src/harvest/          Optional cron harvesters (WB HCI, UNESCO UIS, ITU, O*NET, ...)
-│   └── src/rag/              ESCO + O*NET retrieval and explain
+├── apps/web/
+│   ├── app/                  landing, profile, opportunities, dashboard, admin/config, api-docs
+│   ├── components/
+│   ├── lib/
+│   ├── locales/              15 JSON dictionaries
+│   └── scripts/              sync-locale-keys-from-en.mjs, apply-locale-patches.mjs, locale-patches.json
+├── apps/api/                 NestJS (see apps/api/README.md for CLI defaults)
+│   └── src/                  dashboard, profile, signals, harvest, rag, …
 └── scripts/                  e.g. generate-countries.mjs
 ```
 
-The browser **never** called deleted Next `app/api/*` routes; the web app uses `NEXT_PUBLIC_API_URL` (default `http://localhost:4000`) for all server logic.
+### UI conventions
+
+- **No decorative radial gradients** on the shell: body backdrop is a flat `color-mix` tint. Skeletons use **opacity pulse**, not linear-gradient shimmer.
+- **Resilience** on `/opportunities` uses a **score + bar**, not a conic-gradient ring.
+
+The web app talks to the API only through `NEXT_PUBLIC_API_URL` (default `http://localhost:4000`); legacy Next `app/api/*` routes are not used.
 
 ## Getting started
 
@@ -108,6 +173,15 @@ pnpm run dev            # turbo: web + api in parallel (or `pnpm run dev:web` on
 ```
 
 Open the web app (default [http://localhost:3000](http://localhost:3000)) with the API running if you need matching, snapshots, and composite rows.
+
+## Documentation index
+
+| Document | Contents |
+|----------|-----------|
+| [CLAUDE.md](CLAUDE.md) | Hackathon checklist, milestones, audit log, risk register, demo script |
+| This README | Actors, localization workflow, architecture diagrams, data sources, limitations |
+| [apps/web/app/api-docs/page.tsx](apps/web/app/api-docs/page.tsx) | Public REST overview (rendered at `/api-docs` when the web app runs) |
+| [apps/api/README.md](apps/api/README.md) | NestJS project defaults (`start:dev`, tests, package layout) |
 
 ### Required env vars (web)
 
@@ -140,6 +214,7 @@ This is a hackathon-scale prototype. We were deliberate about scope:
 - **No auth / limited persistence** in the default demo path; export JSON or PDF for portability.
 - **PDF** is client-side (jsPDF); typography is functional.
 - **No automated tests** in the hackathon window.
+- **Locale coverage:** `fr`, `bn`, and `sw` include hand-checked strings for the newest UI; other locale files may still show English for the same keys until patches are extended.
 
 We chose to ship something honest and end-to-end rather than something polished and partial.
 

@@ -207,12 +207,12 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
           {snapshot.gdpPerCapita !== null && (
             <Kpi
               icon={<TrendingUp className="h-4 w-4" />}
-              label="GDP per capita (USD)"
+              label={t.dashboard.kpiGdpLabel}
               value={`$${Math.round(snapshot.gdpPerCapita).toLocaleString()}`}
               sub={
                 snapshot.gdpPerCapitaSource === "live-worldbank"
-                  ? "World Bank WDI · live"
-                  : "Snapshot"
+                  ? t.dashboard.kpiGdpSubLive
+                  : t.dashboard.kpiGdpSubSnap
               }
               tone="accent"
               live={snapshot.gdpPerCapitaSource === "live-worldbank"}
@@ -221,9 +221,9 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
           {snapshot.internetUsersPct !== null && (
             <Kpi
               icon={<Users className="h-4 w-4" />}
-              label="Internet users"
+              label={t.dashboard.kpiInternetLabel}
               value={`${snapshot.internetUsersPct.toFixed(1)}%`}
-              sub="World Bank WDI · live"
+              sub={t.dashboard.kpiInternetSub}
               tone="positive"
               live
             />
@@ -247,7 +247,7 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
             <Tooltip
               cursor={{ fill: tokens.accent + "10" }}
               contentStyle={tooltipStyle}
-              formatter={(value) => [`${Number(value).toFixed(1)}%`, "Growth"]}
+              formatter={(value) => [`${Number(value).toFixed(1)}%`, t.dashboard.chartTooltipGrowth]}
             />
             <Bar dataKey="growth" radius={[4, 4, 0, 0]}>
               {sectorData.map((d, i) => (
@@ -271,13 +271,13 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
       {snapshot.wittgensteinProjections && (
         <WittgensteinCard
           projections={snapshot.wittgensteinProjections}
-          countryName={snapshot.countryName}
-          title="Education projections 2025-2035"
-          subtitle="Wittgenstein Centre SSP2 - share of population aged 15-29 by ISCED bucket"
+          title={t.dashboard.wittgensteinTitle}
+          subtitle={t.dashboard.wittgensteinSubtitle}
+          sourceFoot={fmt(t.dashboard.wittgensteinFoot, { country: snapshot.countryName })}
         />
       )}
 
-      <CompositeSignalsSection composite={composite} />
+      <CompositeSignalsSection composite={composite} t={t} />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card title={t.dashboard.topWagesTitle} subtitle={t.dashboard.topWagesSub}>
@@ -289,7 +289,10 @@ export default function PolicyDashboard({ snapshot, t }: Props) {
               <Tooltip
                 cursor={{ fill: tokens.accent + "10" }}
                 contentStyle={tooltipStyle}
-                formatter={(value) => [`${snapshot.currencySymbol} ${Number(value).toLocaleString()}`, "Median wage"]}
+                formatter={(value) => [
+                  `${snapshot.currencySymbol} ${Number(value).toLocaleString()}`,
+                  t.dashboard.chartTooltipMedianWage,
+                ]}
               />
               <Bar dataKey="wage" fill={tokens.positive} radius={[0, 4, 4, 0]} />
             </BarChart>
@@ -416,28 +419,35 @@ function fmtFraction(v: number | null, digits = 1): string {
 
 function CompositeSignalsSection({
   composite,
+  t,
 }: {
   composite: CompositeSignals | null;
+  t: Dictionary;
 }) {
   if (!composite) return null;
+  const d = t.dashboard;
   const groups: Array<{
+    key: string;
     title: string;
     subtitle: string;
-    rows: Array<{ label: string; value: string; tone?: "positive" | "warning" | "danger" }>;
+    rows: Array<{ key: string; label: string; value: string; tone?: "positive" | "warning" | "danger" }>;
   }> = [
     {
-      title: "B. Demand pressure",
-      subtitle: "Live vacancy proxies and sector employment trends.",
+      key: "demand",
+      title: d.compGroupDemandTitle,
+      subtitle: d.compGroupDemandSub,
       rows: [
         {
-          label: "Live vacancies (Tavily)",
+          key: "vac",
+          label: d.compVacancies,
           value:
             composite.demand.vacancyRate !== null
               ? `${composite.demand.vacancyRate}`
               : "—",
         },
         {
-          label: "Sector employment growth",
+          key: "growth",
+          label: d.compSectorEmpGrowth,
           value: fmtPct(composite.demand.sectorEmploymentGrowth, 1),
           tone:
             composite.demand.sectorEmploymentGrowth !== null &&
@@ -446,7 +456,8 @@ function CompositeSignalsSection({
               : "danger",
         },
         {
-          label: "Demand–supply gap",
+          key: "gap",
+          label: d.compDemandSupplyGap,
           value:
             composite.demand.demandSupplyGap !== null
               ? composite.demand.demandSupplyGap.toFixed(1)
@@ -455,11 +466,13 @@ function CompositeSignalsSection({
       ],
     },
     {
-      title: "D. Skills demand & durability",
-      subtitle: "From the calibrated Frey-Osborne + ILO-FoW indices.",
+      key: "skills",
+      title: d.compGroupSkillsTitle,
+      subtitle: d.compGroupSkillsSub,
       rows: [
         {
-          label: "Skill durability",
+          key: "dur",
+          label: d.compSkillDurability,
           value: fmtFraction(composite.automation.skillDurability),
           tone:
             composite.automation.skillDurability !== null &&
@@ -468,11 +481,13 @@ function CompositeSignalsSection({
               : "warning",
         },
         {
-          label: "Cross-skill transferability",
+          key: "xfer",
+          label: d.compCrossTransfer,
           value: fmtFraction(composite.skillsDemand.crossSkillTransferability),
         },
         {
-          label: "Routine task share",
+          key: "routine",
+          label: d.compRoutineShare,
           value: fmtFraction(composite.automation.routineRatio),
           tone:
             composite.automation.routineRatio !== null &&
@@ -483,19 +498,23 @@ function CompositeSignalsSection({
       ],
     },
     {
-      title: "E. Regional / digital",
-      subtitle: "Connectivity adoption signals from ITU + WB.",
+      key: "regional",
+      title: d.compGroupRegionalTitle,
+      subtitle: d.compGroupRegionalSub,
       rows: [
         {
-          label: "Internet usage rate",
+          key: "inet",
+          label: d.compInternetRate,
           value: fmtPct(composite.regional.internetRate),
         },
         {
-          label: "Fixed broadband adoption",
+          key: "bb",
+          label: d.compBroadband,
           value: fmtPct(composite.regional.broadbandRate),
         },
         {
-          label: "Urban–rural digital gap",
+          key: "gapu",
+          label: d.compUrbanRuralGap,
           value: fmtPct(composite.regional.urbanRuralGap),
           tone:
             composite.regional.urbanRuralGap !== null &&
@@ -506,11 +525,13 @@ function CompositeSignalsSection({
       ],
     },
     {
-      title: "G. Inequality",
-      subtitle: "Gender employment gaps + informality share.",
+      key: "ineq",
+      title: d.compGroupInequalityTitle,
+      subtitle: d.compGroupInequalitySub,
       rows: [
         {
-          label: "Gender employment gap (F − M)",
+          key: "gender",
+          label: d.compGenderGap,
           value: fmtPct(composite.inequality.genderEmploymentGap),
           tone:
             composite.inequality.genderEmploymentGap !== null &&
@@ -519,7 +540,8 @@ function CompositeSignalsSection({
               : "warning",
         },
         {
-          label: "Informal employment share",
+          key: "informal",
+          label: d.compInformalShare,
           value: fmtFraction(composite.inequality.informalShare),
           tone:
             composite.inequality.informalShare !== null &&
@@ -530,19 +552,24 @@ function CompositeSignalsSection({
       ],
     },
     {
-      title: "H. Stability & volatility",
-      subtitle: "Sector-level volatility + seasonality flags.",
+      key: "stab",
+      title: d.compGroupStabilityTitle,
+      subtitle: d.compGroupStabilitySub,
       rows: [
         {
-          label: "Sector volatility (stddev)",
+          key: "vol",
+          label: d.compSectorVol,
           value:
             composite.stability.sectorVolatilityIndex !== null
               ? composite.stability.sectorVolatilityIndex.toFixed(2)
               : "—",
         },
         {
-          label: "Seasonality flag",
-          value: composite.stability.seasonalityFlag ? "Yes" : "No",
+          key: "season",
+          label: d.compSeasonality,
+          value: composite.stability.seasonalityFlag
+            ? d.compSeasonalityYes
+            : d.compSeasonalityNo,
         },
       ],
     },
@@ -551,11 +578,11 @@ function CompositeSignalsSection({
   return (
     <section className="grid gap-4 md:grid-cols-2">
       {groups.map((g) => (
-        <Card key={g.title} title={g.title} subtitle={g.subtitle}>
+        <Card key={g.key} title={g.title} subtitle={g.subtitle}>
           <ul className="space-y-2 text-sm">
             {g.rows.map((row) => (
               <li
-                key={row.label}
+                key={`${g.key}-${row.key}`}
                 className="flex items-center justify-between gap-3 rounded-lg border border-border-default bg-bg-base px-3 py-2"
               >
                 <span className="text-fg-secondary">{row.label}</span>
