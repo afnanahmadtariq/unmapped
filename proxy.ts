@@ -1,13 +1,14 @@
-// UNMAPPED - middleware that auto-detects the visitor's country from IP
-// (using Vercel's free `x-vercel-ip-country` header) and seeds the URL's
-// ?country= param if unset. The user can still override via the dropdown.
+// UNMAPPED - Next.js 16 proxy (formerly middleware). Auto-detects the
+// visitor's country from IP via Vercel's free `x-vercel-ip-country` header
+// and seeds the URL's ?country= param if unset. The user can still override
+// via the dropdown.
 
 import { NextRequest, NextResponse } from "next/server";
 import { isSupportedCountry } from "@/lib/config";
 
 const HANDLED_PATHS = ["/", "/profile", "/opportunities", "/dashboard", "/admin/config", "/api-docs"];
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl;
 
   if (!HANDLED_PATHS.includes(pathname)) return NextResponse.next();

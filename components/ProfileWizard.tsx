@@ -56,10 +56,62 @@ const AGE_KEYS: AgeRange[] = ["u18", "18_24", "25_29", "30_34", "35plus"];
 const GENDER_KEYS: Gender[] = ["prefer", "woman", "man", "nonbinary", "self"];
 const WORKMODE_KEYS: WorkMode[] = ["informal", "formal", "gig", "study", "looking"];
 
-const LANGUAGE_SUGGESTIONS_BY_COUNTRY: Record<CountryCode, string[]> = {
+// Language hints per country. Any country not listed falls back to a sensible
+// generic plus the active locale's native language.
+const LANGUAGE_SUGGESTIONS_BY_COUNTRY: Record<string, string[]> = {
   GH: ["English", "Twi", "Ga", "Ewe", "Hausa", "Dagbani"],
   BD: ["Bangla", "English", "Chittagonian", "Sylheti", "Hindi", "Urdu"],
+  KE: ["Swahili", "English", "Kikuyu", "Luo", "Kalenjin"],
+  NG: ["English", "Hausa", "Yoruba", "Igbo", "Pidgin"],
+  ZA: ["English", "Zulu", "Xhosa", "Afrikaans", "Sesotho"],
+  ET: ["Amharic", "English", "Oromo", "Tigrinya", "Somali"],
+  EG: ["Arabic", "English", "French"],
+  MA: ["Arabic", "Berber", "French", "English"],
+  TN: ["Arabic", "French", "English"],
+  DZ: ["Arabic", "Berber", "French"],
+  JO: ["Arabic", "English"],
+  PK: ["Urdu", "Punjabi", "Sindhi", "Pashto", "English"],
+  IN: ["Hindi", "English", "Bengali", "Tamil", "Telugu", "Marathi", "Gujarati", "Punjabi"],
+  LK: ["Sinhala", "Tamil", "English"],
+  NP: ["Nepali", "Maithili", "English", "Hindi"],
+  ID: ["Indonesian", "Javanese", "Sundanese", "English"],
+  PH: ["Filipino", "English", "Cebuano"],
+  VN: ["Vietnamese", "English"],
+  TH: ["Thai", "English"],
+  MY: ["Malay", "English", "Mandarin", "Tamil"],
+  CN: ["Mandarin", "English", "Cantonese"],
+  BR: ["Portuguese", "English", "Spanish"],
+  MX: ["Spanish", "English"],
+  AR: ["Spanish", "English"],
+  CO: ["Spanish", "English"],
+  PE: ["Spanish", "Quechua", "English"],
+  CL: ["Spanish", "English"],
+  TR: ["Turkish", "Kurdish", "English"],
+  RU: ["Russian", "English"],
+  UA: ["Ukrainian", "Russian", "English"],
+  FR: ["French", "English"],
+  DE: ["German", "English", "Turkish"],
+  ES: ["Spanish", "Catalan", "English"],
+  PT: ["Portuguese", "English"],
+  GB: ["English"],
+  US: ["English", "Spanish"],
+  CA: ["English", "French"],
+  AU: ["English"],
+  RW: ["Kinyarwanda", "English", "French", "Swahili"],
+  UG: ["English", "Swahili", "Luganda"],
+  TZ: ["Swahili", "English"],
+  SN: ["French", "Wolof", "English"],
+  CI: ["French", "English"],
+  CM: ["French", "English"],
+  MZ: ["Portuguese", "English"],
+  AO: ["Portuguese", "English"],
+  MM: ["Burmese", "English"],
+  KH: ["Khmer", "English"],
+  AF: ["Pashto", "Dari", "Urdu", "English"],
+  IR: ["Persian", "Azerbaijani", "Kurdish", "English"],
 };
+
+const DEFAULT_LANG_SUGGESTIONS = ["English"];
 
 const SKILL_SUGGESTIONS = [
   "Phone repair",
@@ -79,9 +131,37 @@ const SKILL_SUGGESTIONS = [
   "Sales",
 ];
 
-const SAMPLE_STORIES_BY_COUNTRY: Record<CountryCode, string> = {
+const SAMPLE_STORIES_BY_COUNTRY: Record<string, string> = {
   GH: "I run a phone repair business in Accra and have done since I was 17. I taught myself JavaScript from YouTube videos and built a small website for my cousin's clothing shop. I also help her keep the books and answer customers in English, Twi and Ga.",
   BD: "I work in a small electronics repair shop in Dhaka. I learned to fix laptops and routers on the job over four years. Recently I started using Python to automate inventory tracking for my employer. I sometimes help my sister sell hand-stitched garments online in Bangla and English.",
+  KE: "I sell second-hand phones and offer basic repairs at a stall in Eastleigh, Nairobi. I learned screen replacements from a cousin and now also flash software for customers. Last year I started selling on Jumia and managing a small WhatsApp catalogue for repeat customers.",
+  PK: "I have been doing motorbike repairs at my uncle's workshop in Lahore for five years. I am self-taught with carburettors and electrical wiring. I also help my sister handle accounts for her tailoring business and use a phone app to track orders.",
+  IN: "I do delivery work for an aggregator in Bengaluru and run a small mobile-recharge shop in the evenings. I am comfortable with UPI payments, basic Excel, and I keep a customer list in a notebook that I am moving to a Google Sheet.",
+  NG: "I plait hair in my neighbourhood in Lagos and have built a small Instagram following with reels of my work. I take bookings on WhatsApp and recently started training two younger girls who help me on weekends.",
+};
+
+const GENERIC_SAMPLE = "I work informally in my neighbourhood. I have learned several practical skills on the job and want to know how they map to formal opportunities and which adjacent skills would help me grow.";
+
+function sampleStoryFor(code: string): string {
+  return SAMPLE_STORIES_BY_COUNTRY[code] ?? GENERIC_SAMPLE;
+}
+
+function languageSuggestionsFor(code: string): string[] {
+  return LANGUAGE_SUGGESTIONS_BY_COUNTRY[code] ?? DEFAULT_LANG_SUGGESTIONS;
+}
+
+const SAMPLE_CITY_BY_COUNTRY: Record<string, string> = {
+  GH: "Accra", BD: "Dhaka", KE: "Nairobi", NG: "Lagos", ZA: "Johannesburg",
+  ET: "Addis Ababa", EG: "Cairo", MA: "Casablanca", TN: "Tunis", DZ: "Algiers",
+  JO: "Amman", PK: "Lahore", IN: "Bengaluru", LK: "Colombo", NP: "Kathmandu",
+  ID: "Jakarta", PH: "Manila", VN: "Hanoi", TH: "Bangkok", MY: "Kuala Lumpur",
+  CN: "Shanghai", BR: "São Paulo", MX: "Mexico City", AR: "Buenos Aires",
+  CO: "Bogotá", PE: "Lima", CL: "Santiago", TR: "Istanbul", RU: "Moscow",
+  UA: "Kyiv", FR: "Paris", DE: "Berlin", ES: "Madrid", PT: "Lisbon",
+  GB: "London", US: "Chicago", CA: "Toronto", AU: "Sydney", RW: "Kigali",
+  UG: "Kampala", TZ: "Dar es Salaam", SN: "Dakar", CI: "Abidjan",
+  CM: "Yaoundé", MZ: "Maputo", AO: "Luanda", MM: "Yangon", KH: "Phnom Penh",
+  AF: "Kabul", IR: "Tehran",
 };
 
 type Step = 0 | 1 | 2;
@@ -121,7 +201,7 @@ export default function ProfileWizard({
   } | null>(null);
 
   const langSuggestions = useMemo(
-    () => LANGUAGE_SUGGESTIONS_BY_COUNTRY[countryCode] ?? [],
+    () => languageSuggestionsFor(countryCode),
     [countryCode]
   );
 
@@ -140,16 +220,17 @@ export default function ProfileWizard({
   };
 
   const fillSample = () => {
-    setStory(SAMPLE_STORIES_BY_COUNTRY[countryCode]);
+    setStory(sampleStoryFor(countryCode));
     if (languages.length === 0) {
-      setLanguages(countryCode === "GH" ? ["English", "Twi", "Ga"] : ["Bangla", "English"]);
+      // Take the country's first 2-3 native language hints
+      setLanguages(languageSuggestionsFor(countryCode).slice(0, 3));
     }
     if (skills.length === 0) {
-      setSkills(["phone repair", "JavaScript", "customer service"]);
+      setSkills(["phone repair", "customer service", "bookkeeping"]);
     }
     if (!ageRange) setAgeRange("18_24");
     if (!workMode) setWorkMode("informal");
-    if (!location) setLocation(countryCode === "GH" ? "Accra" : "Dhaka");
+    if (!location) setLocation(SAMPLE_CITY_BY_COUNTRY[countryCode] ?? countryName);
     toast.push({
       tone: "info",
       title: t.profile.sampleLoadedTitle,
@@ -454,7 +535,7 @@ export default function ProfileWizard({
                   value={story}
                   onChange={(e) => setStory(e.target.value)}
                   rows={6}
-                  placeholder={SAMPLE_STORIES_BY_COUNTRY[countryCode].slice(0, 80) + "..."}
+                  placeholder={sampleStoryFor(countryCode).slice(0, 80) + "..."}
                   className="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-fg-primary transition focus:border-accent/60 focus:outline-hidden focus:ring-2 focus:ring-accent/20"
                 />
               </Field>
