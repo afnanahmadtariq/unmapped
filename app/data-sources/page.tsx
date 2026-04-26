@@ -22,7 +22,7 @@ const WB_INDICATORS = [
 const SOURCES: Source[] = [
   {
     id: 'ilo-ilostat', name: 'ILO ILOSTAT', description: 'International Labour Organization employment & labor data', status: 'public', category: 'Labor Market',
-    apiRoute: '/api/datasources/ilo-ilostat', docsUrl: 'https://rplumber.ilo.org/__docs__/',
+    apiRoute: 'http://localhost:4000/datasets/ilo-ilostat', docsUrl: 'https://rplumber.ilo.org/__docs__/',
     params: [
       { key: 'indicator', label: 'Indicator', type: 'select', default: 'EMP_TEMP_SEX_AGE_NB', options: [
         { value: 'EMP_TEMP_SEX_AGE_NB', label: 'Employment by sex & age' },
@@ -38,7 +38,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'wb-wdi', name: 'World Bank WDI', description: 'World Development Indicators — comprehensive global data', status: 'public', category: 'Labor Market',
-    apiRoute: '/api/datasources/wb-wdi', docsUrl: 'https://datahelpdesk.worldbank.org/knowledgebase/articles/898581',
+    apiRoute: 'http://localhost:4000/datasets/wb-wdi', docsUrl: 'https://datahelpdesk.worldbank.org/knowledgebase/articles/898581',
     params: [
       { key: 'indicator', label: 'Indicator', type: 'select', default: 'SL.UEM.TOTL.ZS', options: WB_INDICATORS },
       { key: 'country', label: 'Country', type: 'select', default: 'all', options: [
@@ -49,7 +49,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'wb-hci', name: 'World Bank HCI', description: 'Human Capital Index — health, education & survival rates', status: 'public', category: 'Labor Market',
-    apiRoute: '/api/datasources/wb-hci', docsUrl: 'https://datatopics.worldbank.org/human-capital/',
+    apiRoute: 'http://localhost:4000/datasets/wb-hci', docsUrl: 'https://datatopics.worldbank.org/human-capital/',
     params: [
       { key: 'indicator', label: 'HCI Indicator', type: 'select', default: 'HD.HCI.OVRL', options: [
         { value: 'HD.HCI.OVRL', label: 'Overall HCI Score (0-1)' },
@@ -64,7 +64,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'ilo-isco', name: 'ILO ISCO-08', description: 'International Standard Classification of Occupations 2008', status: 'public', category: 'Labor Market',
-    apiRoute: '/api/datasources/ilo-isco', docsUrl: 'https://ilostat.ilo.org/resources/concepts-and-definitions/classification-occupation/',
+    apiRoute: 'http://localhost:4000/datasets/ilo-isco', docsUrl: 'https://ilostat.ilo.org/resources/concepts-and-definitions/classification-occupation/',
     params: [
       { key: 'lang', label: 'Language', type: 'select', default: 'en', options: [{ value: 'en', label: 'English' }, { value: 'fr', label: 'French' }, { value: 'es', label: 'Spanish' }] },
       { key: 'level', label: 'Classification Level', type: 'select', default: '1', options: [
@@ -74,35 +74,23 @@ const SOURCES: Source[] = [
     ]
   },
   {
-    id: 'wittgenstein', name: 'Wittgenstein Centre', description: 'Global education & demographic projections', status: 'auth', category: 'Education',
-    apiRoute: '/api/datasources/wittgenstein', docsUrl: 'https://dataexplorer.wittgensteincentre.org/wcde/',
-    authInfo: {
-      status: 'No REST API — Bulk CSV Downloads Available Free',
-      steps: [
-        { action: 'Use Interactive Explorer (no login)', url: 'https://dataexplorer.wittgensteincentre.org/wcde/', instruction: 'Explore and export projections directly in-browser' },
-        { action: 'Bulk CSV Download (free, no account needed)', url: 'https://www.wittgensteincentre.org/en/data.htm', instruction: 'Download full projection datasets in CSV format' },
-      ],
-      alternativeUrl: 'https://dataexplorer.wittgensteincentre.org/wcde/',
-      alternativeNote: 'No API key needed — use the bulk download link above'
-    }
+    id: 'wittgenstein', name: 'Wittgenstein Centre', description: 'Global education & demographic projections', status: 'public', category: 'Education',
+    apiRoute: 'http://localhost:4000/datasets/wittgenstein', docsUrl: 'https://dataexplorer.wittgensteincentre.org/wcde/',
+    params: [] // No params needed, just returns access info
   },
   {
-    id: 'un-population', name: 'UN Population', description: 'World Population Prospects projections', status: 'auth', category: 'Education',
-    apiRoute: '/api/datasources/un-population', docsUrl: 'https://population.un.org/dataportal/about/dataapi',
-    authInfo: {
-      status: 'Free API Key Required', requiredEnvVar: 'UN_POPULATION_API_KEY',
-      steps: [
-        { step: 1, action: 'Register at UN Data Portal', url: 'https://population.un.org/dataportal/', instruction: 'Create a free account' },
-        { step: 2, action: 'Read API docs & request token', url: 'https://population.un.org/dataportal/about/dataapi', instruction: 'Follow the API documentation to get your bearer token' },
-        { step: 3, instruction: 'Add UN_POPULATION_API_KEY=your_token to .env.local' },
-      ],
-      alternativeUrl: 'https://population.un.org/wpp/',
-      alternativeNote: 'Free Excel/CSV downloads of WPP 2024 — no login required'
-    }
+    id: 'un-population', name: 'UN Population', description: 'World Population Prospects projections', status: 'public', category: 'Education',
+    apiRoute: 'http://localhost:4000/datasets/un-population', docsUrl: 'https://population.un.org/dataportal/about/dataapi',
+    params: [
+      { key: 'indicator', label: 'Indicator ID', type: 'text', default: '49', description: '49 = Total Population, 65 = Life Expectancy' },
+      { key: 'location', label: 'Location ID', type: 'text', default: '4', description: '4 = World, 356 = India, 586 = Pakistan' },
+      { key: 'startYear', label: 'Start Year', type: 'text', default: '2020', description: 'e.g. 2020' },
+      { key: 'endYear', label: 'End Year', type: 'text', default: '2030', description: 'e.g. 2030' },
+    ]
   },
   {
     id: 'unesco-uis', name: 'UNESCO UIS', description: 'Education statistics mirrored via World Bank', status: 'public', category: 'Education',
-    apiRoute: '/api/datasources/unesco-uis', docsUrl: 'https://apiportal.uis.unesco.org/',
+    apiRoute: 'http://localhost:4000/datasets/unesco-uis', docsUrl: 'https://apiportal.uis.unesco.org/',
     params: [
       { key: 'indicator', label: 'Indicator', type: 'select', default: 'SE.ADT.LITR.ZS', options: [
         { value: 'SE.ADT.LITR.ZS', label: 'Adult Literacy Rate (%)' },
@@ -118,7 +106,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'frey-osborne', name: 'Frey & Osborne', description: 'Automation probability scores for 702 occupations (2013)', status: 'public', category: 'Automation',
-    apiRoute: '/api/datasources/frey-osborne', docsUrl: 'https://www.oxfordmartin.ox.ac.uk/downloads/academic/The_Future_of_Employment.pdf',
+    apiRoute: 'http://localhost:4000/datasets/frey-osborne', docsUrl: 'https://www.oxfordmartin.ox.ac.uk/downloads/academic/The_Future_of_Employment.pdf',
     params: [
       { key: 'minRisk', label: 'Min Risk Score', type: 'select', default: '0', options: [{ value: '0', label: '0 (any)' }, { value: '0.5', label: '0.5 (medium+)' }, { value: '0.7', label: '0.7 (high)' }, { value: '0.9', label: '0.9 (very high)' }] },
       { key: 'maxRisk', label: 'Max Risk Score', type: 'select', default: '1', options: [{ value: '0.3', label: '0.3 (low risk only)' }, { value: '0.5', label: '0.5 (up to medium)' }, { value: '1', label: '1 (all)' }] },
@@ -128,7 +116,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'wb-step', name: 'World Bank STEP', description: 'Skills Toward Employment & Productivity microdata', status: 'auth', category: 'Automation',
-    apiRoute: '/api/datasources/wb-step', docsUrl: 'https://microdata.worldbank.org/index.php/catalog/step',
+    apiRoute: 'http://localhost:4000/datasets/wb-step', docsUrl: 'https://microdata.worldbank.org/index.php/catalog/step',
     authInfo: {
       status: 'Free Account Required for Microdata', requiredEnvVar: 'WB_MICRODATA_API_KEY',
       steps: [
@@ -142,7 +130,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'ilo-fow', name: 'ILO Future of Work', description: 'Labour income, hours, earnings — future of work indicators', status: 'public', category: 'Automation',
-    apiRoute: '/api/datasources/ilo-fow', docsUrl: 'https://rplumber.ilo.org/__docs__/',
+    apiRoute: 'http://localhost:4000/datasets/ilo-fow', docsUrl: 'https://rplumber.ilo.org/__docs__/',
     params: [
       { key: 'indicator', label: 'Indicator', type: 'select', default: 'SDG_0852_SEX_RT', options: [
         { value: 'SDG_0852_SEX_RT', label: 'Labour income share (%)' },
@@ -156,7 +144,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'itu-digital', name: 'ITU Digital Dev', description: 'Internet, mobile & broadband penetration data', status: 'public', category: 'Automation',
-    apiRoute: '/api/datasources/itu-digital', docsUrl: 'https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx',
+    apiRoute: 'http://localhost:4000/datasets/itu-digital', docsUrl: 'https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx',
     params: [
       { key: 'indicator', label: 'Indicator', type: 'select', default: 'IT.NET.USER.ZS', options: [
         { value: 'IT.NET.USER.ZS', label: 'Internet users (% of population)' },
@@ -172,7 +160,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'esco', name: 'ESCO Skills', description: 'EU Skills & Occupations Taxonomy — 13,000+ skills', status: 'public', category: 'Skills',
-    apiRoute: '/api/datasources/esco', docsUrl: 'https://esco.ec.europa.eu/en/use-esco/esco-web-services',
+    apiRoute: 'http://localhost:4000/datasets/esco', docsUrl: 'https://esco.ec.europa.eu/en/use-esco/esco-web-services',
     params: [
       { key: 'text', label: 'Search Term', type: 'text', default: 'data analysis', description: 'Search for skills, e.g. "machine learning", "accounting"' },
       { key: 'type', label: 'Result Type', type: 'select', default: 'skill', options: [
@@ -184,7 +172,7 @@ const SOURCES: Source[] = [
   },
   {
     id: 'onet', name: 'O*NET (US DOL)', description: 'Occupational Information Network — skills, tasks, wages for 1000+ jobs', status: 'auth', category: 'Skills',
-    apiRoute: '/api/datasources/onet', docsUrl: 'https://services.onetcenter.org/developer/',
+    apiRoute: 'http://localhost:4000/datasets/onet', docsUrl: 'https://services.onetcenter.org/developer/',
     authInfo: {
       status: 'Free API Key Required (Non-commercial)', requiredEnvVar: 'ONET_API_KEY',
       steps: [
