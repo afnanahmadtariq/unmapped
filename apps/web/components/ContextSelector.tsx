@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { listCountriesByRegion } from "@/lib/config";
+import { getCountry, listCountriesByRegion } from "@/lib/config";
 import { SUPPORTED_LOCALES } from "@/lib/i18n";
 
 interface Props {
@@ -12,6 +12,13 @@ interface Props {
 }
 
 const SUPPORTED_LOCALE_CODES = new Set(SUPPORTED_LOCALES.map((l) => l.code));
+
+/** Pick a UI locale for a country: its registry default if we support it,
+ *  otherwise English. */
+function localeForCountry(countryCode: string): string {
+  const cfg = getCountry(countryCode);
+  return SUPPORTED_LOCALE_CODES.has(cfg.defaultLocale) ? cfg.defaultLocale : "en";
+}
 
 export default function ContextSelector({ country, locale, labels }: Props) {
   const router = useRouter();
@@ -33,9 +40,18 @@ export default function ContextSelector({ country, locale, labels }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const update = (key: "country" | "locale", value: string) => {
+  const setCountry = (nextCountry: string) => {
+    // Switching country re-aligns the UI language to that country's default
+    // locale, falling back to English when we don't ship a translation.
     const next = new URLSearchParams(params.toString());
-    next.set(key, value);
+    next.set("country", nextCountry);
+    next.set("locale", localeForCountry(nextCountry));
+    router.replace(`?${next.toString()}`);
+  };
+
+  const setLocale = (nextLocale: string) => {
+    const next = new URLSearchParams(params.toString());
+    next.set("locale", nextLocale);
     router.replace(`?${next.toString()}`);
   };
 
@@ -48,7 +64,7 @@ export default function ContextSelector({ country, locale, labels }: Props) {
         <select
           aria-label={labels.country}
           value={country}
-          onChange={(e) => update("country", e.target.value)}
+          onChange={(e) => setCountry(e.target.value)}
           className="max-w-45 rounded-md border border-border-default bg-bg-raised px-2 py-1 text-fg-primary"
         >
           {grouped.map((g) => (
@@ -67,7 +83,7 @@ export default function ContextSelector({ country, locale, labels }: Props) {
         <select
           aria-label={labels.language}
           value={locale}
-          onChange={(e) => update("locale", e.target.value)}
+          onChange={(e) => setLocale(e.target.value)}
           className="rounded-md border border-border-default bg-bg-raised px-2 py-1 text-fg-primary"
         >
           {SUPPORTED_LOCALES.map((l) => (
