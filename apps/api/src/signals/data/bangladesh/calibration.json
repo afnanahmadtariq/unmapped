@@ -1,0 +1,15 @@
+{
+  "_source": "ILO Future of Work LMIC adjustment + ITU Digital Development Report 2024 - Bangladesh automation calibration multiplier. Higher than Ghana because (a) RMG manufacturing sector has stronger automation pressure, (b) BPO/ICT exports are deeper into global automation supply chains.",
+  "countryCode": "BD",
+  "globalMultiplier": 0.71,
+  "sectorOverrides": {
+    "AGRICULTURE": 0.50,
+    "CONSTRUCTION": 0.55,
+    "BPO": 0.92,
+    "ICT": 0.95,
+    "RETAIL": 0.72,
+    "ADMIN": 0.82,
+    "MANUFACTURING": 0.80
+  },
+  "rationale": "Multipliers reflect ILO finding that Bangladesh's export-oriented RMG and BPO sectors face automation pressure closer to OECD baseline, while informal-economy sectors retain LMIC dampening."
+}

@@ -1,41 +1,62 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+node_modules
+.pnpm-store
 
-# testing
+# npm / pnpm config (machine-specific, e.g. store-dir; commit a shared
+# `.npmrc.example` instead if team-wide settings are needed)
+.npmrc
+!.npmrc.example
+
+# testing / coverage
 /coverage
+.nyc_output
 
-# next.js
+# next.js (root-level safety net; per-app ignore lives in apps/web/)
 /.next/
 /out/
 
-# production
-/build
+# nestjs / typescript build output (root-level safety net)
+/dist
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
-*.pem
+# turborepo cache (root + per-workspace)
+.turbo
 
-# debug
+# logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# cursor (per-user planning state; rules/ stay tracked if added)
+.cursor/plans/
+.cursor/agents/
+
+# misc
+*.pem
