@@ -18,6 +18,7 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
 
   const wagesCount = Object.keys(data.wages.wagesByISCO).length;
   const sectorsCount = Object.keys(data.growth.growthBySector).length;
+  const snapshotCountries = listCountries().filter((c) => c.hasSnapshot);
 
   return (
     <main className="flex flex-1 flex-col">
@@ -86,12 +87,17 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
               <Check className="h-3 w-3" /> {t.admin.dropIn}
             </Pill>
           </header>
+          <p className="mb-3 text-xs text-fg-muted">
+            Showing {snapshotCountries.length} curated-snapshot countries. The system supports
+            <strong className="mx-1 font-mono text-accent">{listCountries().length}</strong>
+            ISO countries total via the live World Bank fallback.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="text-left">
                 <tr className="border-b border-border-default text-[10px] uppercase tracking-widest text-fg-muted">
                   <th className="py-3 pr-4 font-medium">Parameter</th>
-                  {listCountries().map((c) => (
+                  {snapshotCountries.map((c) => (
                     <th key={c.code} className="py-3 pr-4 font-medium">
                       <div className="flex items-center gap-2 text-fg-secondary">
                         <Globe2 className="h-3 w-3" /> {c.name}
@@ -101,15 +107,15 @@ export default async function AdminConfigPage({ searchParams }: PageProps) {
                 </tr>
               </thead>
               <tbody className="text-fg-secondary">
-                <CompareRow label="Country code" cells={listCountries().map((c) => c.code)} />
-                <CompareRow label="Default locale" cells={listCountries().map((c) => c.defaultLocale.toUpperCase())} />
-                <CompareRow label="Currency" cells={listCountries().map((c) => `${c.currencySymbol} ${c.currency}`)} />
-                <CompareRow label="Economy context" cells={listCountries().map((c) => c.context.replace("-", " "))} />
+                <CompareRow label="Country code" cells={snapshotCountries.map((c) => c.code)} />
+                <CompareRow label="Region" cells={snapshotCountries.map((c) => c.region)} />
+                <CompareRow label="Default locale" cells={snapshotCountries.map((c) => c.defaultLocale.toUpperCase())} />
+                <CompareRow label="Currency" cells={snapshotCountries.map((c) => `${c.currencySymbol} ${c.currency}`)} />
+                <CompareRow label="Economy context" cells={snapshotCountries.map((c) => c.context.replace("-", " "))} />
                 <CompareRow
                   label="Automation multiplier"
-                  cells={listCountries().map((c) => `×${c.automationCalibration.toFixed(2)}`)}
+                  cells={snapshotCountries.map((c) => `×${c.automationCalibration.toFixed(2)}`)}
                 />
-                <CompareRow label="Data path" cells={listCountries().map((c) => c.dataPath)} />
               </tbody>
             </table>
           </div>

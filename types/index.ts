@@ -1,19 +1,26 @@
 // UNMAPPED - shared type definitions
 // All shapes that cross the API boundary live here.
 
-export type CountryCode = "GH" | "BD";
-export type LocaleCode = "en" | "fr" | "bn";
+// Country code is an ISO 3166-1 alpha-2 string. The supported list is in
+// public/data/countries.json. The system gracefully handles ANY ISO code via
+// the live World Bank fallback; a few countries have rich curated snapshots.
+export type CountryCode = string;
+
+// Locale is BCP-47 language code. Loadable list is in lib/i18n.ts.
+export type LocaleCode = string;
 
 export interface CountryConfig {
   code: CountryCode;
+  iso3: string;
   name: string;
+  region: string;
   defaultLocale: LocaleCode;
   currency: string;
   currencySymbol: string;
-  dataPath: string;
-  automationCalibration: number; // multiplier vs raw Frey-Osborne (LMICs differ)
-  credentialMapPath: string;
+  automationCalibration: number;
   context: "urban-informal" | "mixed-urban-rural" | "rural-agricultural";
+  /** True if we ship a hand-curated snapshot under /public/data/<code>/ */
+  hasSnapshot: boolean;
 }
 
 export interface SkillEvidence {

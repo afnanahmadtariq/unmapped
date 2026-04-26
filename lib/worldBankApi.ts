@@ -5,14 +5,14 @@
 
 import type { CountryCode } from "@/types";
 import { getCountryData } from "@/lib/data";
+import { getCountry } from "@/lib/config";
 
 const WB_BASE = "https://api.worldbank.org/v2";
 const TIMEOUT_MS = 4000;
 
-const ISO3: Record<CountryCode, string> = {
-  GH: "GHA",
-  BD: "BGD",
-};
+function iso3For(code: CountryCode): string {
+  return getCountry(code).iso3;
+}
 
 /** Indicators we care about. Codes are stable WDI series IDs. */
 export const INDICATORS = {
@@ -68,7 +68,7 @@ export async function fetchIndicator(
   indicator: IndicatorKey
 ): Promise<IndicatorPoint | null> {
   const code = INDICATORS[indicator];
-  const iso3 = ISO3[countryCode];
+  const iso3 = iso3For(countryCode);
   const cacheKey = `wb:${iso3}:${code}`;
   const cached = cacheGet<IndicatorPoint>(cacheKey);
   if (cached) return cached;
@@ -103,7 +103,7 @@ function snapshotFallback(
   indicator: IndicatorKey
 ): IndicatorPoint | null {
   const data = getCountryData(countryCode);
-  const iso3 = ISO3[countryCode];
+  const iso3 = iso3For(countryCode);
   if (indicator === "YOUTH_UNEMPLOYMENT") {
     return {
       indicator,
